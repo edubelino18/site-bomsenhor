@@ -14,7 +14,7 @@
   --b1:rgba(51,51,51,0.07);--b2:rgba(51,51,51,0.14);
   --shadow:0 2px 14px rgba(51,51,51,0.07);--shadow-lg:0 8px 36px rgba(51,51,51,0.13);
   --r:8px;--rl:14px;--t:0.28s cubic-bezier(0.32,0.72,0,1);
-  --nav-h:64px;--fd:'Playfair Display',Georgia,serif;--fb:'Outfit',system-ui,sans-serif;--max:1200px;
+  --nav-h:90px;--fd:'Playfair Display',Georgia,serif;--fb:'Outfit',system-ui,sans-serif;--max:1200px;
 }
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --cream:#1C1914;--cream2:#24201A;--ink:#EDE9E2;--ink2:#BEB8AD;--ink3:#86806F;
@@ -35,9 +35,8 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 
 #nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);background:#1D4175;border-bottom:1px solid rgba(0,0,0,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .nav-inner{max-width:var(--max);margin:0 auto;height:100%;display:flex;align-items:center;gap:2rem;padding:0 1.5rem}
-.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.nav-logo img{width:54px;height:54px;border-radius:50%;object-fit:cover}
-.nav-logo-text{font-family:var(--fd);font-size:1rem;font-weight:500;color:#FFFFFF;letter-spacing:0.01em}
+.nav-logo{display:flex;align-items:center;flex-shrink:0;align-self:flex-start;margin-top:4px}
+.nav-logo img{width:110px;height:110px;border-radius:50%;object-fit:cover}
 .nav-links{display:flex;align-items:center;gap:0.25rem;margin-left:auto}
 .nav-links a{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.75);padding:8px 12px;border-radius:var(--r);transition:color var(--t),background var(--t)}
 .nav-links a:hover,.nav-links a.active{color:#FFFFFF;background:rgba(255,255,255,0.15)}
@@ -59,10 +58,12 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 @media(min-width:768px){.section{padding:6rem 2.5rem}}
 @media(min-width:1280px){.section{padding:7rem 3rem}}
 
-.s-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#F4C542;margin-bottom:1rem}
-.s-tag::before{content:'';width:24px;height:1px;background:#F4C542}
+.s-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A6D1E;margin-bottom:1rem}
+.s-tag::before{content:'';width:24px;height:1px;background:#8A6D1E}
+.s-tag.on-dark{color:#F4C542}
+.s-tag.on-dark::before{background:#F4C542}
 .s-title{font-family:var(--fd);font-size:clamp(1.8rem,5vw,3rem);font-weight:400;line-height:1.15}
-.s-title em{font-style:italic;color:#F4C542}
+.s-title em{font-style:italic;color:#8A6D1E}
 
 .btn-p{display:inline-flex;align-items:center;gap:8px;background:#1D4175;color:#FFFFFF;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:background var(--t);cursor:pointer}
 .btn-p:hover{background:#17345E}
@@ -71,7 +72,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .btn-gold{display:inline-flex;align-items:center;gap:8px;background:#ED1C24;color:#FFFFFF;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:background var(--t);cursor:pointer}
 .btn-gold:hover{background:#C2171E;color:#FFFFFF}
 
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;letter-spacing:0.07em;text-transform:uppercase;font-weight:500}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;letter-spacing:0.07em;text-transform:uppercase;font-weight:500}
 .badge-disponivel{background:rgba(31,96,61,0.12);color:#1F603D}
 .badge-vendido{background:rgba(51,51,51,0.08);color:#6B6B6B}
 .badge-projeto{background:rgba(244,197,66,0.15);color:#866C24}
@@ -85,15 +86,16 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .v-card:hover .card-img{transform:scale(1.04)}
 .card-img{width:100%;aspect-ratio:4/3;transition:transform 0.5s var(--t);display:flex;align-items:flex-end;padding:1rem;position:relative}
 .card-img-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-img-ghost{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:rgba(255,255,255,0.32);line-height:1;pointer-events:none;user-select:none}
 .card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(51,51,51,0.45) 0%,transparent 55%)}
 .v-card-body{padding:1.2rem}
 .v-card-name{font-family:var(--fd);font-size:1.05rem;color:#333333;line-height:1.3;margin-bottom:0.4rem}
 .v-card-year{font-size:12px;color:#6B6B6B;font-family:var(--fb)}
 .v-card-specs{display:flex;flex-wrap:wrap;gap:5px;margin-top:0.75rem}
-.spec-tag{font-size:10px;background:#ECECEC;color:#6B6B6B;padding:3px 9px;border-radius:3px;letter-spacing:0.03em}
+.spec-tag{font-size:11px;background:#ECECEC;color:#6B6B6B;padding:3px 9px;border-radius:3px;letter-spacing:0.03em}
 .v-card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding-top:1rem;border-top:1px solid #D3D3D3}
 .v-card-price{font-family:var(--fd);font-size:1rem;color:#333333}
-.v-card-price small{font-family:var(--fb);font-size:10px;color:#6B6B6B;display:block}
+.v-card-price small{font-family:var(--fb);font-size:11px;color:#6B6B6B;display:block}
 
 .filters{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
 .filter-btn{padding:8px 18px;border-radius:30px;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border:1px solid #D3D3D3;background:#FFFFFF;color:#4D4D4D;transition:all var(--t);white-space:nowrap}
@@ -101,23 +103,22 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .filter-btn:hover:not(.active){border-color:#1D4175;color:#1D4175}
 
 .hero{display:grid;grid-template-columns:1fr;min-height:calc(100svh - var(--nav-h))}
-.hero-img-wrap{position:relative;min-height:55svh;overflow:hidden}
+.hero-img-wrap{position:relative;min-height:38svh;overflow:hidden}
 .hero-content{padding:3rem 1.5rem;display:flex;flex-direction:column;justify-content:center;background:#FAF9F6}
 .hero-h1{font-family:var(--fd);font-size:clamp(2.2rem,7vw,3.8rem);font-weight:400;line-height:1.1;color:#333333;margin-bottom:1.25rem}
-.hero-h1 em{font-style:italic;color:#F4C542}
+.hero-h1 em{font-style:italic;color:#8A6D1E}
 .hero-p{font-size:14px;color:#6B6B6B;line-height:1.9;margin-bottom:2rem;max-width:440px}
 .hero-btns{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
 .stats-row{display:flex;border:1px solid #D3D3D3;border-radius:var(--rl);overflow:hidden;background:#FFFFFF}
 .stat-item{flex:1;padding:1.1rem 0.5rem;text-align:center}
 .stat-item+.stat-item{border-left:1px solid #D3D3D3}
 .stat-n{font-family:var(--fd);font-size:1.8rem;font-weight:500;color:#333333;line-height:1}
-.stat-l{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6B6B;margin-top:4px}
+.stat-l{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6B6B;margin-top:4px}
 @media(min-width:768px){
   .hero{grid-template-columns:1fr 1fr;min-height:92svh}
   .hero-img-wrap{min-height:100%}
   .hero-content{padding:4rem 3.5rem 4rem 3rem}
   .nav-inner{padding:0 3rem}
-  .nav-logo-text{display:block}
 }
 
 .page-hero{position:relative;height:40svh;min-height:240px;overflow:hidden;background:#333333;display:flex;align-items:flex-end}.ph-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}.ph-dim{position:absolute;inset:0;background:linear-gradient(to top,rgba(51,51,51,0.88) 0%,rgba(51,51,51,0.40) 100%)}.page-hero-content{position:relative;z-index:2}
@@ -142,18 +143,34 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
 .gallery-item{aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform var(--t),box-shadow var(--t)}
 .gallery-item:hover{transform:scale(1.02);box-shadow:0 8px 36px rgba(51,51,51,0.13)}
+.gallery-item.no-photo{cursor:default}
+.gallery-item.no-photo:hover{transform:none;box-shadow:none}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(51,51,51,0.94);align-items:center;justify-content:center;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:var(--r);object-fit:contain}
+.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;border-radius:50%;background:rgba(255,255,255,0.12);color:#FFFFFF;display:flex;align-items:center;justify-content:center;transition:background var(--t)}
+.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,0.25)}
+.lightbox-close{top:1.5rem;right:1.5rem;width:44px;height:44px;font-size:1.6rem;line-height:1}
+.lightbox-prev,.lightbox-next{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:1.3rem}
+.lightbox-prev{left:1.5rem}
+.lightbox-next{right:1.5rem}
+@media(max-width:640px){.lightbox-prev{left:0.5rem}.lightbox-next{right:0.5rem}.lightbox-close{top:0.75rem;right:0.75rem}}
 
 .timeline{display:flex;flex-direction:column}
-.timeline-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid #D3D3D3}
+.timeline-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid #D3D3D3;transition:opacity var(--t)}
 .timeline-item:last-child{border-bottom:none}
-.timeline-num{font-family:var(--fd);font-size:1.8rem;color:#F4C542;opacity:0.4;min-width:32px;line-height:1;padding-top:4px}
+.timeline-item.timeline-future.in{opacity:0.5}
+.timeline-item.timeline-current{background:rgba(244,197,66,0.08);margin:0 -1rem;padding-left:1rem;padding-right:1rem;border-radius:var(--r)}
+.timeline-num{font-family:var(--fd);font-size:1.8rem;color:#8A6D1E;opacity:0.4;min-width:32px;line-height:1;padding-top:4px}
+.timeline-current .timeline-num{opacity:1;font-weight:700}
 .timeline-content h4{font-weight:600;color:#333333;margin-bottom:4px}
 .timeline-content p{font-size:13px;color:#6B6B6B;line-height:1.7}
-.timeline-date{font-size:11px;color:#F4C542;letter-spacing:0.06em;margin-bottom:6px}
+.timeline-date{font-size:11px;color:#8A6D1E;letter-spacing:0.06em;margin-bottom:6px}
 
 .about-tl-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid #D3D3D3}
 .about-tl-item:last-child{border-bottom:none}
-.about-tl-year{font-family:var(--fd);font-size:1.1rem;font-weight:500;color:#F4C542;min-width:48px;padding-top:2px}
+.about-tl-year{font-family:var(--fd);font-size:1.1rem;font-weight:500;color:#8A6D1E;min-width:48px;padding-top:2px}
 .about-tl-body h4{font-weight:600;color:#333333;margin-bottom:4px}
 .about-tl-body p{font-size:13px;color:#6B6B6B;line-height:1.7}
 
@@ -168,7 +185,6 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .footer-top{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:2.5rem}
 @media(min-width:768px){.footer-top{grid-template-columns:1fr 1fr 1fr}}
 .footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
-.footer-brand img{width:36px;height:36px;border-radius:50%;object-fit:cover}
 .footer-brand-name{font-family:var(--fd);font-size:1rem;color:rgba(250,249,246,0.7)}
 .footer-tagline{font-size:13px;color:rgba(250,249,246,0.35);line-height:1.7}
 .footer-nav h5{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#F4C542;margin-bottom:1rem;opacity:0.85}
@@ -198,7 +214,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .contact-card a{color:#1D4175;font-weight:500}
 .contact-card a:hover{text-decoration:underline}
 
-@media(max-width:767px){.hamburger{display:flex}.nav-links{display:none}.nav-logo-text{display:none}}
+@media(max-width:767px){.hamburger{display:flex}.nav-links{display:none}}
 
 .reveal{opacity:0;transform:translateY(20px)}
 .reveal.in{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease}
@@ -210,7 +226,6 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
   <div class="nav-inner">
     <a class="nav-logo" href="#/" onclick="navigate('home')">
       <img id="navLogo" alt="Bomsenhor">
-      <span class="nav-logo-text">Bomsenhor</span>
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#/acervo" data-page="acervo">Acervo</a>
@@ -218,7 +233,6 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
       <a href="#/importacao" data-page="importacao">Importação</a>
       <a href="#/sobre" data-page="sobre">Sobre</a>
       <a href="#/contato" data-page="contato">Contato</a>
-      <a href="https://wa.me/5547999999999" class="nav-wa" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -230,18 +244,24 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
   <a href="#/importacao">Importação</a>
   <a href="#/sobre">Sobre</a>
   <a href="#/contato">Contato</a>
-  <a href="https://wa.me/5547999999999" class="wa-mob" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="https://wa.me/5547991742031?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas." class="wa-mob" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
 <div id="app"></div>
+
+<div id="lightbox" class="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">&times;</button>
+  <button class="lightbox-prev" onclick="lightboxNav(-1)" aria-label="Foto anterior">&larr;</button>
+  <img id="lightboxImg" alt="">
+  <button class="lightbox-next" onclick="lightboxNav(1)" aria-label="Próxima foto">&rarr;</button>
+</div>
 
 <footer id="footer">
   <div class="footer-inner">
     <div class="footer-top">
       <div>
         <div class="footer-brand">
-          <img id="footLogo" alt="Bomsenhor">
-          <span class="footer-brand-name">Bomsenhor</span>
+          <span class="footer-brand-name">Bomsenhor Restaurações</span>
         </div>
         <p class="footer-tagline">Restauração e importação de veículos clássicos em Gaspar, SC.</p>
       </div>
@@ -255,19 +275,19 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
       </div>
       <div class="footer-nav">
         <h5>Contato</h5>
-        <a href="https://wa.me/5547999999999" target="_blank">WhatsApp</a>
-        <a href="https://instagram.com/bomsenhor" target="_blank">Instagram</a>
-        <a href="mailto:contato@bomsenhor.com.br">E-mail</a>
+        <a href="https://wa.me/5547991742031?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas." target="_blank">WhatsApp</a>
+        <a href="https://instagram.com/bomsenhorrestauracoes" target="_blank">Instagram</a>
+        <a href="mailto:bomsenhor10@icloud.com">E-mail</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 Bomsenhor Restaurações. Todos os direitos reservados.</p>
+      <p class="footer-copy">© 2026 Bomsenhor Restaurações. Todos os direitos reservados.</p>
       <p class="footer-loc">Gaspar, SC — Brasil</p>
     </div>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/5547999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="wa-float" href="https://wa.me/5547991742031?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas." target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -285,7 +305,6 @@ const IMG_SOBRE = 'images/hero-sobre.jpg';
 const IMG_WORK1 = 'images/hero-importacao.jpg';
 const IMG_WORK2 = 'images/hero-contato.jpg';
 document.getElementById('navLogo').src = LOGO;
-document.getElementById('footLogo').src = LOGO;
 
 // ── ROUTER ──────────────────────────────────────────────────
 function getRoute(){
@@ -326,7 +345,7 @@ function fotoUrl(item,tipo,arquivo){
 }
 function cardImg(item,tipo){
   const capa=item.fotos&&item.fotos[0];
-  const foto=capa?`<img class="card-img-photo" src="${fotoUrl(item,tipo,capa)}" alt="${item.nome}">`:'';
+  const foto=capa?`<img class="card-img-photo" src="${fotoUrl(item,tipo,capa)}" alt="${item.nome}">`:`<span class="card-img-ghost">${item.ano}</span>`;
   return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}">${foto}</div>`;
 }
 function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
@@ -336,12 +355,45 @@ function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
 }
 function galleryHtml(item,tipo){
   if(item.fotos&&item.fotos.length){
-    return item.fotos.map(f=>`<div class="gallery-item reveal"><img src="${fotoUrl(item,tipo,f)}" alt="" style="width:100%;height:100%;object-fit:cover"></div>`).join('');
+    CURRENT_GALLERY=item.fotos.map(f=>fotoUrl(item,tipo,f));
+    return CURRENT_GALLERY.map((u,i)=>`<div class="gallery-item reveal" onclick="openLightbox(${i})"><img src="${u}" alt="" style="width:100%;height:100%;object-fit:cover"></div>`).join('');
   }
+  CURRENT_GALLERY=[];
   const h1=parseInt((item.bg||DEFAULT_BG).match(/hsl\((\d+)/)[1]);
   const gals=[bg(h1+15,h1+25,45,35,25,16),bg(h1-10,h1,30,20,18,12),bg(h1+30,h1+10,55,40,28,18)];
-  return gals.map(g=>`<div class="gallery-item reveal" style="background:${g}"></div>`).join('');
+  return gals.map(g=>`<div class="gallery-item no-photo reveal" style="background:${g}"></div>`).join('');
 }
+
+// ── LIGHTBOX ─────────────────────────────────────────────────
+let CURRENT_GALLERY=[];
+let lightboxIndex=0;
+function openLightbox(index){
+  if(!CURRENT_GALLERY.length)return;
+  lightboxIndex=index;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function lightboxNav(dir){
+  lightboxIndex=(lightboxIndex+dir+CURRENT_GALLERY.length)%CURRENT_GALLERY.length;
+  updateLightbox();
+}
+function updateLightbox(){
+  document.getElementById('lightboxImg').src=CURRENT_GALLERY[lightboxIndex];
+  const multi=CURRENT_GALLERY.length>1;
+  document.querySelector('.lightbox-prev').style.display=multi?'flex':'none';
+  document.querySelector('.lightbox-next').style.display=multi?'flex':'none';
+}
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lightbox').classList.contains('open'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowLeft')lightboxNav(-1);
+  if(e.key==='ArrowRight')lightboxNav(1);
+});
 function bdg(s){
   const m={disponivel:['badge-disponivel','Disponível'],vendido:['badge-vendido','Vendido'],
     projeto:['badge-projeto','Projeto'],concluido:['badge-concluido','Concluído'],andamento:['badge-andamento','Em andamento']};
@@ -360,7 +412,7 @@ function renderHome(){
   </div>
   <div class="hero-content">
     <span class="s-tag reveal">Restauração &amp; Importação</span>
-    <h1 class="hero-h1 reveal">Carros que<br><em>contam histórias</em><br>únicas</h1>
+    <h1 class="hero-h1 reveal">Veículos que<br><em>contam histórias</em><br>únicas</h1>
     <p class="hero-p reveal">Especializados na restauração e importação de automóveis clássicos em Gaspar, SC. Cada veículo selecionado com rigor, paixão e 15 anos de expertise.</p>
     <div class="hero-btns reveal">
       <a href="#/acervo" class="btn-p">Ver acervo</a>
@@ -425,8 +477,8 @@ function vCard(v){
       ${v.procedencia?`<span class="spec-tag">${v.procedencia.split('—')[0].trim()}</span>`:''}
     </div>
     <div class="v-card-footer">
-      <div class="v-card-price"><small>a partir de</small>${v.preco}</div>
-      <span style="font-size:12px;color:#F4C542">Ver detalhes →</span>
+      <div class="v-card-price"><small>${v.preco.startsWith('R$')?'a partir de':''}</small>${v.preco}</div>
+      <span style="font-size:12px;color:#8A6D1E">Ver detalhes →</span>
     </div>
   </div>
 </div>`;
@@ -440,7 +492,7 @@ function renderAcervo(){
   <img class="ph-img" src="${IMG_ACERVO}" alt="" style="object-position:center 50%">
   <div class="ph-dim"></div>
   <div class="page-hero-content">
-    <span class="s-tag" style="color:#F4C542">Veículos disponíveis</span>
+    <span class="s-tag on-dark">Veículos disponíveis</span>
     <h1 class="page-hero-title">Nosso <em>acervo</em></h1>
   </div>
 </div>
@@ -473,23 +525,24 @@ function filteredV(f){
 function renderVeiculoDetalhe(id){
   const v=VEICULOS.find(x=>x.id===id);
   if(!v){navigate('acervo');return;}
+  const vendido=v.status==='vendido';
   document.getElementById('app').innerHTML=`
 <section class="section" style="padding-top:calc(var(--nav-h) + 2.5rem)">
   <div class="section-inner">
     <button class="detail-back" onclick="navigate('acervo')">← Voltar ao acervo</button>
-    ${detailHeroHtml(v,'acervo',{always:`<div style="position:absolute;bottom:1.5rem;left:1.5rem">${bdg(v.status)}</div>`})}
+    ${detailHeroHtml(v,'acervo',{always:`<div style="position:absolute;bottom:1.5rem;left:1.5rem">${bdg(v.status)}</div>`,fallbackOnly:`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="font-family:var(--fd);font-size:clamp(3rem,8vw,6rem);color:rgba(255,255,255,0.07);font-weight:700">${v.ano}</span></div>`})}
     <div class="detail-info-grid">
       <div>
         <span class="s-tag">Sobre o veículo</span>
         <h1 style="font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;line-height:1.15;margin-bottom:1.5rem">
-          ${v.nome} <em style="color:#F4C542;font-style:italic">${v.ano}</em>
+          ${v.nome} <em style="color:#8A6D1E;font-style:italic">${v.ano}</em>
         </h1>
         <div class="detail-desc">
           ${v.descricao.split('\n').filter(Boolean).map(p=>`<p>${p}</p>`).join('')}
         </div>
         ${v.destaques?.length?`
         <div style="margin-top:2rem">
-          <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7A7A7A;margin-bottom:.75rem">Destaques</p>
+          <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7A7A7A;margin-bottom:.75rem">${vendido?'Características (histórico)':'Destaques'}</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px">
             ${v.destaques.map(d=>`<span class="spec-tag" style="font-size:12px;padding:5px 12px">${d}</span>`).join('')}
           </div>
@@ -499,13 +552,17 @@ function renderVeiculoDetalhe(id){
         <div class="detail-specs">
           <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #D3D3D3">
             <div style="font-family:var(--fd);font-size:1.6rem;color:#333333">${v.preco}</div>
-            <div style="font-size:11px;color:#7A7A7A;margin-top:4px">Valor de referência</div>
+            <div style="font-size:11px;color:#7A7A7A;margin-top:4px">${vendido?'Status':'Valor de referência'}</div>
           </div>
           ${[['Motor',v.motor],['Transmissão',v.transmissao],['Cor',v.cor],['Quilometragem',v.km],['Procedência',v.procedencia],['Carroceria',v.carroceria]].filter(([,val])=>val).map(([k,val])=>`
           <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${val}</span></div>`).join('')}
           <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem">
-            <a href="https://wa.me/5547999999999?text=Olá! Tenho interesse no ${encodeURIComponent(v.nome+' '+v.ano)}" target="_blank" class="btn-gold" style="justify-content:center;width:100%">Falar no WhatsApp</a>
-            <a href="#/contato" class="btn-o" style="justify-content:center;width:100%">Mais informações</a>
+            ${vendido?`
+            <a href="#/acervo" class="btn-gold" style="justify-content:center;width:100%">Ver veículos disponíveis →</a>
+            <a href="https://wa.me/5547991742031?text=Olá! Tenho interesse em veículos parecidos com o ${encodeURIComponent(v.nome+' '+v.ano)} (já vendido)" target="_blank" class="btn-o" style="justify-content:center;width:100%">Avise-me sobre veículos parecidos</a>
+            `:`
+            <a href="https://wa.me/5547991742031?text=Olá! Tenho interesse no ${encodeURIComponent(v.nome+' '+v.ano)}" target="_blank" class="btn-gold" style="justify-content:center;width:100%">Tenho interesse</a>
+                        `}
           </div>
         </div>
       </div>
@@ -534,7 +591,7 @@ function pCard(p){
     </div>
     <div class="v-card-footer">
       <div style="font-size:13px;color:#7A7A7A">${p.etapas.length} etapas</div>
-      <span style="font-size:12px;color:#F4C542">Ver restauração →</span>
+      <span style="font-size:12px;color:#8A6D1E">Ver restauração →</span>
     </div>
   </div>
 </div>`;
@@ -547,7 +604,7 @@ function renderProjetos(){
   <img class="ph-img" src="${IMG_PROJ}" alt="" style="object-position:center 45%">
   <div class="ph-dim"></div>
   <div class="page-hero-content">
-    <span class="s-tag" style="color:#F4C542">Ateliê Bomsenhor</span>
+    <span class="s-tag on-dark">Ateliê Bomsenhor</span>
     <h1 class="page-hero-title">Nossos <em>projetos</em></h1>
   </div>
 </div>
@@ -559,7 +616,7 @@ function renderProjetos(){
       <div class="v-grid">${a.map(pCard).join('')}</div>
     </div>`:''}
     <span class="s-tag reveal">Portfólio</span>
-    <h2 class="s-title reveal" style="margin-bottom:2rem">Restaurações <em>concluídas</em></h2>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Projetos <em>concluídos</em></h2>
     <div class="v-grid">${c.map(pCard).join('')}</div>
   </div>
 </section>`;
@@ -575,7 +632,7 @@ function renderProjetoDetalhe(id){
     <button class="detail-back" onclick="navigate('projetos')">← Voltar aos projetos</button>
     <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:2rem">
       <h1 style="font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;line-height:1.1">
-        ${p.nome} <em style="color:#F4C542;font-style:italic">${p.ano}</em>
+        ${p.nome} <em style="color:#8A6D1E;font-style:italic">${p.ano}</em>
       </h1>
       ${bdg(p.status)}
     </div>
@@ -583,8 +640,8 @@ function renderProjetoDetalhe(id){
     <div class="detail-info-grid" style="margin-bottom:4rem">
       <div class="detail-desc">
         ${p.descricao.split('\n').filter(Boolean).map(par=>`<p>${par}</p>`).join('')}
-        ${p.resultado?`<div style="margin-top:2rem;padding:1.5rem;background:#FEF9EC;border-radius:var(--r);border-left:3px solid #F4C542">
-          <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#F4C542;margin-bottom:.5rem">Resultado</div>
+        ${p.resultado?`<div style="margin-top:2rem;padding:1.5rem;background:#FEF9EC;border-radius:var(--rl);border:1px solid #D3D3D3">
+          <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A6D1E;margin-bottom:.5rem">Resultado</div>
           <p style="color:#7A7A7A;font-style:italic">${p.resultado}</p>
         </div>`:''}
       </div>
@@ -592,14 +649,14 @@ function renderProjetoDetalhe(id){
         ${[['Veículo',`${p.nome} ${p.ano}`],['Status',p.status==='concluido'?'Concluído':'Em andamento'],['Duração',p.duracao],['Cliente',p.cliente]].filter(([,v])=>v).map(([k,v])=>`
         <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${v}</span></div>`).join('')}
         <div style="margin-top:1.5rem">
-          <a href="https://wa.me/5547999999999?text=Olá! Quero orçar uma restauração similar ao ${encodeURIComponent(p.nome+' '+p.ano)}" target="_blank" class="btn-gold" style="justify-content:center;width:100%">Orçar projeto similar</a>
+          <a href="https://wa.me/5547991742031?text=Olá! Quero orçar uma restauração similar ao ${encodeURIComponent(p.nome+' '+p.ano)}" target="_blank" class="btn-gold" style="justify-content:center;width:100%">Orçar projeto similar</a>
         </div>
       </div>
     </div>
     <span class="s-tag reveal">Processo</span>
     <h2 class="s-title reveal" style="margin-bottom:2rem">Etapas da <em>restauração</em></h2>
     <div class="timeline">
-      ${p.etapas.map(e=>`<div class="timeline-item reveal">
+      ${p.etapas.map(e=>`<div class="timeline-item reveal${e.status==='atual'?' timeline-current':e.status==='futura'?' timeline-future':''}">
         <div class="timeline-num">${e.num}</div>
         <div class="timeline-content">
           <div class="timeline-date">${e.data}</div>
@@ -625,8 +682,8 @@ function renderImportacao(){
   <img class="ph-img" src="${IMG_WORK1}" alt="" style="object-position:center 40%">
   <div class="ph-dim"></div>
   <div class="page-hero-content">
-    <span class="s-tag" style="color:#F4C542">Serviço especializado</span>
-    <h1 class="page-hero-title">Importação <em>de veículos</em></h1>
+    <span class="s-tag on-dark">Serviço especializado</span>
+    <h1 class="page-hero-title">Importação <em>de veículos e peças</em></h1>
   </div>
 </div>
 <section class="section" style="background:#FFFFFF">
@@ -634,16 +691,19 @@ function renderImportacao(){
     <div style="max-width:680px;margin-bottom:4rem">
       <span class="s-tag reveal">Como funciona</span>
       <h2 class="s-title reveal" style="margin-bottom:1.5rem">Do sonho à <em>garagem</em></h2>
-      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9;margin-bottom:1rem">Importamos veículos clássicos diretamente dos EUA, Europa e Japão. Com 15 anos de experiência, cuidamos de cada detalhe: pesquisa, negociação, transporte marítimo, desembaraço alfandegário e regularização no Brasil.</p>
-      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9">Você nos diz o modelo dos seus sonhos e nós cuidamos de todo o resto — com transparência total em cada etapa.</p>
+      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9;margin-bottom:1rem">Importamos veículos clássicos ou peças específicas diretamente dos EUA, Europa e Japão. Cuidamos de cada detalhe: pesquisa, negociação, transporte marítimo, desembaraço aduaneiro e regularização no Brasil.</p>
+      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9">Realizamos projetos personalizados unindo importação + restauração, muitas vezes reduzindo o tempo e o preço final do projeto em até 50%.</p>
+<p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9;margin-bottom:1rem"></p>
+      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9">
+Você nos diz o que precisa e nós cuidamos de todo o resto — com transparência total em cada etapa.</p>
     </div>
     <span class="s-tag reveal">O processo</span>
     <h2 class="s-title reveal" style="margin-bottom:2rem">Nosso <em>método</em></h2>
     <div class="steps">
-      ${[['01','Consulta inicial','Você nos conta qual veículo deseja. Discutimos especificações, condição, orçamento e expectativas.'],
-         ['02','Pesquisa e avaliação','Nossa rede internacional localiza o exemplar ideal. Você recebe fotos, histórico e laudos de vistoria antes de qualquer decisão.'],
-         ['03','Aquisição e transporte','Cuidamos da compra, seguro de transporte e logística marítima do ponto de origem até o porto brasileiro.'],
-         ['04','Regularização e entrega','Desembaraço alfandegário, homologação e documentação completa. Entregamos pronto para emplacamento.']
+      ${[['01','Consulta inicial','Você nos conta qual projeto deseja. Discutimos especificações, condição, orçamento e expectativas.'],
+         ['02','Pesquisa e avaliação','Nossa rede internacional localiza o exemplar ideal. Você recebe fotos, histórico e todos os detalhes antes de qualquer decisão.'],
+         ['03','Aquisição, transporte e entrega','Cuidamos da compra, seguro de transporte e logística marítima do ponto de origem até o porto brasileiro com desembaraço alfandegário, homologação e documentação completa.'],
+         ['04','Restauração e entrega','Nesta etapa nossa equipe no Brasil fará todo o processo de restauração de acordo com o projeto estipulado, entregando ao final o seu carro emplacado, com placa preta e totalmente restaurado.']
         ].map(([n,t,d])=>`<div class="step reveal"><div class="step-num">${n}</div><h4>${t}</h4><p>${d}</p></div>`).join('')}
     </div>
   </div>
@@ -654,7 +714,7 @@ function renderImportacao(){
     <h2 class="s-title reveal" style="margin-bottom:1.25rem">Encontre seu <em>clássico</em></h2>
     <p class="reveal" style="font-size:15px;color:rgba(250,249,246,0.6);line-height:1.9;margin-bottom:2rem">Conte-nos sobre o veículo dos seus sonhos. Nossa equipe responde em até 24 horas com as primeiras opções encontradas.</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
-      <a href="https://wa.me/5547999999999" target="_blank" class="btn-gold">Falar no WhatsApp</a>
+      <a href="https://wa.me/5547991742031" target="_blank" class="btn-gold">Falar no WhatsApp</a>
       <a href="#/contato" class="btn-o" style="border-color:rgba(255,255,255,0.2);color:rgba(250,249,246,0.7)">Enviar e-mail</a>
     </div>
   </div>
@@ -668,8 +728,8 @@ function renderSobre(){
   <img class="ph-img" src="${IMG_SOBRE}" alt="" style="object-position:center 50%">
   <div class="ph-dim"></div>
   <div class="page-hero-content">
-    <span class="s-tag" style="color:#F4C542">Nossa história</span>
-    <h1 class="page-hero-title">Uma paixão que<br><em>virou legado</em></h1>
+    <span class="s-tag on-dark">Nossa história</span>
+    <h1 class="page-hero-title">Uma paixão que<em> virou legado</em></h1>
   </div>
 </div>
 <section class="section" style="background:#FFFFFF">
@@ -692,7 +752,7 @@ function renderSobre(){
   <img src="${IMG_SOBRE}" alt="Equipe Bomsenhor" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
   <div style="position:absolute;inset:0;background:rgba(51,51,51,0.5)"></div>
   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;z-index:1">
-    <span class="s-tag reveal" style="color:#F4C542;justify-content:center">Nossa equipe</span>
+    <span class="s-tag on-dark reveal" style="justify-content:center">Nossa equipe</span>
     <h2 class="reveal" style="font-family:var(--fd);font-size:clamp(1.8rem,5vw,3rem);font-weight:400;color:#FFFFFF;line-height:1.1;max-width:580px;text-shadow:0 1px 6px rgba(51,51,51,0.5)">Especialistas <em style="color:#F4C542">apaixonados</em> pelo que fazem</h2>
   </div>
 </section>
@@ -739,7 +799,7 @@ function renderContato(){
   <img class="ph-img" src="${IMG_WORK2}" alt="" style="object-position:center 35%">
   <div class="ph-dim"></div>
   <div class="page-hero-content">
-    <span class="s-tag" style="color:#F4C542">Fale conosco</span>
+    <span class="s-tag on-dark">Fale conosco</span>
     <h1 class="page-hero-title">Entre em <em>contato</em></h1>
   </div>
 </div>
@@ -752,14 +812,12 @@ function renderContato(){
       <div class="contact-card reveal">
         <h3>WhatsApp</h3>
         <p style="margin-bottom:1.25rem">A forma mais rápida de falar conosco. Respondemos em horário comercial.</p>
-        <a href="https://wa.me/5547999999999" target="_blank" class="btn-gold">Iniciar conversa →</a>
+        <a href="https://wa.me/5547991742031?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas." target="_blank" class="btn-gold">Iniciar conversa →</a>
       </div>
       <div class="contact-card reveal">
         <h3>E-mail</h3>
         <p style="margin-bottom:.5rem">Para consultas e orçamentos:</p>
-        <p><a href="mailto:contato@bomsenhor.com.br">contato@bomsenhor.com.br</a></p>
-        <p style="margin-top:1.5rem;margin-bottom:.5rem">Para projetos de restauração:</p>
-        <p><a href="mailto:restauracao@bomsenhor.com.br">restauracao@bomsenhor.com.br</a></p>
+        <p><a href="mailto:bomsenhor10@icloud.com">bomsenhor10@icloud.com</a></p>
       </div>
       <div class="contact-card reveal">
         <h3>Localização</h3>
@@ -769,7 +827,7 @@ function renderContato(){
       <div class="contact-card reveal">
         <h3>Instagram</h3>
         <p style="margin-bottom:1.25rem">Acompanhe projetos em andamento e o acervo de veículos.</p>
-        <a href="https://instagram.com/bomsenhor" target="_blank" class="btn-o" style="width:100%;justify-content:center">@bomsenhor →</a>
+        <a href="https://instagram.com/bomsenhorrestauracoes" target="_blank" class="btn-o" style="width:100%;justify-content:center">@bomsenhorrestauracoes →</a>
       </div>
     </div>
   </div>
