@@ -43,7 +43,7 @@ cor:'Vermelha',km:'Não informada',procedencia:'Importada',carroceria:'Motocicle
 descricao:'A Jawa 250 de 1954 é um clássico exemplar da engenharia europeia do pós-guerra, combinando elegância e mecânica robusta. Este veículo totalmente original preserva a pintura e os detalhes de época, contando ainda com a chancela da Placa Preta e documentação pronta para transferência imediata.\n\nCom motor monocilíndrico de 2 tempos inteiramente revisado e funcionando perfeitamente, o modelo recebeu diversas peças novas importadas direto da fábrica. Uma raridade impecável, pronta para rodar para qualquer lugar do Brasil.',
 destaques:['Placa Preta e documentação em dia','Motor 2 tempos totalmente revisado','100% original com peças importadas de fábrica','Pintura e detalhes de época conservados'],
    fotos:['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg'],
-   bg:bg(130,140,35,25,22,15),destaque:false},
+   bg:bg(130,140,35,25,22,15),destaque:true},
   {id:'lambretta-li-150',nome:'Lambretta LI 150',ano:1963,tipo:'moto',status:'disponivel',preco:'R$ 50.000',
 motor:'150cc',transmissao:'Manual 4 vel. no punho',
 cor:'Não informada',km:'Não informada',procedencia:'Nacional',carroceria:'Scooter',

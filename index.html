@@ -81,7 +81,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .badge-concluido{background:rgba(31,96,61,0.12);color:#1F603D}
 .badge-andamento{background:#FEF2EB;color:#85471E}
 
-.v-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.v-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem}
 .v-card{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:border-color var(--t),box-shadow var(--t),transform var(--t);box-shadow:0 2px 14px rgba(51,51,51,0.07)}
 .v-card:hover{border-color:#F4C542;box-shadow:0 8px 36px rgba(51,51,51,0.13);transform:translateY(-4px)}
 .v-card .card-img-wrap{overflow:hidden}
@@ -479,7 +479,7 @@ function bdg(s){
 
 // ── HOME ─────────────────────────────────────────────────────
 function renderHome(){
-  const featured=VEICULOS.filter(v=>v.destaque).slice(0,3);
+  const featured=VEICULOS.filter(v=>v.destaque).slice(0,4);
   document.getElementById('app').innerHTML=`
 <section class="hero">
   <div class="hero-img-wrap" style="background:#333333">
