@@ -106,6 +106,8 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 
 .hero{display:grid;grid-template-columns:1fr;min-height:calc(100svh - var(--nav-h))}
 .hero-img-wrap{position:relative;min-height:38svh;overflow:hidden}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;opacity:0;z-index:1;transition:opacity 1.2s ease}
+.hero-slide.active{opacity:1;z-index:2}
 .hero-content{padding:3rem 1.5rem;display:flex;flex-direction:column;justify-content:center;background:#FAF9F6}
 .hero-h1{font-family:var(--fd);font-size:clamp(2.2rem,7vw,3.8rem);font-weight:400;line-height:1.1;color:#333333;margin-bottom:1.25rem}
 .hero-h1 em{font-style:italic;color:#8A6D1E}
@@ -300,13 +302,26 @@ function bg(h1,h2,s1,s2,l1,l2){return`linear-gradient(135deg,hsl(${h1},${s1}%,${
 <script src="data/projetos.js"></script>
 <script>
 const LOGO = 'images/logo.png';
-const IMG_HERO = 'images/hero-home.jpg';
-const IMG_ACERVO = 'images/hero-acervo.jpg';
-const IMG_PROJ = 'images/hero-projetos.jpg';
-const IMG_SOBRE = 'images/hero-sobre.jpg';
-const IMG_WORK1 = 'images/hero-importacao.jpg';
-const IMG_WORK2 = 'images/hero-contato.jpg';
 document.getElementById('navLogo').src = LOGO;
+
+// ── FOTOS DO HERO (topo de cada página) ────────────────────────
+// Cada página tem sua própria pasta em images/hero/<pagina>/ com
+// fotos que fazem sentido só para ela. Para adicionar mais fotos:
+//   1. Coloque o arquivo dentro da pasta da página (qualquer nome).
+//   2. Liste o nome do arquivo aqui embaixo, na página certa.
+// Com 2+ fotos numa página, elas alternam automaticamente (fade)
+// no topo dela. Com 1 foto só, fica estática, sem problema.
+const HERO_SETS={
+  home:['1.jpg'],
+  acervo:['1.jpg'],
+  projetos:['1.jpg'],
+  sobre:['1.jpg'],
+  importacao:['1.jpg'],
+  contato:['1.jpg']
+};
+function heroUrls(pagina){
+  return HERO_SETS[pagina].map(f=>`images/hero/${pagina}/${f}`);
+}
 
 // ── ROUTER ──────────────────────────────────────────────────
 function getRoute(){
@@ -328,6 +343,7 @@ function router(){
   (map[page]||renderHome)();
   window.scrollTo({top:0,behavior:'instant'});
   initReveal();
+  startHeroSlideshow();
 }
 window.addEventListener('popstate',router);
 window.addEventListener('DOMContentLoaded',router);
@@ -345,10 +361,65 @@ const DEFAULT_BG=bg(210,210,10,10,25,18);
 function fotoUrl(item,tipo,arquivo){
   return`images/${tipo}/${item.id}/${arquivo}`;
 }
+function escAttr(s){
+  return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+}
 function cardImg(item,tipo){
   const capa=item.fotos&&item.fotos[0];
-  const foto=capa?`<img class="card-img-photo" src="${fotoUrl(item,tipo,capa)}" alt="${item.nome}">`:`<span class="card-img-ghost">${item.ano}</span>`;
-  return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}">${foto}</div>`;
+  if(!capa){
+    return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}"><span class="card-img-ghost">${item.ano}</span></div>`;
+  }
+  const urls=item.fotos.map(f=>fotoUrl(item,tipo,f));
+  const hover=urls.length>1?` onmouseenter="cardCycleStart(this)" onmouseleave="cardCycleStop(this)" data-fotos="${escAttr(JSON.stringify(urls))}"`:'';
+  return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}"${hover}><img class="card-img-photo" src="${urls[0]}" alt="${item.nome}"></div>`;
+}
+
+// ── CARD HOVER PHOTO CYCLE ─────────────────────────────────────
+const CARD_CYCLES=new WeakMap();
+function cardCycleStart(el){
+  if(CARD_CYCLES.has(el))return;
+  const urls=JSON.parse(el.dataset.fotos||'[]');
+  if(urls.length<2)return;
+  const img=el.querySelector('.card-img-photo');
+  let idx=0;
+  const id=setInterval(()=>{
+    idx=(idx+1)%urls.length;
+    img.src=urls[idx];
+  },700);
+  CARD_CYCLES.set(el,{id,img,original:urls[0]});
+}
+function cardCycleStop(el){
+  const state=CARD_CYCLES.get(el);
+  if(!state)return;
+  clearInterval(state.id);
+  state.img.src=state.original;
+  CARD_CYCLES.delete(el);
+}
+
+// ── HERO SLIDESHOW ───────────────────────────────────────────
+let CURRENT_HERO_PHOTOS=[];
+function heroSlidesHtml(urls,extraClass){
+  CURRENT_HERO_PHOTOS=urls;
+  const cls=extraClass?' '+extraClass:'';
+  return`<img class="hero-slide${cls} active" id="heroSlideA" src="${urls[0]}" alt="">
+    <img class="hero-slide${cls}" id="heroSlideB" alt="">`;
+}
+let HERO_INTERVAL=null;
+function startHeroSlideshow(){
+  clearInterval(HERO_INTERVAL);
+  const a=document.getElementById('heroSlideA'),b=document.getElementById('heroSlideB');
+  if(!a||!b||CURRENT_HERO_PHOTOS.length<2)return;
+  let idx=0,showingA=true;
+  new Image().src=CURRENT_HERO_PHOTOS[1];
+  HERO_INTERVAL=setInterval(()=>{
+    idx=(idx+1)%CURRENT_HERO_PHOTOS.length;
+    const next=showingA?b:a,curr=showingA?a:b;
+    next.src=CURRENT_HERO_PHOTOS[idx];
+    next.classList.add('active');
+    curr.classList.remove('active');
+    showingA=!showingA;
+    new Image().src=CURRENT_HERO_PHOTOS[(idx+1)%CURRENT_HERO_PHOTOS.length];
+  },3000);
 }
 function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
   const capa=item.fotos&&item.fotos[0];
@@ -409,7 +480,7 @@ function renderHome(){
   document.getElementById('app').innerHTML=`
 <section class="hero">
   <div class="hero-img-wrap" style="background:#333333">
-    <img src="${IMG_HERO}" alt="Bomsenhor Restaurações" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%">
+    ${heroSlidesHtml(heroUrls('home'))}
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(51,51,51,0.12) 0%,rgba(51,51,51,0.55) 100%)"></div>
   </div>
   <div class="hero-content">
@@ -491,7 +562,7 @@ let acFilter='todos';
 function renderAcervo(){
   document.getElementById('app').innerHTML=`
 <div class="page-hero">
-  <img class="ph-img" src="${IMG_ACERVO}" alt="" style="object-position:center 50%">
+  ${heroSlidesHtml(heroUrls('acervo'),'ph-img')}
   <div class="ph-dim"></div>
   <div class="page-hero-content">
     <span class="s-tag on-dark">Veículos disponíveis</span>
@@ -603,7 +674,7 @@ function renderProjetos(){
   const a=PROJETOS.filter(p=>p.status==='andamento');
   document.getElementById('app').innerHTML=`
 <div class="page-hero">
-  <img class="ph-img" src="${IMG_PROJ}" alt="" style="object-position:center 45%">
+  ${heroSlidesHtml(heroUrls('projetos'),'ph-img')}
   <div class="ph-dim"></div>
   <div class="page-hero-content">
     <span class="s-tag on-dark">Ateliê Bomsenhor</span>
@@ -681,7 +752,7 @@ function renderProjetoDetalhe(id){
 function renderImportacao(){
   document.getElementById('app').innerHTML=`
 <div class="page-hero">
-  <img class="ph-img" src="${IMG_WORK1}" alt="" style="object-position:center 40%">
+  ${heroSlidesHtml(heroUrls('importacao'),'ph-img')}
   <div class="ph-dim"></div>
   <div class="page-hero-content">
     <span class="s-tag on-dark">Serviço especializado</span>
@@ -727,7 +798,7 @@ Você nos diz o que precisa e nós cuidamos de todo o resto — com transparênc
 function renderSobre(){
   document.getElementById('app').innerHTML=`
 <div class="page-hero">
-  <img class="ph-img" src="${IMG_SOBRE}" alt="" style="object-position:center 50%">
+  ${heroSlidesHtml(heroUrls('sobre'),'ph-img')}
   <div class="ph-dim"></div>
   <div class="page-hero-content">
     <span class="s-tag on-dark">Nossa história</span>
@@ -751,7 +822,7 @@ function renderSobre(){
 </section>
 
 <section style="position:relative;height:420px;overflow:hidden">
-  <img src="${IMG_SOBRE}" alt="Equipe Bomsenhor" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+  <img src="${heroUrls('sobre')[0]}" alt="Equipe Bomsenhor" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
   <div style="position:absolute;inset:0;background:rgba(51,51,51,0.5)"></div>
   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;z-index:1">
     <span class="s-tag on-dark reveal" style="justify-content:center">Nossa equipe</span>
@@ -798,7 +869,7 @@ function renderSobre(){
 function renderContato(){
   document.getElementById('app').innerHTML=`
 <div class="page-hero">
-  <img class="ph-img" src="${IMG_WORK2}" alt="" style="object-position:center 35%">
+  ${heroSlidesHtml(heroUrls('contato'),'ph-img')}
   <div class="ph-dim"></div>
   <div class="page-hero-content">
     <span class="s-tag on-dark">Fale conosco</span>
