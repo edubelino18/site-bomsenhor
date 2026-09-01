@@ -312,12 +312,12 @@ document.getElementById('navLogo').src = LOGO;
 // Com 2+ fotos numa página, elas alternam automaticamente (fade)
 // no topo dela. Com 1 foto só, fica estática, sem problema.
 const HERO_SETS={
-  home:['1.jpg'],
-  acervo:['1.jpg'],
-  projetos:['1.jpg'],
-  sobre:['1.jpg'],
-  importacao:['1.jpg'],
-  contato:['1.jpg']
+  home:['1.jpg','2.jpg','3.jpg','4.jpg'],
+  acervo:['1.jpg','2.jpg','4.jpg'],
+  projetos:['1.jpg','2.jpg','3.jpg','4.jpg'],
+  sobre:['1.jpg','2.jpg','3.jpg'],
+  importacao:['1.jpg','2.jpg','3.jpg'],
+  contato:['1.jpg','2.jpg','3.jpg']
 };
 function heroUrls(pagina){
   return HERO_SETS[pagina].map(f=>`images/hero/${pagina}/${f}`);
