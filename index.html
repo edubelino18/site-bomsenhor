@@ -55,10 +55,10 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 #mobileMenu .wa-mob{margin-top:1.5rem;background:#ED1C24;color:#FFFFFF;padding:1rem 2rem;border-radius:var(--r);text-align:center;font-family:var(--fb);font-size:13px;letter-spacing:0.08em;text-transform:uppercase}
 
 #app{padding-top:var(--nav-h);min-height:100vh}
-.section{padding:5rem 1.5rem}
+.section{padding:3.5rem 1.5rem}
 .section-inner{max-width:var(--max);margin:0 auto}
-@media(min-width:768px){.section{padding:6rem 2.5rem}}
-@media(min-width:1280px){.section{padding:7rem 3rem}}
+@media(min-width:768px){.section{padding:4.5rem 2.5rem}}
+@media(min-width:1280px){.section{padding:5.5rem 3rem}}
 
 .s-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A6D1E;margin-bottom:1rem}
 .s-tag::before{content:'';width:24px;height:1px;background:#8A6D1E}
@@ -184,19 +184,17 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .section-dark .s-title{color:#FFFFFF}
 .section-dark .s-title em{color:#F4C542}
 
-#footer{background:#1D4175;padding:3rem 1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.04)}
+#footer{background:#1D4175;padding:3.5rem 1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.04)}
 .footer-inner{max-width:var(--max);margin:0 auto}
 .footer-top{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:2.5rem}
-@media(min-width:768px){.footer-top{grid-template-columns:1fr 1fr 1fr}}
-.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
-.footer-brand-name{font-family:var(--fd);font-size:1rem;color:rgba(250,249,246,0.7)}
-.footer-tagline{font-size:13px;color:rgba(250,249,246,0.35);line-height:1.7}
-.footer-nav h5{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#F4C542;margin-bottom:1rem;opacity:0.85}
-.footer-nav a{display:block;font-size:13px;color:rgba(250,249,246,0.4);padding:4px 0;transition:color var(--t)}
+@media(min-width:768px){.footer-top{grid-template-columns:1.6fr 1fr 1fr}}
+.footer-brand-name{font-family:var(--fd);font-size:1.6rem;font-weight:400;color:#FAF9F6;letter-spacing:0.01em;margin-bottom:.6rem}
+.footer-tagline{font-size:13px;color:rgba(250,249,246,0.55);line-height:1.7;max-width:280px}
+.footer-nav a{display:block;font-size:13px;color:rgba(250,249,246,0.6);padding:4px 0;transition:color var(--t)}
 .footer-nav a:hover{color:#F4C542}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem}
 @media(min-width:768px){.footer-bottom{flex-direction:row;justify-content:space-between}}
-.footer-copy,.footer-loc{font-size:11px;color:rgba(250,249,246,0.2)}
+.footer-copy,.footer-loc{font-size:11px;color:rgba(250,249,246,0.4)}
 
 .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;width:52px;height:52px;border-radius:50%;background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.45);display:flex;align-items:center;justify-content:center;transition:transform var(--t)}
 .wa-float:hover{transform:scale(1.1)}
@@ -215,8 +213,15 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .contact-card{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);padding:2rem}
 .contact-card h3{font-family:var(--fd);font-size:1.2rem;color:#333333;margin-bottom:0.75rem}
 .contact-card p{font-size:14px;color:#333333;line-height:1.75}
-.contact-card a{color:#1D4175;font-weight:500}
-.contact-card a:hover{text-decoration:underline}
+.contact-card p a{color:#1D4175;font-weight:500}
+.contact-card p a:hover{text-decoration:underline}
+
+.partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;align-items:stretch}
+.partner-logo{display:flex;align-items:center;justify-content:center;padding:1rem;min-height:160px;border:1px solid #D3D3D3;border-radius:var(--rl)}
+.partner-logo img{max-width:100%;max-height:120px;object-fit:contain;filter:grayscale(1);opacity:.65;transition:filter var(--t),opacity var(--t)}
+.partner-logo:hover img{filter:grayscale(0);opacity:1}
+.partner-logo-name{font-family:var(--fb);font-size:13px;font-weight:500;color:#6B6B6B;text-align:center;transition:color var(--t)}
+.partner-logo:hover .partner-logo-name{color:#333333}
 
 @media(max-width:767px){.hamburger{display:flex}.nav-links{display:none}}
 
@@ -264,13 +269,11 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-brand">
-          <span class="footer-brand-name">Bomsenhor Restaurações</span>
-        </div>
+        <div class="footer-brand-name">Bomsenhor Restaurações</div>
         <p class="footer-tagline">Restauração e importação de veículos clássicos em Gaspar, SC.</p>
       </div>
       <div class="footer-nav">
-        <h5>Navegação</h5>
+        <span class="s-tag on-dark">Navegação</span>
         <a href="#/acervo">Acervo</a>
         <a href="#/projetos">Projetos</a>
         <a href="#/importacao">Importação</a>
@@ -278,7 +281,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
         <a href="#/contato">Contato</a>
       </div>
       <div class="footer-nav">
-        <h5>Contato</h5>
+        <span class="s-tag on-dark">Contato</span>
         <a href="https://wa.me/5547991742031?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas." target="_blank">WhatsApp</a>
         <a href="https://instagram.com/bomsenhorrestauracoes" target="_blank">Instagram</a>
         <a href="mailto:bomsenhor10@icloud.com">E-mail</a>
@@ -317,7 +320,7 @@ const HERO_SETS={
   projetos:['1.jpg','2.jpg','3.jpg','4.jpg'],
   sobre:['1.jpg','2.jpg','3.jpg'],
   importacao:['1.jpg','2.jpg','3.jpg'],
-  contato:['1.jpg','2.jpg','3.jpg']
+  contato:['1.jpg','2.jpg','3.jpg','5.jpg']
 };
 function heroUrls(pagina){
   return HERO_SETS[pagina].map(f=>`images/hero/${pagina}/${f}`);
@@ -683,7 +686,7 @@ function renderProjetos(){
 </div>
 <section class="section">
   <div class="section-inner">
-    ${a.length?`<div style="margin-bottom:4rem">
+    ${a.length?`<div style="margin-bottom:3rem">
       <span class="s-tag reveal">Em andamento</span>
       <h2 class="s-title reveal" style="margin-bottom:2rem">Projetos <em>em execução</em></h2>
       <div class="v-grid">${a.map(pCard).join('')}</div>
@@ -710,7 +713,7 @@ function renderProjetoDetalhe(id){
       ${bdg(p.status)}
     </div>
     ${detailHeroHtml(p,'projetos',{fallbackOnly:`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="font-family:var(--fd);font-size:clamp(3rem,8vw,6rem);color:rgba(255,255,255,0.07);font-weight:700">${p.ano}</span></div>`})}
-    <div class="detail-info-grid" style="margin-bottom:4rem">
+    <div class="detail-info-grid" style="margin-bottom:3rem">
       <div class="detail-desc">
         ${p.descricao.split('\n').filter(Boolean).map(par=>`<p>${par}</p>`).join('')}
         ${p.resultado?`<div style="margin-top:2rem;padding:1.5rem;background:#FEF9EC;border-radius:var(--rl);border:1px solid #D3D3D3">
@@ -737,7 +740,7 @@ function renderProjetoDetalhe(id){
         </div>
       </div>`).join('')}
     </div>
-    <div style="margin-top:4rem">
+    <div style="margin-top:3rem">
       <h3 class="reveal" style="font-family:var(--fd);font-size:1.3rem;font-weight:400;margin-bottom:1.5rem">Registros fotográficos</h3>
       <div class="gallery">
         ${galleryHtml(p,'projetos')}
@@ -761,7 +764,7 @@ function renderImportacao(){
 </div>
 <section class="section" style="background:#FFFFFF">
   <div class="section-inner">
-    <div style="max-width:680px;margin-bottom:4rem">
+    <div style="max-width:680px;margin-bottom:3rem">
       <span class="s-tag reveal">Como funciona</span>
       <h2 class="s-title reveal" style="margin-bottom:1.5rem">Do sonho à <em>garagem</em></h2>
       <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9;margin-bottom:1rem">Importamos veículos clássicos ou peças específicas diretamente dos EUA, Europa e Japão. Cuidamos de cada detalhe: pesquisa, negociação, transporte marítimo, desembaraço aduaneiro e regularização no Brasil.</p>
@@ -794,6 +797,32 @@ Você nos diz o que precisa e nós cuidamos de todo o resto — com transparênc
 </section>`;
 }
 
+// ── MARCAS PARCEIRAS ─────────────────────────────────────────
+// Para adicionar uma marca parceira:
+//   1. Coloque o logo dela (de preferência PNG com fundo transparente)
+//      dentro de images/parceiros/, com qualquer nome de arquivo.
+//   2. Adicione um item na lista abaixo com o nome da marca e o nome
+//      do arquivo do logo. "url" é opcional (site da marca; se
+//      preenchido, o logo/nome vira um link que abre em nova aba).
+// Se não tiver o arquivo do logo ainda, pode deixar "logo" vazio
+// ('') que o site mostra só o nome da marca no lugar da imagem.
+// A seção "Marcas parceiras" só aparece no site (página Sobre)
+// quando tiver pelo menos um item aqui.
+const PARCEIROS=[
+  {nome:'Backstage Metal Shaping Tools',logo:'backstage.png',url:'https://backstage.ind.br/'},
+  {nome:'H-7 Desengraxante',logo:'h7.png',url:'https://www.h7desengraxante.com.br/'},
+  {nome:'WD-40',logo:'wd40.png',url:'https://wd40.com.br/'}
+];
+function parceirosHtml(){
+  return PARCEIROS.map(p=>{
+    const nome=escAttr(p.nome);
+    const conteudo=p.logo?`<img src="images/parceiros/${p.logo}" alt="${nome}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'partner-logo-name',textContent:this.alt}))">`:`<span class="partner-logo-name">${p.nome}</span>`;
+    const tag=p.url?'a':'div';
+    const linkAttrs=p.url?` href="${escAttr(p.url)}" target="_blank" rel="noopener"`:'';
+    return`<${tag} class="partner-logo reveal" title="${nome}"${linkAttrs}>${conteudo}</${tag}>`;
+  }).join('');
+}
+
 // ── SOBRE ────────────────────────────────────────────────────
 function renderSobre(){
   document.getElementById('app').innerHTML=`
@@ -811,7 +840,7 @@ function renderSobre(){
       <p class="reveal" style="font-size:16px;color:#7A7A7A;line-height:1.9;margin-bottom:1.25rem">A Bomsenhor Restaurações nasceu em 2009 da paixão de seu fundador por automóveis clássicos. O que começou como um projeto de restauração em uma pequena oficina em Gaspar, SC, cresceu para se tornar uma das referências em restauração e importação de clássicos no Sul do Brasil.</p>
       <p class="reveal" style="font-size:16px;color:#7A7A7A;line-height:1.9">Hoje, com mais de 15 anos de experiência, somos reconhecidos pela excelência técnica, pelo cuidado artesanal com cada projeto e pela dedicação em preservar a história automotiva que cada veículo carrega.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D3D3D3;border-radius:var(--rl);overflow:hidden;margin:3rem 0">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D3D3D3;border-radius:var(--rl);overflow:hidden;margin-top:2rem">
       ${[['15+','Anos de experiência'],['120+','Veículos restaurados'],['Gaspar','Santa Catarina']].map(([n,l])=>`
       <div style="background:#0F1E33;padding:1.75rem 1rem;text-align:center" class="reveal">
         <div style="font-family:var(--fd);font-size:2.5rem;font-weight:400;color:#FAF9F6;line-height:1">${n}</div>
@@ -862,7 +891,17 @@ function renderSobre(){
         </div>`).join('')}
     </div>
   </div>
-</section>`;
+</section>
+${PARCEIROS.length?`
+<section class="section" style="background:#FFFFFF">
+  <div class="section-inner">
+    <span class="s-tag reveal">Parcerias de confiança</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Marcas <em>parceiras</em></h2>
+    <div class="partners-grid">
+      ${parceirosHtml()}
+    </div>
+  </div>
+</section>`:''}`;
 }
 
 // ── CONTATO ──────────────────────────────────────────────────
