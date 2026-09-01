@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bomsenhor Restaurações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FAF9F6;--cream2:#ECECEC;--ink:#333333;--ink2:#4D4D4D;--ink3:#6B6B6B;
+  --gold:#F4C542;--gold2:#F7D67B;--gold3:#FEF9EC;--white:#FFFFFF;
+  --b1:rgba(51,51,51,0.07);--b2:rgba(51,51,51,0.14);
+  --shadow:0 2px 14px rgba(51,51,51,0.07);--shadow-lg:0 8px 36px rgba(51,51,51,0.13);
+  --r:8px;--rl:14px;--t:0.28s cubic-bezier(0.32,0.72,0,1);
+  --nav-h:64px;--fd:'Playfair Display',Georgia,serif;--fb:'Outfit',system-ui,sans-serif;--max:1200px;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --cream:#1C1914;--cream2:#24201A;--ink:#EDE9E2;--ink2:#BEB8AD;--ink3:#86806F;
+  --white:#201D18;--b1:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.12);
+  --shadow:0 2px 14px rgba(0,0,0,0.3);--shadow-lg:0 8px 36px rgba(0,0,0,0.45);
+}}
+:root[data-theme="dark"]{
+  --cream:#1C1914;--cream2:#24201A;--ink:#EDE9E2;--ink2:#BEB8AD;--ink3:#86806F;
+  --white:#201D18;--b1:rgba(255,255,255,0.06);--b2:rgba(255,255,255,0.12);
+  --shadow:0 2px 14px rgba(0,0,0,0.3);--shadow-lg:0 8px 36px rgba(0,0,0,0.45);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent;font-size:15px}
+body{font-family:var(--fb);background:#FAF9F6;color:#333333;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--fb);cursor:pointer;border:none;background:none}
+
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);background:#1D4175;border-bottom:1px solid rgba(0,0,0,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav-inner{max-width:var(--max);margin:0 auto;height:100%;display:flex;align-items:center;gap:2rem;padding:0 1.5rem}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-logo img{width:54px;height:54px;border-radius:50%;object-fit:cover}
+.nav-logo-text{font-family:var(--fd);font-size:1rem;font-weight:500;color:#FFFFFF;letter-spacing:0.01em}
+.nav-links{display:flex;align-items:center;gap:0.25rem;margin-left:auto}
+.nav-links a{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.75);padding:8px 12px;border-radius:var(--r);transition:color var(--t),background var(--t)}
+.nav-links a:hover,.nav-links a.active{color:#FFFFFF;background:rgba(255,255,255,0.15)}
+.nav-wa{background:#ED1C24!important;color:#FFFFFF!important;padding:8px 18px!important;margin-left:0.5rem;border-radius:var(--r);font-weight:500}
+.nav-wa:hover{background:#C2171E!important;color:#FFFFFF!important}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;margin-left:auto}
+.hamburger span{display:block;width:22px;height:2px;background:#FFFFFF;border-radius:2px;transition:all var(--t)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mobileMenu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:#1D4175;z-index:99;flex-direction:column;padding:2rem 1.5rem;gap:0.25rem;overflow-y:auto}
+#mobileMenu.open{display:flex}
+#mobileMenu a{font-size:1.4rem;font-family:var(--fd);padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.12);color:#FFFFFF}
+#mobileMenu .wa-mob{margin-top:1.5rem;background:#ED1C24;color:#FFFFFF;padding:1rem 2rem;border-radius:var(--r);text-align:center;font-family:var(--fb);font-size:13px;letter-spacing:0.08em;text-transform:uppercase}
+
+#app{padding-top:var(--nav-h);min-height:100vh}
+.section{padding:5rem 1.5rem}
+.section-inner{max-width:var(--max);margin:0 auto}
+@media(min-width:768px){.section{padding:6rem 2.5rem}}
+@media(min-width:1280px){.section{padding:7rem 3rem}}
+
+.s-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#F4C542;margin-bottom:1rem}
+.s-tag::before{content:'';width:24px;height:1px;background:#F4C542}
+.s-title{font-family:var(--fd);font-size:clamp(1.8rem,5vw,3rem);font-weight:400;line-height:1.15}
+.s-title em{font-style:italic;color:#F4C542}
+
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:#1D4175;color:#FFFFFF;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:background var(--t);cursor:pointer}
+.btn-p:hover{background:#17345E}
+.btn-o{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(29,65,117,0.35);color:#1D4175;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:all var(--t);cursor:pointer}
+.btn-o:hover{border-color:#1D4175;color:#1D4175;background:rgba(29,65,117,0.06)}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:#ED1C24;color:#FFFFFF;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:background var(--t);cursor:pointer}
+.btn-gold:hover{background:#C2171E;color:#FFFFFF}
+
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;letter-spacing:0.07em;text-transform:uppercase;font-weight:500}
+.badge-disponivel{background:rgba(31,96,61,0.12);color:#1F603D}
+.badge-vendido{background:rgba(51,51,51,0.08);color:#6B6B6B}
+.badge-projeto{background:rgba(244,197,66,0.15);color:#866C24}
+.badge-concluido{background:rgba(31,96,61,0.12);color:#1F603D}
+.badge-andamento{background:#FEF2EB;color:#85471E}
+
+.v-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.v-card{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:border-color var(--t),box-shadow var(--t),transform var(--t);box-shadow:0 2px 14px rgba(51,51,51,0.07)}
+.v-card:hover{border-color:#F4C542;box-shadow:0 8px 36px rgba(51,51,51,0.13);transform:translateY(-4px)}
+.v-card .card-img-wrap{overflow:hidden}
+.v-card:hover .card-img{transform:scale(1.04)}
+.card-img{width:100%;aspect-ratio:4/3;transition:transform 0.5s var(--t);display:flex;align-items:flex-end;padding:1rem;position:relative}
+.card-img-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(51,51,51,0.45) 0%,transparent 55%)}
+.v-card-body{padding:1.2rem}
+.v-card-name{font-family:var(--fd);font-size:1.05rem;color:#333333;line-height:1.3;margin-bottom:0.4rem}
+.v-card-year{font-size:12px;color:#6B6B6B;font-family:var(--fb)}
+.v-card-specs{display:flex;flex-wrap:wrap;gap:5px;margin-top:0.75rem}
+.spec-tag{font-size:10px;background:#ECECEC;color:#6B6B6B;padding:3px 9px;border-radius:3px;letter-spacing:0.03em}
+.v-card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding-top:1rem;border-top:1px solid #D3D3D3}
+.v-card-price{font-family:var(--fd);font-size:1rem;color:#333333}
+.v-card-price small{font-family:var(--fb);font-size:10px;color:#6B6B6B;display:block}
+
+.filters{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{padding:8px 18px;border-radius:30px;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border:1px solid #D3D3D3;background:#FFFFFF;color:#4D4D4D;transition:all var(--t);white-space:nowrap}
+.filter-btn.active{background:#1D4175;color:#FFFFFF;border-color:#1D4175}
+.filter-btn:hover:not(.active){border-color:#1D4175;color:#1D4175}
+
+.hero{display:grid;grid-template-columns:1fr;min-height:calc(100svh - var(--nav-h))}
+.hero-img-wrap{position:relative;min-height:55svh;overflow:hidden}
+.hero-content{padding:3rem 1.5rem;display:flex;flex-direction:column;justify-content:center;background:#FAF9F6}
+.hero-h1{font-family:var(--fd);font-size:clamp(2.2rem,7vw,3.8rem);font-weight:400;line-height:1.1;color:#333333;margin-bottom:1.25rem}
+.hero-h1 em{font-style:italic;color:#F4C542}
+.hero-p{font-size:14px;color:#6B6B6B;line-height:1.9;margin-bottom:2rem;max-width:440px}
+.hero-btns{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.stats-row{display:flex;border:1px solid #D3D3D3;border-radius:var(--rl);overflow:hidden;background:#FFFFFF}
+.stat-item{flex:1;padding:1.1rem 0.5rem;text-align:center}
+.stat-item+.stat-item{border-left:1px solid #D3D3D3}
+.stat-n{font-family:var(--fd);font-size:1.8rem;font-weight:500;color:#333333;line-height:1}
+.stat-l{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6B6B;margin-top:4px}
+@media(min-width:768px){
+  .hero{grid-template-columns:1fr 1fr;min-height:92svh}
+  .hero-img-wrap{min-height:100%}
+  .hero-content{padding:4rem 3.5rem 4rem 3rem}
+  .nav-inner{padding:0 3rem}
+  .nav-logo-text{display:block}
+}
+
+.page-hero{position:relative;height:40svh;min-height:240px;overflow:hidden;background:#333333;display:flex;align-items:flex-end}.ph-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}.ph-dim{position:absolute;inset:0;background:linear-gradient(to top,rgba(51,51,51,0.88) 0%,rgba(51,51,51,0.40) 100%)}.page-hero-content{position:relative;z-index:2}
+.page-hero-content{padding:2rem 1.5rem;position:relative;z-index:2;color:#FFFFFF}
+.page-hero-title{font-family:var(--fd);font-size:clamp(2rem,6vw,3.5rem);font-weight:400;color:#FFFFFF;line-height:1.1;text-shadow:0 1px 6px rgba(51,51,51,0.5)}
+.page-hero-title em{color:#F4C542}
+@media(min-width:768px){.page-hero-content{padding:3rem 3.5rem}}
+
+.detail-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6B6B;margin-bottom:2rem;cursor:pointer;transition:color var(--t);background:none;border:none;font-family:var(--fb)}
+.detail-back:hover{color:#1D4175}
+.detail-hero{aspect-ratio:16/7;border-radius:var(--rl);overflow:hidden;margin-bottom:2.5rem;position:relative}
+.detail-info-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:3rem}
+@media(min-width:768px){.detail-info-grid{grid-template-columns:2fr 1fr}}
+.detail-specs{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);padding:1.5rem}
+.spec-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.75rem 0;border-bottom:1px solid #D3D3D3;gap:1rem}
+.spec-row:last-child{border-bottom:none}
+.spec-key{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#6B6B6B;white-space:nowrap}
+.spec-val{font-size:13px;color:#333333;font-weight:500;text-align:right}
+.detail-desc{font-size:15px;color:#6B6B6B;line-height:1.85}
+.detail-desc p+p{margin-top:1rem}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.gallery-item{aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform var(--t),box-shadow var(--t)}
+.gallery-item:hover{transform:scale(1.02);box-shadow:0 8px 36px rgba(51,51,51,0.13)}
+
+.timeline{display:flex;flex-direction:column}
+.timeline-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid #D3D3D3}
+.timeline-item:last-child{border-bottom:none}
+.timeline-num{font-family:var(--fd);font-size:1.8rem;color:#F4C542;opacity:0.4;min-width:32px;line-height:1;padding-top:4px}
+.timeline-content h4{font-weight:600;color:#333333;margin-bottom:4px}
+.timeline-content p{font-size:13px;color:#6B6B6B;line-height:1.7}
+.timeline-date{font-size:11px;color:#F4C542;letter-spacing:0.06em;margin-bottom:6px}
+
+.about-tl-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid #D3D3D3}
+.about-tl-item:last-child{border-bottom:none}
+.about-tl-year{font-family:var(--fd);font-size:1.1rem;font-weight:500;color:#F4C542;min-width:48px;padding-top:2px}
+.about-tl-body h4{font-weight:600;color:#333333;margin-bottom:4px}
+.about-tl-body p{font-size:13px;color:#6B6B6B;line-height:1.7}
+
+.section-dark{background:#0F1E33}
+.section-dark .s-tag{color:#F4C542}
+.section-dark .s-tag::before{background:#F4C542}
+.section-dark .s-title{color:#FFFFFF}
+.section-dark .s-title em{color:#F4C542}
+
+#footer{background:#1D4175;padding:3rem 1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.04)}
+.footer-inner{max-width:var(--max);margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:2.5rem}
+@media(min-width:768px){.footer-top{grid-template-columns:1fr 1fr 1fr}}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.footer-brand img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.footer-brand-name{font-family:var(--fd);font-size:1rem;color:rgba(250,249,246,0.7)}
+.footer-tagline{font-size:13px;color:rgba(250,249,246,0.35);line-height:1.7}
+.footer-nav h5{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#F4C542;margin-bottom:1rem;opacity:0.85}
+.footer-nav a{display:block;font-size:13px;color:rgba(250,249,246,0.4);padding:4px 0;transition:color var(--t)}
+.footer-nav a:hover{color:#F4C542}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem}
+@media(min-width:768px){.footer-bottom{flex-direction:row;justify-content:space-between}}
+.footer-copy,.footer-loc{font-size:11px;color:rgba(250,249,246,0.2)}
+
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;width:52px;height:52px;border-radius:50%;background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.45);display:flex;align-items:center;justify-content:center;transition:transform var(--t)}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:26px;height:26px;fill:white}
+
+.steps{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:640px){.steps{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);padding:1.5rem}
+.step-num{font-family:var(--fd);font-size:2.5rem;color:#1D4175;opacity:0.3;line-height:1;margin-bottom:0.75rem}
+.step h4{font-weight:600;color:#333333;margin-bottom:0.5rem;font-size:0.95rem}
+.step p{font-size:13px;color:#6B6B6B;line-height:1.7}
+
+.contact-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:640px){.contact-grid{grid-template-columns:1fr 1fr}}
+.contact-card{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);padding:2rem}
+.contact-card h3{font-family:var(--fd);font-size:1.2rem;color:#333333;margin-bottom:0.75rem}
+.contact-card p{font-size:14px;color:#333333;line-height:1.75}
+.contact-card a{color:#1D4175;font-weight:500}
+.contact-card a:hover{text-decoration:underline}
+
+@media(max-width:767px){.hamburger{display:flex}.nav-links{display:none}.nav-logo-text{display:none}}
+
+.reveal{opacity:0;transform:translateY(20px)}
+.reveal.in{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#/" onclick="navigate('home')">
+      <img id="navLogo" alt="Bomsenhor">
+      <span class="nav-logo-text">Bomsenhor</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#/acervo" data-page="acervo">Acervo</a>
+      <a href="#/projetos" data-page="projetos">Projetos</a>
+      <a href="#/importacao" data-page="importacao">Importação</a>
+      <a href="#/sobre" data-page="sobre">Sobre</a>
+      <a href="#/contato" data-page="contato">Contato</a>
+      <a href="https://wa.me/5547999999999" class="nav-wa" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div id="mobileMenu">
+  <a href="#/acervo">Acervo</a>
+  <a href="#/projetos">Projetos</a>
+  <a href="#/importacao">Importação</a>
+  <a href="#/sobre">Sobre</a>
+  <a href="#/contato">Contato</a>
+  <a href="https://wa.me/5547999999999" class="wa-mob" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<div id="app"></div>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img id="footLogo" alt="Bomsenhor">
+          <span class="footer-brand-name">Bomsenhor</span>
+        </div>
+        <p class="footer-tagline">Restauração e importação de veículos clássicos em Gaspar, SC.</p>
+      </div>
+      <div class="footer-nav">
+        <h5>Navegação</h5>
+        <a href="#/acervo">Acervo</a>
+        <a href="#/projetos">Projetos</a>
+        <a href="#/importacao">Importação</a>
+        <a href="#/sobre">Sobre</a>
+        <a href="#/contato">Contato</a>
+      </div>
+      <div class="footer-nav">
+        <h5>Contato</h5>
+        <a href="https://wa.me/5547999999999" target="_blank">WhatsApp</a>
+        <a href="https://instagram.com/bomsenhor" target="_blank">Instagram</a>
+        <a href="mailto:contato@bomsenhor.com.br">E-mail</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Bomsenhor Restaurações. Todos os direitos reservados.</p>
+      <p class="footer-loc">Gaspar, SC — Brasil</p>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5547999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+function bg(h1,h2,s1,s2,l1,l2){return`linear-gradient(135deg,hsl(${h1},${s1}%,${l1}%) 0%,hsl(${h2},${s2}%,${l2}%) 100%)`}
+</script>
+<script src="data/veiculos.js"></script>
+<script src="data/projetos.js"></script>
+<script>
+const LOGO = 'images/logo.png';
+const IMG_HERO = 'images/hero-home.jpg';
+const IMG_ACERVO = 'images/hero-acervo.jpg';
+const IMG_PROJ = 'images/hero-projetos.jpg';
+const IMG_SOBRE = 'images/hero-sobre.jpg';
+const IMG_WORK1 = 'images/hero-importacao.jpg';
+const IMG_WORK2 = 'images/hero-contato.jpg';
+document.getElementById('navLogo').src = LOGO;
+document.getElementById('footLogo').src = LOGO;
+
+// ── ROUTER ──────────────────────────────────────────────────
+function getRoute(){
+  const h=(location.hash||'').replace(/^#\/?/,'');
+  const [p,id]=h.split('/');
+  return{page:p||'home',id:id||null};
+}
+function navigate(page,id){
+  const h=id?`#/${page}/${id}`:(page==='home'?'#/':'#/'+page);
+  history.pushState(null,'',h);
+  router();
+}
+function router(){
+  const{page,id}=getRoute();
+  updateNav(page);
+  const map={home:renderHome,acervo:id?()=>renderVeiculoDetalhe(id):renderAcervo,
+    projetos:id?()=>renderProjetoDetalhe(id):renderProjetos,
+    importacao:renderImportacao,sobre:renderSobre,contato:renderContato};
+  (map[page]||renderHome)();
+  window.scrollTo({top:0,behavior:'instant'});
+  initReveal();
+}
+window.addEventListener('popstate',router);
+window.addEventListener('DOMContentLoaded',router);
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#/"]');
+  if(a){e.preventDefault();const h=a.getAttribute('href');history.pushState(null,'',h);router();}
+});
+
+function updateNav(p){
+  document.querySelectorAll('[data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===p));
+}
+
+// ── UTILS ────────────────────────────────────────────────────
+const DEFAULT_BG=bg(210,210,10,10,25,18);
+function fotoUrl(item,tipo,arquivo){
+  return`images/${tipo}/${item.id}/${arquivo}`;
+}
+function cardImg(item,tipo){
+  const capa=item.fotos&&item.fotos[0];
+  const foto=capa?`<img class="card-img-photo" src="${fotoUrl(item,tipo,capa)}" alt="${item.nome}">`:'';
+  return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}">${foto}</div>`;
+}
+function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
+  const capa=item.fotos&&item.fotos[0];
+  const foto=capa?`<img src="${fotoUrl(item,tipo,capa)}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`:'';
+  return`<div class="detail-hero reveal" style="background:${item.bg||DEFAULT_BG}">${foto}${always}${capa?'':fallbackOnly}</div>`;
+}
+function galleryHtml(item,tipo){
+  if(item.fotos&&item.fotos.length){
+    return item.fotos.map(f=>`<div class="gallery-item reveal"><img src="${fotoUrl(item,tipo,f)}" alt="" style="width:100%;height:100%;object-fit:cover"></div>`).join('');
+  }
+  const h1=parseInt((item.bg||DEFAULT_BG).match(/hsl\((\d+)/)[1]);
+  const gals=[bg(h1+15,h1+25,45,35,25,16),bg(h1-10,h1,30,20,18,12),bg(h1+30,h1+10,55,40,28,18)];
+  return gals.map(g=>`<div class="gallery-item reveal" style="background:${g}"></div>`).join('');
+}
+function bdg(s){
+  const m={disponivel:['badge-disponivel','Disponível'],vendido:['badge-vendido','Vendido'],
+    projeto:['badge-projeto','Projeto'],concluido:['badge-concluido','Concluído'],andamento:['badge-andamento','Em andamento']};
+  const[c,l]=m[s]||['badge-vendido',s];
+  return`<span class="badge ${c}">${l}</span>`;
+}
+
+// ── HOME ─────────────────────────────────────────────────────
+function renderHome(){
+  const featured=VEICULOS.filter(v=>v.destaque).slice(0,3);
+  document.getElementById('app').innerHTML=`
+<section class="hero">
+  <div class="hero-img-wrap" style="background:#333333">
+    <img src="${IMG_HERO}" alt="Bomsenhor Restaurações" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(51,51,51,0.12) 0%,rgba(51,51,51,0.55) 100%)"></div>
+  </div>
+  <div class="hero-content">
+    <span class="s-tag reveal">Restauração &amp; Importação</span>
+    <h1 class="hero-h1 reveal">Carros que<br><em>contam histórias</em><br>únicas</h1>
+    <p class="hero-p reveal">Especializados na restauração e importação de automóveis clássicos em Gaspar, SC. Cada veículo selecionado com rigor, paixão e 15 anos de expertise.</p>
+    <div class="hero-btns reveal">
+      <a href="#/acervo" class="btn-p">Ver acervo</a>
+      <a href="#/projetos" class="btn-o">Nossos projetos</a>
+    </div>
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-n">15+</div><div class="stat-l">Anos</div></div>
+      <div class="stat-item"><div class="stat-n">120+</div><div class="stat-l">Entregues</div></div>
+      <div class="stat-item"><div class="stat-n">SC</div><div class="stat-l">Gaspar</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#FFFFFF">
+  <div class="section-inner">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <span class="s-tag reveal">Recém chegados</span>
+        <h2 class="s-title reveal">Últimas <em>oportunidades</em></h2>
+      </div>
+      <a href="#/acervo" class="btn-o reveal" style="font-size:11px;padding:10px 18px">Ver todos →</a>
+    </div>
+    <div class="v-grid">${featured.map(vCard).join('')}</div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-inner" style="max-width:640px">
+    <span class="s-tag reveal">Nossa história</span>
+    <h2 class="s-title reveal" style="margin-bottom:1.25rem">15 anos <em>restaurando paixão</em></h2>
+    <p class="reveal" style="font-size:15px;color:rgba(250,249,246,0.6);line-height:1.9;margin-bottom:2rem">Nascemos em Gaspar, SC, com uma missão clara: dar nova vida a automóveis que contam histórias. Mais de 120 veículos entregues depois, seguimos com a mesma paixão do primeiro dia.</p>
+    <a href="#/sobre" class="btn-gold reveal">Conheça nossa história</a>
+  </div>
+</section>
+
+<section class="section" style="background:#FAF9F6">
+  <div class="section-inner" style="text-align:center">
+    <span class="s-tag reveal" style="justify-content:center">Ateliê Bomsenhor</span>
+    <h2 class="s-title reveal" style="margin-bottom:1rem">Acompanhe nossas<br><em>restaurações em curso</em></h2>
+    <p class="reveal" style="font-size:14px;color:#7A7A7A;max-width:420px;margin:0 auto 2rem">Cada projeto é uma jornada de meses de trabalho artesanal. Conheça os bastidores das nossas restaurações.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal">
+      <a href="#/projetos" class="btn-p">Ver projetos</a>
+      <a href="#/importacao" class="btn-o">Importação</a>
+    </div>
+  </div>
+</section>`;
+}
+
+// ── VEHICLE CARD ─────────────────────────────────────────────
+function vCard(v){
+  const motor=v.motor?v.motor.split(' ').slice(0,3).join(' '):'';
+  return`<div class="v-card reveal" onclick="navigate('acervo','${v.id}')">
+  <div class="card-img-wrap">${cardImg(v,'acervo')}</div>
+  <div class="v-card-body">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.5rem">
+      <div class="v-card-name">${v.nome} <span class="v-card-year">${v.ano}</span></div>
+      ${bdg(v.status)}
+    </div>
+    <div class="v-card-specs">
+      ${motor?`<span class="spec-tag">${motor}</span>`:''}
+      ${v.cor?`<span class="spec-tag">${v.cor}</span>`:''}
+      ${v.procedencia?`<span class="spec-tag">${v.procedencia.split('—')[0].trim()}</span>`:''}
+    </div>
+    <div class="v-card-footer">
+      <div class="v-card-price"><small>a partir de</small>${v.preco}</div>
+      <span style="font-size:12px;color:#F4C542">Ver detalhes →</span>
+    </div>
+  </div>
+</div>`;
+}
+
+// ── ACERVO ───────────────────────────────────────────────────
+let acFilter='todos';
+function renderAcervo(){
+  document.getElementById('app').innerHTML=`
+<div class="page-hero">
+  <img class="ph-img" src="${IMG_ACERVO}" alt="" style="object-position:center 50%">
+  <div class="ph-dim"></div>
+  <div class="page-hero-content">
+    <span class="s-tag" style="color:#F4C542">Veículos disponíveis</span>
+    <h1 class="page-hero-title">Nosso <em>acervo</em></h1>
+  </div>
+</div>
+<section class="section">
+  <div class="section-inner">
+    <div class="filters" id="acFilters">
+      ${['todos','carros','motos','vendidos'].map(f=>`<button class="filter-btn${acFilter===f?' active':''}" data-f="${f}">${f==='todos'?'Todos':f==='carros'?'Carros':f==='motos'?'Motos':'Vendidos'}</button>`).join('')}
+    </div>
+    <div class="v-grid" id="acGrid">${filteredV(acFilter).map(vCard).join('')}</div>
+  </div>
+</section>`;
+  document.querySelectorAll('.filter-btn').forEach(b=>{
+    b.addEventListener('click',()=>{
+      acFilter=b.dataset.f;
+      document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      document.getElementById('acGrid').innerHTML=filteredV(acFilter).map(vCard).join('');
+      initReveal();
+    });
+  });
+}
+function filteredV(f){
+  if(f==='carros')return VEICULOS.filter(v=>v.tipo==='carro'&&v.status!=='vendido');
+  if(f==='motos')return VEICULOS.filter(v=>v.tipo==='moto'&&v.status!=='vendido');
+  if(f==='vendidos')return VEICULOS.filter(v=>v.status==='vendido');
+  return VEICULOS.filter(v=>v.status!=='vendido');
+}
+
+// ── VEÍCULO DETALHE ──────────────────────────────────────────
+function renderVeiculoDetalhe(id){
+  const v=VEICULOS.find(x=>x.id===id);
+  if(!v){navigate('acervo');return;}
+  document.getElementById('app').innerHTML=`
+<section class="section" style="padding-top:calc(var(--nav-h) + 2.5rem)">
+  <div class="section-inner">
+    <button class="detail-back" onclick="navigate('acervo')">← Voltar ao acervo</button>
+    ${detailHeroHtml(v,'acervo',{always:`<div style="position:absolute;bottom:1.5rem;left:1.5rem">${bdg(v.status)}</div>`})}
+    <div class="detail-info-grid">
+      <div>
+        <span class="s-tag">Sobre o veículo</span>
+        <h1 style="font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;line-height:1.15;margin-bottom:1.5rem">
+          ${v.nome} <em style="color:#F4C542;font-style:italic">${v.ano}</em>
+        </h1>
+        <div class="detail-desc">
+          ${v.descricao.split('\n').filter(Boolean).map(p=>`<p>${p}</p>`).join('')}
+        </div>
+        ${v.destaques?.length?`
+        <div style="margin-top:2rem">
+          <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7A7A7A;margin-bottom:.75rem">Destaques</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            ${v.destaques.map(d=>`<span class="spec-tag" style="font-size:12px;padding:5px 12px">${d}</span>`).join('')}
+          </div>
+        </div>`:''}
+      </div>
+      <div>
+        <div class="detail-specs">
+          <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #D3D3D3">
+            <div style="font-family:var(--fd);font-size:1.6rem;color:#333333">${v.preco}</div>
+            <div style="font-size:11px;color:#7A7A7A;margin-top:4px">Valor de referência</div>
+          </div>
+          ${[['Motor',v.motor],['Transmissão',v.transmissao],['Cor',v.cor],['Quilometragem',v.km],['Procedência',v.procedencia],['Carroceria',v.carroceria]].filter(([,val])=>val).map(([k,val])=>`
+          <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${val}</span></div>`).join('')}
+          <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem">
+            <a href="https://wa.me/5547999999999?text=Olá! Tenho interesse no ${encodeURIComponent(v.nome+' '+v.ano)}" target="_blank" class="btn-gold" style="justify-content:center;width:100%">Falar no WhatsApp</a>
+            <a href="#/contato" class="btn-o" style="justify-content:center;width:100%">Mais informações</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3 style="font-family:var(--fd);font-size:1.3rem;font-weight:400;margin-bottom:1.5rem" class="reveal">Galeria de fotos</h3>
+    <div class="gallery">
+      ${galleryHtml(v,'acervo')}
+    </div>
+    <p style="font-size:12px;color:#7A7A7A;margin-top:1rem;text-align:center">Solicite mais fotos e vídeos via WhatsApp</p>
+  </div>
+</section>`;
+}
+
+// ── PROJETOS ─────────────────────────────────────────────────
+function pCard(p){
+  return`<div class="v-card reveal" onclick="navigate('projetos','${p.id}')">
+  <div class="card-img-wrap">${cardImg(p,'projetos')}</div>
+  <div class="v-card-body">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.5rem">
+      <div class="v-card-name">${p.nome} <span class="v-card-year">${p.ano}</span></div>
+      ${bdg(p.status)}
+    </div>
+    <div class="v-card-specs">
+      <span class="spec-tag">${p.duracao}</span>
+      ${p.cliente?`<span class="spec-tag">${p.cliente.split('—')[0].trim()}</span>`:''}
+    </div>
+    <div class="v-card-footer">
+      <div style="font-size:13px;color:#7A7A7A">${p.etapas.length} etapas</div>
+      <span style="font-size:12px;color:#F4C542">Ver restauração →</span>
+    </div>
+  </div>
+</div>`;
+}
+function renderProjetos(){
+  const c=PROJETOS.filter(p=>p.status==='concluido');
+  const a=PROJETOS.filter(p=>p.status==='andamento');
+  document.getElementById('app').innerHTML=`
+<div class="page-hero">
+  <img class="ph-img" src="${IMG_PROJ}" alt="" style="object-position:center 45%">
+  <div class="ph-dim"></div>
+  <div class="page-hero-content">
+    <span class="s-tag" style="color:#F4C542">Ateliê Bomsenhor</span>
+    <h1 class="page-hero-title">Nossos <em>projetos</em></h1>
+  </div>
+</div>
+<section class="section">
+  <div class="section-inner">
+    ${a.length?`<div style="margin-bottom:4rem">
+      <span class="s-tag reveal">Em andamento</span>
+      <h2 class="s-title reveal" style="margin-bottom:2rem">Projetos <em>em execução</em></h2>
+      <div class="v-grid">${a.map(pCard).join('')}</div>
+    </div>`:''}
+    <span class="s-tag reveal">Portfólio</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Restaurações <em>concluídas</em></h2>
+    <div class="v-grid">${c.map(pCard).join('')}</div>
+  </div>
+</section>`;
+}
+
+// ── PROJETO DETALHE ──────────────────────────────────────────
+function renderProjetoDetalhe(id){
+  const p=PROJETOS.find(x=>x.id===id);
+  if(!p){navigate('projetos');return;}
+  document.getElementById('app').innerHTML=`
+<section class="section" style="padding-top:calc(var(--nav-h) + 2.5rem)">
+  <div class="section-inner">
+    <button class="detail-back" onclick="navigate('projetos')">← Voltar aos projetos</button>
+    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:2rem">
+      <h1 style="font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;line-height:1.1">
+        ${p.nome} <em style="color:#F4C542;font-style:italic">${p.ano}</em>
+      </h1>
+      ${bdg(p.status)}
+    </div>
+    ${detailHeroHtml(p,'projetos',{fallbackOnly:`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="font-family:var(--fd);font-size:clamp(3rem,8vw,6rem);color:rgba(255,255,255,0.07);font-weight:700">${p.ano}</span></div>`})}
+    <div class="detail-info-grid" style="margin-bottom:4rem">
+      <div class="detail-desc">
+        ${p.descricao.split('\n').filter(Boolean).map(par=>`<p>${par}</p>`).join('')}
+        ${p.resultado?`<div style="margin-top:2rem;padding:1.5rem;background:#FEF9EC;border-radius:var(--r);border-left:3px solid #F4C542">
+          <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#F4C542;margin-bottom:.5rem">Resultado</div>
+          <p style="color:#7A7A7A;font-style:italic">${p.resultado}</p>
+        </div>`:''}
+      </div>
+      <div class="detail-specs">
+        ${[['Veículo',`${p.nome} ${p.ano}`],['Status',p.status==='concluido'?'Concluído':'Em andamento'],['Duração',p.duracao],['Cliente',p.cliente]].filter(([,v])=>v).map(([k,v])=>`
+        <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${v}</span></div>`).join('')}
+        <div style="margin-top:1.5rem">
+          <a href="https://wa.me/5547999999999?text=Olá! Quero orçar uma restauração similar ao ${encodeURIComponent(p.nome+' '+p.ano)}" target="_blank" class="btn-gold" style="justify-content:center;width:100%">Orçar projeto similar</a>
+        </div>
+      </div>
+    </div>
+    <span class="s-tag reveal">Processo</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Etapas da <em>restauração</em></h2>
+    <div class="timeline">
+      ${p.etapas.map(e=>`<div class="timeline-item reveal">
+        <div class="timeline-num">${e.num}</div>
+        <div class="timeline-content">
+          <div class="timeline-date">${e.data}</div>
+          <h4>${e.titulo}</h4><p>${e.desc}</p>
+        </div>
+      </div>`).join('')}
+    </div>
+    <div style="margin-top:4rem">
+      <h3 class="reveal" style="font-family:var(--fd);font-size:1.3rem;font-weight:400;margin-bottom:1.5rem">Registros fotográficos</h3>
+      <div class="gallery">
+        ${galleryHtml(p,'projetos')}
+      </div>
+      <p style="font-size:12px;color:#7A7A7A;margin-top:1rem;text-align:center">Solicite o álbum completo via WhatsApp</p>
+    </div>
+  </div>
+</section>`;
+}
+
+// ── IMPORTAÇÃO ───────────────────────────────────────────────
+function renderImportacao(){
+  document.getElementById('app').innerHTML=`
+<div class="page-hero">
+  <img class="ph-img" src="${IMG_WORK1}" alt="" style="object-position:center 40%">
+  <div class="ph-dim"></div>
+  <div class="page-hero-content">
+    <span class="s-tag" style="color:#F4C542">Serviço especializado</span>
+    <h1 class="page-hero-title">Importação <em>de veículos</em></h1>
+  </div>
+</div>
+<section class="section" style="background:#FFFFFF">
+  <div class="section-inner">
+    <div style="max-width:680px;margin-bottom:4rem">
+      <span class="s-tag reveal">Como funciona</span>
+      <h2 class="s-title reveal" style="margin-bottom:1.5rem">Do sonho à <em>garagem</em></h2>
+      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9;margin-bottom:1rem">Importamos veículos clássicos diretamente dos EUA, Europa e Japão. Com 15 anos de experiência, cuidamos de cada detalhe: pesquisa, negociação, transporte marítimo, desembaraço alfandegário e regularização no Brasil.</p>
+      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9">Você nos diz o modelo dos seus sonhos e nós cuidamos de todo o resto — com transparência total em cada etapa.</p>
+    </div>
+    <span class="s-tag reveal">O processo</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Nosso <em>método</em></h2>
+    <div class="steps">
+      ${[['01','Consulta inicial','Você nos conta qual veículo deseja. Discutimos especificações, condição, orçamento e expectativas.'],
+         ['02','Pesquisa e avaliação','Nossa rede internacional localiza o exemplar ideal. Você recebe fotos, histórico e laudos de vistoria antes de qualquer decisão.'],
+         ['03','Aquisição e transporte','Cuidamos da compra, seguro de transporte e logística marítima do ponto de origem até o porto brasileiro.'],
+         ['04','Regularização e entrega','Desembaraço alfandegário, homologação e documentação completa. Entregamos pronto para emplacamento.']
+        ].map(([n,t,d])=>`<div class="step reveal"><div class="step-num">${n}</div><h4>${t}</h4><p>${d}</p></div>`).join('')}
+    </div>
+  </div>
+</section>
+<section class="section section-dark">
+  <div class="section-inner" style="max-width:640px">
+    <span class="s-tag reveal">Pronto para começar?</span>
+    <h2 class="s-title reveal" style="margin-bottom:1.25rem">Encontre seu <em>clássico</em></h2>
+    <p class="reveal" style="font-size:15px;color:rgba(250,249,246,0.6);line-height:1.9;margin-bottom:2rem">Conte-nos sobre o veículo dos seus sonhos. Nossa equipe responde em até 24 horas com as primeiras opções encontradas.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap" class="reveal">
+      <a href="https://wa.me/5547999999999" target="_blank" class="btn-gold">Falar no WhatsApp</a>
+      <a href="#/contato" class="btn-o" style="border-color:rgba(255,255,255,0.2);color:rgba(250,249,246,0.7)">Enviar e-mail</a>
+    </div>
+  </div>
+</section>`;
+}
+
+// ── SOBRE ────────────────────────────────────────────────────
+function renderSobre(){
+  document.getElementById('app').innerHTML=`
+<div class="page-hero">
+  <img class="ph-img" src="${IMG_SOBRE}" alt="" style="object-position:center 50%">
+  <div class="ph-dim"></div>
+  <div class="page-hero-content">
+    <span class="s-tag" style="color:#F4C542">Nossa história</span>
+    <h1 class="page-hero-title">Uma paixão que<br><em>virou legado</em></h1>
+  </div>
+</div>
+<section class="section" style="background:#FFFFFF">
+  <div class="section-inner">
+    <div style="max-width:680px">
+      <p class="reveal" style="font-size:16px;color:#7A7A7A;line-height:1.9;margin-bottom:1.25rem">A Bomsenhor Restaurações nasceu em 2009 da paixão de seu fundador por automóveis clássicos. O que começou como um projeto de restauração em uma pequena oficina em Gaspar, SC, cresceu para se tornar uma das referências em restauração e importação de clássicos no Sul do Brasil.</p>
+      <p class="reveal" style="font-size:16px;color:#7A7A7A;line-height:1.9">Hoje, com mais de 15 anos de experiência, somos reconhecidos pela excelência técnica, pelo cuidado artesanal com cada projeto e pela dedicação em preservar a história automotiva que cada veículo carrega.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D3D3D3;border-radius:var(--rl);overflow:hidden;margin:3rem 0">
+      ${[['15+','Anos de experiência'],['120+','Veículos restaurados'],['Gaspar','Santa Catarina']].map(([n,l])=>`
+      <div style="background:#0F1E33;padding:1.75rem 1rem;text-align:center" class="reveal">
+        <div style="font-family:var(--fd);font-size:2.5rem;font-weight:400;color:#FAF9F6;line-height:1">${n}</div>
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7A7A7A;margin-top:6px">${l}</div>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section style="position:relative;height:420px;overflow:hidden">
+  <img src="${IMG_SOBRE}" alt="Equipe Bomsenhor" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+  <div style="position:absolute;inset:0;background:rgba(51,51,51,0.5)"></div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;z-index:1">
+    <span class="s-tag reveal" style="color:#F4C542;justify-content:center">Nossa equipe</span>
+    <h2 class="reveal" style="font-family:var(--fd);font-size:clamp(1.8rem,5vw,3rem);font-weight:400;color:#FFFFFF;line-height:1.1;max-width:580px;text-shadow:0 1px 6px rgba(51,51,51,0.5)">Especialistas <em style="color:#F4C542">apaixonados</em> pelo que fazem</h2>
+  </div>
+</section>
+<section class="section" style="background:#FAF9F6">
+  <div class="section-inner">
+    <span class="s-tag reveal">Linha do tempo</span>
+    <h2 class="s-title reveal" style="margin-bottom:2.5rem">Nossa <em>trajetória</em></h2>
+    <div>
+      ${[['2009','Fundação','Início das operações em Gaspar, SC, com foco em restauração de clássicos nacionais.'],
+         ['2012','Primeira importação','Chegada dos primeiros veículos importados dos EUA, abrindo nova frente de negócio.'],
+         ['2015','Novo ateliê','Ampliação do espaço com inauguração do novo ateliê de restauração.'],
+         ['2019','Expansão da equipe','Contratação de especialistas em mecânica, pintura e funilaria.'],
+         ['2023','100º veículo','Marco histórico: centésimo veículo restaurado e entregue com excelência.'],
+         ['2025','Hoje','Referência regional em restauração e importação de clássicos no Sul do Brasil.']
+        ].map(([a,t,d])=>`<div class="about-tl-item reveal">
+          <div class="about-tl-year">${a}</div>
+          <div class="about-tl-body"><h4>${t}</h4><p>${d}</p></div>
+        </div>`).join('')}
+    </div>
+  </div>
+</section>
+<section class="section section-dark">
+  <div class="section-inner">
+    <span class="s-tag reveal">O que nos guia</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Nossos <em>valores</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:rgba(255,255,255,0.06);border-radius:var(--rl);overflow:hidden">
+      ${[['Autenticidade','Preservamos a identidade original de cada veículo com técnicas e peças fiéis ao período.'],
+         ['Transparência','Documentação completa e comunicação aberta em cada etapa do projeto.'],
+         ['Excelência','Equipe especializada com décadas de experiência em mecânica e restauração.'],
+         ['Paixão','Cada veículo que passa pelo nosso ateliê é tratado como uma obra de arte.']
+        ].map(([t,d])=>`<div style="background:rgba(255,255,255,0.04);padding:1.75rem 1.5rem" class="reveal">
+          <h4 style="color:#FFFFFF;margin-bottom:6px;font-weight:600">${t}</h4>
+          <p style="font-size:13px;color:rgba(250,249,246,0.5);line-height:1.7">${d}</p>
+        </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+// ── CONTATO ──────────────────────────────────────────────────
+function renderContato(){
+  document.getElementById('app').innerHTML=`
+<div class="page-hero">
+  <img class="ph-img" src="${IMG_WORK2}" alt="" style="object-position:center 35%">
+  <div class="ph-dim"></div>
+  <div class="page-hero-content">
+    <span class="s-tag" style="color:#F4C542">Fale conosco</span>
+    <h1 class="page-hero-title">Entre em <em>contato</em></h1>
+  </div>
+</div>
+<section class="section">
+  <div class="section-inner">
+    <div style="max-width:680px;margin-bottom:3rem">
+      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9">Tem interesse em algum veículo do acervo, quer orçar uma restauração ou consultar sobre importação? Nossa equipe está pronta para atendê-lo.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <h3>WhatsApp</h3>
+        <p style="margin-bottom:1.25rem">A forma mais rápida de falar conosco. Respondemos em horário comercial.</p>
+        <a href="https://wa.me/5547999999999" target="_blank" class="btn-gold">Iniciar conversa →</a>
+      </div>
+      <div class="contact-card reveal">
+        <h3>E-mail</h3>
+        <p style="margin-bottom:.5rem">Para consultas e orçamentos:</p>
+        <p><a href="mailto:contato@bomsenhor.com.br">contato@bomsenhor.com.br</a></p>
+        <p style="margin-top:1.5rem;margin-bottom:.5rem">Para projetos de restauração:</p>
+        <p><a href="mailto:restauracao@bomsenhor.com.br">restauracao@bomsenhor.com.br</a></p>
+      </div>
+      <div class="contact-card reveal">
+        <h3>Localização</h3>
+        <p>Gaspar, Santa Catarina<br>Brasil</p>
+        <p style="margin-top:1rem;font-size:13px;color:#7A7A7A">Visitas ao ateliê mediante agendamento prévio.</p>
+      </div>
+      <div class="contact-card reveal">
+        <h3>Instagram</h3>
+        <p style="margin-bottom:1.25rem">Acompanhe projetos em andamento e o acervo de veículos.</p>
+        <a href="https://instagram.com/bomsenhor" target="_blank" class="btn-o" style="width:100%;justify-content:center">@bomsenhor →</a>
+      </div>
+    </div>
+  </div>
+</section>`;
+}
+
+// ── SCROLL REVEAL ────────────────────────────────────────────
+function initReveal(){
+  const els=document.querySelectorAll('.reveal:not(.in)');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:0.08});
+  els.forEach(e=>obs.observe(e));
+}
+
+// ── HAMBURGER ────────────────────────────────────────────────
+const HB=document.getElementById('hamburger');
+const MM=document.getElementById('mobileMenu');
+HB.addEventListener('click',()=>{HB.classList.toggle('open');MM.classList.toggle('open');});
+MM.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{HB.classList.remove('open');MM.classList.remove('open');}));
+</script>
+</body>
+</html>
