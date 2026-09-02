@@ -1,6 +1,12 @@
 // ============================================================
 // VEÍCULOS DO ACERVO
 // ============================================================
+// IMPORTANTE: depois de editar este arquivo, rode
+//   node scripts/generate-pages.mjs
+// para regenerar as páginas estáticas de cada veículo (acervo/<id>/)
+// e o sitemap.xml. Sem isso, a página pública daquele veículo fica
+// desatualizada mesmo que o site "ao vivo" já mostre o dado novo.
+//
 // COMO ADICIONAR um veículo novo:
 //   1. Copie um bloco inteiro (da { até a } que fecha ele).
 //   2. Cole no final, antes do "];".

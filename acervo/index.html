@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bomsenhor Restaurações</title>
-<meta name="description" content="Restauração e importação de veículos clássicos em Gaspar, SC. 15 anos de experiência em carros e motos antigas, com acervo à venda e projetos sob medida.">
-<link rel="canonical" href="https://bomsenhorrestauracoes.com.br/">
+<title>Acervo de veículos clássicos à venda | Bomsenhor Restaurações</title>
+<meta name="description" content="Carros e motos clássicos à venda em Gaspar, SC: veículos selecionados, restaurados e revisados, prontos para rodar.">
+<link rel="canonical" href="https://bomsenhorrestauracoes.com.br/acervo/">
 <link rel="icon" type="image/png" href="/images/logo.png">
 <link rel="apple-touch-icon" href="/images/logo.png">
-<link rel="preload" as="image" href="/images/hero/home/1-sm.jpg" imagesrcset="/images/hero/home/1-sm.jpg 960w, /images/hero/home/1.jpg 1920w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" href="/images/hero/acervo/1-sm.jpg" imagesrcset="/images/hero/acervo/1-sm.jpg 960w, /images/hero/acervo/1.jpg 1920w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap">
@@ -44,38 +44,21 @@
 </div>
 
 <main id="app">
-<section class="hero">
-  <div class="hero-img-wrap" style="background:#333333">
-    <img class="hero-slide active" id="heroSlideA" src="/images/hero/home/1-sm.jpg" srcset="/images/hero/home/1-sm.jpg 960w, /images/hero/home/1.jpg 1920w" sizes="100vw" alt="">
-    <img class="hero-slide" id="heroSlideB" sizes="100vw" alt="">
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(51,51,51,0.12) 0%,rgba(51,51,51,0.55) 100%)"></div>
+<div class="page-hero">
+  <img class="hero-slide ph-img active" id="heroSlideA" src="/images/hero/acervo/1-sm.jpg" srcset="/images/hero/acervo/1-sm.jpg 960w, /images/hero/acervo/1.jpg 1920w" sizes="100vw" alt="">
+    <img class="hero-slide ph-img" id="heroSlideB" sizes="100vw" alt="">
+  <div class="ph-dim"></div>
+  <div class="page-hero-content">
+    <span class="s-tag on-dark">Veículos disponíveis</span>
+    <h1 class="page-hero-title">Nosso <em>acervo</em></h1>
   </div>
-  <div class="hero-content">
-    <span class="s-tag reveal">Restauração &amp; Importação</span>
-    <h1 class="hero-h1 reveal">Veículos que<br><em>contam histórias</em><br>únicas</h1>
-    <p class="hero-p reveal">Especializados na restauração e importação de automóveis clássicos em Gaspar, SC. Cada veículo selecionado com rigor, paixão e 15 anos de expertise.</p>
-    <div class="hero-btns reveal">
-      <a href="/acervo/" class="btn-p">Ver acervo</a>
-      <a href="/projetos/" class="btn-o">Nossos projetos</a>
-    </div>
-    <div class="stats-row reveal">
-      <div class="stat-item"><div class="stat-n">15+</div><div class="stat-l">Anos</div></div>
-      <div class="stat-item"><div class="stat-n">120+</div><div class="stat-l">Entregues</div></div>
-      <div class="stat-item"><div class="stat-n">SC</div><div class="stat-l">Gaspar</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background:#FFFFFF">
+</div>
+<section class="section">
   <div class="section-inner">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem">
-      <div>
-        <span class="s-tag reveal">Recém chegados</span>
-        <h2 class="s-title reveal">Últimas <em>oportunidades</em></h2>
-      </div>
-      <a href="/acervo/" class="btn-o reveal" style="font-size:11px;padding:10px 18px">Ver todos →</a>
+    <div class="filters" id="acFilters">
+      <button class="filter-btn active" data-f="todos">Todos</button><button class="filter-btn" data-f="carros">Carros</button><button class="filter-btn" data-f="motos">Motos</button><button class="filter-btn" data-f="vendidos">Vendidos</button>
     </div>
-    <div class="v-grid"><div class="v-card reveal" onclick="navigate('acervo','ford-f350')">
+    <div class="v-grid" id="acGrid"><div class="v-card reveal" onclick="navigate('acervo','ford-f350')">
   <div class="card-img-wrap"><div class="card-img" style="background:linear-gradient(135deg,hsl(10,60%,30%) 0%,hsl(20,40%,15%) 100%)" onmouseenter="cardCycleStart(this)" onmouseleave="cardCycleStop(this)" data-fotos="[&quot;/images/acervo/ford-f350/4.jpg&quot;,&quot;/images/acervo/ford-f350/1.jpg&quot;,&quot;/images/acervo/ford-f350/2.jpg&quot;,&quot;/images/acervo/ford-f350/3.jpg&quot;,&quot;/images/acervo/ford-f350/5.jpg&quot;,&quot;/images/acervo/ford-f350/6.jpg&quot;,&quot;/images/acervo/ford-f350/7.jpg&quot;,&quot;/images/acervo/ford-f350/8.jpg&quot;,&quot;/images/acervo/ford-f350/9.jpg&quot;,&quot;/images/acervo/ford-f350/10.jpg&quot;,&quot;/images/acervo/ford-f350/11.jpg&quot;,&quot;/images/acervo/ford-f350/12.jpg&quot;,&quot;/images/acervo/ford-f350/13.jpg&quot;]"><img class="card-img-photo" src="/images/acervo/ford-f350/4-sm.jpg" srcset="/images/acervo/ford-f350/4-sm.jpg 800w, /images/acervo/ford-f350/4.jpg 1600w" sizes="(max-width:640px) 90vw, (max-width:1200px) 45vw, 320px" alt="Ford F-350 "Dually"" loading="lazy"></div></div>
   <div class="v-card-body">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.5rem">
@@ -143,28 +126,58 @@
       <span style="font-size:12px;color:#8A6D1E">Ver detalhes →</span>
     </div>
   </div>
-</div></div>
-  </div>
-</section>
-
-<section class="section section-dark">
-  <div class="section-inner" style="max-width:640px">
-    <span class="s-tag reveal">Nossa história</span>
-    <h2 class="s-title reveal" style="margin-bottom:1.25rem">15 anos <em>restaurando paixão</em></h2>
-    <p class="reveal" style="font-size:15px;color:rgba(250,249,246,0.6);line-height:1.9;margin-bottom:2rem">Nascemos em Gaspar, SC, com uma missão clara: dar nova vida a automóveis que contam histórias. Mais de 120 veículos entregues depois, seguimos com a mesma paixão do primeiro dia.</p>
-    <a href="/sobre/" class="btn-gold reveal">Conheça nossa história</a>
-  </div>
-</section>
-
-<section class="section" style="background:#FAF9F6">
-  <div class="section-inner" style="text-align:center">
-    <span class="s-tag reveal" style="justify-content:center">Ateliê Bomsenhor</span>
-    <h2 class="s-title reveal" style="margin-bottom:1rem">Acompanhe nossas<br><em>restaurações em curso</em></h2>
-    <p class="reveal" style="font-size:14px;color:#707070;max-width:420px;margin:0 auto 2rem">Cada projeto é uma jornada de meses de trabalho artesanal. Conheça os bastidores das nossas restaurações.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal">
-      <a href="/projetos/" class="btn-p">Ver projetos</a>
-      <a href="/importacao/" class="btn-o">Importação</a>
+</div><div class="v-card reveal" onclick="navigate('acervo','honda-ml-125')">
+  <div class="card-img-wrap"><div class="card-img" style="background:linear-gradient(135deg,hsl(28,40%,25%) 0%,hsl(20,30%,15%) 100%)" onmouseenter="cardCycleStart(this)" onmouseleave="cardCycleStop(this)" data-fotos="[&quot;/images/acervo/honda-ml-125/1.jpg&quot;,&quot;/images/acervo/honda-ml-125/2.jpg&quot;,&quot;/images/acervo/honda-ml-125/3.jpg&quot;,&quot;/images/acervo/honda-ml-125/4.jpg&quot;,&quot;/images/acervo/honda-ml-125/5.jpg&quot;,&quot;/images/acervo/honda-ml-125/6.jpg&quot;,&quot;/images/acervo/honda-ml-125/7.jpg&quot;,&quot;/images/acervo/honda-ml-125/8.jpg&quot;,&quot;/images/acervo/honda-ml-125/9.jpg&quot;,&quot;/images/acervo/honda-ml-125/10.jpg&quot;,&quot;/images/acervo/honda-ml-125/11.jpg&quot;]"><img class="card-img-photo" src="/images/acervo/honda-ml-125/1-sm.jpg" srcset="/images/acervo/honda-ml-125/1-sm.jpg 800w, /images/acervo/honda-ml-125/1.jpg 1600w" sizes="(max-width:640px) 90vw, (max-width:1200px) 45vw, 320px" alt="Honda ML 125" loading="lazy"></div></div>
+  <div class="v-card-body">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.5rem">
+      <div class="v-card-name">Honda ML 125 <span class="v-card-year">1980</span></div>
+      <span class="badge badge-disponivel">Disponível</span>
     </div>
+    <div class="v-card-specs">
+      <span class="spec-tag">125cc</span>
+      <span class="spec-tag">Azul</span>
+      <span class="spec-tag">Nacional</span>
+    </div>
+    <div class="v-card-footer">
+      <div class="v-card-price"><small>a partir de</small>R$ 29.900</div>
+      <span style="font-size:12px;color:#8A6D1E">Ver detalhes →</span>
+    </div>
+  </div>
+</div><div class="v-card reveal" onclick="navigate('acervo','honda-cbr-450sr')">
+  <div class="card-img-wrap"><div class="card-img" style="background:linear-gradient(135deg,hsl(0,5%,18%) 0%,hsl(10,5%,12%) 100%)" onmouseenter="cardCycleStart(this)" onmouseleave="cardCycleStop(this)" data-fotos="[&quot;/images/acervo/honda-cbr-450sr/6.jpg&quot;,&quot;/images/acervo/honda-cbr-450sr/1.jpg&quot;,&quot;/images/acervo/honda-cbr-450sr/2.jpg&quot;,&quot;/images/acervo/honda-cbr-450sr/3.jpg&quot;,&quot;/images/acervo/honda-cbr-450sr/4.jpg&quot;,&quot;/images/acervo/honda-cbr-450sr/5.jpg&quot;,&quot;/images/acervo/honda-cbr-450sr/7.jpg&quot;,&quot;/images/acervo/honda-cbr-450sr/8.jpg&quot;,&quot;/images/acervo/honda-cbr-450sr/9.jpg&quot;]"><img class="card-img-photo" src="/images/acervo/honda-cbr-450sr/6-sm.jpg" srcset="/images/acervo/honda-cbr-450sr/6-sm.jpg 800w, /images/acervo/honda-cbr-450sr/6.jpg 1600w" sizes="(max-width:640px) 90vw, (max-width:1200px) 45vw, 320px" alt="Honda CBR 450SR" loading="lazy"></div></div>
+  <div class="v-card-body">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.5rem">
+      <div class="v-card-name">Honda CBR 450SR <span class="v-card-year">1990</span></div>
+      <span class="badge badge-disponivel">Disponível</span>
+    </div>
+    <div class="v-card-specs">
+      <span class="spec-tag">450cc</span>
+      <span class="spec-tag">Branca e Azul</span>
+      <span class="spec-tag">Nacional</span>
+    </div>
+    <div class="v-card-footer">
+      <div class="v-card-price"><small>a partir de</small>R$ 15.000</div>
+      <span style="font-size:12px;color:#8A6D1E">Ver detalhes →</span>
+    </div>
+  </div>
+</div><div class="v-card reveal" onclick="navigate('acervo','yamaha-dt-180')">
+  <div class="card-img-wrap"><div class="card-img" style="background:linear-gradient(135deg,hsl(210,10%,55%) 0%,hsl(215,8%,45%) 100%)" onmouseenter="cardCycleStart(this)" onmouseleave="cardCycleStop(this)" data-fotos="[&quot;/images/acervo/yamaha-dt-180/1.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/2.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/3.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/4.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/5.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/6.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/7.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/8.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/9.jpg&quot;,&quot;/images/acervo/yamaha-dt-180/10.jpg&quot;]"><img class="card-img-photo" src="/images/acervo/yamaha-dt-180/1-sm.jpg" srcset="/images/acervo/yamaha-dt-180/1-sm.jpg 800w, /images/acervo/yamaha-dt-180/1.jpg 1600w" sizes="(max-width:640px) 90vw, (max-width:1200px) 45vw, 320px" alt="Yamaha DT 180" loading="lazy"></div></div>
+  <div class="v-card-body">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.5rem">
+      <div class="v-card-name">Yamaha DT 180 <span class="v-card-year">1985</span></div>
+      <span class="badge badge-disponivel">Disponível</span>
+    </div>
+    <div class="v-card-specs">
+      <span class="spec-tag">180cc</span>
+      <span class="spec-tag">Branca e Vermelha</span>
+      <span class="spec-tag">Nacional</span>
+    </div>
+    <div class="v-card-footer">
+      <div class="v-card-price"><small>a partir de</small>R$ 30.000</div>
+      <span style="font-size:12px;color:#8A6D1E">Ver detalhes →</span>
+    </div>
+  </div>
+</div></div>
   </div>
 </section></main>
 
