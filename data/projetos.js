@@ -1,11 +1,12 @@
 // ============================================================
 // PROJETOS DE RESTAURAÇÃO
 // ============================================================
-// IMPORTANTE: depois de editar este arquivo, rode
-//   node scripts/generate-pages.mjs
-// para regenerar as páginas estáticas de cada projeto (projetos/<id>/)
-// e o sitemap.xml. Sem isso, a página pública daquele projeto fica
-// desatualizada mesmo que o site "ao vivo" já mostre o dado novo.
+// IMPORTANTE: depois de editar este arquivo (ou de adicionar fotos
+// novas em images/projetos/), rode nesta ordem:
+//   python scripts/optimize-photos.py   (redimensiona/comprime fotos)
+//   node scripts/generate-pages.mjs     (gera as páginas de cada projeto + sitemap.xml)
+// Sem isso, a página pública daquele projeto fica desatualizada ou
+// com fotos pesadas, mesmo que o site "ao vivo" já mostre o dado novo.
 //
 // COMO ADICIONAR um projeto novo:
 //   1. Copie um bloco inteiro (da { até a } que fecha ele).
