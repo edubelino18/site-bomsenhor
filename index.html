@@ -4,11 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bomsenhor Restaurações</title>
+<meta name="description" content="Restauração e importação de veículos clássicos em Gaspar, SC. 15 anos de experiência em carros e motos antigas, com acervo à venda e projetos sob medida.">
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="apple-touch-icon" href="images/logo.png">
+<link rel="preload" as="image" href="images/hero/home/1.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --cream:#FAF9F6;--cream2:#ECECEC;--ink:#333333;--ink2:#4D4D4D;--ink3:#6B6B6B;
@@ -42,7 +46,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .nav-links{display:flex;align-items:center;gap:0.25rem;margin-left:auto}
 .nav-links a{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.75);padding:8px 12px;border-radius:var(--r);transition:color var(--t),background var(--t)}
 .nav-links a:hover,.nav-links a.active{color:#FFFFFF;background:rgba(255,255,255,0.15)}
-.nav-wa{background:#ED1C24!important;color:#FFFFFF!important;padding:8px 18px!important;margin-left:0.5rem;border-radius:var(--r);font-weight:500}
+.nav-wa{background:#E31B22!important;color:#FFFFFF!important;padding:8px 18px!important;margin-left:0.5rem;border-radius:var(--r);font-weight:500}
 .nav-wa:hover{background:#C2171E!important;color:#FFFFFF!important}
 .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;margin-left:auto}
 .hamburger span{display:block;width:22px;height:2px;background:#FFFFFF;border-radius:2px;transition:all var(--t)}
@@ -52,7 +56,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 #mobileMenu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:#1D4175;z-index:99;flex-direction:column;padding:2rem 1.5rem;gap:0.25rem;overflow-y:auto}
 #mobileMenu.open{display:flex}
 #mobileMenu a{font-size:1.4rem;font-family:var(--fd);padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.12);color:#FFFFFF}
-#mobileMenu .wa-mob{margin-top:1.5rem;background:#ED1C24;color:#FFFFFF;padding:1rem 2rem;border-radius:var(--r);text-align:center;font-family:var(--fb);font-size:13px;letter-spacing:0.08em;text-transform:uppercase}
+#mobileMenu .wa-mob{margin-top:1.5rem;background:#E31B22;color:#FFFFFF;padding:1rem 2rem;border-radius:var(--r);text-align:center;font-family:var(--fb);font-size:13px;letter-spacing:0.08em;text-transform:uppercase}
 
 #app{padding-top:var(--nav-h);min-height:100vh}
 .section{padding:3.5rem 1.5rem}
@@ -71,7 +75,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .btn-p:hover{background:#17345E}
 .btn-o{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(29,65,117,0.35);color:#1D4175;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:all var(--t);cursor:pointer}
 .btn-o:hover{border-color:#1D4175;color:#1D4175;background:rgba(29,65,117,0.06)}
-.btn-gold{display:inline-flex;align-items:center;gap:8px;background:#ED1C24;color:#FFFFFF;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:background var(--t);cursor:pointer}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:#E31B22;color:#FFFFFF;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:background var(--t);cursor:pointer}
 .btn-gold:hover{background:#C2171E;color:#FFFFFF}
 
 .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;letter-spacing:0.07em;text-transform:uppercase;font-weight:500}
@@ -189,12 +193,12 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .footer-top{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:2.5rem}
 @media(min-width:768px){.footer-top{grid-template-columns:1.6fr 1fr 1fr}}
 .footer-brand-name{font-family:var(--fd);font-size:1.6rem;font-weight:400;color:#FAF9F6;letter-spacing:0.01em;margin-bottom:.6rem}
-.footer-tagline{font-size:13px;color:rgba(250,249,246,0.55);line-height:1.7;max-width:280px}
+.footer-tagline{font-size:13px;color:rgba(250,249,246,0.65);line-height:1.7;max-width:280px}
 .footer-nav a{display:block;font-size:13px;color:rgba(250,249,246,0.6);padding:4px 0;transition:color var(--t)}
 .footer-nav a:hover{color:#F4C542}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem}
 @media(min-width:768px){.footer-bottom{flex-direction:row;justify-content:space-between}}
-.footer-copy,.footer-loc{font-size:11px;color:rgba(250,249,246,0.4)}
+.footer-copy,.footer-loc{font-size:11px;color:rgba(250,249,246,0.65)}
 
 .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;width:52px;height:52px;border-radius:50%;background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.45);display:flex;align-items:center;justify-content:center;transition:transform var(--t)}
 .wa-float:hover{transform:scale(1.1)}
@@ -256,7 +260,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
   <a href="https://wa.me/5547991742031?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas." class="wa-mob" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
-<div id="app"></div>
+<main id="app"></main>
 
 <div id="lightbox" class="lightbox" onclick="if(event.target===this)closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">&times;</button>
@@ -374,7 +378,7 @@ function cardImg(item,tipo){
   }
   const urls=item.fotos.map(f=>fotoUrl(item,tipo,f));
   const hover=urls.length>1?` onmouseenter="cardCycleStart(this)" onmouseleave="cardCycleStop(this)" data-fotos="${escAttr(JSON.stringify(urls))}"`:'';
-  return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}"${hover}><img class="card-img-photo" src="${urls[0]}" alt="${item.nome}"></div>`;
+  return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}"${hover}><img class="card-img-photo" src="${urls[0]}" alt="${item.nome}" loading="lazy"></div>`;
 }
 
 // ── CARD HOVER PHOTO CYCLE ─────────────────────────────────────
@@ -432,7 +436,7 @@ function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
 function galleryHtml(item,tipo){
   if(item.fotos&&item.fotos.length){
     CURRENT_GALLERY=item.fotos.map(f=>fotoUrl(item,tipo,f));
-    return CURRENT_GALLERY.map((u,i)=>`<div class="gallery-item reveal" onclick="openLightbox(${i})"><img src="${u}" alt="" style="width:100%;height:100%;object-fit:cover"></div>`).join('');
+    return CURRENT_GALLERY.map((u,i)=>`<div class="gallery-item reveal" onclick="openLightbox(${i})"><img src="${u}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>`).join('');
   }
   CURRENT_GALLERY=[];
   const h1=parseInt((item.bg||DEFAULT_BG).match(/hsl\((\d+)/)[1]);
@@ -528,7 +532,7 @@ function renderHome(){
   <div class="section-inner" style="text-align:center">
     <span class="s-tag reveal" style="justify-content:center">Ateliê Bomsenhor</span>
     <h2 class="s-title reveal" style="margin-bottom:1rem">Acompanhe nossas<br><em>restaurações em curso</em></h2>
-    <p class="reveal" style="font-size:14px;color:#7A7A7A;max-width:420px;margin:0 auto 2rem">Cada projeto é uma jornada de meses de trabalho artesanal. Conheça os bastidores das nossas restaurações.</p>
+    <p class="reveal" style="font-size:14px;color:#707070;max-width:420px;margin:0 auto 2rem">Cada projeto é uma jornada de meses de trabalho artesanal. Conheça os bastidores das nossas restaurações.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal">
       <a href="#/projetos" class="btn-p">Ver projetos</a>
       <a href="#/importacao" class="btn-o">Importação</a>
@@ -618,7 +622,7 @@ function renderVeiculoDetalhe(id){
         </div>
         ${v.destaques?.length?`
         <div style="margin-top:2rem">
-          <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7A7A7A;margin-bottom:.75rem">${vendido?'Características (histórico)':'Destaques'}</p>
+          <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#707070;margin-bottom:.75rem">${vendido?'Características (histórico)':'Destaques'}</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px">
             ${v.destaques.map(d=>`<span class="spec-tag" style="font-size:12px;padding:5px 12px">${d}</span>`).join('')}
           </div>
@@ -628,7 +632,7 @@ function renderVeiculoDetalhe(id){
         <div class="detail-specs">
           <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #D3D3D3">
             <div style="font-family:var(--fd);font-size:1.6rem;color:#333333">${v.preco}</div>
-            <div style="font-size:11px;color:#7A7A7A;margin-top:4px">${vendido?'Status':'Valor de referência'}</div>
+            <div style="font-size:11px;color:#707070;margin-top:4px">${vendido?'Status':'Valor de referência'}</div>
           </div>
           ${[['Motor',v.motor],['Transmissão',v.transmissao],['Cor',v.cor],['Quilometragem',v.km],['Procedência',v.procedencia],['Carroceria',v.carroceria]].filter(([,val])=>val).map(([k,val])=>`
           <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${val}</span></div>`).join('')}
@@ -647,7 +651,7 @@ function renderVeiculoDetalhe(id){
     <div class="gallery">
       ${galleryHtml(v,'acervo')}
     </div>
-    <p style="font-size:12px;color:#7A7A7A;margin-top:1rem;text-align:center">Solicite mais fotos e vídeos via WhatsApp</p>
+    <p style="font-size:12px;color:#707070;margin-top:1rem;text-align:center">Solicite mais fotos e vídeos via WhatsApp</p>
   </div>
 </section>`;
 }
@@ -666,7 +670,7 @@ function pCard(p){
       ${p.cliente?`<span class="spec-tag">${p.cliente.split('—')[0].trim()}</span>`:''}
     </div>
     <div class="v-card-footer">
-      <div style="font-size:13px;color:#7A7A7A">${p.etapas.length} etapas</div>
+      <div style="font-size:13px;color:#707070">${p.etapas.length} etapas</div>
       <span style="font-size:12px;color:#8A6D1E">Ver restauração →</span>
     </div>
   </div>
@@ -718,7 +722,7 @@ function renderProjetoDetalhe(id){
         ${p.descricao.split('\n').filter(Boolean).map(par=>`<p>${par}</p>`).join('')}
         ${p.resultado?`<div style="margin-top:2rem;padding:1.5rem;background:#FEF9EC;border-radius:var(--rl);border:1px solid #D3D3D3">
           <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A6D1E;margin-bottom:.5rem">Resultado</div>
-          <p style="color:#7A7A7A;font-style:italic">${p.resultado}</p>
+          <p style="color:#707070;font-style:italic">${p.resultado}</p>
         </div>`:''}
       </div>
       <div class="detail-specs">
@@ -745,7 +749,7 @@ function renderProjetoDetalhe(id){
       <div class="gallery">
         ${galleryHtml(p,'projetos')}
       </div>
-      <p style="font-size:12px;color:#7A7A7A;margin-top:1rem;text-align:center">Solicite o álbum completo via WhatsApp</p>
+      <p style="font-size:12px;color:#707070;margin-top:1rem;text-align:center">Solicite o álbum completo via WhatsApp</p>
     </div>
   </div>
 </section>`;
@@ -767,10 +771,10 @@ function renderImportacao(){
     <div style="max-width:680px;margin-bottom:3rem">
       <span class="s-tag reveal">Como funciona</span>
       <h2 class="s-title reveal" style="margin-bottom:1.5rem">Do sonho à <em>garagem</em></h2>
-      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9;margin-bottom:1rem">Importamos veículos clássicos ou peças específicas diretamente dos EUA, Europa e Japão. Cuidamos de cada detalhe: pesquisa, negociação, transporte marítimo, desembaraço aduaneiro e regularização no Brasil.</p>
-      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9">Realizamos projetos personalizados unindo importação + restauração, muitas vezes reduzindo o tempo e o preço final do projeto em até 50%.</p>
-<p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9;margin-bottom:1rem"></p>
-      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9">
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1rem">Importamos veículos clássicos ou peças específicas diretamente dos EUA, Europa e Japão. Cuidamos de cada detalhe: pesquisa, negociação, transporte marítimo, desembaraço aduaneiro e regularização no Brasil.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Realizamos projetos personalizados unindo importação + restauração, muitas vezes reduzindo o tempo e o preço final do projeto em até 50%.</p>
+<p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1rem"></p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">
 Você nos diz o que precisa e nós cuidamos de todo o resto — com transparência total em cada etapa.</p>
     </div>
     <span class="s-tag reveal">O processo</span>
@@ -816,7 +820,7 @@ const PARCEIROS=[
 function parceirosHtml(){
   return PARCEIROS.map(p=>{
     const nome=escAttr(p.nome);
-    const conteudo=p.logo?`<img src="images/parceiros/${p.logo}" alt="${nome}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'partner-logo-name',textContent:this.alt}))">`:`<span class="partner-logo-name">${p.nome}</span>`;
+    const conteudo=p.logo?`<img src="images/parceiros/${p.logo}" alt="${nome}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'partner-logo-name',textContent:this.alt}))">`:`<span class="partner-logo-name">${p.nome}</span>`;
     const tag=p.url?'a':'div';
     const linkAttrs=p.url?` href="${escAttr(p.url)}" target="_blank" rel="noopener"`:'';
     return`<${tag} class="partner-logo reveal" title="${nome}"${linkAttrs}>${conteudo}</${tag}>`;
@@ -837,21 +841,21 @@ function renderSobre(){
 <section class="section" style="background:#FFFFFF">
   <div class="section-inner">
     <div style="max-width:680px">
-      <p class="reveal" style="font-size:16px;color:#7A7A7A;line-height:1.9;margin-bottom:1.25rem">A Bomsenhor Restaurações nasceu em 2009 da paixão de seu fundador por automóveis clássicos. O que começou como um projeto de restauração em uma pequena oficina em Gaspar, SC, cresceu para se tornar uma das referências em restauração e importação de clássicos no Sul do Brasil.</p>
-      <p class="reveal" style="font-size:16px;color:#7A7A7A;line-height:1.9">Hoje, com mais de 15 anos de experiência, somos reconhecidos pela excelência técnica, pelo cuidado artesanal com cada projeto e pela dedicação em preservar a história automotiva que cada veículo carrega.</p>
+      <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">A Bomsenhor Restaurações nasceu em 2009 da paixão de seu fundador por automóveis clássicos. O que começou como um projeto de restauração em uma pequena oficina em Gaspar, SC, cresceu para se tornar uma das referências em restauração e importação de clássicos no Sul do Brasil.</p>
+      <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9">Hoje, com mais de 15 anos de experiência, somos reconhecidos pela excelência técnica, pelo cuidado artesanal com cada projeto e pela dedicação em preservar a história automotiva que cada veículo carrega.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D3D3D3;border-radius:var(--rl);overflow:hidden;margin-top:2rem">
       ${[['15+','Anos de experiência'],['120+','Veículos restaurados'],['Gaspar','Santa Catarina']].map(([n,l])=>`
       <div style="background:#0F1E33;padding:1.75rem 1rem;text-align:center" class="reveal">
         <div style="font-family:var(--fd);font-size:2.5rem;font-weight:400;color:#FAF9F6;line-height:1">${n}</div>
-        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7A7A7A;margin-top:6px">${l}</div>
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#707070;margin-top:6px">${l}</div>
       </div>`).join('')}
     </div>
   </div>
 </section>
 
 <section style="position:relative;height:420px;overflow:hidden">
-  <img src="${heroUrls('sobre')[0]}" alt="Equipe Bomsenhor" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+  <img src="${heroUrls('sobre')[0]}" alt="Equipe Bomsenhor" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
   <div style="position:absolute;inset:0;background:rgba(51,51,51,0.5)"></div>
   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;z-index:1">
     <span class="s-tag on-dark reveal" style="justify-content:center">Nossa equipe</span>
@@ -918,7 +922,7 @@ function renderContato(){
 <section class="section">
   <div class="section-inner">
     <div style="max-width:680px;margin-bottom:3rem">
-      <p class="reveal" style="font-size:15px;color:#7A7A7A;line-height:1.9">Tem interesse em algum veículo do acervo, quer orçar uma restauração ou consultar sobre importação? Nossa equipe está pronta para atendê-lo.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Tem interesse em algum veículo do acervo, quer orçar uma restauração ou consultar sobre importação? Nossa equipe está pronta para atendê-lo.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-card reveal">
@@ -934,7 +938,7 @@ function renderContato(){
       <div class="contact-card reveal">
         <h3>Localização</h3>
         <p>Gaspar, Santa Catarina<br>Brasil</p>
-        <p style="margin-top:1rem;font-size:13px;color:#7A7A7A">Visitas ao ateliê mediante agendamento prévio.</p>
+        <p style="margin-top:1rem;font-size:13px;color:#707070">Visitas ao ateliê mediante agendamento prévio.</p>
       </div>
       <div class="contact-card reveal">
         <h3>Instagram</h3>
