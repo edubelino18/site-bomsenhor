@@ -7,7 +7,7 @@
 <meta name="description" content="Restauração e importação de veículos clássicos em Gaspar, SC. 15 anos de experiência em carros e motos antigas, com acervo à venda e projetos sob medida.">
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="apple-touch-icon" href="images/logo.png">
-<link rel="preload" as="image" href="images/hero/home/1.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/hero/home/1-sm.jpg" imagesrcset="images/hero/home/1-sm.jpg 960w, images/hero/home/1.jpg 1920w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap">
@@ -368,6 +368,10 @@ const DEFAULT_BG=bg(210,210,10,10,25,18);
 function fotoUrl(item,tipo,arquivo){
   return`images/${tipo}/${item.id}/${arquivo}`;
 }
+function smUrl(url){
+  const i=url.lastIndexOf('.');
+  return url.slice(0,i)+'-sm'+url.slice(i);
+}
 function escAttr(s){
   return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
 }
@@ -378,22 +382,23 @@ function cardImg(item,tipo){
   }
   const urls=item.fotos.map(f=>fotoUrl(item,tipo,f));
   const hover=urls.length>1?` onmouseenter="cardCycleStart(this)" onmouseleave="cardCycleStop(this)" data-fotos="${escAttr(JSON.stringify(urls))}"`:'';
-  return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}"${hover}><img class="card-img-photo" src="${urls[0]}" alt="${item.nome}" loading="lazy"></div>`;
+  return`<div class="card-img" style="background:${item.bg||DEFAULT_BG}"${hover}><img class="card-img-photo" src="${smUrl(urls[0])}" srcset="${smUrl(urls[0])} 800w, ${urls[0]} 1600w" sizes="(max-width:640px) 90vw, (max-width:1200px) 45vw, 320px" alt="${item.nome}" loading="lazy"></div>`;
 }
 
 // ── CARD HOVER PHOTO CYCLE ─────────────────────────────────────
 const CARD_CYCLES=new WeakMap();
 function cardCycleStart(el){
   if(CARD_CYCLES.has(el))return;
-  const urls=JSON.parse(el.dataset.fotos||'[]');
+  const urls=JSON.parse(el.dataset.fotos||'[]').map(smUrl);
   if(urls.length<2)return;
   const img=el.querySelector('.card-img-photo');
+  const original=img.currentSrc||img.src;
   let idx=0;
   const id=setInterval(()=>{
     idx=(idx+1)%urls.length;
     img.src=urls[idx];
   },700);
-  CARD_CYCLES.set(el,{id,img,original:urls[0]});
+  CARD_CYCLES.set(el,{id,img,original});
 }
 function cardCycleStop(el){
   const state=CARD_CYCLES.get(el);
@@ -405,11 +410,14 @@ function cardCycleStop(el){
 
 // ── HERO SLIDESHOW ───────────────────────────────────────────
 let CURRENT_HERO_PHOTOS=[];
+function heroSrcset(u){
+  return`${smUrl(u)} 960w, ${u} 1920w`;
+}
 function heroSlidesHtml(urls,extraClass){
   CURRENT_HERO_PHOTOS=urls;
   const cls=extraClass?' '+extraClass:'';
-  return`<img class="hero-slide${cls} active" id="heroSlideA" src="${urls[0]}" alt="">
-    <img class="hero-slide${cls}" id="heroSlideB" alt="">`;
+  return`<img class="hero-slide${cls} active" id="heroSlideA" src="${smUrl(urls[0])}" srcset="${heroSrcset(urls[0])}" sizes="100vw" alt="">
+    <img class="hero-slide${cls}" id="heroSlideB" sizes="100vw" alt="">`;
 }
 let HERO_INTERVAL=null;
 function startHeroSlideshow(){
@@ -417,26 +425,29 @@ function startHeroSlideshow(){
   const a=document.getElementById('heroSlideA'),b=document.getElementById('heroSlideB');
   if(!a||!b||CURRENT_HERO_PHOTOS.length<2)return;
   let idx=0,showingA=true;
-  new Image().src=CURRENT_HERO_PHOTOS[1];
+  const preload=u=>{new Image().src=smUrl(u);};
+  preload(CURRENT_HERO_PHOTOS[1]);
   HERO_INTERVAL=setInterval(()=>{
     idx=(idx+1)%CURRENT_HERO_PHOTOS.length;
     const next=showingA?b:a,curr=showingA?a:b;
-    next.src=CURRENT_HERO_PHOTOS[idx];
+    next.src=smUrl(CURRENT_HERO_PHOTOS[idx]);
+    next.srcset=heroSrcset(CURRENT_HERO_PHOTOS[idx]);
     next.classList.add('active');
     curr.classList.remove('active');
     showingA=!showingA;
-    new Image().src=CURRENT_HERO_PHOTOS[(idx+1)%CURRENT_HERO_PHOTOS.length];
+    preload(CURRENT_HERO_PHOTOS[(idx+1)%CURRENT_HERO_PHOTOS.length]);
   },3000);
 }
 function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
   const capa=item.fotos&&item.fotos[0];
-  const foto=capa?`<img src="${fotoUrl(item,tipo,capa)}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`:'';
+  const full=capa?fotoUrl(item,tipo,capa):'';
+  const foto=capa?`<img src="${smUrl(full)}" srcset="${smUrl(full)} 800w, ${full} 1600w" sizes="(min-width:1280px) 1100px, 96vw" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`:'';
   return`<div class="detail-hero reveal" style="background:${item.bg||DEFAULT_BG}">${foto}${always}${capa?'':fallbackOnly}</div>`;
 }
 function galleryHtml(item,tipo){
   if(item.fotos&&item.fotos.length){
     CURRENT_GALLERY=item.fotos.map(f=>fotoUrl(item,tipo,f));
-    return CURRENT_GALLERY.map((u,i)=>`<div class="gallery-item reveal" onclick="openLightbox(${i})"><img src="${u}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>`).join('');
+    return CURRENT_GALLERY.map((u,i)=>`<div class="gallery-item reveal" onclick="openLightbox(${i})"><img src="${smUrl(u)}" srcset="${smUrl(u)} 800w, ${u} 1600w" sizes="(max-width:640px) 46vw, 260px" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>`).join('');
   }
   CURRENT_GALLERY=[];
   const h1=parseInt((item.bg||DEFAULT_BG).match(/hsl\((\d+)/)[1]);
@@ -855,7 +866,7 @@ function renderSobre(){
 </section>
 
 <section style="position:relative;height:420px;overflow:hidden">
-  <img src="${heroUrls('sobre')[0]}" alt="Equipe Bomsenhor" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+  <img src="${smUrl(heroUrls('sobre')[0])}" srcset="${heroSrcset(heroUrls('sobre')[0])}" sizes="100vw" alt="Equipe Bomsenhor" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
   <div style="position:absolute;inset:0;background:rgba(51,51,51,0.5)"></div>
   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;z-index:1">
     <span class="s-tag on-dark reveal" style="justify-content:center">Nossa equipe</span>
