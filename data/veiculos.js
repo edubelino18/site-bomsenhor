@@ -37,7 +37,7 @@ descricao:'A Ford F-350 de 1963 é um clássico de trabalho pesado e estilo inco
 destaques:['Motor V8 e caixa revisados','Plataforma com assoalho em madeira','Rodado duplo traseiro','Rádio de época e painel funcionais'],
 fotos:['4.jpg','1.jpg','2.jpg','3.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','12.jpg','13.jpg'],
 bg:bg(10,20,60,40,30,15),destaque:true},
-{id:'dkw-vemaguet',nome:'DKW-Vemag Vemaguet',ano:1967,tipo:'carro',status:'disponivel',preco:'R$ 40.000',
+{id:'dkw-vemaguet',nome:'DKW-Vemag Vemaguet',ano:1967,tipo:'carro',status:'vendido',preco:'R$ 40.000',
 motor:'3 cilindros',transmissao:'Manual 4 vel. (alavanca na coluna)',
 cor:'Vermelha',km:'Não informada',procedencia:'Nacional',carroceria:'Perua (Station Wagon)',
 descricao:'A Vemaguet de 1967 é um verdadeiro clássico da indústria automobilística nacional, em modelo cada vez mais raro e valorizado no mercado de veículos antigos. Um exemplar ideal para quem busca uma base honesta para restauração estética, contando com estrutura funcional e mecânica impecável.\n\nO motor de 3 cilindros e 2 tempos é original, novo e está em perfeitas condições, assim como a caixa de câmbio e o sistema elétrico, ambos inteiramente revisados. O veículo conta com pneus novos, rádio de época, interior em boas condições gerais e roda perfeitamente para qualquer lugar do Brasil.',
