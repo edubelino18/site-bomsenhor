@@ -7,63 +7,27 @@
 // (veículo/projeto novo, editado ou removido), ou se app.js/styles.css
 // mudarem. Comando: node scripts/generate-pages.mjs
 //
+// Antes de gerar, roda scripts/validate-photos.mjs automaticamente (ele
+// corrige sozinho fotos com extensão em maiúscula e avisa se alguma foto
+// referenciada não existir em disco) — não precisa rodar isso à parte.
+//
 // Não precisa de instalação (usa só o módulo "vm" nativo do Node).
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import vm from 'node:vm';
+import { loadSiteData } from './lib/load-site-data.mjs';
+import { validatePhotos } from './validate-photos.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const SITE_URL = 'https://bomsenhorrestauracoes.com.br';
 
-// ── Sandbox mínimo: stubs de DOM só o suficiente para as funções
-// render*() (que fazem document.getElementById('app').innerHTML = ...)
-// rodarem fora do navegador e devolverem o HTML gerado. ──────────────
-let capturedHTML = '';
-const noop = () => {};
-const dummyEl = () => ({
-  addEventListener: noop, removeEventListener: noop,
-  classList: { add: noop, remove: noop, toggle: noop, contains: () => false },
-  style: {}, dataset: {}, textContent: '',
-  querySelectorAll: () => [], querySelector: () => null,
-});
-const appEl = {
-  get innerHTML() { return capturedHTML; },
-  set innerHTML(v) { capturedHTML = v; },
-};
-const sandbox = {
-  document: {
-    getElementById: (id) => (id === 'app' ? appEl : dummyEl()),
-    querySelectorAll: () => [],
-    querySelector: () => null,
-    addEventListener: noop,
-    createElement: () => dummyEl(),
-    body: { style: {} },
-  },
-  window: { addEventListener: noop, scrollTo: noop, innerWidth: 1280, devicePixelRatio: 1 },
-  history: { pushState: noop },
-  location: { pathname: '/', hash: '' },
-  Image: function () { return { set src(v){}, set srcset(v){}, set sizes(v){} }; },
-  IntersectionObserver: function () { return { observe: noop, unobserve: noop }; },
-  setInterval: () => 0,
-  clearInterval: noop,
-  console,
-};
-vm.createContext(sandbox);
-for (const file of ['app.js', 'data/veiculos.js', 'data/projetos.js']) {
-  vm.runInContext(readFileSync(join(ROOT, file), 'utf8'), sandbox, { filename: file });
+const { missing } = validatePhotos();
+if (missing.length) {
+  console.log('\nGerando as páginas mesmo assim, mas confira os avisos acima — alguma foto pode ficar quebrada.\n');
 }
-// `const`/`let` de topo-nível não viram propriedades do objeto global do
-// vm automaticamente — expõe explicitamente o que este script precisa.
-vm.runInContext('globalThis.VEICULOS=VEICULOS;globalThis.PROJETOS=PROJETOS;globalThis.HERO_SETS=HERO_SETS;', sandbox);
-const { VEICULOS, PROJETOS } = sandbox;
 
-function render(fn, ...args) {
-  capturedHTML = '';
-  sandbox[fn](...args);
-  return capturedHTML;
-}
+const { VEICULOS, PROJETOS, HERO_SETS, render } = loadSiteData(ROOT);
 
 function truncate(s, n) {
   const clean = s.replace(/\s+/g, ' ').trim();
@@ -74,7 +38,6 @@ function smUrl(url) {
   const i = url.lastIndexOf('.');
   return url.slice(0, i) + '-sm' + url.slice(i);
 }
-const { HERO_SETS } = sandbox;
 
 // ── Shell comum a todas as páginas (idêntico ao index.html) ──────────
 function pageShell({ title, description, canonicalPath, bodyHTML, heroImage, heroWidths = [960, 1920] }) {

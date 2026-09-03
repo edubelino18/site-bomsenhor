@@ -7,6 +7,10 @@
 //   node scripts/generate-pages.mjs     (gera as páginas de cada projeto + sitemap.xml)
 // Sem isso, a página pública daquele projeto fica desatualizada ou
 // com fotos pesadas, mesmo que o site "ao vivo" já mostre o dado novo.
+// O generate-pages.mjs já roda scripts/validate-photos.mjs sozinho
+// antes de gerar: ele corrige fotos com extensão em MAIÚSCULA (que
+// funcionam no Windows mas quebram no site publicado) e avisa se
+// alguma foto listada aqui não existir em disco.
 //
 // COMO ADICIONAR um projeto novo:
 //   1. Copie um bloco inteiro (da { até a } que fecha ele).
