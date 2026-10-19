@@ -349,6 +349,16 @@ function filteredV(f){
 }
 
 // ── VEÍCULO DETALHE ──────────────────────────────────────────
+// Texto padrão de compra de cada veículo, montado a partir da ficha.
+function compraHtml(v){
+  const ficha=[['motor',v.motor],['transmissão',v.transmissao],['cor',v.cor],['quilometragem',v.km]]
+    .filter(([,x])=>x&&!/não informad/i.test(x)).map(([k,x])=>`${k} ${k==='cor'||k==='transmissão'||(k==='quilometragem'&&!/^\d/.test(x))?x.toLowerCase():x}`).join(', ');
+  if(v.status==='vendido'){
+    return `<p>Este ${v.nome} ${v.ano} já foi vendido, mas o acervo da Bomsenhor recebe novos clássicos com frequência. Se você procura um modelo parecido, fale conosco pelo WhatsApp: também podemos encontrar o veículo ideal nos EUA pelo nosso <a href="/importacao/">serviço de importação</a>.</p>`;
+  }
+  return `<p>Este ${v.nome} ${v.ano} faz parte do acervo da Bomsenhor Restaurações, em Gaspar (SC), e é vendido com procedência e revisado${ficha?`. Ficha: ${ficha}`:''}.</p>
+<p>Atendemos compradores de todo o Brasil. Fale conosco pelo WhatsApp para tirar dúvidas, pedir mais fotos e vídeos ou agendar uma visita à oficina, de segunda a sexta, das 7h às 17h30.</p>`;
+}
 function renderVeiculoDetalhe(id){
   const v=VEICULOS.find(x=>x.id===id);
   if(!v){navigate('acervo');return;}
@@ -369,11 +379,15 @@ function renderVeiculoDetalhe(id){
         </div>
         ${v.destaques?.length?`
         <div style="margin-top:2rem">
-          <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#707070;margin-bottom:.75rem">${vendido?'Características (histórico)':'Destaques'}</p>
+          <h2 class="detail-h2">${vendido?'Características (histórico)':'Destaques'}</h2>
           <div style="display:flex;flex-wrap:wrap;gap:8px">
             ${v.destaques.map(d=>`<span class="spec-tag" style="font-size:12px;padding:5px 12px">${d}</span>`).join('')}
           </div>
         </div>`:''}
+        <div style="margin-top:2rem">
+          <h2 class="detail-h2">${vendido?'Procura um veículo parecido?':'Como comprar'}</h2>
+          <div class="detail-desc">${compraHtml(v)}</div>
+        </div>
       </div>
       <div>
         <div class="detail-specs">
@@ -381,6 +395,7 @@ function renderVeiculoDetalhe(id){
             <div style="font-family:var(--fd);font-size:1.6rem;color:#333333">${vendido?'Vendido':v.preco}</div>
             <div style="font-size:11px;color:#707070;margin-top:4px">${vendido?'Status':'Valor de referência'}</div>
           </div>
+          <h2 class="detail-h2" style="margin-bottom:.25rem">Ficha técnica</h2>
           ${[['Motor',v.motor],['Transmissão',v.transmissao],['Cor',v.cor],['Quilometragem',v.km],['Procedência',v.procedencia],['Carroceria',v.carroceria]].filter(([,val])=>val).map(([k,val])=>`
           <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${val}</span></div>`).join('')}
           <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem">
@@ -452,6 +467,13 @@ function renderProjetos(){
     <h2 class="s-title reveal" style="margin-bottom:2rem">Projetos <em>concluídos</em></h2>
     <div class="v-grid p-grid">${c.map(pCard).join('')}</div>
   </div>
+</section>
+<section class="section" style="background:#FFFFFF">
+  <div class="section-inner"><div style="max-width:780px">
+    <span class="s-tag reveal">Dúvidas sobre restauração</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Perguntas <em>frequentes</em></h2>
+    <div class="faq-list">${faqHtml('projetos')}</div>
+  </div></div>
 </section>`;
 }
 
@@ -597,6 +619,13 @@ function renderImportacao(){
     </div>
     <a href="/projetos/cadillac-deville-1957/" class="btn-o reveal">Acompanhe o projeto →</a>
     <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-top:2rem">Não tem um projeto? Fazemos o orçamento da importação e da restauração do mesmo carro.</p>
+  </div></div>
+</section>
+<section class="section" style="background:#FFFFFF">
+  <div class="section-inner"><div style="max-width:780px">
+    <span class="s-tag reveal">Dúvidas sobre importação</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Perguntas <em>frequentes</em></h2>
+    <div class="faq-list">${faqHtml('importacao')}</div>
   </div></div>
 </section>
 <section class="section section-dark">
@@ -768,23 +797,24 @@ ${PARCEIROS.length?`
 
 // ── CONTATO ──────────────────────────────────────────────────
 // ── PERGUNTAS FREQUENTES ─────────────────────────────────────
-// Aparecem na página de Contato e viram dados estruturados (FAQPage)
-// para o Google. Para editar, mude o texto aqui e gere as páginas.
+// Cada pergunta tem o grupo da página onde aparece ('contato',
+// 'projetos' ou 'importacao') e vira dados estruturados (FAQPage)
+// só naquela página. Para editar, mude o texto aqui e gere as páginas.
 const FAQS=[
-  ['Vocês restauram carros e motos?','Sim. A Bomsenhor restaura carros e motos clássicos, com funilaria, pintura, tapeçaria, mecânica, elétrica e acabamentos. Desde 2015 já passaram pela oficina cerca de 37 carros e 12 motos.'],
-  ['Onde fica a Bomsenhor Restaurações?','Na R. Antônio Weidgenannt, 185, bairro Gasparinho, em Gaspar (SC), CEP 89112-316. São dois galpões que somam 575 m² dedicados à restauração. Visitas ao ateliê são feitas mediante agendamento prévio.'],
-  ['Vocês atendem clientes de fora de Santa Catarina?','Sim. A oficina fica em Gaspar (SC), mas fazemos projetos para clientes de todo o território nacional.'],
-  ['Como funciona o orçamento de uma restauração?','O processo começa com uma avaliação detalhada do veículo. Com base nela, montamos o orçamento de acordo com o projeto do cliente, com prazo e valores estimados, até chegarmos a um acordo e definirmos a data de início.'],
-  ['Quanto tempo leva uma restauração?','Depende do estado do veículo e do que será feito. Como referência, o Cadillac Eldorado Brougham 1958, com revisão mecânica e elétrica, repintura de componentes e acabamentos, levou cerca de um ano.'],
-  ['Qual o horário de atendimento?','De segunda a sexta-feira, das 7h às 12h e das 13h às 17h30. Pelo WhatsApp (47) 99174-2031 respondemos em horário comercial.'],
-  ['Posso acompanhar a restauração do meu veículo?','Sim. Todas as etapas são documentadas e enviadas ao cliente em fotos e vídeos, para comprovar o andamento do projeto.'],
-  ['Como funciona a importação de um carro clássico?','Buscamos o carro nos EUA, montamos um orçamento comparativo e, com o seu aceite, negociamos e compramos. O veículo segue para um armazém parceiro na Flórida, embarca em Miami e chega ao porto de Itajaí, onde fazemos o desembaraço e a retirada. Do fechamento do orçamento ao desembarque leva até 3 meses.'],
-  ['Vale mais a pena importar um carro pronto ou um projeto?','Os impostos incidem sobre o valor do carro somado ao frete, então um carro de projeto, mais barato lá fora, chega bem mais barato aqui. Restaurado no Brasil, a economia fica entre 40% e 60% em relação aos preços de mercado. Também importamos carros prontos.'],
-  ['Os carros importados saem com placa preta?','Sim. Todos os carros importados pela Bomsenhor saem com placa preta, direto para a garagem do cliente.'],
-  ['Vocês vendem veículos clássicos?','Sim. O acervo reúne carros e motos clássicos selecionados e revisados, prontos para rodar. Os veículos disponíveis estão na página Acervo.']
+  ['contato','Vocês restauram carros e motos?','Sim. A Bomsenhor restaura carros e motos clássicos, com funilaria, pintura, tapeçaria, mecânica, elétrica e acabamentos. Desde 2015 já passaram pela oficina cerca de 37 carros e 12 motos.'],
+  ['contato','Onde fica a Bomsenhor Restaurações?','Na R. Antônio Weidgenannt, 185, bairro Gasparinho, em Gaspar (SC), CEP 89112-316. São dois galpões que somam 575 m² dedicados à restauração. Visitas ao ateliê são feitas mediante agendamento prévio.'],
+  ['contato','Vocês atendem clientes de fora de Santa Catarina?','Sim. A oficina fica em Gaspar (SC), mas fazemos projetos para clientes de todo o território nacional.'],
+  ['projetos','Como funciona o orçamento de uma restauração?','O processo começa com uma avaliação detalhada do veículo. Com base nela, montamos o orçamento de acordo com o projeto do cliente, com prazo e valores estimados, até chegarmos a um acordo e definirmos a data de início.'],
+  ['projetos','Quanto tempo leva uma restauração?','Depende do estado do veículo e do que será feito. Como referência, o Cadillac Eldorado Brougham 1958, com revisão mecânica e elétrica, repintura de componentes e acabamentos, levou cerca de um ano.'],
+  ['contato','Qual o horário de atendimento?','De segunda a sexta-feira, das 7h às 12h e das 13h às 17h30. Pelo WhatsApp (47) 99174-2031 respondemos em horário comercial.'],
+  ['projetos','Posso acompanhar a restauração do meu veículo?','Sim. Todas as etapas são documentadas e enviadas ao cliente em fotos e vídeos, para comprovar o andamento do projeto.'],
+  ['importacao','Como funciona a importação de um carro clássico?','Buscamos o carro nos EUA, montamos um orçamento comparativo e, com o seu aceite, negociamos e compramos. O veículo segue para um armazém parceiro na Flórida, embarca em Miami e chega ao porto de Itajaí, onde fazemos o desembaraço e a retirada. Do fechamento do orçamento ao desembarque leva até 3 meses.'],
+  ['importacao','Vale mais a pena importar um carro pronto ou um projeto?','Os impostos incidem sobre o valor do carro somado ao frete, então um carro de projeto, mais barato lá fora, chega bem mais barato aqui. Restaurado no Brasil, a economia fica entre 40% e 60% em relação aos preços de mercado. Também importamos carros prontos.'],
+  ['importacao','Os carros importados saem com placa preta?','Sim. Todos os carros importados pela Bomsenhor saem com placa preta, direto para a garagem do cliente.'],
+  ['contato','Vocês vendem veículos clássicos?','Sim. O acervo reúne carros e motos clássicos selecionados e revisados, prontos para rodar. Os veículos disponíveis estão na página Acervo.']
 ];
-function faqHtml(){
-  return FAQS.map(([q,a])=>`<details class="faq-item reveal"><summary><h3>${q}</h3></summary><p>${a}</p></details>`).join('');
+function faqHtml(grupo){
+  return FAQS.filter(f=>f[0]===grupo).map(([,q,a])=>`<details class="faq-item reveal"><summary><h3>${q}</h3></summary><p>${a}</p></details>`).join('');
 }
 
 function renderContato(){
@@ -833,7 +863,7 @@ function renderContato(){
   <div class="section-inner"><div style="max-width:780px">
     <span class="s-tag reveal">Dúvidas</span>
     <h2 class="s-title reveal" style="margin-bottom:2rem">Perguntas <em>frequentes</em></h2>
-    <div class="faq-list">${faqHtml()}</div>
+    <div class="faq-list">${faqHtml('contato')}</div>
     <div class="reveal" style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
       <span style="font-size:14px;color:#707070">Já é cliente ou conhece nosso trabalho?</span>
       <a href="https://maps.app.goo.gl/JuU8ReXoNPPCCW1s5" target="_blank" rel="noopener" class="btn-o">Veja e deixe sua avaliação no Google →</a>

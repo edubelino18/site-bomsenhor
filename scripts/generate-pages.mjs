@@ -90,9 +90,14 @@ function precoNumero(preco) {
   return m ? m[0].replace(/\./g, '').replace(',', '.') : null;
 }
 function veiculoSchema(v) {
-  const o = { '@type': 'Product', name: `${v.nome} ${v.ano}`, description: v.descricao.replace(/\s+/g, ' ').trim(),
+  const [marca, ...resto] = v.nome.replace(/"/g, '').split(' ');
+  const o = { '@type': ['Product', v.tipo === 'moto' ? 'Motorcycle' : 'Car'], name: `${v.nome} ${v.ano}`,
+    brand: { '@type': 'Brand', name: marca }, model: resto.join(' '), vehicleModelDate: String(v.ano), description: v.descricao.replace(/\s+/g, ' ').trim(),
     image: (v.fotos || []).slice(0, 6).map(f => `${SITE_URL}/images/acervo/${v.id}/${f}`), category: v.tipo === 'moto' ? 'Motocicleta clássica' : 'Carro clássico',
     url: `${SITE_URL}/acervo/${v.id}/` };
+  if (v.cor) o.color = v.cor;
+  const km = String(v.km || '').match(/^([\d.]+)\s*km/i);
+  if (km) o.mileageFromOdometer = { '@type': 'QuantitativeValue', value: Number(km[1].replace(/\./g, '')), unitCode: 'KMT' };
   const valor = precoNumero(v.preco);
   o.offers = { '@type': 'Offer', priceCurrency: 'BRL', url: o.url,
     availability: v.status === 'vendido' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
@@ -113,8 +118,8 @@ function lastmod(paths) {
     return execSync(`git log -1 --format=%cs -- ${q}`, { cwd: ROOT }).toString().trim() || null;
   } catch { return null; }
 }
-function faqSchema() {
-  return { '@type': 'FAQPage', mainEntity: FAQS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+function faqSchema(grupo) {
+  return { '@type': 'FAQPage', mainEntity: FAQS.filter(f => f[0] === grupo).map(([, q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 }
 
 function pageShell({ title, description, canonicalPath, bodyHTML, heroImage, heroWidths = [960, 1920], ogType = 'website', schema = [] }) {
@@ -279,9 +284,10 @@ for (const v of VEICULOS) {
 
 routes.push({
   path: '/projetos/', file: 'projetos/index.html',
-  title: 'Projetos de restauração de veículos clássicos | Bomsenhor Restaurações',
+  title: 'Projetos de Restauração de Carros e Motos | Bomsenhor',
   description: 'Projetos de restauração de carros e motos clássicos da Bomsenhor, em Gaspar, SC: etapas documentadas em fotos e vídeos para clientes de todo o Brasil.',
   heroImage: heroFirst('projetos'),
+  schema: [faqSchema('projetos')],
   html: () => render('renderProjetos'),
 });
 for (const p of PROJETOS) {
@@ -298,25 +304,25 @@ for (const p of PROJETOS) {
 
 routes.push({
   path: '/importacao/', file: 'importacao/index.html',
-  title: 'Importação de veículos clássicos e peças | Bomsenhor Restaurações',
+  title: 'Importação de Carros Clássicos dos EUA | Bomsenhor',
   description: 'Importação de clássicos dos EUA com restauração no Brasil: economia de 40% a 60%, do garimpo à placa preta, com toda a logística e documentação.',
   heroImage: heroFirst('importacao'),
-  schema: [howToSchema()],
+  schema: [howToSchema(), faqSchema('importacao')],
   html: () => render('renderImportacao'),
 });
 routes.push({
   path: '/sobre/', file: 'sobre/index.html',
-  title: 'Sobre a Bomsenhor Restaurações | Gaspar, SC',
+  title: 'Sobre a Bomsenhor: Restauração Desde 2015 em Gaspar, SC',
   description: 'Do primeiro Opala, em 2013, a 575 m² de oficina: a história da Bomsenhor Restaurações em Gaspar, SC, que atende clientes de todo o Brasil.',
   heroImage: heroFirst('sobre'),
   html: () => render('renderSobre'),
 });
 routes.push({
   path: '/contato/', file: 'contato/index.html',
-  title: 'Contato | Bomsenhor Restaurações',
+  title: 'Contato e Endereço em Gaspar, SC | Bomsenhor Restaurações',
   description: 'Fale com a Bomsenhor Restaurações: WhatsApp (47) 99174-2031, endereço em Gaspar, SC, horário de atendimento e respostas às dúvidas mais comuns.',
   heroImage: heroFirst('contato'),
-  schema: [faqSchema()],
+  schema: [faqSchema('contato')],
   html: () => render('renderContato'),
 });
 
