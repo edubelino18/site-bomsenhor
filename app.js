@@ -699,21 +699,12 @@ function renderSobre(){
 <section class="section" style="background:#FAF9F6">
   <div class="section-inner">
     <div class="founders">
-      <div class="founders-photo reveal"><img src="/images/equipe/fundadores-sm.jpg" srcset="/images/equipe/fundadores-sm.jpg 800w, /images/equipe/fundadores.jpg 1333w" sizes="(max-width:767px) 90vw, 40vw" alt="Vanderlei e Edi Clea Bomsenhor na oficina" loading="lazy"></div>
+      <div class="founders-photo reveal"><img src="/images/equipe/fundadores-sm.jpg" srcset="/images/equipe/fundadores-sm.jpg 800w, /images/equipe/fundadores.jpg 1164w" sizes="(max-width:767px) 90vw, 340px" alt="Vanderlei e Edi Clea Bomsenhor na oficina" loading="lazy"></div>
       <div>
         <span class="s-tag reveal">Quem faz a Bomsenhor</span>
         <h2 class="s-title reveal" style="margin-bottom:1.25rem">Uma empresa <em>de família</em></h2>
-        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:2rem">Por trás de cada restauração estão Vanderlei e Edi Clea Bomsenhor. Juntos, transformaram um trabalho de horas vagas em uma oficina de 575 m².</p>
-        <div class="founder reveal">
-          <h3>Vanderlei Bomsenhor</h3>
-          <div class="founder-role">Fundador</div>
-          <p>Aprendeu o ofício em 15 anos na antiga RH Restaurações. Restaurou o primeiro Opala por conta própria em 2013 e abriu a Bomsenhor em 2015.</p>
-        </div>
-        <div class="founder reveal">
-          <h3>Edi Clea Bomsenhor</h3>
-          <div class="founder-role">Funilaria e tapeçaria</div>
-          <p>Trocou a carreira de estilista pela oficina e se tornou a primeira funcionária oficial da empresa.</p>
-        </div>
+        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Por trás de cada projeto estão Vanderlei e Edi Clea Bomsenhor, um casal que divide a vida e a oficina.</p>
+        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9">Ele traz uma vida inteira no meio automotivo, do pneu à pintura. Ela trouxe da moda o olhar para o detalhe e o acabamento. Juntos, transformaram um trabalho de horas vagas em uma oficina de 575 m² em Gaspar.</p>
       </div>
     </div>
   </div>
@@ -722,14 +713,29 @@ function renderSobre(){
   <div class="section-inner">
     <div class="story">
       <div>
+        <span class="s-tag reveal">Uma vida no meio automotivo</span>
+        <h2 class="s-title reveal" style="margin-bottom:1.25rem">Vanderlei <em>Bomsenhor</em></h2>
+        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Vanderlei começou aos 12 anos na borracharia dos pais, trocando pneus e fazendo outros serviços. Quando a família mudou de ramo e abriu uma funilaria e pintura, foi trabalhar com eles e teve ali o primeiro contato com a lataria e a tinta.</p>
+        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Depois de se casar, passou por outras empresas do ramo e, por mais de 10 anos, trabalhou com instalação e manutenção de peças e acessórios automotivos.</p>
+        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9">Na antiga RH Restaurações voltou à funilaria e à pintura, e por mais de 15 anos aprendeu tudo o que o universo da restauração pode ensinar. É essa bagagem, de quem conhece o carro por inteiro, que ele coloca hoje em cada projeto da Bomsenhor.</p>
+      </div>
+      <div class="story-photos story-photos-tall reveal">
+        <img src="/images/equipe/vanderlei-solda-sm.jpg" srcset="/images/equipe/vanderlei-solda-sm.jpg 800w, /images/equipe/vanderlei-solda.jpg 1500w" sizes="(max-width:1023px) 50vw, 25vw" alt="Vanderlei Bomsenhor soldando a lataria de um clássico" loading="lazy">
+        <img src="/images/equipe/vanderlei-bancada-sm.jpg" srcset="/images/equipe/vanderlei-bancada-sm.jpg 800w, /images/equipe/vanderlei-bancada.jpg 1600w" sizes="(max-width:1023px) 50vw, 25vw" alt="Vanderlei Bomsenhor moldando uma peça na bancada" loading="lazy">
+        <img src="/images/equipe/vanderlei-funilaria-sm.jpg" srcset="/images/equipe/vanderlei-funilaria-sm.jpg 800w, /images/equipe/vanderlei-funilaria.jpg 1500w" sizes="(max-width:1023px) 50vw, 25vw" alt="Vanderlei Bomsenhor acertando a funilaria com martelo" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="background:#FAF9F6">
+  <div class="section-inner">
+    <div class="story story-reverse">
+      <div>
         <span class="s-tag reveal">Da moda à oficina</span>
         <h2 class="s-title reveal" style="margin-bottom:1.25rem">Edi Clea <em>Bomsenhor</em></h2>
-        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Durante anos, Edi Clea trabalhou no mundo da moda, como estilista. Na restauração, começou pelo mais difícil: a funilaria. Aprendeu praticamente sozinha, muitas vezes com a supervisão à distância do Vanderlei, que ainda trabalhava em tempo integral na RH Restaurações. Rebater, moldar e soldar: ela encarou as partes mais pesadas do trabalho.</p>
+        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Durante anos, Edi Clea trabalhou no mundo da moda, como estilista. Na restauração, começou pelo mais difícil: a funilaria. Aprendeu praticamente sozinha, muitas vezes com a supervisão à distância de Vanderlei, que ainda trabalhava em tempo integral na RH Restaurações. Rebater, moldar e soldar: ela encarou as partes mais pesadas do trabalho.</p>
+        <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Em 2021, quando a empresa ganhou o primeiro galpão, tornou-se a primeira funcionária oficial da Bomsenhor.</p>
         <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9">Hoje já passou por praticamente todas as etapas de uma restauração e se especializou em funilaria e tapeçaria. A experiência com vestuário ganhou um novo destino: carpetes, tapetes, bancos e forros de porta costurados por ela.</p>
-        <blockquote class="story-quote reveal">
-          <p>“O que mais me encanta na restauração é que todos os dias aprendemos coisas novas. Uma peça que fazemos para um carro dificilmente será replicada em outro. Estamos sempre em constante mudança e evolução.”</p>
-          <cite>Edi Clea Bomsenhor</cite>
-        </blockquote>
       </div>
       <div class="story-photos reveal">
         <img src="/images/equipe/edi-clea-sm.jpg" srcset="/images/equipe/edi-clea-sm.jpg 800w, /images/equipe/edi-clea.jpg 1600w" sizes="(max-width:767px) 90vw, 45vw" alt="Edi Clea Bomsenhor na bancada da oficina" loading="lazy">
@@ -737,6 +743,10 @@ function renderSobre(){
         <img src="/images/equipe/edi-clea-molde-sm.jpg" srcset="/images/equipe/edi-clea-molde-sm.jpg 800w, /images/equipe/edi-clea-molde.jpg 1600w" sizes="(max-width:767px) 45vw, 22vw" alt="Edi Clea comparando um molde com a peça original" loading="lazy">
       </div>
     </div>
+    <blockquote class="story-quote story-quote-wide reveal">
+      <p>“O que mais me encanta na restauração é que todos os dias aprendemos coisas novas. Uma peça que fazemos para um carro dificilmente será replicada em outro. Estamos sempre em constante mudança e evolução.”</p>
+      <cite>Edi Clea Bomsenhor</cite>
+    </blockquote>
   </div>
 </section>
 <section style="position:relative;height:420px;overflow:hidden">
