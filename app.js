@@ -197,14 +197,14 @@ function renderHome(){
   <div class="hero-content">
     <span class="s-tag reveal">Restauração &amp; Importação</span>
     <h1 class="hero-h1 reveal">Veículos que<br><em>contam histórias</em><br>únicas</h1>
-    <p class="hero-p reveal">Especializados na restauração e importação de automóveis clássicos em Gaspar, SC. Cada veículo selecionado com rigor, paixão e 15 anos de expertise.</p>
+    <p class="hero-p reveal">Especializados na restauração e importação de automóveis clássicos em Gaspar, SC. Mais de 25 anos de ofício a serviço de cada detalhe.</p>
     <div class="hero-btns reveal">
       <a href="/acervo/" class="btn-p">Ver acervo</a>
       <a href="/projetos/" class="btn-o">Nossos projetos</a>
     </div>
     <div class="stats-row reveal">
-      <div class="stat-item"><div class="stat-n">15+</div><div class="stat-l">Anos</div></div>
-      <div class="stat-item"><div class="stat-n">120+</div><div class="stat-l">Entregues</div></div>
+      <div class="stat-item"><div class="stat-n">2015</div><div class="stat-l">Fundação</div></div>
+      <div class="stat-item"><div class="stat-n">45+</div><div class="stat-l">Restaurados</div></div>
       <div class="stat-item"><div class="stat-n">SC</div><div class="stat-l">Gaspar</div></div>
     </div>
   </div>
@@ -224,18 +224,18 @@ function renderHome(){
 </section>
 
 <section class="section section-dark">
-  <div class="section-inner" style="max-width:640px">
+  <div class="section-inner"><div style="max-width:680px">
     <span class="s-tag reveal">Nossa história</span>
-    <h2 class="s-title reveal" style="margin-bottom:1.25rem">15 anos <em>restaurando paixão</em></h2>
-    <p class="reveal" style="font-size:15px;color:rgba(250,249,246,0.6);line-height:1.9;margin-bottom:2rem">Nascemos em Gaspar, SC, com uma missão clara: dar nova vida a automóveis que contam histórias. Mais de 120 veículos entregues depois, seguimos com a mesma paixão do primeiro dia.</p>
+    <h2 class="s-title reveal" style="margin-bottom:1.25rem">Do primeiro Opala a <em>575 m² de oficina</em></h2>
+    <p class="reveal" style="font-size:15px;color:rgba(250,249,246,0.6);line-height:1.9;margin-bottom:2rem">Tudo começou em 2013, com um Opala Coupé 1979 restaurado nas horas vagas. Hoje são dois galpões em Gaspar, SC, e quase 50 carros e motos entregues, cada um com a mesma paixão do primeiro.</p>
     <a href="/sobre/" class="btn-gold reveal">Conheça nossa história</a>
-  </div>
+  </div></div>
 </section>
 
 <section class="section" style="background:#FAF9F6">
   <div class="section-inner" style="text-align:center">
     <span class="s-tag reveal" style="justify-content:center">Ateliê Bomsenhor</span>
-    <h2 class="s-title reveal" style="margin-bottom:1rem">Acompanhe nossas<br><em>restaurações em curso</em></h2>
+    <h2 class="s-title reveal" style="margin-bottom:1.25rem">Acompanhe nossas<br><em>restaurações em curso</em></h2>
     <p class="reveal" style="font-size:14px;color:#707070;max-width:420px;margin:0 auto 2rem">Cada projeto é uma jornada de meses de trabalho artesanal. Conheça os bastidores das nossas restaurações.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal">
       <a href="/projetos/" class="btn-p">Ver projetos</a>
@@ -472,28 +472,75 @@ function renderImportacao(){
 </div>
 <section class="section" style="background:#FFFFFF">
   <div class="section-inner">
-    <div style="max-width:680px;margin-bottom:3rem">
-      <span class="s-tag reveal">Como funciona</span>
-      <h2 class="s-title reveal" style="margin-bottom:1.5rem">Do sonho à <em>garagem</em></h2>
-      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1rem">Importamos veículos clássicos ou peças específicas diretamente dos EUA, Europa e Japão. Cuidamos de cada detalhe: pesquisa, negociação, transporte marítimo, desembaraço aduaneiro e regularização no Brasil.</p>
-      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Realizamos projetos personalizados unindo importação + restauração, muitas vezes reduzindo o tempo e o preço final do projeto em até 50%.</p>
-<p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1rem"></p>
-      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">
-Você nos diz o que precisa e nós cuidamos de todo o resto — com transparência total em cada etapa.</p>
-    </div>
-    <span class="s-tag reveal">O processo</span>
-    <h2 class="s-title reveal" style="margin-bottom:2rem">Nosso <em>método</em></h2>
-    <div class="steps">
-      ${[['01','Consulta inicial','Você nos conta qual projeto deseja. Discutimos especificações, condição, orçamento e expectativas.'],
-         ['02','Pesquisa e avaliação','Nossa rede internacional localiza o exemplar ideal. Você recebe fotos, histórico e todos os detalhes antes de qualquer decisão.'],
-         ['03','Aquisição, transporte e entrega','Cuidamos da compra, seguro de transporte e logística marítima do ponto de origem até o porto brasileiro com desembaraço alfandegário, homologação e documentação completa.'],
-         ['04','Restauração e entrega','Nesta etapa nossa equipe no Brasil fará todo o processo de restauração de acordo com o projeto estipulado, entregando ao final o seu carro emplacado, com placa preta e totalmente restaurado.']
-        ].map(([n,t,d])=>`<div class="step reveal"><div class="step-num">${n}</div><h4>${t}</h4><p>${d}</p></div>`).join('')}
+    <div style="max-width:680px">
+      <span class="s-tag reveal">Por que importar com a gente</span>
+      <h2 class="s-title reveal" style="margin-bottom:1.25rem">O clássico importado, <em>mais perto da realidade</em></h2>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">O grande vilão do sonho do clássico importado é o preço de compra nos EUA. Os impostos incidem sobre o valor do carro somado ao frete, então quanto mais caro ele é lá fora, mais caro chega aqui.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Nossa proposta inverte essa conta: garimpamos um carro de projeto nos EUA e fazemos a restauração aqui no Brasil, onde a mão de obra custa muito menos. Nossa equipe é especializada em encontrar os melhores exemplares, com economia de 40% a 60% em relação aos preços de mercado.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Também importamos carros prontos e peças. Mas, se você tiver um pouco de tempo, economiza mais e ainda acompanha de perto cada etapa da restauração. Todos os carros importados saem com placa preta, direto para a sua garagem.</p>
     </div>
   </div>
 </section>
+<section class="section" style="background:#FAF9F6">
+  <div class="section-inner"><div style="max-width:900px">
+    <span class="s-tag reveal">Na ponta do lápis</span>
+    <h2 class="s-title reveal" style="margin-bottom:1.25rem">Pronto ou projeto: <em>a diferença</em></h2>
+    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:2rem">Exemplo: Corvette 1985 conversível, câmbio manual.</p>
+    <div class="imp-compare">
+      <div class="imp-card reveal">
+        <div class="imp-card-tag">Caminho tradicional</div>
+        <h3>Comprado pronto nos EUA</h3>
+        <div class="imp-row"><span>Preço nos EUA (restaurado)</span><strong>US$ 15 mil</strong></div>
+        <div class="imp-row total"><span>Valor final importado</span><strong>R$ 220–250 mil</strong></div>
+      </div>
+      <div class="imp-card featured reveal">
+        <div class="imp-card-tag">Com a Bomsenhor</div>
+        <h3>Garimpado como projeto</h3>
+        <div class="imp-row"><span>Preço nos EUA (projeto)</span><strong>US$ 5 mil</strong></div>
+        <div class="imp-row"><span>Valor final importado</span><strong>R$ 90–110 mil</strong></div>
+        <div class="imp-row"><span>Restauração completa</span><strong>R$ 40–50 mil</strong></div>
+        <div class="imp-row"><span>Entrega após o desembarque</span><strong>3 a 6 meses</strong></div>
+        <div class="imp-row total"><span>Total</span><strong>R$ 130–160 mil</strong></div>
+      </div>
+    </div>
+    <div class="imp-save reveal">Economia que pode passar de <em>R$ 100 mil</em></div>
+    <p class="imp-note reveal">Valores estimados. Variam conforme câmbio, frete e estado do veículo.</p>
+  </div></div>
+</section>
+<section class="section" style="background:#FFFFFF">
+  <div class="section-inner">
+    <span class="s-tag reveal">O processo</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Nosso <em>método</em></h2>
+    <div class="steps steps-3">
+      ${[['01','Consulta e garimpo','Você nos conta o sonho. Buscamos nos EUA os melhores exemplares, pronto ou projeto, com fotos e histórico de cada um.'],
+         ['02','Orçamento comparativo','Montamos o custo completo de cada caminho, lado a lado, para você decidir com clareza.'],
+         ['03','Negociação e compra','Com o seu aceite, negociamos diretamente com o vendedor nos EUA e fechamos a compra.'],
+         ['04','Transporte e documentação','O veículo segue para nosso armazém parceiro na Flórida, onde cuidamos de toda a burocracia pré-embarque.'],
+         ['05','Embarque e desembaraço','O carro embarca em Miami e desembarca no porto de Itajaí. Fazemos o desembaraço aduaneiro e a retirada no porto.'],
+         ['06','Restauração e entrega','Em Gaspar, SC, nossa equipe executa a restauração combinada, que você acompanha de perto. Entregamos com placa preta.']
+        ].map(([n,t,d])=>`<div class="step reveal"><div class="step-num">${n}</div><h4>${t}</h4><p>${d}</p></div>`).join('')}
+    </div>
+    <p class="reveal" style="margin-top:1.5rem;font-size:14px;color:#707070">Do fechamento do orçamento ao desembarque no Brasil: <strong style="color:#333333">até 3 meses</strong>.</p>
+  </div>
+</section>
+<section class="section" style="background:#FAF9F6">
+  <div class="section-inner"><div style="max-width:680px">
+    <span class="s-tag reveal">Caso real</span>
+    <h2 class="s-title reveal" style="margin-bottom:1.25rem">Cadillac DeVille Coupé <em>1957</em></h2>
+    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Parado havia mais de seis anos em um galpão, o Cadillac já tinha passado por uma restauração anterior e rodado por alguns lugares antes de chegar à Bomsenhor. Chegou sem motor, sem câmbio, sem vidros, sem interior e, principalmente, sem as peças de acabamento.</p>
+    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">O primeiro caminho foi orçar tudo peça por peça, nos EUA e no Brasil, e a conta ficou alta. Então buscamos nos EUA um carro doador completo e apresentamos os dois orçamentos lado a lado ao cliente. Importar o doador saiu cerca de 40% mais barato e ainda poupa tempo.</p>
+    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Como a carroceria do cliente já estava no Brasil, a funilaria e a pintura seguem em Gaspar enquanto o doador faz a viagem da Flórida até Itajaí.</p>
+    <div class="imp-facts">
+      ${[['~40%','de economia em relação à compra das peças avulsas'],
+         ['3 meses','no máximo, do orçamento aprovado ao desembarque'],
+         ['Em paralelo','funilaria e pintura avançam durante a importação']
+        ].map(([n,l])=>`<div class="imp-fact reveal"><div class="imp-fact-n">${n}</div><div class="imp-fact-l">${l}</div></div>`).join('')}
+    </div>
+    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Não tem um projeto? Fazemos o orçamento da importação e da restauração do mesmo carro.</p>
+  </div></div>
+</section>
 <section class="section section-dark">
-  <div class="section-inner" style="max-width:640px">
+  <div class="section-inner"><div style="max-width:680px">
     <span class="s-tag reveal">Pronto para começar?</span>
     <h2 class="s-title reveal" style="margin-bottom:1.25rem">Encontre seu <em>clássico</em></h2>
     <p class="reveal" style="font-size:15px;color:rgba(250,249,246,0.6);line-height:1.9;margin-bottom:2rem">Conte-nos sobre o veículo dos seus sonhos. Nossa equipe responde em até 24 horas com as primeiras opções encontradas.</p>
@@ -501,7 +548,7 @@ Você nos diz o que precisa e nós cuidamos de todo o resto — com transparênc
       <a href="https://wa.me/5547991742031" target="_blank" class="btn-gold">Falar no WhatsApp</a>
       <a href="/contato/" class="btn-o" style="border-color:rgba(255,255,255,0.2);color:rgba(250,249,246,0.7)">Enviar e-mail</a>
     </div>
-  </div>
+  </div></div>
 </section>`;
 }
 
@@ -545,11 +592,12 @@ function renderSobre(){
 <section class="section" style="background:#FFFFFF">
   <div class="section-inner">
     <div style="max-width:680px">
-      <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">A Bomsenhor Restaurações nasceu em 2009 da paixão de seu fundador por automóveis clássicos. O que começou como um projeto de restauração em uma pequena oficina em Gaspar, SC, cresceu para se tornar uma das referências em restauração e importação de clássicos no Sul do Brasil.</p>
-      <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9">Hoje, com mais de 15 anos de experiência, somos reconhecidos pela excelência técnica, pelo cuidado artesanal com cada projeto e pela dedicação em preservar a história automotiva que cada veículo carrega.</p>
+      <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">A história da Bomsenhor começa muito antes do nome na fachada. Foram 15 anos de ofício na antiga RH Restaurações, onde Vanderlei aprendeu, na prática, o que separa um carro reformado de um carro restaurado.</p>
+      <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Em 2013, nas horas vagas, veio o primeiro trabalho por conta própria: a funilaria completa de um Opala Coupé 1979. Dois anos depois, a Bomsenhor nasceu oficialmente, começando pelos painéis de instrumentos e, passo a passo, assumindo o carro inteiro.</p>
+      <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9">Hoje são dois galpões em Gaspar, SC, somando 575 m² dedicados à restauração, uma equipe em crescimento e cerca de 37 carros e 12 motos que já passaram pelas nossas mãos.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D3D3D3;border-radius:var(--rl);overflow:hidden;margin-top:2rem">
-      ${[['15+','Anos de experiência'],['120+','Veículos restaurados'],['Gaspar','Santa Catarina']].map(([n,l])=>`
+      ${[['2015','Fundação'],['45+','Carros e motos restaurados'],['575','m² de oficina em Gaspar, SC']].map(([n,l])=>`
       <div style="background:#0F1E33;padding:1.75rem 1rem;text-align:center" class="reveal">
         <div style="font-family:var(--fd);font-size:2.5rem;font-weight:400;color:#FAF9F6;line-height:1">${n}</div>
         <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#707070;margin-top:6px">${l}</div>
@@ -569,14 +617,17 @@ function renderSobre(){
 <section class="section" style="background:#FAF9F6">
   <div class="section-inner">
     <span class="s-tag reveal">Linha do tempo</span>
-    <h2 class="s-title reveal" style="margin-bottom:2.5rem">Nossa <em>trajetória</em></h2>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Nossa <em>trajetória</em></h2>
     <div>
-      ${[['2009','Fundação','Início das operações em Gaspar, SC, com foco em restauração de clássicos nacionais.'],
-         ['2012','Primeira importação','Chegada dos primeiros veículos importados dos EUA, abrindo nova frente de negócio.'],
-         ['2015','Novo ateliê','Ampliação do espaço com inauguração do novo ateliê de restauração.'],
-         ['2019','Expansão da equipe','Contratação de especialistas em mecânica, pintura e funilaria.'],
-         ['2023','100º veículo','Marco histórico: centésimo veículo restaurado e entregue com excelência.'],
-         ['2025','Hoje','Referência regional em restauração e importação de clássicos no Sul do Brasil.']
+      ${[['2013','O primeiro projeto','Um Opala Coupé 1979, do sobrinho de Vanderlei, recebe funilaria completa. Feito nas horas vagas, ainda em paralelo aos 15 anos de trabalho na antiga RH Restaurações, foi o primeiro trabalho por conta própria.'],
+         ['2015','Nasce a Bomsenhor','Início formal como empresa, com foco na restauração de painéis de instrumentos e dezenas de trabalhos entregues.'],
+         ['2016','O carro por inteiro','A empresa passa a restaurar todos os acabamentos do carro. Em paralelo começam as motos, em projetos pessoais feitos nas horas vagas, muitas vezes em casa.'],
+         ['2021','Primeiro galpão','A Bomsenhor ganha seu primeiro galpão. Edi Clea deixa a carreira de estilista no mundo da moda para se dedicar à restauração e se torna a primeira funcionária oficial da empresa.'],
+         ['2022','Um espaço maior','Com o aumento da demanda, a empresa troca o primeiro galpão por um maior, de 260 m², com capacidade para mais projetos. A equipe começa a crescer.'],
+         ['2024','Capacidade dobrada','Um segundo galpão, de 315 m², soma 575 m² dedicados à restauração. Ano a ano, novos maquinários elevam a qualidade do trabalho, com forte parceria com a Backstage Metal Shaping.'],
+         ['2025','Primeiras importações','Começam as importações próprias da empresa, inicialmente focadas em peças.'],
+         ['2026','Importação de carros','Chegam os primeiros veículos importados e o primeiro grande projeto unindo importação e restauração: um Cadillac DeVille Coupé 1957.'],
+         ['Hoje','Quase 50 histórias','Cerca de 37 carros e 12 motos restaurados, cada um com o mesmo cuidado do primeiro Opala.']
         ].map(([a,t,d])=>`<div class="about-tl-item reveal">
           <div class="about-tl-year">${a}</div>
           <div class="about-tl-body"><h4>${t}</h4><p>${d}</p></div>
@@ -591,7 +642,7 @@ function renderSobre(){
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:rgba(255,255,255,0.06);border-radius:var(--rl);overflow:hidden">
       ${[['Autenticidade','Preservamos a identidade original de cada veículo com técnicas e peças fiéis ao período.'],
          ['Transparência','Documentação completa e comunicação aberta em cada etapa do projeto.'],
-         ['Excelência','Equipe especializada com décadas de experiência em mecânica e restauração.'],
+         ['Excelência','Mais de 25 anos de ofício e investimento contínuo em maquinário e técnica.'],
          ['Paixão','Cada veículo que passa pelo nosso ateliê é tratado como uma obra de arte.']
         ].map(([t,d])=>`<div style="background:rgba(255,255,255,0.04);padding:1.75rem 1.5rem" class="reveal">
           <h4 style="color:#FFFFFF;margin-bottom:6px;font-weight:600">${t}</h4>

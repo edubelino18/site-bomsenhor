@@ -158,7 +158,7 @@ const routes = [];
 routes.push({
   path: '/', file: 'index.html',
   title: 'Bomsenhor Restaurações',
-  description: 'Restauração e importação de veículos clássicos em Gaspar, SC. 15 anos de experiência em carros e motos antigas, com acervo à venda e projetos sob medida.',
+  description: 'Restauração e importação de veículos clássicos em Gaspar, SC. Desde 2015, mais de 45 carros e motos antigas restaurados, acervo à venda e projetos sob medida.',
   heroImage: heroFirst('home'),
   html: () => render('renderHome'),
 });
@@ -203,14 +203,14 @@ for (const p of PROJETOS) {
 routes.push({
   path: '/importacao/', file: 'importacao/index.html',
   title: 'Importação de veículos clássicos e peças | Bomsenhor Restaurações',
-  description: 'Importamos veículos clássicos e peças dos EUA, Europa e Japão, cuidando de toda a logística, desembaraço e documentação no Brasil.',
+  description: 'Importação de clássicos dos EUA com restauração no Brasil: economia de 40% a 60%, do garimpo à placa preta, com toda a logística e documentação.',
   heroImage: heroFirst('importacao'),
   html: () => render('renderImportacao'),
 });
 routes.push({
   path: '/sobre/', file: 'sobre/index.html',
   title: 'Sobre a Bomsenhor Restaurações | Gaspar, SC',
-  description: '15 anos de história restaurando e importando veículos clássicos em Gaspar, Santa Catarina.',
+  description: 'Do primeiro Opala, em 2013, a 575 m² de oficina: a história da Bomsenhor Restaurações em Gaspar, Santa Catarina.',
   heroImage: heroFirst('sobre'),
   html: () => render('renderSobre'),
 });
