@@ -428,8 +428,8 @@ function pCard(p){
       ${bdg(p.status)}
     </div>
     <div class="v-card-specs">
-      <span class="spec-tag">${p.duracao}</span>
-      ${p.cliente?`<span class="spec-tag">${p.cliente.split('—')[0].trim()}</span>`:''}
+      ${p.duracao?`<span class="spec-tag">${p.duracao}</span>`:''}
+      ${p.tipo?`<span class="spec-tag">${p.tipo}</span>`:''}
     </div>
     <div class="v-card-footer">
       <div style="font-size:13px;color:#707070">${p.etapas.length} etapas</div>
@@ -502,7 +502,7 @@ function renderProjetoDetalhe(id){
         </div>`:''}
       </div>
       <div class="detail-specs">
-        ${[['Veículo',`${p.nome} ${p.ano}`],['Status',p.status==='concluido'?'Concluído':'Em andamento'],['Duração',p.duracao],['Cliente',p.cliente]].filter(([,v])=>v).map(([k,v])=>`
+        ${[['Veículo',`${p.nome} ${p.ano}`],['Status',p.status==='concluido'?'Concluído':'Em andamento'],['Duração',p.duracao],['Serviço',p.tipo]].filter(([,v])=>v).map(([k,v])=>`
         <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${v}</span></div>`).join('')}
         <div style="margin-top:1.5rem">
           <a href="https://wa.me/5547991742031?text=Olá! Quero orçar uma restauração similar ao ${encodeURIComponent(p.nome+' '+p.ano)}" target="_blank" class="btn-gold" style="justify-content:center;width:100%">Orçar projeto similar</a>
@@ -803,11 +803,11 @@ ${PARCEIROS.length?`
 // só naquela página. Para editar, mude o texto aqui e gere as páginas.
 const FAQS=[
   ['contato','Vocês restauram carros e motos?','Sim. A Bomsenhor faz desde pequenos reparos até restaurações completas em carros e motos antigos, clássicos, neoclássicos e exclusivos, com funilaria, pintura, tapeçaria, mecânica, elétrica e acabamentos. Desde 2015 já passaram pela oficina cerca de 37 carros e 12 motos.'],
-  ['projetos','Vocês fazem só restaurações completas?','Não. Fazemos desde pequenos reparos até grandes projetos de restauração. Somos especializados em clássicos, mas avaliamos cada caso, inclusive carros mais novos e raros que outras oficinas não aceitam, como uma Mercedes-Benz SLK 200 Cabriolet 2006 que recebeu reparo na frente e peças importadas da Alemanha e dos EUA.'],
+  ['projetos','Vocês fazem só restaurações completas?','Não. Fazemos desde pequenos reparos até grandes projetos de restauração. Somos especializados em clássicos, mas avaliamos cada caso, inclusive carros mais novos e raros que outras oficinas não aceitam, como uma Mercedes-Benz SLK 200 Cabriolet 2006 que está recebendo reparo na frente e peças importadas da Alemanha e dos EUA.'],
   ['contato','Onde fica a Bomsenhor Restaurações?','Na R. Antônio Weidgenannt, 185, bairro Gasparinho, em Gaspar (SC), CEP 89112-316. São dois galpões que somam 575 m² dedicados à restauração. Visitas ao ateliê são feitas mediante agendamento prévio.'],
   ['contato','Vocês atendem clientes de fora de Santa Catarina?','Sim. A oficina fica em Gaspar (SC), mas fazemos projetos para clientes de todo o território nacional.'],
   ['projetos','Como funciona o orçamento de uma restauração?','O processo começa com uma avaliação detalhada do veículo. Com base nela, montamos o orçamento de acordo com o projeto do cliente, com prazo e valores estimados, até chegarmos a um acordo e definirmos a data de início.'],
-  ['projetos','Quanto tempo leva uma restauração?','Depende do estado do veículo e do que será feito. Como referência, o reparo da frente de uma Mercedes-Benz SLK 200 2006, com importação de peças, levou de 5 a 6 meses; já o Cadillac Eldorado Brougham 1958, com revisão mecânica e elétrica, repintura de componentes e acabamentos, levou cerca de um ano.'],
+  ['projetos','Quanto tempo leva uma restauração?','Depende do estado do veículo e do que será feito. Como referência, o reparo da frente de uma Mercedes-Benz SLK 200 2006, com importação de peças, tem previsão de 3 a 5 meses; já o Cadillac Eldorado Brougham 1958, com revisão mecânica e elétrica, repintura de componentes e acabamentos, levou cerca de um ano.'],
   ['contato','Qual o horário de atendimento?','De segunda a sexta-feira, das 7h às 12h e das 13h às 17h30. Pelo WhatsApp (47) 99174-2031 respondemos em horário comercial.'],
   ['projetos','Posso acompanhar a restauração do meu veículo?','Sim. Todas as etapas são documentadas e enviadas ao cliente em fotos e vídeos, para comprovar o andamento do projeto.'],
   ['importacao','Como funciona a importação de um carro clássico?','Buscamos o carro nos EUA, montamos um orçamento comparativo e, com o seu aceite, negociamos e compramos. O veículo segue para um armazém parceiro na Flórida, embarca em Miami e chega ao porto de Itajaí, onde fazemos o desembaraço e a retirada. Do fechamento do orçamento ao desembarque leva até 3 meses.'],
