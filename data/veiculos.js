@@ -69,13 +69,13 @@ descricao:'A Honda ML 125 de 1980 é um dos ícones mais marcantes do motociclis
 destaques:['Placa Preta de coleção','Restaurada nos padrões originais','Diversos componentes e lentes originais','Pneus novos e chave reserva original'],
    fotos:['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg'],
    bg:bg(28,20,40,30,25,15),destaque:true},
-{id:'honda-cbr-450sr',nome:'Honda CBR 450SR',ano:1990,tipo:'moto',status:'disponivel',preco:'R$ 17.900',
+{id:'honda-cbr-450sr',nome:'Honda CBR 450SR',ano:1990,tipo:'moto',status:'vendido',preco:'R$ 17.900',
 motor:'450cc',transmissao:'Manual 6 vel.',
 cor:'Branca e Azul',km:'Não informada',procedencia:'Nacional',carroceria:'Motocicleta Esportiva',
 descricao:'A Honda CBR 450SR de 1990 é uma lenda entre as esportivas nacionais dos anos 90, famosa pelo seu motor bicilíndrico de 46,5 cv e visual marcante. Este exemplar encontra-se completamente restaurado e certificado com Placa Preta de coleção, atestando seu alto grau de originalidade.\n\nCom pintura em azul e branco, o modelo conta com documentação rigorosamente em dia e mecânica totalmente revisada. Seu motor de 447 cm³ e a transmissão de 6 marchas funcionam perfeitamente, garantindo que a moto siga rodando para qualquer lugar do Brasil com total segurança.',
 destaques:['Placa Preta de coleção','Completamente restaurada','Motor bicilíndrico de 46,5 cv totalmente revisado','Documentação em dia e pronta para rodar'],
    fotos:['6.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','7.jpg','8.jpg','9.jpg'],
-   bg:bg(0,10,5,5,18,12),destaque:true},
+   bg:bg(0,10,5,5,18,12),destaque:false},
   {id:'dodge-polara-1980',nome:'Dodge Polara',ano:1980,tipo:'carro',status:'vendido',preco:'Vendido',
    motor:'1.8L Chrysler l4',transmissao:'Automática de fábrica',
    cor:'Prata',km:'101.700 km originais',procedencia:'Brasil — Gaspar, SC',carroceria:'Cupê 2 portas',
@@ -103,5 +103,5 @@ cor:'Verde e Branca',km:'144.000 km originais',procedencia:'Nacional',carroceria
 descricao:'A Ford Rural 4x4 de 1971 é um dos utilitários mais queridos da história do Brasil: robusta, valente e com o estilo inconfundível da saia-e-blusa verde e branca. Este exemplar é totalmente original, inclusive na pintura, com 144 mil km originais rodados.\n\nÉ um carro íntegro, que vai rodando para qualquer lugar do Brasil. Tem alguns detalhes a fazer e, se for do agrado do cliente, pode ser entregue pintada e restaurada pela Bomsenhor. Destaques para o volante e o painel originais, o rádio Blaupunkt e os vidros Temperite com a marca Ford.',
 destaques:['Totalmente original, com pintura original','144 mil km originais','Íntegra: roda para qualquer lugar do Brasil','Pode ser entregue pintada e restaurada, se o cliente preferir'],
    fotos:['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','12.jpg','13.jpg','14.jpg','15.jpg','16.jpg','17.jpg','18.jpg','19.jpg','20.jpg'],
-   bg:bg(110,100,25,20,40,30),destaque:false}
+   bg:bg(110,100,25,20,40,30),destaque:true}
 ];
