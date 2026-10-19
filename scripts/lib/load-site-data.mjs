@@ -44,12 +44,14 @@ export function loadSiteData(root) {
   }
   // `const`/`let` de topo-nível não viram propriedades do objeto global do
   // vm automaticamente — expõe explicitamente o que os scripts precisam.
-  vm.runInContext('globalThis.VEICULOS=VEICULOS;globalThis.PROJETOS=PROJETOS;globalThis.HERO_SETS=HERO_SETS;', sandbox);
+  vm.runInContext('globalThis.VEICULOS=VEICULOS;globalThis.PROJETOS=PROJETOS;globalThis.HERO_SETS=HERO_SETS;globalThis.FAQS=FAQS;globalThis.ETAPAS_IMPORTACAO=ETAPAS_IMPORTACAO;', sandbox);
 
   return {
     VEICULOS: sandbox.VEICULOS,
     PROJETOS: sandbox.PROJETOS,
     HERO_SETS: sandbox.HERO_SETS,
+    FAQS: sandbox.FAQS,
+    ETAPAS_IMPORTACAO: sandbox.ETAPAS_IMPORTACAO,
     render(fn, ...args) {
       capturedHTML = '';
       sandbox[fn](...args);

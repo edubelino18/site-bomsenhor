@@ -136,7 +136,7 @@ function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
   const full=capa?fotoUrl(item,tipo,capa):'';
   // Capa quadrada/vertical (ex.: fotos de celular) seria cortada no banner 16:7:
   // heroFit mostra a foto inteira sobre um fundo desfocado da própria foto.
-  const foto=capa?`<img class="detail-hero-bg" src="${smUrl(full)}" alt="" aria-hidden="true"><img class="detail-hero-img" src="${smUrl(full)}" srcset="${smUrl(full)} 800w, ${full} 1600w" sizes="(min-width:1280px) 1100px, 96vw" alt="" onload="window.heroFit&&heroFit(this)">`:'';
+  const foto=capa?`<img class="detail-hero-bg" src="${smUrl(full)}" alt="" aria-hidden="true"><img class="detail-hero-img" src="${smUrl(full)}" srcset="${smUrl(full)} 800w, ${full} 1600w" sizes="(min-width:1280px) 1100px, 96vw" alt="${escAttr(item.nome+' '+item.ano)}" onload="window.heroFit&&heroFit(this)">`:'';
   return`<div class="detail-hero reveal" style="background:${item.bg||DEFAULT_BG}">${foto}${always}${capa?'':fallbackOnly}</div>`;
 }
 function heroFit(img){
@@ -148,7 +148,7 @@ function galleryHtml(item,tipo){
     CURRENT_CAPTIONS=item.fotos.map((f,i)=>(item.legendas&&item.legendas[i])||'');
     return CURRENT_GALLERY.map((u,i)=>{
       const leg=CURRENT_CAPTIONS[i];
-      const foto=`<div class="gallery-item${leg?'':' reveal'}" onclick="openLightbox(${i})"><img src="${smUrl(u)}" srcset="${smUrl(u)} 800w, ${u} 1600w" sizes="(max-width:640px) 46vw, 260px" alt="${escAttr(leg)}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>`;
+      const foto=`<div class="gallery-item${leg?'':' reveal'}" onclick="openLightbox(${i})"><img src="${smUrl(u)}" srcset="${smUrl(u)} 800w, ${u} 1600w" sizes="(max-width:640px) 46vw, 260px" alt="${escAttr(leg||`${item.nome} ${item.ano} — foto ${i+1}`)}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>`;
       return leg?`<figure class="gallery-fig reveal">${foto}<figcaption>${leg}</figcaption></figure>`:foto;
     }).join('');
   }
@@ -202,6 +202,14 @@ function bdg(s){
 }
 
 // ── HOME ─────────────────────────────────────────────────────
+const SERVICOS=[
+  ['Funilaria','Recuperação e moldagem da lataria, com solda e maquinário especializado em parceria com a Backstage Metal Shaping.'],
+  ['Pintura','Preparação completa da carroceria e pintura, seguindo as cores e o acabamento do projeto.'],
+  ['Tapeçaria','Bancos, forros de porta, carpetes e tapetes costurados na própria oficina.'],
+  ['Mecânica','Revisão e manutenção de motor, câmbio, suspensão e freios.'],
+  ['Elétrica','Revisão e manutenção de todo o sistema elétrico do veículo.'],
+  ['Importação','Garimpo, compra e importação de clássicos e peças dos EUA, com entrega em placa preta.']
+];
 function renderHome(){
   const featured=VEICULOS.filter(v=>v.destaque).slice(0,4);
   document.getElementById('app').innerHTML=`
@@ -213,7 +221,7 @@ function renderHome(){
   <div class="hero-content">
     <span class="s-tag reveal">Restauração &amp; Importação</span>
     <h1 class="hero-h1 reveal">Veículos que<br><em>contam histórias</em><br>únicas</h1>
-    <p class="hero-p reveal">Especializados na restauração e importação de automóveis clássicos em Gaspar, SC. Mais de 25 anos de ofício a serviço de cada detalhe.</p>
+    <p class="hero-p reveal">Restauração e importação de carros e motos clássicos, com oficina em Gaspar, SC, e projetos para todo o Brasil. Mais de 25 anos de ofício a serviço de cada detalhe.</p>
     <div class="hero-btns reveal">
       <a href="/acervo/" class="btn-p">Ver acervo</a>
       <a href="/projetos/" class="btn-o">Nossos projetos</a>
@@ -227,6 +235,19 @@ function renderHome(){
 </section>
 
 <section class="section" style="background:#FFFFFF">
+  <div class="section-inner">
+    <div style="max-width:680px;margin-bottom:2rem">
+      <span class="s-tag reveal">O que fazemos</span>
+      <h2 class="s-title reveal" style="margin-bottom:1.25rem">Restauração completa, <em>de ponta a ponta</em></h2>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Cuidamos de todas as etapas da restauração de carros e motos clássicos, em uma oficina de 575 m² em Gaspar, Santa Catarina. Atendemos clientes de todo o território nacional.</p>
+    </div>
+    <div class="services">
+      ${SERVICOS.map(([t,d])=>`<div class="service reveal"><h3>${t}</h3><p>${d}</p></div>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#FAF9F6">
   <div class="section-inner">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem">
       <div>
@@ -248,7 +269,7 @@ function renderHome(){
   </div></div>
 </section>
 
-<section class="section" style="background:#FAF9F6">
+<section class="section" style="background:#FFFFFF">
   <div class="section-inner" style="text-align:center">
     <span class="s-tag reveal" style="justify-content:center">Ateliê Bomsenhor</span>
     <h2 class="s-title reveal" style="margin-bottom:1.25rem">Acompanhe nossas<br><em>restaurações em curso</em></h2>
@@ -277,7 +298,7 @@ function vCard(v){
       ${v.procedencia?`<span class="spec-tag">${v.procedencia.split('—')[0].trim()}</span>`:''}
     </div>
     <div class="v-card-footer">
-      <div class="v-card-price"><small>${v.preco.startsWith('R$')?'a partir de':''}</small>${v.preco}</div>
+      <div class="v-card-price"><small>${v.status!=='vendido'&&v.preco.startsWith('R$')?'a partir de':''}</small>${v.status==='vendido'?'Vendido':v.preco}</div>
       <span style="font-size:12px;color:#8A6D1E">Ver detalhes →</span>
     </div>
   </div>
@@ -298,6 +319,12 @@ function renderAcervo(){
 </div>
 <section class="section">
   <div class="section-inner">
+    <div style="max-width:680px;margin-bottom:2.5rem">
+      <span class="s-tag reveal">Carros e motos à venda</span>
+      <h2 class="s-title reveal" style="margin-bottom:1.25rem">Clássicos com <em>procedência</em></h2>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Os carros e motos à venda fazem parte do acervo da Bomsenhor. Dependendo do caso, passaram por um processo de restauro na nossa própria oficina, em Gaspar, SC.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Todos os veículos têm procedência, são revisados e entregues nas melhores condições do mercado. Somos especialistas no que fazemos, e cada clássico do acervo passa pelo mesmo cuidado dos nossos projetos de restauração.</p>
+    </div>
     <div class="filters" id="acFilters">
       ${['todos','carros','motos','vendidos'].map(f=>`<button class="filter-btn${acFilter===f?' active':''}" data-f="${f}">${f==='todos'?'Todos':f==='carros'?'Carros':f==='motos'?'Motos':'Vendidos'}</button>`).join('')}
     </div>
@@ -351,7 +378,7 @@ function renderVeiculoDetalhe(id){
       <div>
         <div class="detail-specs">
           <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #D3D3D3">
-            <div style="font-family:var(--fd);font-size:1.6rem;color:#333333">${v.preco}</div>
+            <div style="font-family:var(--fd);font-size:1.6rem;color:#333333">${vendido?'Vendido':v.preco}</div>
             <div style="font-size:11px;color:#707070;margin-top:4px">${vendido?'Status':'Valor de referência'}</div>
           </div>
           ${[['Motor',v.motor],['Transmissão',v.transmissao],['Cor',v.cor],['Quilometragem',v.km],['Procedência',v.procedencia],['Carroceria',v.carroceria]].filter(([,val])=>val).map(([k,val])=>`
@@ -410,6 +437,12 @@ function renderProjetos(){
 </div>
 <section class="section">
   <div class="section-inner">
+    <div style="max-width:680px;margin-bottom:3rem">
+      <span class="s-tag reveal">Como trabalhamos</span>
+      <h2 class="s-title reveal" style="margin-bottom:1.25rem">Cada projeto, <em>documentado</em></h2>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Toda restauração começa com uma avaliação detalhada do veículo. A partir dela, montamos o orçamento de acordo com o projeto do cliente, com prazo e valores estimados, até chegarmos a um acordo e definirmos a data de início.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Durante o trabalho, todas as etapas são documentadas e enviadas ao cliente em fotos e vídeos, para que ele acompanhe e comprove o andamento, esteja onde estiver no Brasil.</p>
+    </div>
     ${a.length?`<div style="margin-bottom:3rem">
       <span class="s-tag reveal">Em andamento</span>
       <h2 class="s-title reveal" style="margin-bottom:2rem">Projetos <em>em execução</em></h2>
@@ -476,6 +509,14 @@ function renderProjetoDetalhe(id){
 }
 
 // ── IMPORTAÇÃO ───────────────────────────────────────────────
+// Etapas da importação: aparecem na página e viram schema HowTo.
+const ETAPAS_IMPORTACAO=[['01','Consulta e garimpo','Você nos conta o sonho. Buscamos nos EUA os melhores exemplares, pronto ou projeto, com fotos e histórico de cada um.'],
+  ['02','Orçamento comparativo','Montamos o custo completo de cada caminho, lado a lado, para você decidir com clareza.'],
+  ['03','Negociação e compra','Com o seu aceite, negociamos diretamente com o vendedor nos EUA e fechamos a compra.'],
+  ['04','Transporte e documentação','O veículo segue para nosso armazém parceiro na Flórida, onde cuidamos de toda a burocracia pré-embarque.'],
+  ['05','Embarque e desembaraço','O carro embarca em Miami e desembarca no porto de Itajaí. Fazemos o desembaraço aduaneiro e a retirada no porto.'],
+  ['06','Restauração e entrega','Em Gaspar, SC, nossa equipe executa a restauração combinada, que você acompanha de perto. Entregamos com placa preta.']
+  ];
 function renderImportacao(){
   document.getElementById('app').innerHTML=`
 <div class="page-hero">
@@ -506,17 +547,21 @@ function renderImportacao(){
       <div class="imp-card reveal">
         <div class="imp-card-tag">Caminho tradicional</div>
         <h3>Comprado pronto nos EUA</h3>
-        <div class="imp-row"><span>Preço nos EUA (restaurado)</span><strong>US$ 15 mil</strong></div>
-        <div class="imp-row total"><span>Valor final importado</span><strong>R$ 220–250 mil</strong></div>
+        <table class="imp-table"><tbody>
+          <tr class="imp-row"><th scope="row">Preço nos EUA (restaurado)</th><td>US$ 15 mil</td></tr>
+          <tr class="imp-row total"><th scope="row">Valor final importado</th><td>R$ 220–250 mil</td></tr>
+        </tbody></table>
       </div>
       <div class="imp-card featured reveal">
         <div class="imp-card-tag">Com a Bomsenhor</div>
         <h3>Garimpado como projeto</h3>
-        <div class="imp-row"><span>Preço nos EUA (projeto)</span><strong>US$ 5 mil</strong></div>
-        <div class="imp-row"><span>Valor final importado</span><strong>R$ 90–110 mil</strong></div>
-        <div class="imp-row"><span>Restauração completa</span><strong>R$ 40–50 mil</strong></div>
-        <div class="imp-row"><span>Entrega após o desembarque</span><strong>3 a 6 meses</strong></div>
-        <div class="imp-row total"><span>Total</span><strong>R$ 130–160 mil</strong></div>
+        <table class="imp-table"><tbody>
+          <tr class="imp-row"><th scope="row">Preço nos EUA (projeto)</th><td>US$ 5 mil</td></tr>
+          <tr class="imp-row"><th scope="row">Valor final importado</th><td>R$ 90–110 mil</td></tr>
+          <tr class="imp-row"><th scope="row">Restauração completa</th><td>R$ 40–50 mil</td></tr>
+          <tr class="imp-row"><th scope="row">Entrega após o desembarque</th><td>3 a 6 meses</td></tr>
+          <tr class="imp-row total"><th scope="row">Total</th><td>R$ 130–160 mil</td></tr>
+        </tbody></table>
       </div>
     </div>
     <div class="imp-save reveal">Economia que pode passar de <em>R$ 100 mil</em></div>
@@ -528,13 +573,7 @@ function renderImportacao(){
     <span class="s-tag reveal">O processo</span>
     <h2 class="s-title reveal" style="margin-bottom:2rem">Nosso <em>método</em></h2>
     <div class="steps steps-3">
-      ${[['01','Consulta e garimpo','Você nos conta o sonho. Buscamos nos EUA os melhores exemplares, pronto ou projeto, com fotos e histórico de cada um.'],
-         ['02','Orçamento comparativo','Montamos o custo completo de cada caminho, lado a lado, para você decidir com clareza.'],
-         ['03','Negociação e compra','Com o seu aceite, negociamos diretamente com o vendedor nos EUA e fechamos a compra.'],
-         ['04','Transporte e documentação','O veículo segue para nosso armazém parceiro na Flórida, onde cuidamos de toda a burocracia pré-embarque.'],
-         ['05','Embarque e desembaraço','O carro embarca em Miami e desembarca no porto de Itajaí. Fazemos o desembaraço aduaneiro e a retirada no porto.'],
-         ['06','Restauração e entrega','Em Gaspar, SC, nossa equipe executa a restauração combinada, que você acompanha de perto. Entregamos com placa preta.']
-        ].map(([n,t,d])=>`<div class="step reveal"><div class="step-num">${n}</div><h4>${t}</h4><p>${d}</p></div>`).join('')}
+      ${ETAPAS_IMPORTACAO.map(([n,t,d])=>`<div class="step reveal"><div class="step-num">${n}</div><h4>${t}</h4><p>${d}</p></div>`).join('')}
     </div>
     <p class="reveal" style="margin-top:1.5rem;font-size:14px;color:#707070">Do fechamento do orçamento ao desembarque no Brasil: <strong style="color:#333333">até 3 meses</strong>.</p>
   </div>
@@ -728,6 +767,26 @@ ${PARCEIROS.length?`
 }
 
 // ── CONTATO ──────────────────────────────────────────────────
+// ── PERGUNTAS FREQUENTES ─────────────────────────────────────
+// Aparecem na página de Contato e viram dados estruturados (FAQPage)
+// para o Google. Para editar, mude o texto aqui e gere as páginas.
+const FAQS=[
+  ['Vocês restauram carros e motos?','Sim. A Bomsenhor restaura carros e motos clássicos, com funilaria, pintura, tapeçaria, mecânica, elétrica e acabamentos. Desde 2015 já passaram pela oficina cerca de 37 carros e 12 motos.'],
+  ['Onde fica a Bomsenhor Restaurações?','Na R. Antônio Weidgenannt, 185, bairro Gasparinho, em Gaspar (SC), CEP 89112-316. São dois galpões que somam 575 m² dedicados à restauração. Visitas ao ateliê são feitas mediante agendamento prévio.'],
+  ['Vocês atendem clientes de fora de Santa Catarina?','Sim. A oficina fica em Gaspar (SC), mas fazemos projetos para clientes de todo o território nacional.'],
+  ['Como funciona o orçamento de uma restauração?','O processo começa com uma avaliação detalhada do veículo. Com base nela, montamos o orçamento de acordo com o projeto do cliente, com prazo e valores estimados, até chegarmos a um acordo e definirmos a data de início.'],
+  ['Quanto tempo leva uma restauração?','Depende do estado do veículo e do que será feito. Como referência, o Cadillac Eldorado Brougham 1958, com revisão mecânica e elétrica, repintura de componentes e acabamentos, levou cerca de um ano.'],
+  ['Qual o horário de atendimento?','De segunda a sexta-feira, das 7h às 12h e das 13h às 17h30. Pelo WhatsApp (47) 99174-2031 respondemos em horário comercial.'],
+  ['Posso acompanhar a restauração do meu veículo?','Sim. Todas as etapas são documentadas e enviadas ao cliente em fotos e vídeos, para comprovar o andamento do projeto.'],
+  ['Como funciona a importação de um carro clássico?','Buscamos o carro nos EUA, montamos um orçamento comparativo e, com o seu aceite, negociamos e compramos. O veículo segue para um armazém parceiro na Flórida, embarca em Miami e chega ao porto de Itajaí, onde fazemos o desembaraço e a retirada. Do fechamento do orçamento ao desembarque leva até 3 meses.'],
+  ['Vale mais a pena importar um carro pronto ou um projeto?','Os impostos incidem sobre o valor do carro somado ao frete, então um carro de projeto, mais barato lá fora, chega bem mais barato aqui. Restaurado no Brasil, a economia fica entre 40% e 60% em relação aos preços de mercado. Também importamos carros prontos.'],
+  ['Os carros importados saem com placa preta?','Sim. Todos os carros importados pela Bomsenhor saem com placa preta, direto para a garagem do cliente.'],
+  ['Vocês vendem veículos clássicos?','Sim. O acervo reúne carros e motos clássicos selecionados e revisados, prontos para rodar. Os veículos disponíveis estão na página Acervo.']
+];
+function faqHtml(){
+  return FAQS.map(([q,a])=>`<details class="faq-item reveal"><summary><h3>${q}</h3></summary><p>${a}</p></details>`).join('');
+}
+
 function renderContato(){
   document.getElementById('app').innerHTML=`
 <div class="page-hero">
@@ -746,7 +805,8 @@ function renderContato(){
     <div class="contact-grid">
       <div class="contact-card reveal">
         <h3>WhatsApp</h3>
-        <p style="margin-bottom:1.25rem">A forma mais rápida de falar conosco. Respondemos em horário comercial.</p>
+        <p style="margin-bottom:.5rem">A forma mais rápida de falar conosco. Respondemos em horário comercial.</p>
+        <p style="margin-bottom:1.25rem"><a href="tel:+5547991742031">(47) 99174-2031</a></p>
         <a href="https://wa.me/5547991742031?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas." target="_blank" class="btn-gold">Iniciar conversa →</a>
       </div>
       <div class="contact-card reveal">
@@ -755,9 +815,11 @@ function renderContato(){
         <p><a href="mailto:bomsenhor10@icloud.com">bomsenhor10@icloud.com</a></p>
       </div>
       <div class="contact-card reveal">
-        <h3>Localização</h3>
-        <p>Gaspar, Santa Catarina<br>Brasil</p>
-        <p style="margin-top:1rem;font-size:13px;color:#707070">Visitas ao ateliê mediante agendamento prévio.</p>
+        <h3>Localização e horário</h3>
+        <p>R. Antônio Weidgenannt, 185 - Gasparinho<br>Gaspar - SC, 89112-316</p>
+        <p style="margin-top:.75rem">Segunda a sexta: 7h às 12h e 13h às 17h30</p>
+        <p style="margin-top:.75rem;font-size:13px;color:#707070">Visitas ao ateliê mediante agendamento prévio.</p>
+        <a href="https://maps.app.goo.gl/JuU8ReXoNPPCCW1s5" target="_blank" rel="noopener" class="btn-o" style="margin-top:1.25rem;width:100%;justify-content:center">Ver no mapa →</a>
       </div>
       <div class="contact-card reveal">
         <h3>Instagram</h3>
@@ -766,6 +828,17 @@ function renderContato(){
       </div>
     </div>
   </div>
+</section>
+<section class="section" style="background:#FAF9F6">
+  <div class="section-inner"><div style="max-width:780px">
+    <span class="s-tag reveal">Dúvidas</span>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Perguntas <em>frequentes</em></h2>
+    <div class="faq-list">${faqHtml()}</div>
+    <div class="reveal" style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+      <span style="font-size:14px;color:#707070">Já é cliente ou conhece nosso trabalho?</span>
+      <a href="https://maps.app.goo.gl/JuU8ReXoNPPCCW1s5" target="_blank" rel="noopener" class="btn-o">Veja e deixe sua avaliação no Google →</a>
+    </div>
+  </div></div>
 </section>`;
 }
 

@@ -14,6 +14,7 @@
 // Não precisa de instalação (usa só o módulo "vm" nativo do Node).
 
 import { writeFileSync, mkdirSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadSiteData } from './lib/load-site-data.mjs';
@@ -27,7 +28,31 @@ if (missing.length) {
   console.log('\nGerando as páginas mesmo assim, mas confira os avisos acima — alguma foto pode ficar quebrada.\n');
 }
 
-const { VEICULOS, PROJETOS, HERO_SETS, render } = loadSiteData(ROOT);
+const { VEICULOS, PROJETOS, HERO_SETS, FAQS, ETAPAS_IMPORTACAO, render } = loadSiteData(ROOT);
+
+// ── Dados da empresa (schema.org) ─────────────────────────────────
+// Usados nos dados estruturados que o Google e as IAs leem. Preencha
+// "rua", "cep" e "horarios" quando tiver os dados; campos vazios são
+// omitidos automaticamente.
+const EMPRESA = {
+  nome: 'Bomsenhor Restaurações',
+  descricao: 'Restauração de carros e motos clássicos e importação de veículos dos EUA, com oficina em Gaspar, SC, e projetos para todo o Brasil. Desde 2015.',
+  telefone: '+55 47 99174-2031',
+  email: 'bomsenhor10@icloud.com',
+  rua: 'R. Antônio Weidgenannt, 185 - Gasparinho',
+  cep: '89112-316',
+  cidade: 'Gaspar',
+  estado: 'SC',
+  // Ex.: [{ dias: ['Monday','Tuesday','Wednesday','Thursday','Friday'], abre: '08:00', fecha: '18:00' }]
+  horarios: [
+    { dias: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], abre: '07:00', fecha: '12:00' },
+    { dias: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], abre: '13:00', fecha: '17:30' },
+  ],
+  fundacao: '2015',
+  fundadores: ['Vanderlei Bomsenhor', 'Edi Clea Bomsenhor'],
+  redes: ['https://instagram.com/bomsenhorrestauracoes', 'https://maps.app.goo.gl/JuU8ReXoNPPCCW1s5'],
+  hasMap: 'https://maps.app.goo.gl/JuU8ReXoNPPCCW1s5',
+};
 
 function truncate(s, n) {
   const clean = s.replace(/\s+/g, ' ').trim();
@@ -40,8 +65,62 @@ function smUrl(url) {
 }
 
 // ── Shell comum a todas as páginas (idêntico ao index.html) ──────────
-function pageShell({ title, description, canonicalPath, bodyHTML, heroImage, heroWidths = [960, 1920] }) {
+const abs = u => u.startsWith('http') ? u : SITE_URL + u;
+const escHtml = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+function empresaSchema() {
+  const e = EMPRESA;
+  const address = { '@type': 'PostalAddress', addressLocality: e.cidade, addressRegion: e.estado, addressCountry: 'BR' };
+  if (e.rua) address.streetAddress = e.rua;
+  if (e.cep) address.postalCode = e.cep;
+  const o = {
+    '@type': 'AutoRepair', '@id': SITE_URL + '/#empresa', name: e.nome, description: e.descricao,
+    url: SITE_URL + '/', logo: SITE_URL + '/images/logo.png', image: SITE_URL + '/images/equipe/fundadores.jpg',
+    telephone: e.telefone, email: e.email, address, areaServed: { '@type': 'Country', name: 'Brasil' }, foundingDate: e.fundacao,
+    founder: e.fundadores.map(name => ({ '@type': 'Person', name })), sameAs: e.redes, hasMap: e.hasMap,
+  };
+  if (e.horarios.length) o.openingHoursSpecification = e.horarios.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.dias, opens: h.abre, closes: h.fecha }));
+  return o;
+}
+function breadcrumb(items) {
+  return { '@type': 'BreadcrumbList', itemListElement: items.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: SITE_URL + path })) };
+}
+function precoNumero(preco) {
+  const m = String(preco || '').match(/[\d.]+(,\d+)?/);
+  return m ? m[0].replace(/\./g, '').replace(',', '.') : null;
+}
+function veiculoSchema(v) {
+  const o = { '@type': 'Product', name: `${v.nome} ${v.ano}`, description: v.descricao.replace(/\s+/g, ' ').trim(),
+    image: (v.fotos || []).slice(0, 6).map(f => `${SITE_URL}/images/acervo/${v.id}/${f}`), category: v.tipo === 'moto' ? 'Motocicleta clássica' : 'Carro clássico',
+    url: `${SITE_URL}/acervo/${v.id}/` };
+  const valor = precoNumero(v.preco);
+  o.offers = { '@type': 'Offer', priceCurrency: 'BRL', url: o.url,
+    availability: v.status === 'vendido' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/UsedCondition', seller: { '@id': SITE_URL + '/#empresa' } };
+  if (valor && v.status !== 'vendido') o.offers.price = valor;
+  return o;
+}
+function howToSchema() {
+  return { '@type': 'HowTo', name: 'Como importar um carro clássico dos EUA com a Bomsenhor',
+    totalTime: 'P3M', step: ETAPAS_IMPORTACAO.map(([n, name, text], i) => ({ '@type': 'HowToStep', position: i + 1, name, text })) };
+}
+// Data da última alteração (git) dos arquivos que formam a página; se
+// houver mudança ainda não salva no git, usa a data de hoje.
+function lastmod(paths) {
+  try {
+    const q = paths.map(p => `"${p}"`).join(' ');
+    if (execSync(`git status --porcelain -- ${q}`, { cwd: ROOT }).toString().trim()) return new Date().toISOString().slice(0, 10);
+    return execSync(`git log -1 --format=%cs -- ${q}`, { cwd: ROOT }).toString().trim() || null;
+  } catch { return null; }
+}
+function faqSchema() {
+  return { '@type': 'FAQPage', mainEntity: FAQS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+}
+
+function pageShell({ title, description, canonicalPath, bodyHTML, heroImage, heroWidths = [960, 1920], ogType = 'website', schema = [] }) {
   const heroFull = heroImage;
+  const ld = { '@context': 'https://schema.org', '@graph': [empresaSchema(), ...schema] };
+  const ogTitle = title.replace(/ \| Bomsenhor Restaurações$/, '');
   const heroSm = smUrl(heroFull);
   const [wSm, wFull] = heroWidths;
   return `<!doctype html>
@@ -52,6 +131,18 @@ function pageShell({ title, description, canonicalPath, bodyHTML, heroImage, her
 <title>${title}</title>
 <meta name="description" content="${description.replace(/"/g, '&quot;')}">
 <link rel="canonical" href="${SITE_URL}${canonicalPath}">
+<meta property="og:type" content="${ogType}">
+<meta property="og:site_name" content="Bomsenhor Restaurações">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="${escHtml(ogTitle)}">
+<meta property="og:description" content="${escHtml(description)}">
+<meta property="og:url" content="${SITE_URL}${canonicalPath}">
+<meta property="og:image" content="${abs(heroFull)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${escHtml(ogTitle)}">
+<meta name="twitter:description" content="${escHtml(description)}">
+<meta name="twitter:image" content="${abs(heroFull)}">
+<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
 <link rel="icon" type="image/png" href="/images/logo.png">
 <link rel="apple-touch-icon" href="/images/logo.png">
 <link rel="preload" as="image" href="${heroSm}" imagesrcset="${heroSm} ${wSm}w, ${heroFull} ${wFull}w" imagesizes="100vw" fetchpriority="high">
@@ -119,11 +210,12 @@ function pageShell({ title, description, canonicalPath, bodyHTML, heroImage, her
         <a href="https://wa.me/5547991742031?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas." target="_blank">WhatsApp</a>
         <a href="https://instagram.com/bomsenhorrestauracoes" target="_blank">Instagram</a>
         <a href="mailto:bomsenhor10@icloud.com">E-mail</a>
+        <span class="footer-hours">Seg. a sex.: 7h–12h e 13h–17h30</span>
       </div>
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 Bomsenhor Restaurações. Todos os direitos reservados.</p>
-      <p class="footer-loc">Gaspar, SC — Brasil</p>
+      <p class="footer-loc"><a href="https://maps.app.goo.gl/JuU8ReXoNPPCCW1s5" target="_blank" rel="noopener">R. Antônio Weidgenannt, 185 - Gasparinho, Gaspar - SC, 89112-316</a></p>
     </div>
   </div>
 </footer>
@@ -158,8 +250,8 @@ const routes = [];
 
 routes.push({
   path: '/', file: 'index.html',
-  title: 'Bomsenhor Restaurações',
-  description: 'Restauração e importação de veículos clássicos em Gaspar, SC. Desde 2015, mais de 45 carros e motos antigas restaurados, acervo à venda e projetos sob medida.',
+  title: 'Importação e Restauração de Carros e Motos em Gaspar, SC | Bomsenhor',
+  description: 'Restauração e importação de carros e motos clássicos, com oficina em Gaspar, SC, e projetos para todo o Brasil. Desde 2015, mais de 45 veículos restaurados.',
   heroImage: heroFirst('home'),
   html: () => render('renderHome'),
 });
@@ -167,18 +259,20 @@ routes.push({
 routes.push({
   path: '/acervo/', file: 'acervo/index.html',
   title: 'Acervo de veículos clássicos à venda | Bomsenhor Restaurações',
-  description: 'Carros e motos clássicos à venda em Gaspar, SC: veículos selecionados, restaurados e revisados, prontos para rodar.',
+  description: 'Carros e motos clássicos à venda no acervo da Bomsenhor, em Gaspar, SC: veículos com procedência, revisados e entregues para todo o Brasil.',
   heroImage: heroFirst('acervo'),
   html: () => render('renderAcervo'),
 });
 for (const v of VEICULOS) {
-  const statusTxt = v.status === 'vendido' ? 'Vendido' : 'à venda';
+  const statusTxt = v.status === 'vendido' ? 'vendido' : 'à venda';
   routes.push({
     path: `/acervo/${v.id}/`, file: `acervo/${v.id}/index.html`,
-    title: `${v.nome} (${v.ano}) ${statusTxt} em Gaspar, SC | Bomsenhor Restaurações`,
+    title: `${v.nome} ${v.ano} ${statusTxt} em Gaspar, SC | Bomsenhor`,
     description: truncate(v.descricao, 155),
     heroImage: v.fotos && v.fotos.length ? coverPhoto(v, 'acervo') : heroFirst('acervo'),
     heroWidths: v.fotos && v.fotos.length ? [800, 1600] : [960, 1920],
+    ogType: 'product',
+    schema: [veiculoSchema(v), breadcrumb([['Início', '/'], ['Acervo', '/acervo/'], [`${v.nome} ${v.ano}`, `/acervo/${v.id}/`]])],
     html: () => render('renderVeiculoDetalhe', v.id),
   });
 }
@@ -186,17 +280,18 @@ for (const v of VEICULOS) {
 routes.push({
   path: '/projetos/', file: 'projetos/index.html',
   title: 'Projetos de restauração de veículos clássicos | Bomsenhor Restaurações',
-  description: 'Conheça os projetos de restauração concluídos e em andamento do ateliê Bomsenhor Restaurações, em Gaspar, SC.',
+  description: 'Projetos de restauração de carros e motos clássicos da Bomsenhor, em Gaspar, SC: etapas documentadas em fotos e vídeos para clientes de todo o Brasil.',
   heroImage: heroFirst('projetos'),
   html: () => render('renderProjetos'),
 });
 for (const p of PROJETOS) {
   routes.push({
     path: `/projetos/${p.id}/`, file: `projetos/${p.id}/index.html`,
-    title: `${p.nome} (${p.ano}) — Restauração | Bomsenhor Restaurações`,
+    title: `${p.nome} ${p.ano}: restauração | Bomsenhor`,
     description: truncate(p.descricao, 155),
     heroImage: p.fotos && p.fotos.length ? coverPhoto(p, 'projetos') : heroFirst('projetos'),
     heroWidths: p.fotos && p.fotos.length ? [800, 1600] : [960, 1920],
+    schema: [breadcrumb([['Início', '/'], ['Projetos', '/projetos/'], [`${p.nome} ${p.ano}`, `/projetos/${p.id}/`]])],
     html: () => render('renderProjetoDetalhe', p.id),
   });
 }
@@ -206,22 +301,30 @@ routes.push({
   title: 'Importação de veículos clássicos e peças | Bomsenhor Restaurações',
   description: 'Importação de clássicos dos EUA com restauração no Brasil: economia de 40% a 60%, do garimpo à placa preta, com toda a logística e documentação.',
   heroImage: heroFirst('importacao'),
+  schema: [howToSchema()],
   html: () => render('renderImportacao'),
 });
 routes.push({
   path: '/sobre/', file: 'sobre/index.html',
   title: 'Sobre a Bomsenhor Restaurações | Gaspar, SC',
-  description: 'Do primeiro Opala, em 2013, a 575 m² de oficina: a história da Bomsenhor Restaurações em Gaspar, Santa Catarina.',
+  description: 'Do primeiro Opala, em 2013, a 575 m² de oficina: a história da Bomsenhor Restaurações em Gaspar, SC, que atende clientes de todo o Brasil.',
   heroImage: heroFirst('sobre'),
   html: () => render('renderSobre'),
 });
 routes.push({
   path: '/contato/', file: 'contato/index.html',
   title: 'Contato | Bomsenhor Restaurações',
-  description: 'Fale com a Bomsenhor Restaurações por WhatsApp, e-mail ou Instagram. Atendemos em Gaspar, Santa Catarina.',
+  description: 'Fale com a Bomsenhor Restaurações: WhatsApp (47) 99174-2031, endereço em Gaspar, SC, horário de atendimento e respostas às dúvidas mais comuns.',
   heroImage: heroFirst('contato'),
+  schema: [faqSchema()],
   html: () => render('renderContato'),
 });
+
+for (const r of routes) {
+  const base = ['app.js', 'styles.css', 'scripts/generate-pages.mjs'];
+  const m = r.path.match(/^\/(acervo|projetos)\/([^/]+)\/$/);
+  r.lastmod = lastmod(m ? [...base, m[1] === 'acervo' ? 'data/veiculos.js' : 'data/projetos.js', `images/${m[1]}/${m[2]}`] : base);
+}
 
 // ── Gera cada página ───────────────────────────────────────────────
 for (const r of routes) {
@@ -231,6 +334,8 @@ for (const r of routes) {
     canonicalPath: r.path,
     heroImage: r.heroImage,
     heroWidths: r.heroWidths,
+    ogType: r.ogType,
+    schema: r.schema,
     bodyHTML: r.html(),
   });
   writePage(r.file, html);
@@ -241,7 +346,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(r => `  <url>
     <loc>${SITE_URL}${r.path}</loc>
-    <changefreq>weekly</changefreq>
+${r.lastmod ? `    <lastmod>${r.lastmod}</lastmod>\n` : ''}    <changefreq>weekly</changefreq>
     <priority>${r.path === '/' ? '1.0' : '0.7'}</priority>
   </url>`).join('\n')}
 </urlset>
