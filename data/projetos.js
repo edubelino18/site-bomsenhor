@@ -63,6 +63,20 @@ const PROJETOS=[
      {num:'06',titulo:'Pintura, montagem e acabamentos',data:'A seguir',desc:'Pintura da carroceria, restauro das peças do doador e montagem completa, com mecânica revisada, cromados e tapeçaria.',status:'futura'},
      {num:'07',titulo:'Entrega',data:'A seguir',desc:'Entrega do Cadillac restaurado ao cliente.',status:'futura'}
    ]},
+  {id:'cadillac-eldorado-brougham-1958',nome:'Cadillac Eldorado Brougham',ano:1958,status:'concluido',duracao:'Cerca de 1 ano',
+   cliente:'Confidencial',
+   descricao:'O Cadillac Eldorado Brougham está entre os carros mais exclusivos que a Cadillac já produziu. Montado praticamente à mão entre 1957 e 1958, teve apenas 704 unidades fabricadas e, na época, custava mais que um Rolls-Royce. Estima-se que restem menos de mil exemplares nesse estado no mundo e menos de cinco no Brasil.\n\nPor fora, tem teto em aço inoxidável escovado, quatro portas sem coluna central, com as traseiras de abertura invertida, faróis duplos e para-choques cromados com os característicos “Dagmars”. Por baixo, motor V8 de 365 polegadas cúbicas, câmbio automático Hydra-Matic e suspensão a ar. Por dentro, bancos em couro, vidros elétricos e o Autronic Eye, um sensor no painel que alternava sozinho entre farol alto e baixo.\n\nEste exemplar passou mais de 15 anos em processo de restauração antes de chegar à Bomsenhor. O proprietário enfrentou muitos problemas e nunca chegou a rodar com o carro. Em cerca de um ano, fizemos a revisão e a manutenção elétrica e mecânica, a repintura de componentes externos e a finalização dos acabamentos internos e externos. Concluído, o Eldorado seguiu direto para uma empresa da região especializada na compra e venda de clássicos exclusivos.',
+   resultado:'Depois de mais de 15 anos parado em restauração, o Eldorado Brougham voltou a rodar e seguiu para o mercado de clássicos exclusivos.',
+   fotos:['frente-34.jpg','lateral.jpg','frente.jpg','traseira.jpg','farois.jpg','frente-detalhe.jpg','roda.jpg','motor.jpg','interior.jpg','banco-dianteiro.jpg','porta.jpg','macaneta.jpg','vidros.jpg','painel.jpg','indicadores.jpg','autronic-eye.jpg','ao-volante.jpg'],
+   bg:bg(210,200,10,8,20,12),
+   etapas:[
+     {num:'01',titulo:'Avaliação do projeto',data:'—',desc:'O carro chegou depois de mais de 15 anos em processo de restauração, sem nunca ter rodado. Levantamento completo de tudo o que faltava concluir.',status:'concluida'},
+     {num:'02',titulo:'Revisão e manutenção mecânica',data:'—',desc:'Revisão e manutenção de toda a mecânica para colocar o carro em funcionamento.',status:'concluida'},
+     {num:'03',titulo:'Revisão e manutenção elétrica',data:'—',desc:'Revisão e manutenção de todo o sistema elétrico.',status:'concluida'},
+     {num:'04',titulo:'Repintura de componentes externos',data:'—',desc:'Repintura dos componentes externos que ainda precisavam de acabamento.',status:'concluida'},
+     {num:'05',titulo:'Acabamentos internos e externos',data:'—',desc:'Finalização de todos os acabamentos, por dentro e por fora.',status:'concluida'},
+     {num:'06',titulo:'Entrega',data:'—',desc:'Veículo concluído após cerca de um ano de trabalho, seguindo para uma empresa especializada em clássicos exclusivos.',status:'concluida'}
+   ]},
   {id:'cadillac-fleetwood-1948',nome:'Cadillac Fleetwood Series 62',ano:1948,status:'concluido',duracao:'8 meses',
    cliente:'Confidencial',
    descricao:'Restauração completa do Cadillac Fleetwood Series 62 1948, em Azul Escuro, com cromados polidos, para-choques triplos característicos da época, ornamento "Flying Lady" no capô e estepe exposto no porta-malas. Interior revestido em tecido azul-claro.\n\nForam feitos todos os acabamentos de montagem final, bem como revisão mecânica e elétrica completa.',

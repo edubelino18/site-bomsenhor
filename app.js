@@ -408,11 +408,11 @@ function renderProjetos(){
     ${a.length?`<div style="margin-bottom:3rem">
       <span class="s-tag reveal">Em andamento</span>
       <h2 class="s-title reveal" style="margin-bottom:2rem">Projetos <em>em execução</em></h2>
-      <div class="v-grid">${a.map(pCard).join('')}</div>
+      <div class="v-grid p-grid">${a.map(pCard).join('')}</div>
     </div>`:''}
     <span class="s-tag reveal">Portfólio</span>
     <h2 class="s-title reveal" style="margin-bottom:2rem">Projetos <em>concluídos</em></h2>
-    <div class="v-grid">${c.map(pCard).join('')}</div>
+    <div class="v-grid p-grid">${c.map(pCard).join('')}</div>
   </div>
 </section>`;
 }

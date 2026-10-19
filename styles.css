@@ -62,7 +62,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .btn-gold{display:inline-flex;align-items:center;gap:8px;background:#E31B22;color:#FFFFFF;padding:13px 28px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:background var(--t);cursor:pointer}
 .btn-gold:hover{background:#C2171E;color:#FFFFFF}
 
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;letter-spacing:0.07em;text-transform:uppercase;font-weight:500}
+.badge{display:inline-block;white-space:nowrap;flex-shrink:0;padding:3px 10px;border-radius:20px;font-size:11px;letter-spacing:0.07em;text-transform:uppercase;font-weight:500}
 .badge-disponivel{background:rgba(31,96,61,0.12);color:#1F603D}
 .badge-vendido{background:rgba(51,51,51,0.08);color:#6B6B6B}
 .badge-projeto{background:rgba(244,197,66,0.15);color:#866C24}
@@ -71,7 +71,9 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 
 .v-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem}
 /* Com só 1 ou 2 cards, esticar deixa cada card gigante: mantém o tamanho normal de coluna */
-.v-grid:has(> :only-child),.v-grid:has(> :nth-child(2):last-child){grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.v-grid:not(.p-grid):has(> :only-child),.v-grid:not(.p-grid):has(> :nth-child(2):last-child){grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+/* Projetos: cards mais largos (cabem nome + status sem quebrar) e mesmo tamanho em qualquer quantidade */
+.v-grid.p-grid{grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr))}
 .v-card{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:border-color var(--t),box-shadow var(--t),transform var(--t);box-shadow:0 2px 14px rgba(51,51,51,0.07)}
 .v-card:hover{border-color:#F4C542;box-shadow:0 8px 36px rgba(51,51,51,0.13);transform:translateY(-4px)}
 .v-card .card-img-wrap{overflow:hidden}
