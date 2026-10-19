@@ -43,10 +43,11 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 #mobileMenu .wa-mob{margin-top:1.5rem;background:#E31B22;color:#FFFFFF;padding:1rem 2rem;border-radius:var(--r);text-align:center;font-family:var(--fb);font-size:13px;letter-spacing:0.08em;text-transform:uppercase}
 
 #app{padding-top:var(--nav-h);min-height:100vh}
-.section{padding:3.5rem 1.5rem}
+.section{padding:2.9rem 1.5rem}
 .section-inner{max-width:var(--max);margin:0 auto}
-@media(min-width:768px){.section{padding:4.5rem 2.5rem}}
-@media(min-width:1280px){.section{padding:5.5rem 3rem}}
+/* Espaço entre seções: ~110px no computador (2 x 3.65rem), ~87px no celular */
+@media(min-width:768px){.section{padding:3.65rem 2.5rem}}
+@media(min-width:1280px){.section{padding:3.65rem 3rem}}
 
 .s-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A6D1E;margin-bottom:1rem}
 .s-tag::before{content:'';width:24px;height:1px;background:#8A6D1E}

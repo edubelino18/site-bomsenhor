@@ -618,9 +618,9 @@ function renderSobre(){
       <p class="reveal" style="font-size:16px;color:#707070;line-height:1.9">Hoje são dois galpões em Gaspar, SC, somando 575 m² dedicados à restauração, uma equipe em crescimento e cerca de 37 carros e 12 motos que já passaram pelas nossas mãos.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D3D3D3;border-radius:var(--rl);overflow:hidden;margin-top:2rem">
-      ${[['2015','Fundação'],['45+','Carros e motos restaurados'],['575','m² de oficina em Gaspar, SC']].map(([n,l])=>`
+      ${[['2015','Fundação'],['45+','Carros e motos restaurados'],['575<span style="font-size:.45em;margin-left:.1em">m²</span>','De oficina em Gaspar, SC']].map(([n,l])=>`
       <div style="background:#0F1E33;padding:1.75rem 1rem;text-align:center" class="reveal">
-        <div style="font-family:var(--fd);font-size:2.5rem;font-weight:400;color:#FAF9F6;line-height:1">${n}</div>
+        <div style="font-family:var(--fd);font-size:clamp(1.9rem,7vw,2.5rem);font-weight:400;color:#FAF9F6;line-height:1;white-space:nowrap">${n}</div>
         <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#707070;margin-top:6px">${l}</div>
       </div>`).join('')}
     </div>
