@@ -750,7 +750,7 @@ function renderSobre(){
   </div>
 </section>
 <section style="position:relative;height:420px;overflow:hidden">
-  <img src="${smUrl(heroUrls('sobre')[0])}" srcset="${heroSrcset(heroUrls('sobre')[0])}" sizes="100vw" alt="Equipe Bomsenhor" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+  <img src="/images/equipe/equipe-sm.jpg" srcset="/images/equipe/equipe-sm.jpg 960w, /images/equipe/equipe.jpg 1376w" sizes="100vw" alt="Ilustração em aquarela da equipe Bomsenhor Restaurações" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
   <div style="position:absolute;inset:0;background:rgba(51,51,51,0.5)"></div>
   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;z-index:1">
     <span class="s-tag on-dark reveal" style="justify-content:center">Nossa equipe</span>
