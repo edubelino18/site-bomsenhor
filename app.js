@@ -134,8 +134,13 @@ function startHeroSlideshow(){
 function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
   const capa=item.fotos&&item.fotos[0];
   const full=capa?fotoUrl(item,tipo,capa):'';
-  const foto=capa?`<img src="${smUrl(full)}" srcset="${smUrl(full)} 800w, ${full} 1600w" sizes="(min-width:1280px) 1100px, 96vw" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`:'';
+  // Capa quadrada/vertical (ex.: fotos de celular) seria cortada no banner 16:7:
+  // heroFit mostra a foto inteira sobre um fundo desfocado da própria foto.
+  const foto=capa?`<img class="detail-hero-bg" src="${smUrl(full)}" alt="" aria-hidden="true"><img class="detail-hero-img" src="${smUrl(full)}" srcset="${smUrl(full)} 800w, ${full} 1600w" sizes="(min-width:1280px) 1100px, 96vw" alt="" onload="window.heroFit&&heroFit(this)">`:'';
   return`<div class="detail-hero reveal" style="background:${item.bg||DEFAULT_BG}">${foto}${always}${capa?'':fallbackOnly}</div>`;
+}
+function heroFit(img){
+  if(img.naturalWidth/img.naturalHeight<1.2)img.parentElement.classList.add('hero-fit');
 }
 function galleryHtml(item,tipo){
   if(item.fotos&&item.fotos.length){

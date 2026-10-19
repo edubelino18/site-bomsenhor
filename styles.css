@@ -127,6 +127,10 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .detail-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6B6B;margin-bottom:2rem;cursor:pointer;transition:color var(--t);background:none;border:none;font-family:var(--fb)}
 .detail-back:hover{color:#1D4175}
 .detail-hero{aspect-ratio:16/7;border-radius:var(--rl);overflow:hidden;margin-bottom:2.5rem;position:relative}
+.detail-hero-img,.detail-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.detail-hero-bg{display:none;filter:blur(24px) brightness(.85);transform:scale(1.15)}
+.detail-hero.hero-fit .detail-hero-bg{display:block}
+.detail-hero.hero-fit .detail-hero-img{object-fit:contain}
 .detail-info-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:3rem}
 @media(min-width:768px){.detail-info-grid{grid-template-columns:2fr 1fr}}
 .detail-specs{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);padding:1.5rem}
