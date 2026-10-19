@@ -63,6 +63,19 @@ const PROJETOS=[
      {num:'06',titulo:'Pintura, montagem e acabamentos',data:'A seguir',desc:'Pintura da carroceria, restauro das peças do doador e montagem completa, com mecânica revisada, cromados e tapeçaria.',status:'futura'},
      {num:'07',titulo:'Entrega',data:'A seguir',desc:'Entrega do Cadillac restaurado ao cliente.',status:'futura'}
    ]},
+  {id:'mercedes-slk-200-2006',nome:'Mercedes-Benz SLK 200 Cabriolet',ano:2006,status:'concluido',duracao:'5 a 6 meses',servico:'reparo',
+   cliente:'Confidencial',
+   descricao:'Nem todo projeto é uma restauração completa. Esta Mercedes-Benz SLK 200 Cabriolet 2006, um modelo raro no mercado nacional, estava parada havia meses depois de uma batida na frente: o dono não encontrava ninguém disposto a assumir o reparo de um carro tão exclusivo.\n\nA Bomsenhor orçou o reparo do para-choque, do capô e do para-lama e também a importação das peças que não existem por aqui (grade, emblema e farol), vindas da Alemanha e dos EUA. Com as peças na oficina, o serviço foi executado em cerca de 3 meses. Da chegada do carro ao reparo completo, incluindo a importação, o projeto levou de 5 a 6 meses.',
+   resultado:'Um carro raro, que estava parado por falta de quem fizesse o serviço, voltou à forma original com peças importadas e reparo completo da frente.',
+   fotos:['depois.jpg','antes-frente.jpg','antes-lateral-esquerda.jpg','antes-lateral-direita.jpg'],
+   bg:bg(220,215,10,8,18,12),
+   etapas:[
+     {num:'01',titulo:'Avaliação e orçamento',data:'Etapa 1',desc:'Avaliação dos danos na frente e orçamento do reparo do para-choque, do capô e do para-lama, junto com o orçamento de importação das peças necessárias.',status:'concluida'},
+     {num:'02',titulo:'Importação das peças',data:'Etapa 2',desc:'Compra e importação de grade, emblema e farol originais, vindos da Alemanha e dos EUA.',status:'concluida'},
+     {num:'03',titulo:'Reparo da funilaria',data:'Etapa 3',desc:'Recuperação do para-choque, do capô e do para-lama.',status:'concluida'},
+     {num:'04',titulo:'Montagem e acabamento',data:'Etapa 4',desc:'Pintura, instalação das peças importadas e acabamento final. Cerca de 3 meses de serviço após a chegada das peças.',status:'concluida'},
+     {num:'05',titulo:'Entrega',data:'5 a 6 meses no total',desc:'Carro entregue ao cliente com a frente refeita e as peças originais instaladas.',status:'concluida'}
+   ]},
   {id:'cadillac-eldorado-brougham-1958',nome:'Cadillac Eldorado Brougham',ano:1958,status:'concluido',duracao:'Cerca de 1 ano',
    cliente:'Confidencial',
    descricao:'O Cadillac Eldorado Brougham está entre os carros mais exclusivos que a Cadillac já produziu. Montado praticamente à mão entre 1957 e 1958, teve apenas 704 unidades fabricadas e, na época, custava mais que um Rolls-Royce. Estima-se que restem menos de mil exemplares nesse estado no mundo e menos de cinco no Brasil.\n\nPor fora, tem teto em aço inoxidável escovado, quatro portas sem coluna central, com as traseiras de abertura invertida, faróis duplos e para-choques cromados com os característicos “Dagmars”. Por baixo, motor V8 de 365 polegadas cúbicas, câmbio automático Hydra-Matic e suspensão a ar. Por dentro, bancos em couro, vidros elétricos e o Autronic Eye, um sensor no painel que alternava sozinho entre farol alto e baixo.\n\nEste exemplar passou mais de 15 anos em processo de restauração antes de chegar à Bomsenhor. O proprietário enfrentou muitos problemas e nunca chegou a rodar com o carro. Em cerca de um ano, fizemos a revisão e a manutenção elétrica e mecânica, a repintura de componentes externos e a finalização dos acabamentos internos e externos. Concluído, o Eldorado seguiu direto para uma empresa da região especializada na compra e venda de clássicos exclusivos.',

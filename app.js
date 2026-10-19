@@ -239,7 +239,7 @@ function renderHome(){
     <div style="max-width:680px;margin-bottom:2rem">
       <span class="s-tag reveal">O que fazemos</span>
       <h2 class="s-title reveal" style="margin-bottom:1.25rem">Restauração completa, <em>de ponta a ponta</em></h2>
-      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Cuidamos de todas as etapas da restauração de carros e motos clássicos, em uma oficina de 575 m² em Gaspar, Santa Catarina. Atendemos clientes de todo o território nacional.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">De pequenos reparos a restaurações completas, cuidamos de carros e motos antigos, clássicos, neoclássicos e exclusivos em uma oficina de 575 m² em Gaspar, Santa Catarina. Atendemos clientes de todo o território nacional.</p>
     </div>
     <div class="services">
       ${SERVICOS.map(([t,d])=>`<div class="service reveal"><h3>${t}</h3><p>${d}</p></div>`).join('')}
@@ -273,7 +273,7 @@ function renderHome(){
   <div class="section-inner" style="text-align:center">
     <span class="s-tag reveal" style="justify-content:center">Ateliê Bomsenhor</span>
     <h2 class="s-title reveal" style="margin-bottom:1.25rem">Acompanhe nossas<br><em>restaurações em curso</em></h2>
-    <p class="reveal" style="font-size:14px;color:#707070;max-width:420px;margin:0 auto 2rem">Cada projeto é uma jornada de meses de trabalho artesanal. Conheça os bastidores das nossas restaurações.</p>
+    <p class="reveal" style="font-size:14px;color:#707070;max-width:420px;margin:0 auto 2rem">De pequenos reparos a restaurações completas, cada projeto é único. Conheça os bastidores do nosso trabalho.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal">
       <a href="/projetos/" class="btn-p">Ver projetos</a>
       <a href="/importacao/" class="btn-o">Importação</a>
@@ -433,7 +433,7 @@ function pCard(p){
     </div>
     <div class="v-card-footer">
       <div style="font-size:13px;color:#707070">${p.etapas.length} etapas</div>
-      <span style="font-size:12px;color:#8A6D1E">Ver restauração →</span>
+      <span style="font-size:12px;color:#8A6D1E">Ver projeto →</span>
     </div>
   </div>
 </div>`;
@@ -454,8 +454,9 @@ function renderProjetos(){
   <div class="section-inner">
     <div style="max-width:680px;margin-bottom:3rem">
       <span class="s-tag reveal">Como trabalhamos</span>
-      <h2 class="s-title reveal" style="margin-bottom:1.25rem">Cada projeto, <em>documentado</em></h2>
-      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Toda restauração começa com uma avaliação detalhada do veículo. A partir dela, montamos o orçamento de acordo com o projeto do cliente, com prazo e valores estimados, até chegarmos a um acordo e definirmos a data de início.</p>
+      <h2 class="s-title reveal" style="margin-bottom:1.25rem">Do pequeno reparo à <em>restauração completa</em></h2>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Somos especializados em clássicos, mas atendemos praticamente todo tipo de serviço em carros e motos antigos, clássicos, neoclássicos e exclusivos, e, conforme o caso, até em carros mais novos e raros, que poucas oficinas aceitam. Cada projeto é único e avaliado individualmente.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Todo serviço começa com uma avaliação detalhada do veículo. A partir dela, montamos o orçamento de acordo com o projeto do cliente, com prazo e valores estimados, até chegarmos a um acordo e definirmos a data de início.</p>
       <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Durante o trabalho, todas as etapas são documentadas e enviadas ao cliente em fotos e vídeos, para que ele acompanhe e comprove o andamento, esteja onde estiver no Brasil.</p>
     </div>
     ${a.length?`<div style="margin-bottom:3rem">
@@ -509,7 +510,7 @@ function renderProjetoDetalhe(id){
       </div>
     </div>
     <span class="s-tag reveal">Processo</span>
-    <h2 class="s-title reveal" style="margin-bottom:2rem">Etapas da <em>restauração</em></h2>
+    <h2 class="s-title reveal" style="margin-bottom:2rem">Etapas ${p.servico?'do':'da'} <em>${p.servico||'restauração'}</em></h2>
     <div class="timeline">
       ${p.etapas.map(e=>`<div class="timeline-item reveal${e.status==='atual'?' timeline-current':e.status==='futura'?' timeline-future':''}">
         <div class="timeline-num">${e.num}</div>
@@ -801,11 +802,12 @@ ${PARCEIROS.length?`
 // 'projetos' ou 'importacao') e vira dados estruturados (FAQPage)
 // só naquela página. Para editar, mude o texto aqui e gere as páginas.
 const FAQS=[
-  ['contato','Vocês restauram carros e motos?','Sim. A Bomsenhor restaura carros e motos clássicos, com funilaria, pintura, tapeçaria, mecânica, elétrica e acabamentos. Desde 2015 já passaram pela oficina cerca de 37 carros e 12 motos.'],
+  ['contato','Vocês restauram carros e motos?','Sim. A Bomsenhor faz desde pequenos reparos até restaurações completas em carros e motos antigos, clássicos, neoclássicos e exclusivos, com funilaria, pintura, tapeçaria, mecânica, elétrica e acabamentos. Desde 2015 já passaram pela oficina cerca de 37 carros e 12 motos.'],
+  ['projetos','Vocês fazem só restaurações completas?','Não. Fazemos desde pequenos reparos até grandes projetos de restauração. Somos especializados em clássicos, mas avaliamos cada caso, inclusive carros mais novos e raros que outras oficinas não aceitam, como uma Mercedes-Benz SLK 200 Cabriolet 2006 que recebeu reparo na frente e peças importadas da Alemanha e dos EUA.'],
   ['contato','Onde fica a Bomsenhor Restaurações?','Na R. Antônio Weidgenannt, 185, bairro Gasparinho, em Gaspar (SC), CEP 89112-316. São dois galpões que somam 575 m² dedicados à restauração. Visitas ao ateliê são feitas mediante agendamento prévio.'],
   ['contato','Vocês atendem clientes de fora de Santa Catarina?','Sim. A oficina fica em Gaspar (SC), mas fazemos projetos para clientes de todo o território nacional.'],
   ['projetos','Como funciona o orçamento de uma restauração?','O processo começa com uma avaliação detalhada do veículo. Com base nela, montamos o orçamento de acordo com o projeto do cliente, com prazo e valores estimados, até chegarmos a um acordo e definirmos a data de início.'],
-  ['projetos','Quanto tempo leva uma restauração?','Depende do estado do veículo e do que será feito. Como referência, o Cadillac Eldorado Brougham 1958, com revisão mecânica e elétrica, repintura de componentes e acabamentos, levou cerca de um ano.'],
+  ['projetos','Quanto tempo leva uma restauração?','Depende do estado do veículo e do que será feito. Como referência, o reparo da frente de uma Mercedes-Benz SLK 200 2006, com importação de peças, levou de 5 a 6 meses; já o Cadillac Eldorado Brougham 1958, com revisão mecânica e elétrica, repintura de componentes e acabamentos, levou cerca de um ano.'],
   ['contato','Qual o horário de atendimento?','De segunda a sexta-feira, das 7h às 12h e das 13h às 17h30. Pelo WhatsApp (47) 99174-2031 respondemos em horário comercial.'],
   ['projetos','Posso acompanhar a restauração do meu veículo?','Sim. Todas as etapas são documentadas e enviadas ao cliente em fotos e vídeos, para comprovar o andamento do projeto.'],
   ['importacao','Como funciona a importação de um carro clássico?','Buscamos o carro nos EUA, montamos um orçamento comparativo e, com o seu aceite, negociamos e compramos. O veículo segue para um armazém parceiro na Flórida, embarca em Miami e chega ao porto de Itajaí, onde fazemos o desembaraço e a retirada. Do fechamento do orçamento ao desembarque leva até 3 meses.'],

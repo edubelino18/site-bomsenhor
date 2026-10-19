@@ -36,7 +36,7 @@ const { VEICULOS, PROJETOS, HERO_SETS, FAQS, ETAPAS_IMPORTACAO, render } = loadS
 // omitidos automaticamente.
 const EMPRESA = {
   nome: 'Bomsenhor Restaurações',
-  descricao: 'Restauração de carros e motos clássicos e importação de veículos dos EUA, com oficina em Gaspar, SC, e projetos para todo o Brasil. Desde 2015.',
+  descricao: 'Do pequeno reparo à restauração completa de carros e motos antigos, clássicos, neoclássicos e exclusivos, e importação de veículos e peças. Oficina em Gaspar, SC, com projetos para todo o Brasil. Desde 2015.',
   telefone: '+55 47 99174-2031',
   email: 'bomsenhor10@icloud.com',
   rua: 'R. Antônio Weidgenannt, 185 - Gasparinho',
@@ -285,7 +285,7 @@ for (const v of VEICULOS) {
 routes.push({
   path: '/projetos/', file: 'projetos/index.html',
   title: 'Projetos de Restauração de Carros e Motos | Bomsenhor',
-  description: 'Projetos de restauração de carros e motos clássicos da Bomsenhor, em Gaspar, SC: etapas documentadas em fotos e vídeos para clientes de todo o Brasil.',
+  description: 'Do pequeno reparo à restauração completa: projetos da Bomsenhor em carros e motos clássicos e exclusivos, com etapas documentadas em fotos e vídeos.',
   heroImage: heroFirst('projetos'),
   schema: [faqSchema('projetos')],
   html: () => render('renderProjetos'),
@@ -293,7 +293,7 @@ routes.push({
 for (const p of PROJETOS) {
   routes.push({
     path: `/projetos/${p.id}/`, file: `projetos/${p.id}/index.html`,
-    title: `${p.nome} ${p.ano}: restauração | Bomsenhor`,
+    title: `${p.nome} ${p.ano}: ${p.servico || 'restauração'} | Bomsenhor`,
     description: truncate(p.descricao, 155),
     heroImage: p.fotos && p.fotos.length ? coverPhoto(p, 'projetos') : heroFirst('projetos'),
     heroWidths: p.fotos && p.fotos.length ? [800, 1600] : [960, 1920],
