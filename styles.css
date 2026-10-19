@@ -70,6 +70,8 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .badge-andamento{background:#FEF2EB;color:#85471E}
 
 .v-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem}
+/* Com só 1 ou 2 cards, esticar deixa cada card gigante: mantém o tamanho normal de coluna */
+.v-grid:has(> :only-child),.v-grid:has(> :nth-child(2):last-child){grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
 .v-card{background:#FFFFFF;border:1px solid #D3D3D3;border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:border-color var(--t),box-shadow var(--t),transform var(--t);box-shadow:0 2px 14px rgba(51,51,51,0.07)}
 .v-card:hover{border-color:#F4C542;box-shadow:0 8px 36px rgba(51,51,51,0.13);transform:translateY(-4px)}
 .v-card .card-img-wrap{overflow:hidden}
@@ -138,12 +140,14 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 .gallery-item:hover{transform:scale(1.02);box-shadow:0 8px 36px rgba(51,51,51,0.13)}
 .gallery-item.no-photo{cursor:default}
 .gallery-item.no-photo:hover{transform:none;box-shadow:none}
+.gallery-fig figcaption{font-size:12px;color:#707070;line-height:1.5;margin-top:.5rem}
 
 .lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(51,51,51,0.94);align-items:center;justify-content:center;padding:2rem}
-.lightbox.open{display:flex}
-.lightbox img{max-width:90vw;max-height:85vh;border-radius:var(--r);object-fit:contain}
+.lightbox.open{display:flex;flex-direction:column;gap:.75rem}
+.lightbox img{max-width:90vw;max-height:80vh;border-radius:var(--r);object-fit:contain}
 .lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;border-radius:50%;background:rgba(255,255,255,0.12);color:#FFFFFF;display:flex;align-items:center;justify-content:center;transition:background var(--t)}
 .lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,0.25)}
+.lightbox-caption{display:none;max-width:min(90vw,640px);text-align:center;font-size:13px;line-height:1.5;color:#FFFFFF;background:rgba(15,30,51,0.75);padding:.5rem .9rem;border-radius:var(--r)}
 .lightbox-close{top:1.5rem;right:1.5rem;width:44px;height:44px;font-size:1.6rem;line-height:1}
 .lightbox-prev,.lightbox-next{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:1.3rem}
 .lightbox-prev{left:1.5rem}
@@ -254,3 +258,7 @@ button{font-family:var(--fb);cursor:pointer;border:none;background:none}
 
 .reveal{opacity:0;transform:translateY(20px)}
 .reveal.in{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease}
+.case-photos{display:grid;grid-template-columns:1fr;gap:.75rem;margin:2rem 0}
+@media(min-width:640px){.case-photos{grid-template-columns:1fr 1fr}}
+.case-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--rl);display:block}
+.case-photos figcaption{font-size:12px;color:#707070;margin-top:.5rem}

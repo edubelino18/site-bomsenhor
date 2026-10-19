@@ -140,9 +140,15 @@ function detailHeroHtml(item,tipo,{always='',fallbackOnly=''}={}){
 function galleryHtml(item,tipo){
   if(item.fotos&&item.fotos.length){
     CURRENT_GALLERY=item.fotos.map(f=>fotoUrl(item,tipo,f));
-    return CURRENT_GALLERY.map((u,i)=>`<div class="gallery-item reveal" onclick="openLightbox(${i})"><img src="${smUrl(u)}" srcset="${smUrl(u)} 800w, ${u} 1600w" sizes="(max-width:640px) 46vw, 260px" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>`).join('');
+    CURRENT_CAPTIONS=item.fotos.map((f,i)=>(item.legendas&&item.legendas[i])||'');
+    return CURRENT_GALLERY.map((u,i)=>{
+      const leg=CURRENT_CAPTIONS[i];
+      const foto=`<div class="gallery-item${leg?'':' reveal'}" onclick="openLightbox(${i})"><img src="${smUrl(u)}" srcset="${smUrl(u)} 800w, ${u} 1600w" sizes="(max-width:640px) 46vw, 260px" alt="${escAttr(leg)}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>`;
+      return leg?`<figure class="gallery-fig reveal">${foto}<figcaption>${leg}</figcaption></figure>`:foto;
+    }).join('');
   }
   CURRENT_GALLERY=[];
+  CURRENT_CAPTIONS=[];
   const h1=parseInt((item.bg||DEFAULT_BG).match(/hsl\((\d+)/)[1]);
   const gals=[bg(h1+15,h1+25,45,35,25,16),bg(h1-10,h1,30,20,18,12),bg(h1+30,h1+10,55,40,28,18)];
   return gals.map(g=>`<div class="gallery-item no-photo reveal" style="background:${g}"></div>`).join('');
@@ -150,6 +156,7 @@ function galleryHtml(item,tipo){
 
 // ── LIGHTBOX ─────────────────────────────────────────────────
 let CURRENT_GALLERY=[];
+let CURRENT_CAPTIONS=[];
 let lightboxIndex=0;
 function openLightbox(index){
   if(!CURRENT_GALLERY.length)return;
@@ -168,6 +175,10 @@ function lightboxNav(dir){
 }
 function updateLightbox(){
   document.getElementById('lightboxImg').src=CURRENT_GALLERY[lightboxIndex];
+  const leg=CURRENT_CAPTIONS[lightboxIndex]||'';
+  document.getElementById('lightboxImg').alt=leg;
+  const cap=document.getElementById('lightboxCaption');
+  if(cap){cap.textContent=leg;cap.style.display=leg?'block':'none';}
   const multi=CURRENT_GALLERY.length>1;
   document.querySelector('.lightbox-prev').style.display=multi?'flex':'none';
   document.querySelector('.lightbox-next').style.display=multi?'flex':'none';
@@ -530,13 +541,18 @@ function renderImportacao(){
     <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Parado havia mais de seis anos em um galpão, o Cadillac já tinha passado por uma restauração anterior e rodado por alguns lugares antes de chegar à Bomsenhor. Chegou sem motor, sem câmbio, sem vidros, sem interior e, principalmente, sem as peças de acabamento.</p>
     <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">O primeiro caminho foi orçar tudo peça por peça, nos EUA e no Brasil, e a conta ficou alta. Então buscamos nos EUA um carro doador completo e apresentamos os dois orçamentos lado a lado ao cliente. Importar o doador saiu cerca de 40% mais barato e ainda poupa tempo.</p>
     <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Como a carroceria do cliente já estava no Brasil, a funilaria e a pintura seguem em Gaspar enquanto o doador faz a viagem da Flórida até Itajaí.</p>
+    <div class="case-photos">
+      <figure class="reveal"><img src="/images/projetos/cadillac-deville-1957/doador-1-sm.jpg" srcset="/images/projetos/cadillac-deville-1957/doador-1-sm.jpg 800w, /images/projetos/cadillac-deville-1957/doador-1.jpg 1600w" sizes="(max-width:639px) 90vw, 340px" alt="Cadillac DeVille 1957 doador, nos EUA" loading="lazy"><figcaption>O doador completo, nos EUA</figcaption></figure>
+      <figure class="reveal"><img src="/images/projetos/cadillac-deville-1957/carroceria-1-sm.jpg" srcset="/images/projetos/cadillac-deville-1957/carroceria-1-sm.jpg 800w, /images/projetos/cadillac-deville-1957/carroceria-1.jpg 1600w" sizes="(max-width:639px) 90vw, 340px" alt="Carroceria do Cadillac DeVille 1957 do cliente na oficina em Gaspar" loading="lazy"><figcaption>A carroceria do cliente, em Gaspar</figcaption></figure>
+    </div>
     <div class="imp-facts">
       ${[['~40%','de economia em relação à compra das peças avulsas'],
          ['3 meses','no máximo, do orçamento aprovado ao desembarque'],
          ['Em paralelo','funilaria e pintura avançam durante a importação']
         ].map(([n,l])=>`<div class="imp-fact reveal"><div class="imp-fact-n">${n}</div><div class="imp-fact-l">${l}</div></div>`).join('')}
     </div>
-    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Não tem um projeto? Fazemos o orçamento da importação e da restauração do mesmo carro.</p>
+    <a href="/projetos/cadillac-deville-1957/" class="btn-o reveal">Acompanhe o projeto →</a>
+    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-top:2rem">Não tem um projeto? Fazemos o orçamento da importação e da restauração do mesmo carro.</p>
   </div></div>
 </section>
 <section class="section section-dark">
