@@ -305,7 +305,7 @@ for (const p of PROJETOS) {
 routes.push({
   path: '/importacao/', file: 'importacao/index.html',
   title: 'Importação de Carros Clássicos dos EUA | Bomsenhor',
-  description: 'Importação de clássicos dos EUA com restauração no Brasil: economia de 40% a 60%, do garimpo à placa preta, com toda a logística e documentação.',
+  description: 'Importação de clássicos dos EUA com restauração no Brasil: economia de 35% a 45% no custo final, do garimpo à placa preta, com toda a logística e documentação.',
   heroImage: heroFirst('importacao'),
   schema: [howToSchema(), faqSchema('importacao')],
   html: () => render('renderImportacao'),

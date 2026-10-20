@@ -556,7 +556,7 @@ function renderImportacao(){
       <span class="s-tag reveal">Por que importar com a gente</span>
       <h2 class="s-title reveal" style="margin-bottom:1.25rem">O clássico importado, <em>mais perto da realidade</em></h2>
       <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">O grande vilão do sonho do clássico importado é o preço de compra nos EUA. Os impostos incidem sobre o valor do carro somado ao frete, então quanto mais caro ele é lá fora, mais caro chega aqui.</p>
-      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Nossa proposta inverte essa conta: garimpamos um carro de projeto nos EUA e fazemos a restauração aqui no Brasil, onde a mão de obra custa muito menos. Nossa equipe é especializada em encontrar os melhores exemplares, com economia de 40% a 60% em relação aos preços de mercado.</p>
+      <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:1.25rem">Nossa proposta inverte essa conta: garimpamos um carro de projeto nos EUA e fazemos a restauração aqui no Brasil, onde a mão de obra custa muito menos. Nossa equipe é especializada em encontrar os melhores exemplares, com uma economia que costuma ficar entre 35% e 45% do custo final, em relação a importar o mesmo carro já pronto.</p>
       <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9">Também importamos carros prontos e peças. Mas, se você tiver um pouco de tempo, economiza mais e ainda acompanha de perto cada etapa da restauração. Todos os carros importados saem com placa preta, direto para a sua garagem.</p>
     </div>
   </div>
@@ -565,29 +565,26 @@ function renderImportacao(){
   <div class="section-inner"><div style="max-width:900px">
     <span class="s-tag reveal">Na ponta do lápis</span>
     <h2 class="s-title reveal" style="margin-bottom:1.25rem">Pronto ou projeto: <em>a diferença</em></h2>
-    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:2rem">Exemplo: Corvette 1985 conversível, câmbio manual.</p>
-    <div class="imp-compare">
-      <div class="imp-card reveal">
-        <div class="imp-card-tag">Caminho tradicional</div>
-        <h3>Comprado pronto nos EUA</h3>
-        <table class="imp-table"><tbody>
-          <tr class="imp-row"><th scope="row">Preço nos EUA (restaurado)</th><td>US$ 15 mil</td></tr>
-          <tr class="imp-row total"><th scope="row">Valor final importado</th><td>R$ 220–250 mil</td></tr>
-        </tbody></table>
-      </div>
-      <div class="imp-card featured reveal">
-        <div class="imp-card-tag">Com a Bomsenhor</div>
-        <h3>Garimpado como projeto</h3>
-        <table class="imp-table"><tbody>
-          <tr class="imp-row"><th scope="row">Preço nos EUA (projeto)</th><td>US$ 5 mil</td></tr>
-          <tr class="imp-row"><th scope="row">Valor final importado</th><td>R$ 90–110 mil</td></tr>
-          <tr class="imp-row"><th scope="row">Restauração completa</th><td>R$ 40–50 mil</td></tr>
-          <tr class="imp-row"><th scope="row">Entrega após o desembarque</th><td>3 a 6 meses</td></tr>
-          <tr class="imp-row total"><th scope="row">Total</th><td>R$ 130–160 mil</td></tr>
-        </tbody></table>
-      </div>
+    <p class="reveal" style="font-size:15px;color:#707070;line-height:1.9;margin-bottom:2rem">Exemplo: Chevrolet Chevelle Malibu Coupé 1968, V8, um dos clássicos americanos mais procurados.</p>
+    <div class="cmp-wrap reveal">
+      <table class="cmp-table">
+        <thead><tr><th scope="col"><span class="sr-only">Item</span></th><th scope="col"><span class="cmp-tag">Caminho tradicional</span>Comprado pronto nos EUA</th><th scope="col" class="hl"><span class="cmp-tag">Com a Bomsenhor</span>Garimpado como projeto</th></tr></thead>
+        <tbody>
+        <tr><th scope="row">Preço nos EUA</th><td>US$ 30 mil<small>já restaurado</small></td><td class="hl">US$ 10 mil<small>carro de projeto</small></td></tr>
+        <tr><th scope="row">Valor importado</th><td>R$ 450–480 mil</td><td class="hl">R$ 160–180 mil</td></tr>
+        <tr><th scope="row">Restauração</th><td>Feita por terceiros, nos EUA</td><td class="hl">Cerca de R$ 100 mil, em Gaspar</td></tr>
+        <tr><th scope="row">Procedência</th><td>Difícil de comprovar: pode haver surpresas</td><td class="hl">Conhecida do início ao fim</td></tr>
+        <tr><th scope="row">Acompanhamento</th><td>Você recebe o carro pronto</td><td class="hl">Cada etapa em fotos e vídeos</td></tr>
+        <tr><th scope="row">Prazo total</th><td>Cerca de 3 meses</td><td class="hl">9 a 15 meses</td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Total</th><td>R$ 450–480 mil</td><td class="hl">R$ 260–280 mil</td></tr></tfoot>
+      </table>
     </div>
-    <div class="imp-save reveal">Economia que pode passar de <em>R$ 100 mil</em></div>
+    <div class="cmp-why reveal">
+      <h3>Por que restaurar aqui faz diferença</h3>
+      <p>Mesmo restaurado, um carro comprado pronto nos EUA pode esconder surpresas: é muito difícil saber exatamente como o trabalho foi feito e de onde veio cada peça. Quando a restauração completa acontece na Bomsenhor, você acompanha tudo nos mínimos detalhes e sabe de cada parafuso que entrou no projeto.</p>
+    </div>
+    <div class="imp-save reveal">Economia que pode passar de <em>R$ 200 mil</em></div>
     <p class="imp-note reveal">Valores estimados. Variam conforme câmbio, frete e estado do veículo.</p>
   </div></div>
 </section>
@@ -821,7 +818,7 @@ const FAQS=[
   ['contato','Qual o horário de atendimento?','De segunda a sexta-feira, das 7h às 12h e das 13h às 17h30. Pelo WhatsApp (47) 99174-2031 respondemos em horário comercial.'],
   ['projetos','Posso acompanhar a restauração do meu veículo?','Sim. Todas as etapas são documentadas e enviadas ao cliente em fotos e vídeos, para comprovar o andamento do projeto.'],
   ['importacao','Como funciona a importação de um carro clássico?','Buscamos o carro nos EUA, montamos um orçamento comparativo e, com o seu aceite, negociamos e compramos. O veículo segue para um armazém parceiro na Flórida, embarca em Miami e chega ao porto de Itajaí, onde fazemos o desembaraço e a retirada. Do fechamento do orçamento ao desembarque leva até 3 meses.'],
-  ['importacao','Vale mais a pena importar um carro pronto ou um projeto?','Os impostos incidem sobre o valor do carro somado ao frete, então um carro de projeto, mais barato lá fora, chega bem mais barato aqui. Restaurado no Brasil, a economia fica entre 40% e 60% em relação aos preços de mercado. Também importamos carros prontos.'],
+  ['importacao','Vale mais a pena importar um carro pronto ou um projeto?','Os impostos incidem sobre o valor do carro somado ao frete, então um carro de projeto, mais barato lá fora, chega bem mais barato aqui. Restaurado no Brasil, a economia costuma ficar entre 35% e 45% do custo final em relação a importar o mesmo carro já pronto. Também importamos carros prontos.'],
   ['importacao','Os carros importados saem com placa preta?','Sim. Todos os carros importados pela Bomsenhor saem com placa preta, direto para a garagem do cliente.'],
   ['contato','Vocês vendem veículos clássicos?','Sim. O acervo reúne carros e motos clássicos selecionados e revisados, prontos para rodar. Os veículos disponíveis estão na página Acervo.']
 ];
