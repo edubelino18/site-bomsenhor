@@ -747,9 +747,9 @@ function renderSobre(){
   </div>
 </section>
 <section style="position:relative;height:420px;overflow:hidden">
-  <img src="/images/equipe/equipe-sm.jpg" srcset="/images/equipe/equipe-sm.jpg 960w, /images/equipe/equipe.jpg 1376w" sizes="100vw" alt="Ilustração em aquarela da equipe Bomsenhor Restaurações" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
-  <div style="position:absolute;inset:0;background:rgba(51,51,51,0.5)"></div>
-  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;z-index:1">
+  <img src="/images/equipe/equipe-sm.jpg" srcset="/images/equipe/equipe-sm.jpg 960w, /images/equipe/equipe.jpg 1376w" sizes="100vw" alt="Ilustração em aquarela da equipe Bomsenhor Restaurações" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%">
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,30,51,0.15) 0%,rgba(15,30,51,0.35) 45%,rgba(15,30,51,0.85) 100%)"></div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;text-align:center;padding:2rem 2rem 2.5rem;z-index:1">
     <span class="s-tag on-dark reveal" style="justify-content:center">Nossa equipe</span>
     <h2 class="reveal" style="font-family:var(--fd);font-size:clamp(1.8rem,5vw,3rem);font-weight:400;color:#FFFFFF;line-height:1.1;max-width:580px;text-shadow:0 1px 6px rgba(51,51,51,0.5)">Especialistas <em style="color:#F4C542">apaixonados</em> pelo que fazem</h2>
   </div>
