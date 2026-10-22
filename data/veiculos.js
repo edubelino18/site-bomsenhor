@@ -40,7 +40,7 @@ cor:'Verde e Creme',km:'Não informada',procedencia:'Nacional',carroceria:'Pick-
 descricao:'A Ford F-350 de 1963 é um clássico de trabalho pesado e estilo inconfundível. Este exemplar conta com o rodado duplo traseiro "Dually", pintura estilo saia e blusa em verde e creme com ótimo acabamento, além de plataforma traseira com assoalho em madeira, para-lamas largos e rodado duplo.\n\nO interior está impecável, com rádio de época e painel completo, ambos totalmente funcionais. Mecânica toda revisada — motor V8 e caixa de câmbio operando perfeitamente —, pronta para rodar para qualquer lugar do Brasil com documentação em dia.',
 destaques:['Motor V8 e caixa revisados','Plataforma com assoalho em madeira','Rodado duplo traseiro','Rádio de época e painel funcionais'],
 fotos:['externa-1.jpg','externa-2.jpg','externa-3.jpg','externa-4.jpg','motor.jpg','9.jpg','10.jpg','11.jpg','12.jpg','13.jpg'],
-bg:bg(10,20,60,40,30,15),destaque:false},
+bg:bg(10,20,60,40,30,15),destaque:true},
 {id:'dkw-vemaguet',nome:'DKW-Vemag Vemaguet',ano:1967,tipo:'carro',status:'vendido',preco:'R$ 39.900',
 motor:'3 cilindros',transmissao:'Manual 4 vel. (alavanca na coluna)',
 cor:'Vermelha',km:'Não informada',procedencia:'Nacional',carroceria:'Perua (Station Wagon)',
@@ -97,11 +97,11 @@ descricao:'A MZ 250 RSJ de 1986 é uma esportiva clássica de engenharia alemã 
 destaques:['Placa Preta','Completa e funcionando perfeitamente','Revisada','Acompanha chave reserva'],
    fotos:['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg'],
    bg:bg(220,215,10,8,30,20),destaque:false},
-{id:'ford-rural-4x4-1971',nome:'Ford Rural 4x4',ano:1971,tipo:'carro',status:'disponivel',preco:'R$ 84.900',
+{id:'ford-rural-4x4-1971',nome:'Ford Rural 4x4',ano:1971,tipo:'carro',status:'vendido',preco:'R$ 84.900',
 motor:'6 cilindros em linha',transmissao:'Manual, tração 4x4',
 cor:'Verde e Branca',km:'144.000 km originais',procedencia:'Nacional',carroceria:'Utilitário 4x4',
 descricao:'A Ford Rural 4x4 de 1971 é um dos utilitários mais queridos da história do Brasil: robusta, valente e com o estilo inconfundível da saia-e-blusa verde e branca. Este exemplar é totalmente original, inclusive na pintura, com 144 mil km originais rodados.\n\nÉ um carro íntegro, que vai rodando para qualquer lugar do Brasil. Tem alguns detalhes a fazer e, se for do agrado do cliente, pode ser entregue pintada e restaurada pela Bomsenhor. Destaques para o volante e o painel originais, o rádio Blaupunkt e os vidros Temperite com a marca Ford.',
 destaques:['Totalmente original, com pintura original','144 mil km originais','Íntegra: roda para qualquer lugar do Brasil','Pode ser entregue pintada e restaurada, se o cliente preferir'],
    fotos:['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','12.jpg','13.jpg','14.jpg','15.jpg','16.jpg','17.jpg','18.jpg','19.jpg','20.jpg'],
-   bg:bg(110,100,25,20,40,30),destaque:true}
+   bg:bg(110,100,25,20,40,30),destaque:false}
 ];
