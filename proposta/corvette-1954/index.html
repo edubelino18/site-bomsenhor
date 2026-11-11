@@ -132,7 +132,7 @@ section + section { border-top: 1px solid var(--line); }
 .note { margin-top: 22px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); color: var(--muted); font-size: 15px; }
 
 /* ---------- Galerias ---------- */
-.gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; grid-auto-flow: dense; }
 .gallery button { all: unset; cursor: zoom-in; position: relative; overflow: hidden; border-radius: 6px; background: var(--line); aspect-ratio: 1; }
 .gallery button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
@@ -674,7 +674,7 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
     ['01', 'Perfil', 1], ['16', 'Frente'], ['04', 'Traseira'], ['20', 'Frente, detalhe'], ['29', 'Interior', 1], ['07', 'Painel e volante'],
     ['10', 'Instrumentos'], ['09', 'Volante'], ['42', 'Motor Blue Flame', 1], ['43', 'Três carburadores'], ['12', 'Calota e faixa branca'], ['14', 'Grade do farol'],
     ['34', 'Com capota', 1], ['36', 'Porta-malas'], ['38', 'Tampa do porta-malas'], ['31', 'Traseira'], ['26', 'Perfil'], ['28', 'Três-quartos traseira'],
-    ['30', 'Interior'], ['33', 'Perfil com capota'], ['15', 'Detalhe da grade'], ['24', 'Calota'], ['22', 'Farol'], ['03', 'Três-quartos traseira'],
+    ['30', 'Interior'], ['33', 'Perfil com capota'], ['15', 'Detalhe da grade'], ['22', 'Farol'], ['03', 'Três-quartos traseira'],
     ['06', 'Traseira'], ['08', 'Velocímetro'], ['17', 'Três-quartos dianteira'], ['19', 'Lateral'], ['21', 'Frente']
   ].map(function (x) { return { src: 'img/depois/ref_' + x[0] + '.jpg', cap: x[1] + ' · referência ilustrativa', wide: x[2] }; });
 
