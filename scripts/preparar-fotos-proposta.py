@@ -9,6 +9,8 @@ Ex.:
 A pasta de origem (fora do projeto, ex.: OneDrive/Imagens) deve ter:
 
     hoje/           fotos reais do carro como está hoje (galeria "Como está hoje")
+    hoje-estudio/   (opcional) as mesmas fotos padronizadas em estúdio por
+                    scripts/estudio-fotos.py; quando existe, substitui a de hoje/
     referencias/    fotos de um carro igual já restaurado (galeria "Como vai ficar")
     comparativo/    pares para a barra de arrastar, sempre no mesmo ângulo:
                       capa-hoje.jpg     + capa-novo.png       (comparativo da capa)
@@ -108,11 +110,17 @@ def main():
     for sub, destino, lado in (('hoje', 'antes', 1200), ('referencias', 'depois', 1600)):
         fotos = sorted(p for p in (origem / sub).glob('*') if p.suffix.lower() in EXT)
         listas[destino] = []
+        estudio = 0
         for p in fotos:
             nome = nome_web(p)
+            # Versão padronizada em estúdio (scripts/estudio-fotos.py), quando existe e foi aprovada
+            tratada = origem / 'hoje-estudio' / (p.stem + '.jpg')
+            if sub == 'hoje' and tratada.exists():
+                p, estudio = tratada, estudio + 1
             salvar(abrir(p), img / destino / nome, lado)
             listas[destino].append(nome)
-        print(f'{sub}/: {len(fotos)} fotos -> img/{destino}/')
+        extra = f' ({estudio} na versão de estúdio)' if sub == 'hoje' and estudio else ''
+        print(f'{sub}/: {len(fotos)} fotos -> img/{destino}/{extra}')
 
     comp = origem / 'comparativo'
     print('comparativo/:')

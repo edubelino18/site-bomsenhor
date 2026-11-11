@@ -209,6 +209,8 @@ const whatsappLink = `https://wa.me/${e.whatsappNumero}?text=${encodeURIComponen
 
 const dadosCliente = {
   versaoFotos: d.versaoFotos || 0,
+  // "estudio": true no arquivo do carro quando as fotos de hoje passaram por scripts/estudio-fotos.py
+  legendaHoje: d.galeriaHoje.estudio ? 'foto real do veículo, fundo tratado em estúdio' : 'foto real do veículo',
   galeriaHoje: d.galeriaHoje.fotos,
   galeriaReferencia: d.galeriaReferencia ? d.galeriaReferencia.fotos : [],
   pares: d.comparativo ? d.comparativo.pares : [],

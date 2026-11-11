@@ -70,6 +70,7 @@ três pastas dentro:
 
 ```
 hoje/           fotos reais do carro como está hoje
+hoje-estudio/   criada sozinha: as mesmas fotos padronizadas em estúdio
 referencias/    fotos de um carro igual já restaurado (tiradas de anúncios)
 comparativo/    pares de fotos no mesmo ângulo (veja abaixo)
 ```
@@ -81,6 +82,23 @@ comparativo/    pares de fotos no mesmo ângulo (veja abaixo)
 - Motor dos dois lados
 - Parte de baixo: chassi, suspensão, freios, escapamento
 - Porta-malas e itens que acompanham
+
+**Padronização em estúdio (automática)**
+
+As fotos de hoje quase sempre chegam com fundo de rua, sombra dura e reflexos
+de sol. Por isso, toda proposta passa automaticamente pelo **Estúdio
+Veicular**, sem ninguém precisar pedir:
+
+- Cada foto ganha fundo de estúdio, luz suave e reflexos limpos, e o resultado vai
+  para uma pasta nova, `hoje-estudio`. As originais ficam intactas em `hoje`.
+- O carro **não muda**: desgaste, ferrugem, números, placa e emblemas continuam
+  como estão. Só mudam o fundo, a luz e os reflexos.
+- Fotos de baixo do carro (chassi, suspensão) recebem só um ajuste de cor, sem IA.
+- O Claude compara cada foto com a original. Se a IA mudou algo no carro, a foto
+  é descartada e a original é usada no lugar.
+- Na página, essas fotos aparecem como "foto real do veículo, fundo tratado em estúdio".
+- Custo: cerca de **US$ 0,05 por foto** (um carro com 18 fotos sai por menos de US$ 1),
+  cobrado na chave do Google que está no Estúdio.
 
 **Referências**
 - Mesmas cores do carro, se possível
@@ -223,6 +241,8 @@ Quando o carro for vendido, escolha:
 | `scripts/preparar-fotos-proposta.py` | Prepara as fotos |
 | `scripts/gerar-proposta.mjs` | Gera a página |
 | `scripts/receber-imagens-gemini.py` | Recebe as simulações do AI Studio |
+| `scripts/estudio-fotos.py` | Padroniza as fotos de hoje em estúdio (automático) |
+| `_estudio/` | O app Estúdio Veicular (também pode ser aberto pela tela, com `_estudio/iniciar.bat`) |
 | `proposta/<carro>/` | A página publicada e as fotos dela |
 
 A pasta `_propostas/` não é publicada no site. Mas o projeto do site fica num

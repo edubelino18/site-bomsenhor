@@ -4,7 +4,7 @@
   var v = D.versaoFotos ? '?v=' + D.versaoFotos : '';
 
   var antes = D.galeriaHoje.map(function (x) {
-    return { src: 'img/antes/' + x[0] + v, cap: x[1] + ' · foto real do veículo', wide: x[2] };
+    return { src: 'img/antes/' + x[0] + v, cap: x[1] + ' · ' + D.legendaHoje, wide: x[2] };
   });
   var depois = D.galeriaReferencia.map(function (x) {
     return { src: 'img/depois/' + x[0] + v, cap: x[1] + ' · referência ilustrativa', wide: x[2] };

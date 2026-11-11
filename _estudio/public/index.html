@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estúdio Veicular</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #f4f3ef; --panel: #fffefb; --ink: #1d1c19; --muted: #6a675f; --line: #dcd9d0;
+  --accent: #b5401f; --accent-ink: #fff; --ok: #1f7a4d; --bad: #b3261e; --soft: #eae7df;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #151513; --panel: #1f1e1b; --ink: #f0eee8; --muted: #a5a197; --line: #36342e; --accent: #e8734d; --accent-ink: #1a0f0a; --ok: #5fc892; --bad: #f08a80; --soft: #2b2a26; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, "Segoe UI", sans-serif; }
+main { max-width: 1240px; margin: 0 auto; padding: 32px 16px 80px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: 16px; margin: 0 0 12px; }
+p { margin: 0; }
+.lede { color: var(--muted); margin: 6px 0 24px; max-width: 66ch; }
+.muted { color: var(--muted); font-size: 13px; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.head h2 { margin: 0; }
+button, .btn { font: inherit; font-size: 14px; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 7px; padding: 6px 12px; cursor: pointer; }
+button:hover:not(:disabled), .btn:hover { border-color: var(--muted); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+:focus-visible, label:focus-within.slot-box, .btn:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; padding: 11px 18px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 10px; }
+.slot-title { font-size: 13px; font-weight: 600; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; gap: 4px; min-height: 24px; }
+.slot-title button { border: 0; padding: 0 4px; font-size: 12px; color: var(--muted); text-decoration: underline; }
+.slot-box { display: flex; aspect-ratio: 4/3; border: 1px dashed var(--muted); border-radius: 7px; background: var(--soft); align-items: center; justify-content: center; text-align: center; color: var(--muted); font-size: 13px; cursor: pointer; overflow: hidden; padding: 8px; }
+.slot-box.filled { border-style: solid; border-color: var(--line); padding: 0; }
+.slot-box.drag { border-color: var(--accent); }
+.slot-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slot-box.add { font-size: 40px; line-height: 1; }
+select.slot-kind { font-size: 13px; margin-top: 5px; padding: 4px 6px; }
+.issues { font-size: 12px; color: var(--bad); margin-top: 4px; }
+.config { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.model { display: flex; gap: 9px; padding: 7px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+.model:last-child { border-bottom: 0; }
+.model input { margin-top: 4px; accent-color: var(--accent); }
+.model b { font-weight: 600; }
+.model .price { margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 13px; }
+.model.off { opacity: .55; }
+select, textarea, input[type=text] { font: inherit; font-size: 14px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 7px 9px; width: 100%; }
+textarea { resize: vertical; min-height: 74px; }
+.field { display: block; margin-bottom: 12px; }
+.field > span { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.check { display: flex; gap: 8px; font-size: 14px; align-items: flex-start; margin-bottom: 12px; }
+.check input { margin-top: 4px; accent-color: var(--accent); }
+.studio-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.studio-row img { height: 46px; border-radius: 5px; }
+details { margin-top: 2px; font-size: 14px; }
+summary { cursor: pointer; color: var(--muted); margin-bottom: 8px; }
+.actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.output { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: end; margin-bottom: 14px; }
+.output .field { margin: 0; }
+.folder { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.notice { border-left: 3px solid var(--accent); padding-left: 10px; font-size: 14px; margin-bottom: 12px; }
+.empty { color: var(--muted); font-size: 14px; }
+progress { width: 100%; height: 10px; accent-color: var(--accent); }
+.progress-text { font-size: 14px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.progress-list { list-style: none; padding: 0; margin: 12px 0 0; max-height: 380px; overflow: auto; border-top: 1px solid var(--line); }
+.progress-list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.progress-list li > span:first-child { flex: 1; }
+.progress-list .status { color: var(--muted); text-align: right; overflow-wrap: anywhere; }
+.progress-list .saved .status { color: var(--ok); }
+.progress-list .error .status { color: var(--bad); }
+.progress-list button { padding: 2px 8px; font-size: 12px; flex: none; }
+.progress-list li.group { color: var(--muted); font-weight: 600; padding-top: 12px; }
+.running { animation: pulse 1.3s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .running { animation: none; } }
+.batch { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.batch:last-child { border-bottom: 0; padding-bottom: 0; }
+.batch .head { margin-bottom: 6px; }
+.batch details { margin-top: 6px; }
+.batch .progress-list { max-height: 320px; margin-top: 6px; }
+@media (max-width: 760px) { .config, .output { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Estúdio Veicular</h1>
+  <p class="lede">Adicione as fotos de um carro, confira o tipo de cada uma, escolha a pasta de saída e gere. As imagens vão direto para a pasta.</p>
+
+  <section>
+    <div class="head">
+      <h2>1. Fotos do veículo</h2>
+      <span class="actions">
+        <span id="classifyStatus" class="muted" aria-live="polite"></span>
+        <button id="reclassify">Reclassificar</button>
+      </span>
+    </div>
+    <p id="missingAngles" class="notice" hidden></p>
+    <p id="photoError" class="notice" role="alert" hidden></p>
+    <div id="slots" class="slots"></div>
+  </section>
+
+  <section>
+    <div style="max-width:760px">
+      <h2>2. Estúdio</h2>
+      <label class="field"><span>Cenário</span>
+        <select id="preset"></select>
+      </label>
+      <label class="field"><span>Descrição do cenário</span>
+        <textarea id="scene"></textarea>
+      </label>
+      <p id="sceneHint" class="muted" style="margin:-6px 0 12px"></p>
+      <div class="studio-row">
+        <label class="btn">Imagem do estúdio (opcional)
+          <input id="studioFile" class="visually-hidden" type="file" accept="image/*">
+        </label>
+        <span id="studioPreview" class="studio-row" style="margin:0"></span>
+      </div>
+      <label class="check"><input id="neighbors" type="checkbox" checked>
+        <span>Enviar outras fotos do mesmo tipo como referência de detalhes</span></label>
+      <label class="check"><input id="removeMarks" type="checkbox" checked>
+        <span>Remover marcas d'água, logos e propaganda que não são do carro. Use só em fotos que você tem direito de usar.</span></label>
+      <label class="field"><span>Características do veículo a preservar</span>
+        <textarea id="notes" rows="2" placeholder="Preenchido pela classificação. Ex.: pátina original, número 69, rodas vermelhas com faixa branca"></textarea>
+      </label>
+      <details>
+        <summary>Editar instruções enviadas ao modelo</summary>
+        <div id="promptEditors"></div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Envio</h2>
+    <p id="modelInfo" class="muted" style="margin-bottom:12px"></p>
+    <div class="output">
+      <label class="field"><span>Nome do veículo (vira a subpasta)</span>
+        <input id="vehicleName" type="text" autocomplete="off">
+      </label>
+      <div class="folder">
+        <button id="pickFolder">Escolher pasta</button>
+        <span id="folderStatus" class="muted"></span>
+      </div>
+    </div>
+    <p id="folderWarning" class="notice" hidden>Este navegador não permite escolher uma pasta. Use o Chrome ou o Edge. Enquanto isso, as imagens ficam na pasta <code>resultados</code> do app.</p>
+    <div class="actions">
+      <button id="run" class="primary" disabled>Adicione fotos</button>
+    </div>
+    <p id="runError" class="notice" role="alert" hidden style="margin:12px 0 0"></p>
+    <p id="runNotice" class="notice" aria-live="polite" hidden style="margin:12px 0 0"></p>
+  </section>
+
+  <section>
+    <h2>Histórico de execuções</h2>
+    <p class="muted" style="margin-bottom:6px">Fica salvo mesmo depois de fechar a página, e os lotes do Google continuam rodando sem ela. Ao refazer erros, cada foto vai sozinha, sem fotos de referência, com o cenário e as instruções atuais.</p>
+    <div id="history"></div>
+  </section>
+</main>
+
+<script src="prompts.js"></script>
+<script>
+const autoPreset = () => (state.vehicleTone === 'dark' ? 'Concreto claro' : 'Concreto médio');
+const TONE_LABELS = { light: 'pintura clara', medium: 'pintura de tom médio', dark: 'pintura escura' };
+
+const ANGLE_LABELS = {
+  front: 'Frente', front_left: '3/4 dianteira esq.', left: 'Lateral esq.', rear_left: '3/4 traseira esq.',
+  rear: 'Traseira', rear_right: '3/4 traseira dir.', right: 'Lateral dir.', front_right: '3/4 dianteira dir.', top: 'Vista de cima',
+};
+
+const needsCleanup = (slot) => $('removeMarks').checked && (slot.issues ?? []).some((issue) => MARK_ISSUE.test(issue));
+// Uma foto vai para a IA se o tipo pede IA, ou se é foto sem IA com marca a remover.
+const usesAi = (slot) => CATEGORIES[slot.kind].ai || needsCleanup(slot);
+
+// Único modelo usado pela tela: tudo vai em lote, pela metade do preço.
+const BATCH_MODEL_KEY = 'nano-lote';
+const LOCAL_MODEL = { key: 'local', label: 'Ajuste sem IA', mode: 'local', price: { square: 0, landscape: 0, portrait: 0 } };
+const FINAL_STATES = ['SUCCEEDED', 'FAILED', 'CANCELLED', 'EXPIRED'];
+const BATCH_LABELS = { PENDING: 'Na fila', RUNNING: 'Processando', SUCCEEDED: 'Concluído', FAILED: 'Falhou', CANCELLED: 'Cancelado', EXPIRED: 'Expirou' };
+const BATCH_POLL_MS = 60_000;
+const ADJUST_SATURATION = 1.08;
+const CONCURRENCY = 4;
+const MAX_SIDE = 2048;
+const SMALL_INPUT_SIDE = 511;
+const CAN_PICK_FOLDER = 'showDirectoryPicker' in window;
+
+const usd = (n) => 'US$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+const secs = (ms) => {
+  const seconds = ms / 1000;
+  if (seconds < 90) return Math.round(seconds) + ' s';
+  if (seconds < 5400) return Math.round(seconds / 60) + ' min';
+  return (seconds / 3600).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' h';
+};
+const $ = (id) => document.getElementById(id);
+
+function h(tag, attrs = {}, ...children) {
+  const el = document.createElement(tag);
+  for (const [key, value] of Object.entries(attrs)) {
+    if (key.startsWith('on')) el.addEventListener(key.slice(2), value);
+    else if (value === true) el.setAttribute(key, '');
+    else if (value !== false && value != null) el.setAttribute(key, value);
+  }
+  el.append(...children.flat().filter((child) => child != null));
+  return el;
+}
+
+const state = {
+  models: [], selected: new Set(), slots: [], photoCount: 0, photos: {}, studio: null,
+  results: {}, running: false, runStarted: null, batches: [], pollTimer: null,
+  classifierAvailable: false, classify: { status: 'idle', error: '', missing: [], cost: null, again: false },
+  outputDir: null, runDir: null, defaultFolder: '', vehicleTone: null,
+  // carry: envios que estavam rodando quando o usuário limpou tudo. session muda a cada limpeza.
+  carry: {}, session: 0,
+  // Histórico persistido no servidor. liveRuns: execuções criadas nesta página (as outras com fila parada foram interrompidas).
+  runs: [], liveRuns: new Set(), openHistory: new Set(), historyNotes: {},
+};
+const resultKey = (slotId, modelKey) => `${slotId}|${modelKey}`;
+
+function clearSlotResults(slotId) {
+  for (const key of Object.keys(state.results)) {
+    if (key.startsWith(`${slotId}|`)) delete state.results[key];
+  }
+}
+
+// ---------- Fotos ----------
+
+async function loadPhoto(file) {
+  let bitmap;
+  try {
+    bitmap = await createImageBitmap(file);
+  } catch {
+    throw new Error(`Não consegui abrir "${file.name}". Fotos HEIC do iPhone precisam ser convertidas para JPG.`);
+  }
+  const encode = (maxSide) => {
+    const scale = Math.min(1, maxSide / Math.max(bitmap.width, bitmap.height));
+    const canvas = h('canvas', { width: Math.round(bitmap.width * scale), height: Math.round(bitmap.height * scale) });
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    return { url: canvas.toDataURL('image/jpeg', 0.88), width: canvas.width, height: canvas.height };
+  };
+  const { url, width, height } = encode(MAX_SIDE);
+  const small = encode(SMALL_INPUT_SIDE);
+  const originalSide = Math.max(bitmap.width, bitmap.height);
+  return { url, mime: 'image/jpeg', data: url.split(',')[1], smallData: small.url.split(',')[1], width, height, originalSide };
+}
+
+// Ajuste local e grátis para fotos sem IA: níveis, balanço de branco leve e um pouco de saturação.
+async function autoAdjust(photo) {
+  if (photo.adjustedUrl) return;
+  const img = new Image();
+  img.src = photo.url;
+  await img.decode();
+  const canvas = h('canvas', { width: img.naturalWidth, height: img.naturalHeight });
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0);
+  const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const d = frame.data;
+
+  const histogram = new Uint32Array(256);
+  const sums = [0, 0, 0];
+  let count = 0;
+  for (let i = 0; i < d.length; i += 16) {
+    histogram[(d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114) | 0] += 1;
+    sums[0] += d[i]; sums[1] += d[i + 1]; sums[2] += d[i + 2];
+    count += 1;
+  }
+  const percentile = (p) => {
+    let acc = 0;
+    for (let v = 0; v < 256; v++) { acc += histogram[v]; if (acc >= count * p) return v; }
+    return 255;
+  };
+  const low = Math.min(percentile(0.005), 40);
+  const high = Math.max(percentile(0.995), 200);
+  const gray = (sums[0] + sums[1] + sums[2]) / 3;
+  const gains = sums.map((sum) => Math.min(1.08, Math.max(0.92, gray / (sum || 1))));
+  const levels = new Float32Array(256);
+  for (let v = 0; v < 256; v++) levels[v] = Math.min(255, Math.max(0, ((v - low) * 255) / (high - low)));
+
+  for (let i = 0; i < d.length; i += 4) {
+    const r = levels[d[i]] * gains[0];
+    const g = levels[d[i + 1]] * gains[1];
+    const b = levels[d[i + 2]] * gains[2];
+    const l = r * 0.299 + g * 0.587 + b * 0.114;
+    d[i] = l + (r - l) * ADJUST_SATURATION;
+    d[i + 1] = l + (g - l) * ADJUST_SATURATION;
+    d[i + 2] = l + (b - l) * ADJUST_SATURATION;
+  }
+  ctx.putImageData(frame, 0, 0);
+  photo.adjustedUrl = canvas.toDataURL('image/jpeg', 0.9);
+}
+
+async function addPhotos(files) {
+  showPhotoError('');
+  const failures = [];
+  for (const file of files) {
+    try {
+      const photo = await loadPhoto(file);
+      const number = ++state.photoCount;
+      const id = `foto-${number}`;
+      state.photos[id] = photo;
+      state.slots.push({ id, label: `Foto ${number}`, kind: 'exterior', angle: 'unknown', issues: [], manual: false, classified: false });
+      render();
+    } catch (error) {
+      failures.push(error.message);
+    }
+  }
+  showPhotoError(failures.join(' '));
+  classifyPhotos();
+}
+
+async function setPhoto(slotId, file) {
+  showPhotoError('');
+  try {
+    state.photos[slotId] = await loadPhoto(file);
+    clearSlotResults(slotId);
+    const slot = state.slots.find((item) => item.id === slotId);
+    if (slot) Object.assign(slot, { classified: false, manual: false, issues: [], angle: 'unknown' });
+  } catch (error) {
+    showPhotoError(error.message);
+  }
+  render();
+  classifyPhotos();
+}
+
+function removePhoto(slotId) {
+  state.slots = state.slots.filter((slot) => slot.id !== slotId);
+  delete state.photos[slotId];
+  clearSlotResults(slotId);
+  render();
+}
+
+function setKind(slot, kind) {
+  if (slot.kind === kind) return;
+  slot.kind = kind;
+  slot.manual = true;
+  clearSlotResults(slot.id);
+  render();
+}
+
+function showPhotoError(message) {
+  $('photoError').hidden = !message;
+  $('photoError').textContent = message;
+}
+
+// ---------- Classificação ----------
+
+// Uma chamada com todas as fotos pequenas. Tipos escolhidos à mão nunca são sobrescritos.
+async function classifyPhotos() {
+  if (!state.classifierAvailable || !state.slots.length) return;
+  if (state.classify.status === 'running') {
+    state.classify.again = true;
+    return;
+  }
+  const slots = [...state.slots];
+  const session = state.session;
+  state.classify = { ...state.classify, status: 'running', error: '', again: false };
+  render();
+
+  let next;
+  try {
+    const response = await fetch('/api/classify', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ images: slots.map((slot) => ({ mime: 'image/jpeg', data: state.photos[slot.id].smallData })) }),
+    });
+    const body = await response.json();
+    if (!response.ok) throw new Error(body.error);
+    // O usuário limpou tudo durante a classificação: o resultado é de outro carro.
+    if (session !== state.session) return;
+    for (const item of body.photos) {
+      const slot = slots[item.index];
+      if (!slot || !state.slots.includes(slot)) continue;
+      slot.issues = item.issues;
+      slot.angle = item.angle;
+      slot.classified = true;
+      if (!slot.manual && slot.kind !== item.category) {
+        slot.kind = item.category;
+        clearSlotResults(slot.id);
+      }
+    }
+    if (!$('notes').value.trim() && body.notes) $('notes').value = body.notes;
+    if (body.tone) {
+      state.vehicleTone = body.tone;
+      updateScene();
+    }
+    next = { status: 'idle', error: '', missing: body.missing, cost: body.cost };
+  } catch (error) {
+    if (session !== state.session) return;
+    next = { status: 'error', error: `Não consegui classificar: ${error.message}`, missing: [], cost: null };
+  }
+  const again = state.classify.again;
+  state.classify = { ...next, again: false };
+  render();
+  if (again) classifyPhotos();
+}
+
+// ---------- Montagem dos pedidos ----------
+
+function orientationOf(photo) {
+  const ratio = photo.width / photo.height;
+  return ratio > 1.15 ? 'landscape' : ratio < 0.87 ? 'portrait' : 'square';
+}
+
+function aspectOf(photo) {
+  const options = [[1, 1], [2, 3], [3, 2], [3, 4], [4, 3], [4, 5], [5, 4], [9, 16], [16, 9]];
+  const target = Math.log(photo.width / photo.height);
+  const [w, h2] = options.reduce((best, option) =>
+    Math.abs(Math.log(option[0] / option[1]) - target) < Math.abs(Math.log(best[0] / best[1]) - target) ? option : best);
+  return `${w}:${h2}`;
+}
+
+// Até 2 referências do mesmo grupo. No exterior, as de ângulo mais próximo vêm primeiro.
+function referencesFor(slot) {
+  const group = CATEGORIES[slot.kind].group;
+  const index = state.slots.indexOf(slot);
+  const position = (item) => ANGLE_ORDER.indexOf(item.angle);
+  const angleDistance = (item) => {
+    const a = position(slot);
+    const b = position(item);
+    if (group !== 'exterior' || a < 0 || b < 0) return 99;
+    const diff = Math.abs(a - b);
+    return Math.min(diff, ANGLE_ORDER.length - diff);
+  };
+  return state.slots
+    .filter((item) => item !== slot && CATEGORIES[item.kind].group === group && CATEGORIES[item.kind].ai)
+    .sort((a, b) => angleDistance(a) - angleDistance(b)
+      || (a.kind === 'exterior' ? 0 : 1) - (b.kind === 'exterior' ? 0 : 1)
+      || Math.abs(state.slots.indexOf(a) - index) - Math.abs(state.slots.indexOf(b) - index))
+    .slice(0, 2);
+}
+
+const sceneText = () => ($('preset').value === AUTO_PRESET ? PRESETS[autoPreset()] : $('scene').value.trim());
+
+// No automático o texto é só leitura e acompanha o tom detectado; nos outros, vira o texto editável do cenário.
+function updateScene() {
+  const auto = $('preset').value === AUTO_PRESET;
+  $('scene').readOnly = auto;
+  if (auto) $('scene').value = PRESETS[autoPreset()];
+  $('sceneHint').textContent = !auto ? ''
+    : state.vehicleTone ? `Usando "${autoPreset()}" para ${TONE_LABELS[state.vehicleTone]}.`
+    : `Usando "${autoPreset()}" até a classificação identificar o tom da pintura.`;
+}
+
+function buildJob(slot, model) {
+  const main = state.photos[slot.id];
+  const images = [main];
+  const category = CATEGORIES[slot.kind];
+  let prompt = $(`prompt-${slot.kind}`).value
+    .replaceAll('{ESTUDIO}', sceneText())
+    .replaceAll('{NOTAS}', $('notes').value.trim() || 'none listed');
+
+  if (category.ai && needsCleanup(slot)) prompt += `\n\n${REMOVE_MARKS}`;
+  if ((slot.issues ?? []).some((issue) => PERSON_ISSUE.test(issue))) prompt += `\n\n${REMOVE_PERSON}`;
+
+  const refs = $('neighbors').checked ? referencesFor(slot).map((near) => state.photos[near.id]) : [];
+  if (refs.length) {
+    images.push(...refs);
+    prompt += '\n\n' + NEIGHBOR_NOTE.replace('{N}', refs.length + 1);
+  }
+  if (state.studio && category.studioRef) {
+    images.push(state.studio);
+    prompt += '\n\n' + STUDIO_REF_NOTE;
+  }
+  return {
+    angle: slot.id, prompt, aspect: aspectOf(main), orientation: orientationOf(main),
+    images: images.map(({ mime, data, smallData }) => ({ mime, data: model?.smallInputs ? smallData : data })),
+  };
+}
+
+function allJobs() {
+  const models = state.models.filter((model) => state.selected.has(model.key));
+  const jobs = [];
+  state.slots.forEach((slot, index) => {
+    if (!usesAi(slot)) jobs.push({ slot, model: LOCAL_MODEL, index });
+    else for (const model of models) jobs.push({ slot, model, index });
+  });
+  return jobs;
+}
+
+function pendingJobs() {
+  return allJobs().filter(({ slot, model }) => {
+    const current = state.results[resultKey(slot.id, model.key)];
+    return !current || current.status === 'error';
+  });
+}
+
+const priceOf = (model, slot) => model.price[orientationOf(state.photos[slot.id])];
+
+function fileBase({ slot, model, index }) {
+  const several = state.selected.size > 1 && model.mode !== 'local';
+  return `${String(index + 1).padStart(2, '0')}-${slot.kind.replace('_', '-')}${several ? `-${model.key}` : ''}`;
+}
+
+// ---------- Pasta de saída ----------
+
+const folderName = () => ($('vehicleName').value.trim() || state.defaultFolder).replace(/[\\/:*?"<>|]+/g, '-').slice(0, 80);
+
+async function pickFolder() {
+  try {
+    state.outputDir = await window.showDirectoryPicker({ id: 'estudio-saida', mode: 'readwrite' });
+    state.runDir = null;
+  } catch (error) {
+    if (error.name !== 'AbortError') showRunError(`Não consegui abrir a pasta: ${error.message}`);
+  }
+  render();
+}
+
+async function ensureRunDir() {
+  if (!state.outputDir) return null;
+  const name = folderName();
+  if (state.runDir?.name !== name) state.runDir = await state.outputDir.getDirectoryHandle(name, { create: true });
+  return state.runDir;
+}
+
+const extensionOf = (blob) => ({ 'image/png': 'png', 'image/webp': 'webp' }[blob.type] ?? 'jpg');
+
+async function saveBlob(dir, base, blob) {
+  const name = `${base}.${extensionOf(blob)}`;
+  const handle = await dir.getFileHandle(name, { create: true });
+  const writable = await handle.createWritable();
+  await writable.write(blob);
+  await writable.close();
+  return name;
+}
+
+async function saveFromUrl(url, dir, base) {
+  const blob = await (await fetch(url)).blob();
+  return dir ? saveBlob(dir, base, blob) : null;
+}
+
+function showRunError(message) {
+  $('runError').hidden = !message;
+  $('runError').textContent = message;
+}
+
+// ---------- Execução ----------
+
+// O pedido é montado na hora do envio, então ele continua mesmo se o usuário limpar tudo depois.
+function prepare(job) {
+  const key = resultKey(job.slot.id, job.model.key);
+  return {
+    ...job, key, base: fileBase(job), dir: state.runDir, session: state.session, runId: null,
+    photo: state.photos[job.slot.id], previous: state.results[key],
+    payload: job.model.mode === 'local' ? null : { ...buildJob(job.slot, job.model), model: job.model.key },
+  };
+}
+
+// Registra a execução no servidor com a foto original de cada item. Se falhar, a geração segue sem histórico.
+async function createRunLog(jobs, folder, notes) {
+  const originals = {};
+  for (const job of jobs) originals[job.slot.id] ??= { mime: 'image/jpeg', data: job.photo.data };
+  const items = jobs.map((job) => ({
+    key: job.key, slotId: job.slot.id, label: job.base, category: job.slot.kind, modelKey: job.model.key,
+    mode: job.model.mode === 'batch' ? 'batch' : job.model.mode === 'local' ? 'local' : 'live',
+    source: job.source ?? null,
+    prompt: job.payload?.prompt ?? null,
+  }));
+  try {
+    const response = await fetch('/api/runs', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ folder, notes, originals, items }),
+    });
+    if (!response.ok) return null;
+    const run = await response.json();
+    state.liveRuns.add(run.id);
+    return run.id;
+  } catch {
+    return null;
+  }
+}
+
+function logRun(runId, updates) {
+  if (!runId || !updates.length) return Promise.resolve();
+  return fetch(`/api/runs/${encodeURIComponent(runId)}/update`, {
+    method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ updates }),
+  }).catch(() => {});
+}
+
+function setEntry(job, value) {
+  if (job.session === state.session) {
+    const current = state.results[job.key];
+    if (current?.status === 'queued' || current?.status === 'running') state.results[job.key] = value;
+  } else if (state.carry[job.key]) {
+    state.carry[job.key] = { ...state.carry[job.key], ...value };
+  }
+}
+
+async function runOne(job) {
+  const { base, dir, photo, model, previous } = job;
+  setEntry(job, { status: 'running', base });
+  render();
+
+  let next;
+  let generated = previous?.url ? { url: previous.url, cost: previous.cost, ms: previous.ms } : null;
+  try {
+    if (!generated && model.mode === 'local') {
+      await autoAdjust(photo);
+      generated = { url: photo.adjustedUrl, cost: 0, ms: 0 };
+    } else if (!generated) {
+      const response = await fetch('/api/generate', {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(job.payload),
+      });
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.error);
+      generated = body;
+    }
+    const fileName = await saveFromUrl(generated.url, dir, base);
+    next = { status: 'saved', base, fileName, cost: generated.cost, ms: generated.ms };
+  } catch (error) {
+    const message = error instanceof TypeError ? 'Sem resposta do servidor local.' : error.message;
+    // Se a imagem foi gerada e só a gravação falhou, "Tentar de novo" grava sem gerar outra vez.
+    next = generated
+      ? { status: 'error', base, ...generated, error: `Gerada, mas não salvou na pasta: ${message}` }
+      : { status: 'error', base, error: message };
+  }
+  setEntry(job, next);
+  logRun(job.runId, [{
+    key: job.key, status: next.status, error: next.error ?? null, fileName: next.fileName ?? null,
+    url: generated?.url, cost: next.cost ?? generated?.cost,
+  }]);
+  render();
+}
+
+async function runJobs(jobs) {
+  if (!jobs.length) return;
+  const queue = [...jobs];
+  for (const job of queue) {
+    if (job.session === state.session) state.results[job.key] = { status: 'queued', base: job.base };
+  }
+  render();
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, queue.length) }, async () => {
+    while (queue.length) {
+      const job = queue.shift();
+      // Foto removida ou trocada nesta sessão: o usuário não quer mais essa imagem.
+      if (job.session === state.session && state.photos[job.slot.id] !== job.photo) continue;
+      await runOne(job);
+    }
+  }));
+  render();
+}
+
+async function dispatch(jobs) {
+  // "sending" impede que um segundo clique envie as mesmas fotos de novo enquanto o envio é preparado.
+  if (!jobs.length || state.sending) return;
+  state.sending = true;
+  showRunError('');
+  showRunNotice('');
+  render();
+  try {
+    await ensureRunDir();
+  } catch (error) {
+    state.sending = false;
+    showRunError(`Não consegui criar a subpasta: ${error.message}`);
+    render();
+    return;
+  }
+  const folder = folderName();
+  const prepared = jobs.map(prepare);
+  for (const job of prepared) state.results[job.key] = { status: 'queued', base: job.base };
+  const runId = await createRunLog(prepared, folder, $('notes').value.trim());
+  for (const job of prepared) job.runId = runId;
+  launch(prepared);
+  state.sending = false;
+  resetForNextCar();
+  const photos = new Set(prepared.map((job) => job.slot.id)).size;
+  showRunNotice(`Enviado: "${folder}", ${photos} ${photos === 1 ? 'foto' : 'fotos'}. Acompanhe no Histórico de execuções. As imagens são gravadas na pasta quando o lote terminar, se esta página estiver aberta, ou depois pelo botão "Salvar na pasta".`);
+}
+
+// Lote só para quem ainda não foi gerado. Uma imagem que só falhou ao gravar é regravada sem gerar de novo.
+function launch(jobs) {
+  const isNewBatch = (job) => job.model.mode === 'batch' && !job.previous?.url;
+  const batchJobs = jobs.filter(isNewBatch);
+  if (batchJobs.length) sendBatch(batchJobs);
+  runJobs(jobs.filter((job) => !isNewBatch(job)));
+}
+
+// Criar um lote não é idempotente: marcar "running" antes do envio impede um segundo envio igual.
+async function sendBatch(jobs) {
+  for (const job of jobs) setEntry(job, { status: 'running', base: job.base });
+  render();
+  let outcome;
+  try {
+    const response = await fetch('/api/batches', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ jobs: jobs.map((job) => ({ ...job.payload, label: job.base })) }),
+    });
+    const body = await response.json();
+    outcome = response.ok ? { status: 'batch', batchId: body.id } : { status: 'error', error: body.error };
+  } catch {
+    outcome = { status: 'error', error: 'Sem resposta do servidor local.' };
+  }
+  const updatesByRun = new Map();
+  for (const job of jobs) {
+    setEntry(job, { ...outcome, base: job.base, dir: job.dir, runId: job.runId });
+    if (!updatesByRun.has(job.runId)) updatesByRun.set(job.runId, []);
+    updatesByRun.get(job.runId).push({ key: job.key, status: outcome.status, batchId: outcome.batchId ?? null, error: outcome.error ?? null });
+  }
+  await Promise.all([...updatesByRun].map(([runId, updates]) => logRun(runId, updates)));
+  render();
+  pollHistory();
+}
+
+function applyBatchResults(batch) {
+  if (!FINAL_STATES.includes(batch.state)) return false;
+  let changed = false;
+  for (const item of batch.items) {
+    const key = resultKey(item.key, batch.model);
+    const current = state.results[key];
+    if (current?.status !== 'batch' || current.batchId !== batch.id) continue;
+    changed = true;
+    if (!item.url) {
+      state.results[key] = { status: 'error', base: current.base, error: item.error || batch.error || `Lote: ${BATCH_LABELS[batch.state]}.` };
+      continue;
+    }
+    state.results[key] = { status: 'running', base: current.base };
+    saveFromUrl(item.url, current.dir, current.base).then(
+      (fileName) => {
+        state.results[key] = { status: 'saved', base: current.base, fileName, cost: item.cost, ms: item.ms };
+        if (fileName) logRun(current.runId, [{ key, status: 'saved', fileName }]);
+        render();
+      },
+      (error) => {
+        state.results[key] = { status: 'error', base: current.base, url: item.url, cost: item.cost, ms: item.ms, error: `Gerada, mas não salvou na pasta: ${error.message}` };
+        render();
+      },
+    );
+  }
+  // Itens de lote que ficaram de uma sessão limpa: gravam na pasta que estava escolhida no envio.
+  for (const [key, entry] of Object.entries(state.carry)) {
+    if (entry.status !== 'batch' || entry.batchId !== batch.id) continue;
+    changed = true;
+    const item = batch.items.find((candidate) => resultKey(candidate.key, batch.model) === key);
+    if (!item?.url) {
+      state.carry[key] = { ...entry, status: 'error', error: item?.error || batch.error || `Lote: ${BATCH_LABELS[batch.state]}.` };
+      continue;
+    }
+    state.carry[key] = { ...entry, status: 'running' };
+    saveFromUrl(item.url, entry.dir, entry.base).then(
+      (fileName) => {
+        state.carry[key] = { ...entry, status: 'saved', fileName };
+        if (fileName) logRun(entry.runId, [{ key, status: 'saved', fileName }]);
+        render();
+      },
+      (error) => { state.carry[key] = { ...entry, status: 'error', error: `Gerada, mas não salvou na pasta: ${error.message}` }; render(); },
+    );
+  }
+  return changed;
+}
+
+async function pollHistory() {
+  clearTimeout(state.pollTimer);
+  try {
+    const { runs, batches } = await (await fetch('/api/history')).json();
+    state.runs = runs;
+    state.batches = batches;
+    const changed = state.batches.map(applyBatchResults).some(Boolean);
+    if (changed) render(); else renderHistory();
+  } catch {
+    // O servidor local pode estar reiniciando: tenta de novo no próximo ciclo.
+  }
+  const active = state.batches.some((batch) => !FINAL_STATES.includes(batch.state));
+  if (active) state.pollTimer = setTimeout(pollHistory, BATCH_POLL_MS);
+}
+
+async function cancelBatch(entry, batchId) {
+  if (!confirm('Cancelar este lote? Isso não pode ser desfeito.')) return;
+  const response = await fetch(`/api/batches/${encodeURIComponent(batchId)}/cancel`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' });
+  if (!response.ok) state.historyNotes[entry.id] = `Não consegui cancelar: ${(await response.json()).error}`;
+  await pollHistory();
+}
+
+// ---------- Histórico ----------
+
+const CATEGORY_SLUGS = Object.keys(CATEGORIES).sort((a, b) => b.length - a.length);
+const categoryFromLabel = (label) => {
+  const rest = String(label ?? '').replace(/^\d+-/, '');
+  return CATEGORY_SLUGS.find((key) => rest.startsWith(key.replace('_', '-'))) ?? 'exterior';
+};
+
+// Junta as execuções gravadas e os lotes antigos, criados antes do histórico existir.
+function historyEntries() {
+  const linked = new Set(state.runs.flatMap((run) => run.items.map((item) => item.batchId).filter(Boolean)));
+  const retriedSources = new Set(state.runs.flatMap((run) => run.items.map((item) => item.source).filter(Boolean)));
+  const runs = state.runs.map((run) => ({
+    ...run,
+    legacy: false,
+    items: run.items.map((item) => (['queued', 'running'].includes(item.status) && !state.liveRuns.has(run.id)
+      ? { ...item, status: 'error', error: 'Interrompida: a página foi fechada antes de terminar.' }
+      : item)),
+  }));
+  const legacy = state.batches.filter((batch) => !linked.has(batch.id)).map((batch) => {
+    const final = FINAL_STATES.includes(batch.state);
+    return {
+      id: batch.id, legacy: true, createdAt: batch.createdAt, folder: batch.id, notes: '',
+      items: batch.items.map((item) => ({
+        key: item.key, label: item.label, category: categoryFromLabel(item.label), modelKey: batch.model, mode: 'batch',
+        status: item.url ? 'ready' : final ? 'error' : 'batch', batchId: batch.id,
+        error: item.url || !final ? null : item.error || batch.error || `Lote terminou como ${BATCH_LABELS[batch.state] ?? batch.state}.`,
+        url: item.url, original: item.original, cost: item.cost, retried: retriedSources.has(`${batch.id}|${item.key}`),
+      })),
+    };
+  });
+  return [...runs, ...legacy].sort((a, b) => b.createdAt - a.createdAt);
+}
+
+function friendlyError(error) {
+  const text = String(error ?? '');
+  if (/IMAGE_SAFETY/.test(text)) return 'Bloqueada pelo filtro de segurança do Google (IMAGE_SAFETY).';
+  if (/\bOTHER\b/.test(text)) return 'O Google recusou sem informar o motivo (OTHER).';
+  return text || 'Erro sem detalhe.';
+}
+
+function historyStatus(item) {
+  if (item.status === 'error') return `${friendlyError(item.error)}${item.retried ? ' Já enviada para refazer.' : ''}`;
+  if (item.status === 'saved') return item.fileName ? `Salva: ${item.fileName}` : 'Salva';
+  return { queued: 'Na fila', running: 'Gerando…', batch: 'No lote do Google', ready: 'Gerada, falta salvar na pasta' }[item.status] ?? item.status;
+}
+
+const canRetry = (item) => item.status === 'error' && item.original && item.mode !== 'local' && !item.retried;
+
+const blobToBase64 = (blob) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onload = () => resolve(String(reader.result).split(',')[1]);
+  reader.onerror = () => reject(reader.error);
+  reader.readAsDataURL(blob);
+});
+
+// Grava na pasta escolhida, numa subpasta com o nome da execução, todas as imagens já geradas.
+async function saveEntryToFolder(entry) {
+  if (!state.outputDir) await pickFolder();
+  if (!state.outputDir) return;
+  const folder = entry.folder || entry.id;
+  try {
+    const dir = await state.outputDir.getDirectoryHandle(folder, { create: true });
+    const items = entry.items.filter((item) => item.url);
+    const updates = [];
+    for (const item of items) {
+      const fileName = await saveFromUrl(item.url, dir, item.label || item.key);
+      updates.push({ key: item.key, status: 'saved', fileName });
+    }
+    if (!entry.legacy) await logRun(entry.id, updates);
+    state.historyNotes[entry.id] = `${items.length} ${items.length === 1 ? 'imagem salva' : 'imagens salvas'} em ${state.outputDir.name}/${folder}`;
+  } catch (error) {
+    state.historyNotes[entry.id] = `Não consegui salvar: ${error.message}`;
+  }
+  await pollHistory();
+}
+
+// Refaz a partir da foto original guardada. Vai sem referências, com o cenário e as instruções atuais.
+async function retryFailed(entry) {
+  const items = entry.items.filter(canRetry);
+  if (!items.length) return;
+  if (CAN_PICK_FOLDER && !state.outputDir) await pickFolder();
+  if (CAN_PICK_FOLDER && !state.outputDir) return;
+  const folder = entry.folder || entry.id;
+  let dir = null;
+  try {
+    if (state.outputDir) dir = await state.outputDir.getDirectoryHandle(folder, { create: true });
+  } catch (error) {
+    state.historyNotes[entry.id] = `Não consegui abrir a subpasta: ${error.message}`;
+    renderHistory();
+    return;
+  }
+
+  const jobs = [];
+  const skipped = [];
+  const stamp = Date.now().toString(36);
+  for (const [n, item] of items.entries()) {
+    const model = state.models.find((candidate) => candidate.key === item.modelKey);
+    if (!model?.available) {
+      skipped.push(item.label || item.key);
+      continue;
+    }
+    try {
+      const blob = await (await fetch(item.original)).blob();
+      const bitmap = await createImageBitmap(blob);
+      const data = await blobToBase64(blob);
+      const photo = { mime: 'image/jpeg', data, width: bitmap.width, height: bitmap.height };
+      const category = CATEGORIES[item.category] ? item.category : 'exterior';
+      const slot = { id: `r${stamp}-${n}`, kind: category };
+      const key = resultKey(slot.id, model.key);
+      const base = item.label || item.key;
+      const prompt = $(`prompt-${category}`).value.replaceAll('{ESTUDIO}', sceneText()).replaceAll('{NOTAS}', entry.notes || 'none listed');
+      jobs.push({
+        slot, model, key, base, dir, photo, session: -1, previous: null, runId: null, source: `${entry.id}|${item.key}`,
+        payload: { angle: slot.id, prompt, aspect: aspectOf(photo), orientation: orientationOf(photo), images: [{ mime: photo.mime, data }], model: model.key },
+      });
+      state.carry[key] = { status: 'queued', base, title: `${folder} · ${base} (refazendo)`, dir };
+    } catch {
+      skipped.push(item.label || item.key);
+    }
+  }
+
+  if (jobs.length) {
+    const runId = await createRunLog(jobs, folder, entry.notes);
+    for (const job of jobs) job.runId = runId;
+    if (!entry.legacy) await logRun(entry.id, items.map((item) => ({ key: item.key, retried: true })));
+    launch(jobs);
+  }
+  state.historyNotes[entry.id] = `${jobs.length} ${jobs.length === 1 ? 'foto enviada' : 'fotos enviadas'} para refazer, acompanhe em Progresso.`
+    + (skipped.length ? ` Não foi possível refazer: ${skipped.join(', ')}.` : '');
+  render();
+  await pollHistory();
+}
+
+// ---------- Tela ----------
+
+function renderClassify() {
+  const { status, error, missing, cost } = state.classify;
+  let text = '';
+  if (!state.classifierAvailable) text = 'Classificação automática indisponível: falta GEMINI_API_KEY no .env.';
+  else if (status === 'running') text = 'Classificando fotos com IA…';
+  else if (status === 'error') text = error;
+  else if (state.slots.some((slot) => slot.classified)) text = cost != null ? `Classificadas · cerca de ${usd(cost)}. Confira os tipos.` : 'Classificadas pela IA. Confira os tipos.';
+  $('classifyStatus').textContent = text;
+  $('reclassify').disabled = !state.classifierAvailable || status === 'running' || !state.slots.length;
+  $('missingAngles').hidden = !missing.length;
+  $('missingAngles').textContent = missing.length ? `Ângulos que faltam: ${missing.join(', ')}.` : '';
+}
+
+function renderSlots() {
+  const dropTarget = (onFiles) => ({
+    ondragover: (e) => { e.preventDefault(); e.currentTarget.classList.add('drag'); },
+    ondragleave: (e) => e.currentTarget.classList.remove('drag'),
+    ondrop: (e) => { e.preventDefault(); e.currentTarget.classList.remove('drag'); if (e.dataTransfer.files.length) onFiles([...e.dataTransfer.files]); },
+  });
+
+  const classifying = state.classify.status === 'running';
+  const photoTiles = state.slots.map((slot) => h('div', {},
+    h('div', { class: 'slot-title' },
+      CATEGORIES[slot.kind].group === 'exterior' && ANGLE_LABELS[slot.angle] ? `${slot.label} · ${ANGLE_LABELS[slot.angle]}` : slot.label,
+      h('button', { 'aria-label': `Remover ${slot.label}`, onclick: () => removePhoto(slot.id) }, 'Remover')),
+    h('label', { class: 'slot-box filled', ...dropTarget((files) => setPhoto(slot.id, files[0])) },
+      h('input', { class: 'visually-hidden', type: 'file', accept: 'image/*', 'aria-label': `Trocar ${slot.label}`, onchange: (e) => e.target.files[0] && setPhoto(slot.id, e.target.files[0]) }),
+      h('img', { src: state.photos[slot.id].url, alt: slot.label })),
+    h('select', {
+      class: 'slot-kind', 'aria-label': `Tipo da ${slot.label}`, disabled: classifying && !slot.classified,
+      onchange: (e) => setKind(slot, e.target.value),
+    }, Object.entries(CATEGORIES).map(([key, category]) => h('option', { value: key, selected: slot.kind === key }, category.label))),
+    classifying && !slot.classified ? h('p', { class: 'muted' }, 'Classificando…') : null,
+    (() => {
+      const issues = [...(slot.issues ?? [])];
+      const side = state.photos[slot.id].originalSide;
+      if (side < 1200) issues.push(`Resolução baixa (${side} px)`);
+      return issues.length ? h('p', { class: 'issues' }, issues.join(' · ')) : null;
+    })()));
+
+  const addTile = h('div', {},
+    h('div', { class: 'slot-title' }),
+    h('label', { class: 'slot-box add', title: 'Adicionar fotos', ...dropTarget(addPhotos) },
+      h('input', { id: 'addPhotos', class: 'visually-hidden', type: 'file', accept: 'image/*', multiple: true, 'aria-label': 'Adicionar fotos', onchange: (e) => addPhotos([...e.target.files]) }),
+      h('span', { 'aria-hidden': 'true' }, '+')));
+
+  $('slots').replaceChildren(...photoTiles, addTile);
+}
+
+function renderOutput() {
+  $('pickFolder').hidden = !CAN_PICK_FOLDER;
+  $('pickFolder').textContent = state.outputDir ? 'Trocar pasta' : 'Escolher pasta';
+  $('folderWarning').hidden = CAN_PICK_FOLDER;
+  $('folderStatus').textContent = !CAN_PICK_FOLDER ? '' : state.outputDir ? `Salvando em: ${state.outputDir.name}/${folderName()}` : 'Nenhuma pasta escolhida';
+  const nano = state.models.find((model) => model.key === BATCH_MODEL_KEY);
+  $('modelInfo').textContent = !nano ? ''
+    : nano.available ? `Modelo: ${nano.label}, cerca de ${usd(nano.price.landscape)} por imagem. O resultado chega em até 24 h.`
+    : `Falta ${nano.missingKey} no arquivo .env. Depois de colar a chave, recarregue esta página.`;
+}
+
+function renderRun() {
+  const jobs = pendingJobs();
+  const total = jobs.reduce((sum, job) => sum + priceOf(job.model, job.slot), 0);
+  const photos = new Set(jobs.map((job) => job.slot.id)).size;
+  const needsModel = state.slots.some(usesAi) && !state.selected.size;
+  const button = $('run');
+  let label;
+  let disabled = true;
+  if (state.sending) label = 'Enviando…';
+  else if (state.classify.status === 'running') label = 'Classificando fotos…';
+  else if (!state.slots.length) label = 'Adicione fotos';
+  else if (needsModel) label = 'Falta a chave do Google no .env';
+  else if (CAN_PICK_FOLDER && !state.outputDir) label = 'Escolha a pasta de saída';
+  else if (!jobs.length) label = 'Adicione fotos';
+  else {
+    disabled = false;
+    label = `Enviar ${photos} ${photos === 1 ? 'foto' : 'fotos'} ao lote${total > 0 ? ` · cerca de ${usd(total)}` : ' · grátis'}`;
+  }
+  button.textContent = label;
+  button.disabled = disabled;
+}
+
+function rowTitle(job) {
+  const name = !CATEGORIES[job.slot.kind].ai && job.model.mode !== 'local' ? 'Chassi · remoção de marcas' : CATEGORIES[job.slot.kind].label;
+  return `${String(job.index + 1).padStart(2, '0')} · ${name}`;
+}
+
+// Depois de cada envio a tela volta ao início. O lote segue no Google, e o que estava em
+// andamento continua e grava na pasta do envio. A pasta de saída também é desmarcada.
+function resetForNextCar() {
+  const folder = state.runDir?.name ?? folderName();
+  for (const job of allJobs()) {
+    const key = resultKey(job.slot.id, job.model.key);
+    const result = state.results[key];
+    if (['queued', 'running', 'batch'].includes(result?.status)) state.carry[key] = { ...result, title: `${folder} · ${rowTitle(job)}` };
+  }
+  Object.assign(state, {
+    slots: [], photos: {}, results: {}, studio: null, outputDir: null, runDir: null, vehicleTone: null,
+    classify: { status: 'idle', error: '', missing: [], cost: null, again: false },
+    session: state.session + 1,
+  });
+  $('notes').value = '';
+  $('vehicleName').value = '';
+  $('studioFile').value = '';
+  $('studioPreview').replaceChildren();
+  showPhotoError('');
+  updateScene();
+  render();
+}
+
+function showRunNotice(message) {
+  $('runNotice').hidden = !message;
+  $('runNotice').textContent = message;
+}
+
+function renderHistory() {
+  const entries = historyEntries();
+  if (!entries.length) {
+    $('history').replaceChildren(h('p', { class: 'empty' }, 'Nenhuma execução ainda.'));
+    return;
+  }
+  $('history').replaceChildren(...entries.map((entry) => {
+    const count = (status) => entry.items.filter((item) => item.status === status).length;
+    const working = count('queued') + count('running');
+    const retryable = entry.items.filter(canRetry);
+    const withImage = entry.items.filter((item) => item.url);
+    const cost = withImage.reduce((sum, item) => sum + (item.cost ?? 0), 0);
+    const activeBatches = [...new Set(entry.items.filter((item) => item.status === 'batch' && item.batchId).map((item) => item.batchId))]
+      .filter((id) => { const batch = state.batches.find((candidate) => candidate.id === id); return batch && !FINAL_STATES.includes(batch.state); });
+    const when = new Date(entry.createdAt).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+    const summary = [
+      `${entry.items.length} ${entry.items.length === 1 ? 'foto' : 'fotos'}`,
+      count('saved') ? `${count('saved')} salvas` : null,
+      count('ready') ? `${count('ready')} prontas para salvar` : null,
+      count('batch') ? `${count('batch')} no lote` : null,
+      working ? `${working} em andamento` : null,
+      count('error') ? `${count('error')} com erro` : null,
+      usd(cost),
+    ].filter(Boolean).join(' · ');
+
+    return h('div', { class: 'batch' },
+      h('div', { class: 'head' },
+        h('strong', {}, `${when} · ${entry.folder || 'sem nome'}`),
+        h('span', { class: 'actions' },
+          h('span', { class: 'muted' }, summary),
+          retryable.length ? h('button', { onclick: () => retryFailed(entry) }, `Refazer erros (${retryable.length})`) : null,
+          withImage.length && CAN_PICK_FOLDER ? h('button', { onclick: () => saveEntryToFolder(entry) }, 'Salvar na pasta') : null,
+          ...activeBatches.map((id) => h('button', { onclick: () => cancelBatch(entry, id) }, 'Cancelar lote')))),
+      state.historyNotes[entry.id] ? h('p', { class: 'muted' }, state.historyNotes[entry.id]) : null,
+      h('details', {
+        open: state.openHistory.has(entry.id),
+        ontoggle: (e) => (e.currentTarget.open ? state.openHistory.add(entry.id) : state.openHistory.delete(entry.id)),
+      },
+        h('summary', {}, 'Ver fotos e motivos'),
+        h('ul', { class: 'progress-list' }, entry.items.map((item) => h('li', { class: item.status },
+          h('span', {}, item.label || item.key),
+          h('span', { class: 'status' }, historyStatus(item)))))));
+  }));
+}
+
+function render() { renderClassify(); renderSlots(); renderOutput(); renderRun(); renderHistory(); }
+
+async function start() {
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  state.defaultFolder = `veiculo-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
+  $('vehicleName').placeholder = state.defaultFolder;
+  $('vehicleName').addEventListener('input', () => { state.runDir = null; renderOutput(); });
+
+  $('promptEditors').replaceChildren(...Object.entries(PROMPTS).map(([kind, text]) => h('label', { class: 'field' },
+    h('span', {}, kind === 'underside' ? 'Chassi (só remoção de marcas)' : CATEGORIES[kind].label),
+    h('textarea', { id: `prompt-${kind}`, rows: '8' }, text))));
+  $('removeMarks').addEventListener('change', render);
+  $('reclassify').addEventListener('click', () => classifyPhotos());
+  $('preset').append(...[AUTO_PRESET, ...Object.keys(PRESETS)].map((name) => h('option', {}, name)));
+  $('preset').addEventListener('change', () => {
+    if ($('preset').value !== AUTO_PRESET) $('scene').value = PRESETS[$('preset').value];
+    updateScene();
+  });
+  updateScene();
+
+  $('studioFile').addEventListener('change', async (e) => {
+    if (!e.target.files[0]) return;
+    try {
+      state.studio = await loadPhoto(e.target.files[0]);
+      $('studioPreview').replaceChildren(
+        h('img', { src: state.studio.url, alt: 'Imagem do estúdio' }),
+        h('button', { onclick: () => { state.studio = null; $('studioFile').value = ''; $('studioPreview').replaceChildren(); } }, 'Remover'));
+    } catch (error) { showPhotoError(error.message); }
+  });
+
+  $('pickFolder').addEventListener('click', pickFolder);
+  $('run').addEventListener('click', () => dispatch(pendingJobs()));
+
+  const config = await (await fetch('/api/config')).json();
+  state.models = config.models;
+  state.classifierAvailable = config.classifier;
+  const nano = state.models.find((model) => model.key === BATCH_MODEL_KEY);
+  state.selected = new Set(nano?.available ? [nano.key] : []);
+  render();
+  pollHistory();
+}
+
+start();
+</script>
+</body>
+</html>

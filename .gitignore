@@ -1,2 +1,6 @@
 # Pasta de trabalho das simulações (fotos originais e imagens geradas no Gemini)
 _gemini/
+
+# Estúdio Veicular: chaves de API e resultados ficam só neste computador
+_estudio/.env
+_estudio/resultados/
