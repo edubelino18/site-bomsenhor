@@ -1,0 +1,18 @@
+{
+  "nome": "Bomsenhor Restaurações",
+  "marca": "Bomsenhor",
+  "complemento": "Restaurações",
+  "site": "https://bomsenhorrestauracoes.com.br",
+  "logo": "/images/logo.png",
+  "cidade": "Gaspar, SC",
+  "sobre": "Restauração e importação de carros e motos clássicos, com oficina de 575 m² em Gaspar, Santa Catarina, e clientes em todo o Brasil. Mais de 25 anos de ofício em funilaria, pintura, tapeçaria, mecânica e elétrica, tudo feito dentro de casa.",
+  "numeros": [
+    ["2015", "Fundação"],
+    ["45+", "Restaurados"],
+    ["575 m²", "de oficina"]
+  ],
+  "whatsapp": "(47) 99174-2031",
+  "whatsappNumero": "5547991742031",
+  "email": "bomsenhor10@icloud.com",
+  "instagram": "bomsenhorrestauracoes"
+}

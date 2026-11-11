@@ -1,0 +1,162 @@
+{
+  "slug": "corvette-1954",
+  "titulo": "Projeto Corvette 1954",
+  "descricao": "Proposta de compra, importação e restauração de um Chevrolet Corvette 1954 com motor e câmbio originais, pela Bomsenhor Restaurações.",
+  "tipo": "Proposta de importação e restauração",
+  "versaoFotos": 4,
+  "ajustesFotos": {
+    "lateral": { "foco": 0.55 },
+    "capota": { "foco": 0.55 },
+    "interior": { "semMarca": true }
+  },
+
+  "capa": {
+    "nome": "Corvette",
+    "ano": "1954",
+    "texto": "Um dos primeiros Corvettes da história, com motor e câmbio originais, trazido da Carolina do Norte (EUA) e restaurado na nossa oficina em Gaspar, SC, até ser entregue com placa na sua garagem.",
+    "fotoHoje": "img/capa/hoje.jpg",
+    "fotoNovo": "img/capa/restaurado.jpg",
+    "altHoje": "O carro hoje, de frente, com o número 69 e a pintura desgastada",
+    "altNovo": "O mesmo carro de frente, restaurado (simulação digital)",
+    "destaques": [
+      ["3.640", "Unidades fabricadas"],
+      ["6 cil.", "Blue Flame original"],
+      ["77 mil", "Milhas originais"],
+      ["C1", "O primeiro Corvette vendido no mundo"]
+    ]
+  },
+
+  "raridade": {
+    "titulo": "O primeiro passo da lenda",
+    "lead": "Em 1954, o Corvette ainda era um experimento da Chevrolet. Todos saíram com o seis cilindros Blue Flame e câmbio Powerglide. A partir de 1955, o V8 passou a dominar e esse conjunto original praticamente desapareceu.",
+    "paragrafos": [
+      "No Brasil, são pouquíssimas as unidades conhecidas desse modelo. Os Corvettes da primeira geração que aparecem em redes sociais e anúncios no país são de anos posteriores, já com motor V8. Um 1954 com o motor de fábrica é uma peça de exclusividade máxima em qualquer coleção brasileira."
+    ],
+    "nota": "Por ter mais de 30 anos, o carro pode ser importado como veículo de coleção.",
+    "numeros": [
+      ["1953", "Lançamento do Corvette. Apenas 300 unidades montadas à mão."],
+      ["3.640", "Corvettes produzidos em 1954, o segundo ano do modelo."],
+      ["1.076", "Ficaram sem vender ao fim de 1954. A baixa procura na época é o que torna o carro tão raro hoje."]
+    ]
+  },
+
+  "ficha": [
+    ["Modelo", "Chevrolet Corvette (C1)"],
+    ["Ano", "1954"],
+    ["Cores", "Branco, interior vermelho"],
+    ["Motor", "235 ci (3,8 L) Blue Flame, seis cilindros, com três carburadores de fluxo lateral"],
+    ["Câmbio", "Powerglide automático de 2 marchas"],
+    ["Elétrica", "Sistema original de 6 volts"],
+    ["Hodômetro", "77 mil milhas originais (≈ 124 mil km)"],
+    ["Localização", "Carolina do Norte, EUA"]
+  ],
+  "destaques": [
+    ["Motor e câmbio originais, recentemente restaurados.", "Liga prontamente e funciona muito bem."],
+    ["Suspensão dianteira e mangas de eixo", "recentemente recondicionadas."],
+    ["Peças novas:", "bomba de combustível, escapamento, bobina de ignição, cabos de vela, entre outros itens."],
+    ["Chassi e parte inferior em excelente estado.", "É a base mais cara de recuperar num clássico, e aqui ela já está pronta."],
+    ["Acompanha:", "chave reserva, manual do proprietário e folhetos de época."]
+  ],
+  "notaVeiculo": "A carroceria tem o desgaste natural de 70 anos, com pintura descascada e marcas de uso. É exatamente essa parte que a restauração resolve.",
+
+  "galeriaHoje": {
+    "titulo": "Como o carro está hoje",
+    "lead": "Fotos reais do veículo nos EUA. Toque em qualquer imagem para ampliar.",
+    "fotos": [
+      ["1.jpg", "Vista três-quartos dianteira", 1], ["3.jpg", "Frente"], ["4.jpg", "Lateral e traseira"], ["5.jpg", "Traseira"],
+      ["6.jpg", "Traseira, detalhe da carroceria"], ["2.jpg", "Frente, vista elevada"], ["7.jpg", "Interior vermelho", 1], ["8.jpg", "Cockpit"],
+      ["9.jpg", "Painel de instrumentos"], ["16-engine.jpg", "Motor Blue Flame 235"], ["15.jpg", "Motor, lado da ignição"], ["porta-malas.jpg", "Porta-malas com calotas"],
+      ["14-underside.jpg", "Parte inferior"], ["11.jpg", "Escapamento e diferencial"], ["13.jpg", "Câmbio Powerglide"], ["14.jpg", "Chassi"],
+      ["10.jpg", "Suspensão dianteira"], ["manga-freio.jpg", "Manga de eixo e freio"]
+    ]
+  },
+
+  "comparativo": {
+    "titulo": "Antes e depois",
+    "lead": "Arraste a barra para comparar o carro hoje com o acabamento que buscamos na restauração.",
+    "pares": [
+      ["frente", "Frente"], ["lateral", "Lateral"], ["capota", "Com capota"],
+      ["traseira", "Traseira"], ["interior", "Interior"], ["motor", "Motor"]
+    ],
+    "aviso": "As imagens de \"como vai ficar\" são simulações digitais deste carro depois da restauração, criadas a partir das fotos de hoje. Não são fotos do carro restaurado."
+  },
+
+  "galeriaReferencia": {
+    "titulo": "Branco com interior vermelho, como saiu de fábrica",
+    "lead": "O padrão de acabamento que buscamos na restauração: pintura, cromados, frisos, tapeçaria e capota.",
+    "aviso": "Imagens ilustrativas de referência. Não são fotos deste veículo.",
+    "fotos": [
+      ["ref_01.jpg", "Perfil", 1], ["ref_16.jpg", "Frente"], ["ref_04.jpg", "Traseira"], ["ref_20.jpg", "Frente, detalhe"], ["ref_29.jpg", "Interior", 1], ["ref_07.jpg", "Painel e volante"],
+      ["ref_10.jpg", "Instrumentos"], ["ref_09.jpg", "Volante"], ["ref_42.jpg", "Motor Blue Flame", 1], ["ref_43.jpg", "Três carburadores"], ["ref_12.jpg", "Calota e faixa branca"], ["ref_14.jpg", "Grade do farol"],
+      ["ref_34.jpg", "Com capota", 1], ["ref_36.jpg", "Porta-malas"], ["ref_38.jpg", "Tampa do porta-malas"], ["ref_31.jpg", "Traseira"], ["ref_26.jpg", "Perfil"], ["ref_28.jpg", "Três-quartos traseira"],
+      ["ref_30.jpg", "Interior"], ["ref_33.jpg", "Perfil com capota"], ["ref_15.jpg", "Detalhe da grade"], ["ref_22.jpg", "Farol"], ["ref_03.jpg", "Três-quartos traseira"],
+      ["ref_06.jpg", "Traseira"], ["ref_08.jpg", "Velocímetro"], ["ref_17.jpg", "Três-quartos dianteira"], ["ref_19.jpg", "Lateral"], ["ref_21.jpg", "Frente"]
+    ]
+  },
+
+  "escopo": {
+    "titulo": "Da Carolina do Norte até a placa preta",
+    "etapas": [
+      {
+        "titulo": "Compra e importação",
+        "itens": ["Compra do veículo nos EUA", "Transporte terrestre até o porto", "Frete marítimo e seguro", "Impostos de importação", "Despachante e desembaraço aduaneiro", "Documentação e emplacamento em placa preta"],
+        "extra": "Tudo incluso, do começo ao fim do processo."
+      },
+      {
+        "titulo": "Restauração completa",
+        "itens": ["Desmontagem completa", "Funilaria e repintura completa", "Restauro de peças, cromados e frisos", "Ajustes e acabamentos", "Capota nova (hoje o carro tem só a armação)", "Montagem e entrega"],
+        "extra": "Personalizações a pedido do cliente podem ser feitas e são orçadas à parte."
+      }
+    ]
+  },
+
+  "investimento": {
+    "custos": [
+      { "titulo": "Compra e importação", "detalhe": "Veículo, transporte, frete, seguro, impostos, despachante e placa preta", "legenda": "Compra e importação", "valor": 550000 },
+      { "titulo": "Restauração completa", "detalhe": "Funilaria, pintura, peças, frisos, capota, acabamentos e montagem", "legenda": "Restauração", "valor": 250000 }
+    ],
+    "nota": "O valor da importação é uma estimativa em reais e pode variar conforme a cotação do dólar no momento da compra e do desembaraço."
+  },
+
+  "mercado": {
+    "titulo": "Quanto custa um Corvette C1 pronto no Brasil",
+    "lead": "Dois anúncios recentes em São Paulo ajudam a situar o projeto. Um deles é o mesmo modelo, 1954 com o seis cilindros original, só que em outra cor.",
+    "itens": [
+      { "titulo": "Este projeto", "detalhe": "Corvette 1954 · seis cilindros Blue Flame original · restauração completa", "valor": 800000, "esteProjeto": true },
+      { "titulo": "Corvette 1956", "detalhe": "V8 265 · restaurado · anunciado em loja de São Paulo (nov/2026)", "valor": 985000 },
+      { "titulo": "Corvette 1954", "detalhe": "Seis cilindros Blue Flame · Pennant Blue · anunciado em São Paulo (jan/2025)", "valor": 1280000 }
+    ],
+    "aviso": "Valores pedidos em anúncios públicos, não preços de venda fechados. Servem como referência e não garantem valor de revenda."
+  },
+
+  "prazos": {
+    "fases": [
+      { "nome": "Compra e importação", "meses": 4 },
+      { "nome": "Restauração", "meses": 9 }
+    ],
+    "etapas": [
+      ["Assinatura do contrato", "Início", "Início do projeto e compra do veículo na Carolina do Norte."],
+      ["Embarque nos EUA", "Primeiros meses", "Transporte até o porto e embarque no navio rumo ao Brasil."],
+      ["Desembarque no Brasil", "≈ mês 4", "Chegada ao porto e desembaraço aduaneiro."],
+      ["Desmontagem", "Dia 1 após o desembaraço", "O carro chega à oficina e é desmontado peça por peça."],
+      ["Pintura concluída", "3 meses após a desmontagem · ≈ mês 7", "Funilaria e repintura completas."],
+      ["Entrega das chaves", "≈ mês 13", "Montagem, capota, acabamentos e entrega em placa preta."]
+    ]
+  },
+
+  "parcelas": [
+    { "marco": "Assinatura do contrato", "detalhe": "Início do projeto e compra do veículo", "valor": 250000, "mes": 0 },
+    { "marco": "Antes do embarque nos EUA", "detalhe": "Veículo comprado e pronto para embarcar", "valor": 50000, "mes": 1.2 },
+    { "marco": "Desembarque no Brasil", "detalhe": "Carro em território nacional", "valor": 250000, "mes": 4 },
+    { "marco": "Desmontagem do veículo", "detalhe": "Início da restauração na oficina", "valor": 100000, "mes": 4 },
+    { "marco": "Pintura concluída", "detalhe": "Funilaria e repintura finalizadas", "valor": 100000, "mes": 7 },
+    { "marco": "Entrega das chaves", "detalhe": "Carro pronto e emplacado", "valor": 50000, "mes": 13 }
+  ],
+
+  "condicoes": [
+    ["Validade da proposta", "Válida enquanto o veículo estiver disponível para venda nos EUA."],
+    ["Variação cambial", "O valor de compra e importação é estimado e pode variar conforme a cotação do dólar."],
+    ["Prazos", "Os prazos são aproximados e dependem de etapas externas, como o transporte marítimo e a liberação aduaneira."],
+    ["Personalizações", "Qualquer alteração em relação ao padrão original pode ser feita e é orçada à parte."]
+  ]
+}
