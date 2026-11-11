@@ -328,7 +328,7 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
       <figure class="cover-photo" style="margin:0">
         <div class="compare cover-compare" style="--pos:50%">
           <img class="before" src="img/capa/hoje.jpg" alt="O carro hoje, de frente, com o número 69 e a pintura desgastada" fetchpriority="high">
-          <img class="after" src="img/capa/restaurado.jpg" alt="O mesmo carro de frente, restaurado (imagem ilustrativa)">
+          <img class="after" src="img/capa/restaurado.jpg" alt="O mesmo carro de frente, restaurado (simulação digital)">
           <span class="tag l">Hoje</span><span class="tag r">Como vai ficar</span>
           <div class="divider"><span class="knob" aria-hidden="true">↔</span></div>
           <input type="range" id="cover-range" min="0" max="100" value="50" aria-label="Comparar o carro hoje com o resultado da restauração">
@@ -419,8 +419,8 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
     <div class="compare-wrap">
       <div class="compare-tabs" role="group" aria-label="Escolher ângulo" id="cmp-tabs"></div>
       <div class="compare" id="cmp" style="--pos:50%">
-        <img class="before" id="cmp-a" src="img/par/frente-antes.jpg" alt="Antes">
-        <img class="after" id="cmp-d" src="img/par/frente-depois.jpg" alt="Depois (referência)">
+        <img class="before" id="cmp-a" src="img/par/frente-antes.jpg?v=4" alt="Antes">
+        <img class="after" id="cmp-d" src="img/par/frente-depois.jpg?v=4" alt="Depois (simulação)">
         <span class="tag l">Hoje</span><span class="tag r">Como vai ficar</span>
         <div class="divider"><span class="knob" aria-hidden="true">↔</span></div>
         <input type="range" id="cmp-range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
@@ -722,8 +722,8 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
     var b = document.createElement('button');
     b.type = 'button'; b.textContent = p[1]; b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
     b.onclick = function () {
-      document.getElementById('cmp-a').src = 'img/par/' + p[0] + '-antes.jpg';
-      document.getElementById('cmp-d').src = 'img/par/' + p[0] + '-depois.jpg';
+      document.getElementById('cmp-a').src = 'img/par/' + p[0] + '-antes.jpg?v=4';
+      document.getElementById('cmp-d').src = 'img/par/' + p[0] + '-depois.jpg?v=4';
       tabs.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       range.value = 50; cmp.style.setProperty('--pos', '50%');
     };
