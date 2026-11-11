@@ -11,7 +11,7 @@
 <meta property="og:title" content="Projeto Corvette 1954 · Bomsenhor Restaurações">
 <meta property="og:description" content="Proposta de compra, importação e restauração de um Chevrolet Corvette 1954 com motor e câmbio originais, pela Bomsenhor Restaurações.">
 <meta property="og:url" content="https://bomsenhorrestauracoes.com.br/proposta/corvette-1954/">
-<meta property="og:image" content="https://bomsenhorrestauracoes.com.br/proposta/corvette-1954/img/depois/ref_21.jpg">
+<meta property="og:image" content="https://bomsenhorrestauracoes.com.br/proposta/corvette-1954/img/capa/restaurado.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/images/logo.png">
 <style>
@@ -90,12 +90,8 @@ section + section { border-top: 1px solid var(--line); }
 .cover-copy { display: grid; gap: 22px; min-width: 0; }
 .cover-copy p { color: var(--on-navy-muted); font-size: 18px; max-width: 44ch; }
 .cover-photo { position: relative; min-width: 0; }
-.cover-photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); }
-.cover-photo .inset { position: absolute; left: -18px; bottom: -22px; width: 25%; border: 4px solid var(--navy-deep); border-radius: 8px; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
-.cover-photo .inset img { aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
-.cover-photo .inset small, .cover-photo > small { position: absolute; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: rgba(14,29,54,.82); color: var(--on-navy); padding: 3px 8px; border-radius: 4px; }
-.cover-photo .inset small { left: 6px; top: 6px; }
-.cover-photo > small { right: 10px; top: 10px; }
+.cover-photo { display: grid; gap: 10px; }
+.cover-photo figcaption { font-size: 13px; color: var(--on-navy-muted); }
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(244,241,232,.16); }
 .facts div { padding: 22px 18px 26px; border-left: 1px solid rgba(244,241,232,.16); display: grid; gap: 2px; }
 .facts div:first-child { border-left: 0; padding-left: 0; }
@@ -113,6 +109,14 @@ section + section { border-top: 1px solid var(--line); }
 .counter-row span { color: var(--muted); }
 .counter-row.hl b { color: var(--red); }
 .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--on-navy); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; justify-self: start; }
+
+@media (min-width: 901px) {
+  /* Os números ocupam a mesma altura do texto ao lado: começam na linha do título e terminam junto com o último parágrafo */
+  .rarity { align-items: stretch; }
+  .counter { grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 39px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .counter-row { align-items: center; padding: 0; }
+  .counter-row:last-child { border-bottom: 0; }
+}
 
 /* ---------- Ficha ---------- */
 .spec-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 64px); }
@@ -153,6 +157,8 @@ section + section { border-top: 1px solid var(--line); }
 .compare .tag.l { left: 12px; }
 .compare .tag.r { right: 12px; background: rgba(138,109,30,.9); }
 .compare-wrap { max-width: 920px; margin: 0 auto; }
+
+.compare.cover-compare { aspect-ratio: 5 / 4; max-height: none; width: 100%; margin: 0; box-shadow: 0 18px 40px rgba(0,0,0,.35); }
 
 /* ---------- Escopo ---------- */
 .scope { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
@@ -276,7 +282,6 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
 @media (max-width: 900px) {
   .cover-grid, .rarity, .spec-grid, .invest, .about-grid { grid-template-columns: minmax(0, 1fr); }
   .cover-photo { order: -1; }
-  .cover-photo .inset { left: 10px; bottom: -18px; width: 30%; }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
@@ -318,15 +323,17 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
     <div class="cover-grid">
       <div class="cover-copy">
                 <h1>Corvette <em>1954</em></h1>
-        <p>Um dos primeiros Corvettes da história, com motor e câmbio originais, trazido da Carolina do Norte (EUA) e restaurado na nossa oficina em Gaspar, SC, até ser entregue em placa preta.</p>
+        <p>Um dos primeiros Corvettes da história, com motor e câmbio originais, trazido da Carolina do Norte (EUA) e restaurado na nossa oficina em Gaspar, SC, até ser entregue com placa na sua garagem.</p>
       </div>
       <figure class="cover-photo" style="margin:0">
-        <img src="img/depois/ref_21.jpg" alt="Corvette 1954 branco restaurado, vista dianteira" fetchpriority="high">
-        <small>Como vai ficar · referência</small>
-        <div class="inset">
-          <img src="img/antes/capa.jpg" alt="O carro hoje, branco com o número 69 e a pintura desgastada">
-          <small>Hoje</small>
+        <div class="compare cover-compare" style="--pos:50%">
+          <img class="before" src="img/capa/hoje.jpg" alt="O carro hoje, de frente, com o número 69 e a pintura desgastada" fetchpriority="high">
+          <img class="after" src="img/capa/restaurado.jpg" alt="O mesmo carro de frente, restaurado (imagem ilustrativa)">
+          <span class="tag l">Hoje</span><span class="tag r">Como vai ficar</span>
+          <div class="divider"><span class="knob" aria-hidden="true">↔</span></div>
+          <input type="range" id="cover-range" min="0" max="100" value="50" aria-label="Comparar o carro hoje com o resultado da restauração">
         </div>
+        <figcaption>Arraste para comparar. À direita, imagem ilustrativa do resultado.</figcaption>
       </figure>
     </div>
     <div class="facts">
@@ -723,6 +730,10 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
     tabs.appendChild(b);
   });
   range.addEventListener('input', function () { cmp.style.setProperty('--pos', range.value + '%'); });
+
+  // Antes x depois da capa
+  var cover = document.querySelector('.cover-compare'), coverRange = document.getElementById('cover-range');
+  coverRange.addEventListener('input', function () { cover.style.setProperty('--pos', coverRange.value + '%'); });
 })();
 </script>
 </body>
