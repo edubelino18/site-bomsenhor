@@ -333,7 +333,7 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
           <div class="divider"><span class="knob" aria-hidden="true">↔</span></div>
           <input type="range" id="cover-range" min="0" max="100" value="50" aria-label="Comparar o carro hoje com o resultado da restauração">
         </div>
-        <figcaption>Arraste para comparar. À direita, imagem ilustrativa do resultado.</figcaption>
+        <figcaption>Arraste para comparar. À direita, simulação digital do resultado.</figcaption>
       </figure>
     </div>
     <div class="facts">
@@ -425,7 +425,7 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
         <div class="divider"><span class="knob" aria-hidden="true">↔</span></div>
         <input type="range" id="cmp-range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
       </div>
-      <p class="disclaimer">As imagens de "como vai ficar" são referências ilustrativas de outro Corvette 1954 restaurado, com as mesmas cores. Não são fotos deste veículo.</p>
+      <p class="disclaimer">As imagens de "como vai ficar" são simulações digitais deste carro depois da restauração, criadas a partir das fotos de hoje. Não são fotos do carro restaurado.</p>
     </div>
   </div>
 </section>
@@ -716,7 +716,7 @@ footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-cont
   lb.addEventListener('touchend', function (e) { if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); tx = null; });
 
   // Antes x depois
-  var pares = [['frente', 'Frente'], ['lateral', 'Lateral'], ['traseira', 'Traseira'], ['interior', 'Interior'], ['motor', 'Motor']];
+  var pares = [['frente', 'Frente'], ['lateral', 'Lateral'], ['capota', 'Com capota'], ['traseira', 'Traseira'], ['interior', 'Interior'], ['motor', 'Motor']];
   var tabs = document.getElementById('cmp-tabs'), cmp = document.getElementById('cmp'), range = document.getElementById('cmp-range');
   pares.forEach(function (p, i) {
     var b = document.createElement('button');
