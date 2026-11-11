@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Proposta de compra, importação e restauração de um Chevrolet Corvette 1954 com motor e câmbio originais, pela Bomsenhor Restaurações.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Bomsenhor Restaurações">
+<meta property="og:title" content="Projeto Corvette 1954 · Bomsenhor Restaurações">
+<meta property="og:description" content="Proposta de compra, importação e restauração de um Chevrolet Corvette 1954 com motor e câmbio originais, pela Bomsenhor Restaurações.">
+<meta property="og:url" content="https://bomsenhorrestauracoes.com.br/proposta/corvette-1954/">
+<meta property="og:image" content="https://bomsenhorrestauracoes.com.br/proposta/corvette-1954/img/depois/ref_21.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/images/logo.png">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+[hidden] { display: none !important; }
+</style>
+<title>Projeto Corvette 1954 · Bomsenhor Restaurações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: proposta de oficina — capa azul-marinho com o carro pronto, depois seções em sequência (veículo → estado → transformação → números → prazos → pagamento), fichas em grade e linha do tempo real em meses */
+:root {
+  --navy: #1d4175;
+  --navy-deep: #13294b;
+  --gold: #8a6d1e;
+  --gold-soft: #c9a54a;
+  --red: #a3242a;
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --line: #e6e2d8;
+  --fg: #262626;
+  --muted: #66625a;
+  --on-navy: #f4f1e8;
+  --on-navy-muted: rgba(244, 241, 232, .72);
+  --ink-strong: #1d4175;
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --body: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #2a5698; --navy-deep: #0e1d36; --gold: #d3b263; --gold-soft: #d9bb6e; --red: #e0646a;
+    --bg: #111722; --surface: #18202e; --line: #2a3446; --fg: #ece8de; --muted: #a9a499;
+    --on-navy: #f4f1e8; --on-navy-muted: rgba(244, 241, 232, .72); --ink-strong: #ece8de;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #2a5698; --navy-deep: #0e1d36; --gold: #d3b263; --gold-soft: #d9bb6e; --red: #e0646a;
+  --bg: #111722; --surface: #18202e; --line: #2a3446; --fg: #ece8de; --muted: #a9a499;
+  --on-navy: #f4f1e8; --on-navy-muted: rgba(244, 241, 232, .72); --ink-strong: #ece8de;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; font-weight: 400; }
+img { display: block; max-width: 100%; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-size: 13px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); }
+section { padding-block: clamp(56px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+.head { display: grid; gap: 14px; max-width: 680px; margin-bottom: clamp(28px, 4vw, 44px); }
+.head h2 { font-size: clamp(30px, 4.4vw, 46px); }
+.head h2 em { font-style: italic; color: var(--gold); }
+.lead { color: var(--muted); font-size: 18px; max-width: 62ch; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Capa ---------- */
+.cover { background: var(--navy-deep); color: var(--on-navy); padding: 0; border: 0; overflow: hidden; }
+.cover-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand img { width: 52px; height: 52px; }
+.brand span { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--on-navy-muted); line-height: 1.3; }
+.brand b { display: block; color: var(--on-navy); font-weight: 600; }
+.cover-tag { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-soft); border: 1px solid rgba(201,165,74,.45); padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
+.cover-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 56px); align-items: center; padding-block: clamp(24px, 5vw, 56px) clamp(40px, 6vw, 72px); }
+.cover h1 { font-size: clamp(44px, 7vw, 84px); font-weight: 600; letter-spacing: -.01em; }
+.cover h1 em { display: block; font-style: italic; color: var(--gold-soft); font-weight: 500; }
+.cover-copy { display: grid; gap: 22px; min-width: 0; }
+.cover-copy p { color: var(--on-navy-muted); font-size: 18px; max-width: 44ch; }
+.cover-photo { position: relative; min-width: 0; }
+.cover-photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); }
+.cover-photo .inset { position: absolute; left: -18px; bottom: -22px; width: 25%; border: 4px solid var(--navy-deep); border-radius: 8px; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+.cover-photo .inset img { aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+.cover-photo .inset small, .cover-photo > small { position: absolute; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: rgba(14,29,54,.82); color: var(--on-navy); padding: 3px 8px; border-radius: 4px; }
+.cover-photo .inset small { left: 6px; top: 6px; }
+.cover-photo > small { right: 10px; top: 10px; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(244,241,232,.16); }
+.facts div { padding: 22px 18px 26px; border-left: 1px solid rgba(244,241,232,.16); display: grid; gap: 2px; }
+.facts div:first-child { border-left: 0; padding-left: 0; }
+.facts b { font-family: var(--display); font-size: clamp(24px, 3vw, 34px); font-weight: 600; color: var(--on-navy); font-variant-numeric: lining-nums tabular-nums; }
+.facts span { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--on-navy-muted); }
+
+/* ---------- Raridade ---------- */
+.rarity { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.rarity-copy { display: grid; gap: 18px; }
+.rarity-copy p { max-width: 58ch; }
+.counter { display: grid; gap: 18px; }
+.counter-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: baseline; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.counter-row:last-child { border-bottom: 0; }
+.counter-row b { font-family: var(--display); font-size: 34px; font-weight: 600; color: var(--ink-strong); font-variant-numeric: lining-nums tabular-nums; }
+.counter-row span { color: var(--muted); }
+.counter-row.hl b { color: var(--red); }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--on-navy); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; justify-self: start; }
+
+/* ---------- Ficha ---------- */
+.spec-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 64px); }
+.spec { border-top: 2px solid var(--navy); }
+.spec div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.spec dt { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.spec dd { margin: 0; font-weight: 500; }
+.spec dl { margin: 0; }
+.highlights { display: grid; gap: 0; list-style: none; margin: 0; padding: 0; }
+.highlights li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.highlights li::before { content: ""; width: 9px; height: 9px; margin-top: 9px; border: 2px solid var(--gold); transform: rotate(45deg); }
+.highlights strong { font-weight: 600; }
+.note { margin-top: 22px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); color: var(--muted); font-size: 15px; }
+
+/* ---------- Galerias ---------- */
+.gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.gallery button { all: unset; cursor: zoom-in; position: relative; overflow: hidden; border-radius: 6px; background: var(--line); aspect-ratio: 1; }
+.gallery button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.gallery button:hover img { transform: scale(1.05); }
+.gallery .wide { grid-column: span 2; grid-row: span 2; }
+.gallery.ref { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.gallery.ref button { aspect-ratio: 3 / 2; }
+.gallery.ref .wide { grid-column: span 2; grid-row: span 2; }
+.disclaimer { margin-top: 16px; font-size: 13px; color: var(--muted); }
+
+/* ---------- Antes x Depois ---------- */
+.compare-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.compare-tabs button { font: inherit; font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; }
+.compare-tabs button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.compare { position: relative; max-width: 100%; aspect-ratio: 4 / 3; max-height: 78vh; margin: 0 auto; border-radius: var(--radius); overflow: hidden; background: var(--line); user-select: none; touch-action: pan-y; }
+.compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.compare .after { clip-path: inset(0 0 0 var(--pos, 50%)); }
+.compare .divider { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 2px; background: #fff; transform: translateX(-1px); pointer-events: none; }
+.compare .knob { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.35); display: grid; place-items: center; color: #13294b; font-size: 18px; font-weight: 600; }
+.compare input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+.compare .tag { position: absolute; top: 12px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; border-radius: 4px; background: rgba(14,29,54,.8); color: #f4f1e8; pointer-events: none; }
+.compare .tag.l { left: 12px; }
+.compare .tag.r { right: 12px; background: rgba(138,109,30,.9); }
+.compare-wrap { max-width: 920px; margin: 0 auto; }
+
+/* ---------- Escopo ---------- */
+.scope { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.scope article { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; }
+.scope h3 { font-size: 24px; }
+.scope .step { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.scope ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.scope li { padding-left: 22px; position: relative; }
+.scope li::before { content: ""; position: absolute; left: 2px; top: 11px; width: 10px; height: 1.5px; background: var(--gold); }
+.scope .extra { font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* ---------- Investimento ---------- */
+.invest { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 48px); align-items: stretch; }
+.ledger { border-top: 2px solid var(--navy); }
+.ledger-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.ledger-row h3 { font-size: 22px; }
+.ledger-row p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+.ledger-row .val { font-family: var(--display); font-size: clamp(22px, 2.6vw, 28px); font-weight: 600; font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.ledger-total { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 22px 0 0; align-items: baseline; }
+.ledger-total span { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+.ledger-total .val { font-family: var(--display); font-size: clamp(32px, 4.4vw, 46px); font-weight: 600; color: var(--gold); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.split { background: var(--navy-deep); color: var(--on-navy); border-radius: var(--radius); padding: clamp(22px, 3vw, 32px); display: grid; gap: 18px; align-content: start; }
+.split h3 { font-size: 20px; color: var(--on-navy); }
+.split-bar { display: flex; height: 14px; border-radius: 999px; overflow: hidden; }
+.split-bar i { display: block; }
+.split-legend { display: grid; gap: 10px; font-size: 15px; }
+.split-legend div { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+.split-legend i { width: 12px; height: 12px; border-radius: 3px; }
+.split-legend b { font-variant-numeric: tabular-nums; font-weight: 500; }
+.split p { font-size: 14px; color: var(--on-navy-muted); border-top: 1px solid rgba(244,241,232,.16); padding-top: 14px; }
+
+/* ---------- Mercado ---------- */
+.market { border-top: 2px solid var(--navy); }
+.mk-row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) 150px; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.mk-info h3 { font-family: var(--body); font-size: 17px; font-weight: 600; }
+.mk-info p { font-size: 14px; color: var(--muted); }
+.mk-bar { height: 10px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.mk-bar i { display: block; height: 100%; background: var(--muted); opacity: .55; }
+.is-this .mk-bar i { background: var(--gold); opacity: 1; }
+.mk-val { text-align: right; display: grid; }
+.mk-val b { font-family: var(--display); font-size: 24px; font-weight: 600; font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.mk-val small { font-size: 13px; color: var(--muted); }
+.is-this .mk-val b { color: var(--gold); }
+
+/* ---------- Linha do tempo ---------- */
+.tl-scroll { overflow-x: auto; padding-bottom: 6px; }
+.tl { min-width: 760px; display: grid; gap: 14px; }
+.tl-months { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tl-months span { border-left: 1px solid var(--line); padding-left: 6px; }
+.tl-track { position: relative; height: 56px; }
+.tl-phase { position: absolute; top: 0; height: 56px; border-radius: 8px; padding: 8px 14px; display: grid; align-content: center; color: #fff; overflow: hidden; }
+.tl-phase b { font-weight: 600; font-size: 15px; line-height: 1.2; }
+.tl-phase small { font-size: 12px; opacity: .85; }
+.tl-phase.imp { left: 0; width: calc(4 / 13 * 100% - 4px); background: var(--navy); }
+.tl-phase.res { left: calc(4 / 13 * 100%); width: calc(9 / 13 * 100%); background: var(--gold); }
+:root[data-theme="dark"] .tl-phase.res { color: #1a1406; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tl-phase.res { color: #1a1406; } }
+.tl-marks { position: relative; height: 34px; }
+.tl-marks span { position: absolute; top: 0; transform: translateX(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--surface); border: 2px solid var(--fg); display: grid; place-items: center; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tl-marks span:first-child { transform: none; }
+.tl-marks span:last-child { transform: translateX(-100%); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 28px; margin-top: 34px; counter-reset: s; }
+.steps li { list-style: none; padding: 18px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; }
+.steps li::before { counter-increment: s; content: counter(s); width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--fg); display: grid; place-items: center; font-size: 12px; font-weight: 600; }
+.steps ol { margin: 0; padding: 0; display: contents; }
+.steps h3 { font-family: var(--body); font-size: 16px; font-weight: 600; }
+.steps time { display: block; font-size: 13px; color: var(--gold); font-weight: 500; letter-spacing: .04em; margin: 2px 0 4px; }
+.steps p { font-size: 15px; color: var(--muted); }
+
+/* ---------- Pagamento ---------- */
+.pay { border-top: 2px solid var(--navy); }
+.pay-row { display: grid; grid-template-columns: 52px minmax(0, 1fr) 150px 200px; gap: 18px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.pay-row .n { font-family: var(--display); font-size: 28px; color: var(--gold); font-weight: 600; font-variant-numeric: lining-nums; }
+.pay-row h3 { font-family: var(--body); font-size: 17px; font-weight: 600; }
+.pay-row p { font-size: 14px; color: var(--muted); }
+.pay-row .amt { font-family: var(--display); font-size: 24px; font-weight: 600; text-align: right; font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.pay-row .cum { display: grid; gap: 6px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pay-row .cum i { display: block; height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.pay-row .cum i::after { content: ""; display: block; height: 100%; width: var(--w); background: var(--navy); }
+.pay-head { display: grid; grid-template-columns: 52px minmax(0, 1fr) 150px 200px; gap: 18px; padding: 10px 0; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.pay-head span:nth-child(3) { text-align: right; }
+
+/* ---------- Condições / Sobre ---------- */
+.terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.terms div { padding: 18px 0; border-top: 1px solid var(--line); display: grid; gap: 4px; }
+.terms h3 { font-family: var(--body); font-size: 16px; font-weight: 600; }
+.terms p { color: var(--muted); font-size: 15px; }
+
+.about { background: var(--navy-deep); color: var(--on-navy); border: 0; }
+.about .eyebrow { color: var(--gold-soft); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.about h2 { font-size: clamp(30px, 4.4vw, 46px); }
+.about h2 em { color: var(--gold-soft); }
+.about-copy { display: grid; gap: 18px; }
+.about-copy p { color: var(--on-navy-muted); max-width: 56ch; }
+.about-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid rgba(244,241,232,.16); border-bottom: 1px solid rgba(244,241,232,.16); }
+.about-stats div { padding: 18px 0; display: grid; gap: 2px; }
+.about-stats b { font-family: var(--display); font-size: 30px; font-weight: 600; font-variant-numeric: lining-nums; }
+.about-stats span { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--on-navy-muted); }
+.contact { background: rgba(244,241,232,.06); border: 1px solid rgba(244,241,232,.14); border-radius: var(--radius); padding: clamp(22px, 3vw, 30px); display: grid; gap: 18px; }
+.contact h3 { font-size: 24px; }
+.contact dl { margin: 0; display: grid; gap: 12px; }
+.contact dt { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--on-navy-muted); }
+.contact dd { margin: 0; font-size: 18px; user-select: all; overflow-wrap: anywhere; }
+.btn { display: inline-flex; justify-content: center; align-items: center; gap: 10px; background: var(--gold-soft); color: #13294b; text-decoration: none; font-weight: 600; padding: 14px 22px; border-radius: 8px; }
+.btn:hover { background: #e2c57a; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; }
+.links a { color: var(--on-navy); text-underline-offset: 4px; }
+footer { background: var(--navy-deep); color: var(--on-navy-muted); font-size: 13px; border-top: 1px solid rgba(244,241,232,.12); }
+footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+/* ---------- Lightbox ---------- */
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(8,14,26,.94); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; padding: calc(12px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.lb[hidden] { display: none; }
+.lb-top { display: flex; justify-content: space-between; align-items: center; color: #f4f1e8; font-size: 14px; gap: 12px; }
+.lb img { width: 100%; height: 100%; object-fit: contain; min-height: 0; }
+.lb-nav { display: flex; justify-content: center; gap: 12px; }
+.lb button { font: inherit; background: rgba(244,241,232,.12); color: #f4f1e8; border: 0; border-radius: 999px; padding: 10px 18px; cursor: pointer; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .cover-grid, .rarity, .spec-grid, .invest, .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .cover-photo { order: -1; }
+  .cover-photo .inset { left: 10px; bottom: -18px; width: 30%; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .facts div:nth-child(n+3) { border-top: 1px solid rgba(244,241,232,.16); }
+  .scope, .terms, .steps { grid-template-columns: minmax(0, 1fr); }
+  .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .gallery.ref { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec div { grid-template-columns: 110px minmax(0, 1fr); }
+  .counter-row { grid-template-columns: 96px minmax(0, 1fr); }
+  .counter-row b { font-size: 28px; }
+  .pay-head { display: none; }
+  .pay-row { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 6px 12px; }
+  .pay-row .cum { grid-column: 2 / -1; }
+  .pay-row .amt { grid-row: 1; grid-column: 3; font-size: 21px; }
+  .about-stats b { font-size: 24px; }
+  .cover-tag { display: none; }
+  .mk-row { grid-template-columns: minmax(0, 1fr) auto; gap: 10px 16px; }
+  .mk-bar { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ================= CAPA ================= -->
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-bar">
+      <a class="brand" href="https://bomsenhorrestauracoes.com.br/" target="_blank" rel="noopener">
+        <img src="/images/logo.png" alt="Bomsenhor Restaurações">
+        <span><b>Bomsenhor</b>Restaurações</span>
+      </a>
+      <span class="cover-tag">Proposta de importação e restauração</span>
+    </div>
+    <div class="cover-grid">
+      <div class="cover-copy">
+                <h1>Corvette <em>1954</em></h1>
+        <p>Um dos primeiros Corvettes da história, com motor e câmbio originais, trazido da Carolina do Norte (EUA) e restaurado na nossa oficina em Gaspar, SC, até ser entregue em placa preta.</p>
+      </div>
+      <figure class="cover-photo" style="margin:0">
+        <img src="img/depois/ref_21.jpg" alt="Corvette 1954 branco restaurado, vista dianteira" fetchpriority="high">
+        <small>Como vai ficar · referência</small>
+        <div class="inset">
+          <img src="img/antes/capa.jpg" alt="O carro hoje, branco com o número 69 e a pintura desgastada">
+          <small>Hoje</small>
+        </div>
+      </figure>
+    </div>
+    <div class="facts">
+      <div><b class="num">3.640</b><span>Unidades fabricadas</span></div>
+      <div><b>6 cil.</b><span>Blue Flame original</span></div>
+      <div><b class="num">77 mil</b><span>Milhas originais</span></div>
+      <div><b>C1</b><span>O primeiro Corvette vendido no mundo</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= RARIDADE ================= -->
+<section id="raridade">
+  <div class="wrap rarity">
+    <div class="rarity-copy">
+      <span class="eyebrow">Raridade</span>
+      <h2 style="font-size:clamp(30px,4.4vw,46px)">O primeiro passo da lenda</h2>
+      <p class="lead">Em 1954, o Corvette ainda era um experimento da Chevrolet. Todos saíram com o seis cilindros Blue Flame e câmbio Powerglide. A partir de 1955, o V8 passou a dominar e esse conjunto original praticamente desapareceu.</p>
+      <p>No Brasil, são pouquíssimas as unidades conhecidas desse modelo. Os Corvettes da primeira geração que aparecem em redes sociais e anúncios no país são de anos posteriores, já com motor V8. Um 1954 com o motor de fábrica é uma peça de exclusividade máxima em qualquer coleção brasileira.</p>
+      <p style="font-size:15px;color:var(--muted)">Por ter mais de 30 anos, o carro pode ser importado como veículo de coleção.</p>
+    </div>
+    <div class="counter">
+      <div class="counter-row"><b class="num">1953</b><span>Lançamento do Corvette. Apenas 300 unidades montadas à mão.</span></div>
+      <div class="counter-row"><b class="num">3.640</b><span>Corvettes produzidos em 1954, o segundo ano do modelo.</span></div>
+      <div class="counter-row"><b class="num">1.076</b><span>Ficaram sem vender ao fim de 1954. A baixa procura na época é o que torna o carro tão raro hoje.</span></div>
+          </div>
+  </div>
+</section>
+
+<!-- ================= O VEÍCULO ================= -->
+<section id="veiculo">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">O veículo</span>
+      <h2>Ficha técnica</h2>
+    </div>
+    <div class="spec-grid">
+      <div class="spec">
+        <dl>
+          <div><dt>Modelo</dt><dd>Chevrolet Corvette (C1)</dd></div>
+          <div><dt>Ano</dt><dd>1954</dd></div>
+          <div><dt>Cores</dt><dd>Branco, interior vermelho</dd></div>
+          <div><dt>Motor</dt><dd>235 ci (3,8 L) Blue Flame, seis cilindros, com três carburadores de fluxo lateral</dd></div>
+          <div><dt>Câmbio</dt><dd>Powerglide automático de 2 marchas</dd></div>
+          <div><dt>Elétrica</dt><dd>Sistema original de 6 volts</dd></div>
+          <div><dt>Quilometragem</dt><dd>77 mil milhas originais (cerca de 124 mil km)</dd></div>
+          <div><dt>Localização</dt><dd>Carolina do Norte, EUA</dd></div>
+        </dl>
+      </div>
+      <div>
+        <ul class="highlights">
+          <li><span><strong>Motor e câmbio originais, recentemente restaurados.</strong> Liga prontamente e funciona muito bem.</span></li>
+          <li><span><strong>Suspensão dianteira e mangas de eixo</strong> recentemente recondicionadas.</span></li>
+          <li><span><strong>Peças novas:</strong> bomba de combustível, escapamento, bobina de ignição, cabos de vela, entre outros itens.</span></li>
+          <li><span><strong>Chassi e parte inferior em excelente estado.</strong> É a base mais cara de recuperar num clássico, e aqui ela já está pronta.</span></li>
+          <li><span><strong>Acompanha:</strong> chave reserva, manual do proprietário e folhetos de época.</span></li>
+        </ul>
+        <p class="note">A carroceria tem o desgaste natural de 70 anos, com pintura descascada e marcas de uso. É exatamente essa parte que a restauração resolve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESTADO ATUAL ================= -->
+<section id="estado-atual">
+  <div class="wrap">
+    <div class="head">
+            <h2>Como o carro está hoje</h2>
+      <p class="lead">Fotos reais do veículo nos EUA. Toque em qualquer imagem para ampliar.</p>
+    </div>
+    <div class="gallery" id="g-antes"></div>
+  </div>
+</section>
+
+<!-- ================= ANTES x DEPOIS ================= -->
+<section id="antes-depois">
+  <div class="wrap">
+    <div class="head">
+            <h2>Antes e depois</h2>
+      <p class="lead">Arraste a barra para comparar o carro hoje com o acabamento que buscamos na restauração.</p>
+    </div>
+    <div class="compare-wrap">
+      <div class="compare-tabs" role="group" aria-label="Escolher ângulo" id="cmp-tabs"></div>
+      <div class="compare" id="cmp" style="--pos:50%">
+        <img class="before" id="cmp-a" src="img/par/frente-antes.jpg" alt="Antes">
+        <img class="after" id="cmp-d" src="img/par/frente-depois.jpg" alt="Depois (referência)">
+        <span class="tag l">Hoje</span><span class="tag r">Como vai ficar</span>
+        <div class="divider"><span class="knob" aria-hidden="true">↔</span></div>
+        <input type="range" id="cmp-range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+      </div>
+      <p class="disclaimer">As imagens de "como vai ficar" são referências ilustrativas de outro Corvette 1954 restaurado, com as mesmas cores. Não são fotos deste veículo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REFERÊNCIAS ================= -->
+<section id="resultado">
+  <div class="wrap">
+    <div class="head">
+            <h2>Branco com interior vermelho, como saiu de fábrica</h2>
+      <p class="lead">O padrão de acabamento que buscamos na restauração: pintura, cromados, frisos, tapeçaria e capota.</p>
+    </div>
+    <div class="gallery ref" id="g-depois"></div>
+    <p class="disclaimer">Imagens ilustrativas de referência. Não são fotos deste veículo.</p>
+  </div>
+</section>
+
+<!-- ================= ESCOPO ================= -->
+<section id="escopo">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">O que está incluso</span>
+      <h2>Da Carolina do Norte até a placa preta</h2>
+    </div>
+    <div class="scope">
+      <article>
+        <span class="step">Etapa 1</span>
+        <h3>Compra e importação</h3>
+        <ul>
+          <li>Compra do veículo nos EUA</li>
+          <li>Transporte terrestre até o porto</li>
+          <li>Frete marítimo e seguro</li>
+          <li>Impostos de importação</li>
+          <li>Despachante e desembaraço aduaneiro</li>
+          <li>Documentação e emplacamento em placa preta</li>
+        </ul>
+        <p class="extra">Tudo incluso, do começo ao fim do processo.</p>
+      </article>
+      <article>
+        <span class="step">Etapa 2</span>
+        <h3>Restauração completa</h3>
+        <ul>
+          <li>Desmontagem completa</li>
+          <li>Funilaria e repintura completa</li>
+          <li>Restauro de peças, cromados e frisos</li>
+          <li>Ajustes e acabamentos</li>
+          <li>Capota nova (hoje o carro tem só a armação)</li>
+          <li>Montagem e entrega</li>
+        </ul>
+        <p class="extra">Personalizações a pedido do cliente podem ser feitas e são orçadas à parte.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INVESTIMENTO ================= -->
+<section id="investimento">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Investimento</span>
+      <h2>Valor do projeto</h2>
+    </div>
+    <div class="invest">
+      <div>
+        <div class="ledger">
+          <div class="ledger-row">
+            <div><h3>Compra e importação</h3><p>Veículo, transporte, frete, seguro, impostos, despachante e placa preta</p></div>
+            <span class="val num">R$ 550.000</span>
+          </div>
+          <div class="ledger-row">
+            <div><h3>Restauração completa</h3><p>Funilaria, pintura, peças, frisos, capota, acabamentos e montagem</p></div>
+            <span class="val num">R$ 250.000</span>
+          </div>
+        </div>
+        <div class="ledger-total"><span>Total estimado</span><span class="val num">R$ 800.000</span></div>
+      </div>
+      <aside class="split">
+        <h3>Como o valor se divide</h3>
+        <div class="split-bar" aria-hidden="true">
+          <i style="width:68.75%;background:var(--navy)"></i>
+          <i style="width:31.25%;background:var(--gold-soft)"></i>
+        </div>
+        <div class="split-legend">
+          <div><i style="background:var(--navy);outline:1px solid rgba(244,241,232,.3)"></i><span>Compra e importação</span><b>69%</b></div>
+          <div><i style="background:var(--gold-soft)"></i><span>Restauração</span><b>31%</b></div>
+        </div>
+        <p>O valor da importação é uma estimativa em reais e pode variar conforme a cotação do dólar no momento da compra e do desembaraço.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MERCADO ================= -->
+<section id="mercado">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Referência de mercado</span>
+      <h2>Quanto custa um Corvette C1 pronto no Brasil</h2>
+      <p class="lead">Dois anúncios recentes em São Paulo ajudam a situar o projeto. Um deles é o mesmo modelo, 1954 com o seis cilindros original, só que em outra cor.</p>
+    </div>
+    <div class="market">
+      <div class="mk-row is-this">
+        <div class="mk-info"><h3>Este projeto</h3><p>Corvette 1954 · seis cilindros Blue Flame original · restauração completa</p></div>
+        <div class="mk-bar"><i style="width:62.5%"></i></div>
+        <div class="mk-val"><b>R$ 800 mil</b><small>valor estimado</small></div>
+      </div>
+      <div class="mk-row">
+        <div class="mk-info"><h3>Corvette 1956</h3><p>V8 265 · restaurado · anunciado em loja de São Paulo (nov/2026)</p></div>
+        <div class="mk-bar"><i style="width:76.95%"></i></div>
+        <div class="mk-val"><b>R$ 985 mil</b><small>R$ 185 mil acima</small></div>
+      </div>
+      <div class="mk-row">
+        <div class="mk-info"><h3>Corvette 1954</h3><p>Seis cilindros Blue Flame · Pennant Blue · anunciado em São Paulo (jan/2025)</p></div>
+        <div class="mk-bar"><i style="width:100%"></i></div>
+        <div class="mk-val"><b>R$ 1,28 mi</b><small>R$ 480 mil acima</small></div>
+      </div>
+    </div>
+    <p class="disclaimer">Valores pedidos em anúncios públicos, não preços de venda fechados. Servem como referência e não garantem valor de revenda.</p>
+  </div>
+</section>
+
+<!-- ================= LINHA DO TEMPO ================= -->
+<section id="prazos">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Prazos</span>
+      <h2>Cerca de 13 meses da assinatura à entrega</h2>
+      <p class="lead">Os números nos círculos mostram em que ponto do projeto cada parcela é paga.</p>
+    </div>
+    <div class="tl-scroll">
+      <div class="tl">
+        <div class="tl-months"><span>Mês 1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span></div>
+        <div class="tl-track">
+          <div class="tl-phase imp"><b>Compra e importação</b><small>≈ 4 meses</small></div>
+          <div class="tl-phase res"><b>Restauração</b><small>≈ 9 meses</small></div>
+        </div>
+        <div class="tl-marks" aria-hidden="true">
+          <span style="left:0">1</span>
+          <span style="left:calc(1.2 / 13 * 100%)">2</span>
+          <span style="left:calc(4 / 13 * 100% - 15px)">3</span>
+          <span style="left:calc(4 / 13 * 100% + 15px)">4</span>
+          <span style="left:calc(7 / 13 * 100%)">5</span>
+          <span style="left:100%">6</span>
+        </div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><div><h3>Assinatura do contrato</h3><time>Início</time><p>Início do projeto e compra do veículo na Carolina do Norte.</p></div></li>
+      <li><div><h3>Embarque nos EUA</h3><time>Primeiros meses</time><p>Transporte até o porto e embarque no navio rumo ao Brasil.</p></div></li>
+      <li><div><h3>Desembarque no Brasil</h3><time>≈ mês 4</time><p>Chegada ao porto e desembaraço aduaneiro.</p></div></li>
+      <li><div><h3>Desmontagem</h3><time>Dia 1 após o desembaraço</time><p>O carro chega à oficina e é desmontado peça por peça.</p></div></li>
+      <li><div><h3>Pintura concluída</h3><time>3 meses após a desmontagem · ≈ mês 7</time><p>Funilaria e repintura completas.</p></div></li>
+      <li><div><h3>Entrega das chaves</h3><time>≈ mês 13</time><p>Montagem, capota, acabamentos e entrega em placa preta.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= PAGAMENTO ================= -->
+<section id="pagamento">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Forma de pagamento</span>
+      <h2>Seis parcelas, uma para cada etapa</h2>
+      <p class="lead">Você só paga a próxima parcela quando a etapa anterior foi cumprida.</p>
+    </div>
+    <div class="pay-head" aria-hidden="true"><span></span><span>Marco</span><span>Valor</span><span>Pago até aqui</span></div>
+    <div class="pay">
+      <div class="pay-row"><span class="n">1</span><div><h3>Assinatura do contrato</h3><p>Início do projeto e compra do veículo</p></div><span class="amt">R$ 250.000</span><div class="cum" style="--w:31.25%"><i></i>R$ 250 mil · 31%</div></div>
+      <div class="pay-row"><span class="n">2</span><div><h3>Antes do embarque nos EUA</h3><p>Veículo comprado e pronto para embarcar</p></div><span class="amt">R$ 50.000</span><div class="cum" style="--w:37.5%"><i></i>R$ 300 mil · 38%</div></div>
+      <div class="pay-row"><span class="n">3</span><div><h3>Desembarque no Brasil</h3><p>Carro em território nacional</p></div><span class="amt">R$ 250.000</span><div class="cum" style="--w:68.75%"><i></i>R$ 550 mil · 69%</div></div>
+      <div class="pay-row"><span class="n">4</span><div><h3>Desmontagem do veículo</h3><p>Início da restauração na oficina</p></div><span class="amt">R$ 100.000</span><div class="cum" style="--w:81.25%"><i></i>R$ 650 mil · 81%</div></div>
+      <div class="pay-row"><span class="n">5</span><div><h3>Pintura concluída</h3><p>Funilaria e repintura finalizadas</p></div><span class="amt">R$ 100.000</span><div class="cum" style="--w:93.75%"><i></i>R$ 750 mil · 94%</div></div>
+      <div class="pay-row"><span class="n">6</span><div><h3>Entrega das chaves</h3><p>Carro pronto e emplacado</p></div><span class="amt">R$ 50.000</span><div class="cum" style="--w:100%"><i></i>R$ 800 mil · 100%</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONDIÇÕES ================= -->
+<section id="condicoes">
+  <div class="wrap">
+    <div class="head">
+            <h2>Condições da proposta</h2>
+    </div>
+    <div class="terms">
+      <div><h3>Validade da proposta</h3><p>Válida enquanto o veículo estiver disponível para venda nos EUA.</p></div>
+      <div><h3>Variação cambial</h3><p>O valor de compra e importação é estimado e pode variar conforme a cotação do dólar.</p></div>
+      <div><h3>Prazos</h3><p>Os prazos são aproximados e dependem de etapas externas, como o transporte marítimo e a liberação aduaneira.</p></div>
+      <div><h3>Personalizações</h3><p>Qualquer alteração em relação ao padrão original pode ser feita e é orçada à parte.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOBRE / CONTATO ================= -->
+<section class="about" id="contato">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="eyebrow">Quem faz</span>
+      <h2>Bomsenhor Restaurações</h2>
+      <p>Restauração e importação de carros e motos clássicos, com oficina de 575 m² em Gaspar, Santa Catarina, e clientes em todo o Brasil. Mais de 25 anos de ofício em funilaria, pintura, tapeçaria, mecânica e elétrica, tudo feito dentro de casa.</p>
+      <div class="about-stats">
+        <div><b>2015</b><span>Fundação</span></div>
+        <div><b>45+</b><span>Restaurados</span></div>
+        <div><b>575 m²</b><span>de oficina</span></div>
+      </div>
+    </div>
+    <div class="contact">
+      <h3>Contato</h3>
+      <dl>
+        <div><dt>WhatsApp</dt><dd>(47) 99174-2031</dd></div>
+        <div><dt>E-mail</dt><dd>bomsenhor10@icloud.com</dd></div>
+        <div><dt>Oficina</dt><dd>Gaspar, SC</dd></div>
+      </dl>
+      <a class="btn" href="https://wa.me/5547991742031?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Projeto%20Corvette%201954." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <div class="links">
+        <a href="https://bomsenhorrestauracoes.com.br/" target="_blank" rel="noopener">bomsenhorrestauracoes.com.br</a>
+        <a href="https://instagram.com/bomsenhorrestauracoes" target="_blank" rel="noopener">@bomsenhorrestauracoes</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Projeto Corvette 1954 · Proposta de importação e restauração</span>
+    <span>Bomsenhor Restaurações · Gaspar, SC</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <div class="lb-top"><span id="lb-cap"></span><button type="button" id="lb-close">Fechar ✕</button></div>
+  <img id="lb-img" alt="">
+  <div class="lb-nav"><button type="button" id="lb-prev">← Anterior</button><button type="button" id="lb-next">Próxima →</button></div>
+</div>
+
+<script>
+(function () {
+  var antes = [
+    ['1.jpg', 'Vista três-quartos dianteira', 1], ['3.jpg', 'Frente'], ['4.jpg', 'Lateral e traseira'], ['5.jpg', 'Traseira'],
+    ['6.jpg', 'Traseira, detalhe da carroceria'], ['2.jpg', 'Frente, vista elevada'], ['7.jpg', 'Interior vermelho', 1], ['8.jpg', 'Cockpit'],
+    ['9.jpg', 'Painel de instrumentos'], ['16-engine.jpg', 'Motor Blue Flame 235'], ['15.jpg', 'Motor, lado da ignição'], ['porta-malas.jpg', 'Porta-malas com calotas'],
+    ['14-underside.jpg', 'Parte inferior'], ['11.jpg', 'Escapamento e diferencial'], ['13.jpg', 'Câmbio Powerglide'], ['14.jpg', 'Chassi'],
+    ['10.jpg', 'Suspensão dianteira'], ['12.jpg', 'Manga de eixo e freio']
+  ].map(function (x) { return { src: 'img/antes/' + x[0], cap: x[1] + ' · foto real do veículo', wide: x[2] }; });
+
+  var depois = [
+    ['01', 'Perfil', 1], ['16', 'Frente'], ['04', 'Traseira'], ['20', 'Frente, detalhe'], ['29', 'Interior', 1], ['07', 'Painel e volante'],
+    ['10', 'Instrumentos'], ['09', 'Volante'], ['42', 'Motor Blue Flame', 1], ['43', 'Três carburadores'], ['12', 'Calota e faixa branca'], ['14', 'Grade do farol'],
+    ['34', 'Com capota', 1], ['36', 'Porta-malas'], ['38', 'Tampa do porta-malas'], ['31', 'Traseira'], ['26', 'Perfil'], ['28', 'Três-quartos traseira'],
+    ['30', 'Interior'], ['33', 'Perfil com capota'], ['15', 'Detalhe da grade'], ['24', 'Calota'], ['22', 'Farol'], ['03', 'Três-quartos traseira'],
+    ['06', 'Traseira'], ['08', 'Velocímetro'], ['17', 'Três-quartos dianteira'], ['19', 'Lateral'], ['21', 'Frente']
+  ].map(function (x) { return { src: 'img/depois/ref_' + x[0] + '.jpg', cap: x[1] + ' · referência ilustrativa', wide: x[2] }; });
+
+  function build(id, list) {
+    var el = document.getElementById(id);
+    list.forEach(function (it, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      if (it.wide) b.className = 'wide';
+      b.setAttribute('aria-label', 'Ampliar: ' + it.cap);
+      var img = document.createElement('img');
+      img.src = it.src; img.alt = it.cap; img.loading = 'lazy'; img.decoding = 'async';
+      b.appendChild(img);
+      b.addEventListener('click', function () { open(list, i); });
+      el.appendChild(b);
+    });
+  }
+  build('g-antes', antes);
+  build('g-depois', depois);
+
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
+  var cur = null, idx = 0, last = null;
+  function show() { lbImg.src = cur[idx].src; lbImg.alt = cur[idx].cap; lbCap.textContent = (idx + 1) + ' / ' + cur.length + ' · ' + cur[idx].cap; }
+  function open(list, i) { last = document.activeElement; cur = list; idx = i; show(); lb.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('lb-close').focus(); }
+  function close() { lb.hidden = true; document.body.style.overflow = ''; if (last) last.focus(); }
+  function step(d) { idx = (idx + d + cur.length) % cur.length; show(); }
+  document.getElementById('lb-close').onclick = close;
+  document.getElementById('lb-prev').onclick = function () { step(-1); };
+  document.getElementById('lb-next').onclick = function () { step(1); };
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target === lbImg) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+  var tx = null;
+  lb.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) { if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); tx = null; });
+
+  // Antes x depois
+  var pares = [['frente', 'Frente'], ['lateral', 'Lateral'], ['traseira', 'Traseira'], ['interior', 'Interior'], ['motor', 'Motor']];
+  var tabs = document.getElementById('cmp-tabs'), cmp = document.getElementById('cmp'), range = document.getElementById('cmp-range');
+  pares.forEach(function (p, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = p[1]; b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    b.onclick = function () {
+      document.getElementById('cmp-a').src = 'img/par/' + p[0] + '-antes.jpg';
+      document.getElementById('cmp-d').src = 'img/par/' + p[0] + '-depois.jpg';
+      tabs.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      range.value = 50; cmp.style.setProperty('--pos', '50%');
+    };
+    tabs.appendChild(b);
+  });
+  range.addEventListener('input', function () { cmp.style.setProperty('--pos', range.value + '%'); });
+})();
+</script>
+</body>
+</html>
