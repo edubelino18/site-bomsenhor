@@ -112,8 +112,8 @@
 
   "investimento": {
     "custos": [
-      { "titulo": "Compra e importação", "detalhe": "Veículo, transporte, frete, seguro, impostos, despachante e placa preta", "legenda": "Compra e importação", "valor": 550000 },
-      { "titulo": "Restauração completa", "detalhe": "Funilaria, pintura, peças, frisos, capota, acabamentos e montagem", "legenda": "Restauração", "valor": 250000 }
+      { "titulo": "Compra e importação", "detalhe": "Veículo, transporte, frete, seguro, impostos, despachante e placa preta", "legenda": "Compra e importação", "valor": 600000 },
+      { "titulo": "Restauração completa", "detalhe": "Funilaria, pintura, peças, frisos, capota, acabamentos e montagem", "legenda": "Restauração", "valor": 300000 }
     ],
     "nota": "O valor da importação é uma estimativa em reais e pode variar conforme a cotação do dólar no momento da compra e do desembaraço."
   },
@@ -122,7 +122,7 @@
     "titulo": "Quanto custa um Corvette C1 pronto no Brasil",
     "lead": "Dois anúncios recentes em São Paulo ajudam a situar o projeto. Um deles é o mesmo modelo, 1954 com o seis cilindros original, só que em outra cor.",
     "itens": [
-      { "titulo": "Este projeto", "detalhe": "Corvette 1954 · seis cilindros Blue Flame original · restauração completa", "valor": 800000, "esteProjeto": true },
+      { "titulo": "Este projeto", "detalhe": "Corvette 1954 · seis cilindros Blue Flame original · restauração completa", "valor": 900000, "esteProjeto": true },
       { "titulo": "Corvette 1956", "detalhe": "V8 265 · restaurado · anunciado em loja de São Paulo (nov/2026)", "valor": 985000 },
       { "titulo": "Corvette 1954", "detalhe": "Seis cilindros Blue Flame · Pennant Blue · anunciado em São Paulo (jan/2025)", "valor": 1280000 }
     ],
@@ -146,11 +146,11 @@
 
   "parcelas": [
     { "marco": "Assinatura do contrato", "detalhe": "Início do projeto e compra do veículo", "valor": 250000, "mes": 0 },
-    { "marco": "Antes do embarque nos EUA", "detalhe": "Veículo comprado e pronto para embarcar", "valor": 50000, "mes": 1.2 },
+    { "marco": "Antes do embarque nos EUA", "detalhe": "Veículo comprado e pronto para embarcar", "valor": 100000, "mes": 1.2 },
     { "marco": "Desembarque no Brasil", "detalhe": "Carro em território nacional", "valor": 250000, "mes": 4 },
     { "marco": "Desmontagem do veículo", "detalhe": "Início da restauração na oficina", "valor": 100000, "mes": 4 },
     { "marco": "Pintura concluída", "detalhe": "Funilaria e repintura finalizadas", "valor": 100000, "mes": 7 },
-    { "marco": "Entrega das chaves", "detalhe": "Carro pronto e emplacado", "valor": 50000, "mes": 13 }
+    { "marco": "Entrega das chaves", "detalhe": "Carro pronto e emplacado", "valor": 100000, "mes": 13 }
   ],
 
   "condicoes": [
